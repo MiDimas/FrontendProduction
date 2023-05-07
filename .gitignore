@@ -355,7 +355,7 @@ sftp-config.json
 
 ### NetBeans ###
 nbproject/private/
-build/
+/build/
 nbbuild/
 dist/
 nbdist/
