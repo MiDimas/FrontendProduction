@@ -1,7 +1,7 @@
 
 type Mods = Record<string, boolean | string>
 
-export function classNames(cls:string, mods: Mods, additional?: string[]): string {
+export function classNames(cls:string, mods: Mods = {}, additional: string[] = []): string {
     const arr = [
         cls,
         ...Object.entries(mods)
@@ -9,9 +9,10 @@ export function classNames(cls:string, mods: Mods, additional?: string[]): strin
                 !!value
             )
             .map(([className]) => className)
-    ]
+    ];
     if(additional){
-        arr.push(...additional)
+        additional.filter(Boolean);
+        arr.push(...additional);
     }
-    return arr.join(' ')
+    return arr.join(' ');
 }
