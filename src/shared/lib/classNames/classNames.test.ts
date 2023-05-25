@@ -1,4 +1,3 @@
-import exp from 'constants';
 import { classNames } from './classNames';
 
 describe('classNames', () => {
