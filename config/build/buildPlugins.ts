@@ -20,7 +20,10 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
 
     ];
     if (isDev) {
-        plugin.push(new webpack.HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin());
+        plugin.push(
+            new webpack.HotModuleReplacementPlugin(),
+            new ReactRefreshWebpackPlugin({ overlay: false }),
+        );
     }
     return plugin;
 }

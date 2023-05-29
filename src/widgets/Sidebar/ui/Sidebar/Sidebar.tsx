@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 import { LangSwitcher } from 'shared/ui/LangSwitcher';
 import { useTranslation } from 'react-i18next';
+import { BugButton } from 'app/providers/ErrorBoundary';
 import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -19,6 +20,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
     return (
         <div className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
             <button type="button" onClick={onToggle}>{ t('Переключатель') }</button>
+            <BugButton />
             <div className={cls.switcher}>
                 <LangSwitcher className={cls.lang} />
                 <ThemeSwitcher />
