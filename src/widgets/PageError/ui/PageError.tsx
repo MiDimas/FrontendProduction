@@ -11,10 +11,8 @@ export const PageError = ({ className }: PageErrorProps) => {
     const [t] = useTranslation();
 
     const reloadPage = () => {
-        // eslint-disable-next-line no-restricted-globals
-        location.reload();
+        window.location.reload();
     };
-
     return (
         <div className={classNames(cls.PageError, {}, [className])}>
             <p>{t('Что-то пошло не так...')}</p>
