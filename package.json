@@ -2,7 +2,7 @@
   "name": "bigfrontproject",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "webpack serve --env port=3000",
     "build:prod": "webpack --env mode=production",
