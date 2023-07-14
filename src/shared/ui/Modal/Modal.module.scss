@@ -4,7 +4,9 @@
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: var(--modal-z-index);
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .overlay {
@@ -20,4 +22,10 @@
     background: var(--bg-color);
     padding: 20px;
     border-radius: 12px;
+}
+
+.opened {
+    z-index: var(--modal-z-index);
+    opacity: 1;
+    pointer-events: auto;
 }
