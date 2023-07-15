@@ -21,9 +21,14 @@ function App() {
     return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
-                {/* <Modal isOpen={isOpen} onClose={onClose} /> */}
+                {/* <Modal isOpen={isOpen} onClose={onClose}> */}
+                {/*    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aspernatur consequuntur */}
+                {/*    fuga placeat repudiandae sint voluptatum. */}
+                {/*    Beatae earum eligendi explicabo illo ipsum iusto laboriosam, quia quisquam */}
+                {/*    recusandae repellat tempore totam! */}
+                {/* </Modal> */}
                 <Navbar />
-                {/* <button onClick={onOpen}>Открыть модальное окно</button> */}
+                {/* <button onClick={onOpen} type="button">Открыть модальное окно</button> */}
                 <div className="content_page">
                     <Sidebar />
                     <AppRouter />

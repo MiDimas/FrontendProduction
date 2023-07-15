@@ -7,6 +7,7 @@
     opacity: 0;
     pointer-events: none;
     z-index: -1;
+    transition: 0.4s all ease;
 }
 
 .overlay {
@@ -22,10 +23,17 @@
     background: var(--bg-color);
     padding: 20px;
     border-radius: 12px;
+    transition: 0.3s transform ease-in-out;
+    transform: scale(0.5);
+    max-width: 60%;
 }
 
 .opened {
     z-index: var(--modal-z-index);
     opacity: 1;
     pointer-events: auto;
+
+    .content {
+        transform: scale(1);
+    }
 }

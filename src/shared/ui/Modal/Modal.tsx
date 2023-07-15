@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ReactNode, MouseEvent } from 'react';
+import { ReactNode, MouseEvent, useEffect } from 'react';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -28,6 +28,19 @@ export const Modal = (props : ModalProps) => {
     const stopProp = (e: MouseEvent) => {
         e.stopPropagation();
     };
+    const escapeClose = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+            closeHandler();
+        }
+    };
+    useEffect(() => {
+        if (isOpen) {
+            window.addEventListener('keydown', escapeClose);
+        }
+        return () => {
+            window.removeEventListener('keydown', escapeClose);
+        };
+    }, [isOpen]);
     return (
         <div className={classNames(cls.Modal, mods, [className])}>
             <div onClick={closeHandler} className={cls.overlay}>
