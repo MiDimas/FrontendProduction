@@ -25,7 +25,7 @@ function App() {
     Beatae earum eligendi explicabo illo ipsum iusto laboriosam, quia quisquam
     recusandae repellat tempore totam!`;
     const themeBody = useCallback(() => {
-        document.body.className = theme;
+        document.body.className = classNames('app', {}, [theme]);
     }, [theme]);
     useEffect(() => {
         themeBody();
