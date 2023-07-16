@@ -9,26 +9,27 @@ import { Modal } from 'shared/ui/Modal/Modal';
 
 function App() {
     const { theme } = useTheme();
-    // const [isOpen, setIsOpen] = useState(false);
-    //
-    // const onOpen = () => {
-    //     setIsOpen(true);
-    // };
-    // const onClose = () => {
-    //     setIsOpen(false);
-    // };
+    const [isOpen, setIsOpen] = useState(false);
 
+    const onOpen = () => {
+        setIsOpen(true);
+    };
+    const onClose = () => {
+        setIsOpen(false);
+    };
+    const anyString = `
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aspernatur
+    consequuntur fuga placeat repudiandae sint voluptatum.
+    Beatae earum eligendi explicabo illo ipsum iusto laboriosam, quia quisquam
+    recusandae repellat tempore totam!`;
     return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
-                {/* <Modal isOpen={isOpen} onClose={onClose}> */}
-                {/*    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aspernatur consequuntur */}
-                {/*    fuga placeat repudiandae sint voluptatum. */}
-                {/*    Beatae earum eligendi explicabo illo ipsum iusto laboriosam, quia quisquam */}
-                {/*    recusandae repellat tempore totam! */}
-                {/* </Modal> */}
+                <Modal isOpen={isOpen} onClose={onClose}>
+                    {anyString}
+                </Modal>
                 <Navbar />
-                {/* <button onClick={onOpen} type="button">Открыть модальное окно</button> */}
+                <button onClick={onOpen} type="button">{'>>>'}</button>
                 <div className="content_page">
                     <Sidebar />
                     <AppRouter />
