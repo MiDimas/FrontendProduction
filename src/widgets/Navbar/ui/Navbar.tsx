@@ -25,12 +25,12 @@ export const Navbar = ({ className }: NavbarProps) => {
      consectetur adipisicing elit. Nisi, voluptatum.`;
     return (
         <div className={classNames(cls.Navbar, {}, [className])}>
-            {/* <Button theme={ButtonTheme.BACKGROUND} className={cls.inks} onClick={openHandler}> */}
-            {/*    {t('Войти')} */}
-            {/* </Button> */}
-            {/* <Modal isOpen={isOpen} onClose={closeHandler}> */}
-            {/*    {lorem} */}
-            {/* </Modal> */}
+            <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.inks} onClick={openHandler}>
+                {t('Войти')}
+            </Button>
+            <Modal isOpen={isOpen} onClose={closeHandler}>
+                {lorem}
+            </Modal>
 
         </div>
     );

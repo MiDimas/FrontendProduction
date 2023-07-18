@@ -5,10 +5,15 @@
 
 .clear,
 .background,
-.backgroundInverted {
+.backgroundInverted,
+.clearInverted {
     border: none;
     background: none;
     outline: none;
+}
+
+.clearInverted {
+    color: var(--inverted-primary-color);
 }
 
 .outline {

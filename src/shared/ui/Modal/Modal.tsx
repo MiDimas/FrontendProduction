@@ -10,6 +10,7 @@ interface ModalProps {
     children?: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
+    noPortal?: boolean;
 }
 
 export const Modal = (props : ModalProps) => {
@@ -18,6 +19,7 @@ export const Modal = (props : ModalProps) => {
         children,
         isOpen,
         onClose,
+        noPortal,
     } = props;
 
     const mods: Record<string, boolean> = {
@@ -44,6 +46,15 @@ export const Modal = (props : ModalProps) => {
             window.removeEventListener('keydown', escapeClose);
         };
     }, [isOpen, escapeClose]);
+    if (noPortal) {
+        return (
+            <div className={classNames(cls.Modal, mods, [className])}>
+                <div onClick={closeHandler} className={cls.overlay}>
+                    <div onClick={stopProp} className={cls.content}>{children}</div>
+                </div>
+            </div>
+        );
+    }
     return (
         <Portal>
             <div className={classNames(cls.Modal, mods, [className])}>
