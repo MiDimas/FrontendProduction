@@ -6,7 +6,7 @@ const MainPage = () => {
     return (
         <div>
             {t('Главная Страница')}
-            <Counter />
+            {/* <Counter /> */}
         </div>
     );
 };
