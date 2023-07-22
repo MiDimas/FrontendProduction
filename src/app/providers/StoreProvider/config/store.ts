@@ -11,9 +11,3 @@ export const createReduxStore = (initialState?: StateSchema) => configureStore<S
         preloadedState: initialState,
     },
 );
-
-export default configureStore(
-    {
-        reducer: {},
-    },
-);

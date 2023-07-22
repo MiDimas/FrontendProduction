@@ -14,4 +14,7 @@ describe('counterSlice', () => {
         };
         expect(counterReducer(state, counterActions.decrement())).toEqual({ value: 9 });
     });
+    test('Тестирование без стэйта', () => {
+        expect(counterReducer(undefined, counterActions.increment())).toEqual({ value: 1 });
+    });
 });
