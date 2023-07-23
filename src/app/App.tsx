@@ -10,12 +10,15 @@ import {
 
 function App() {
     const { theme } = useTheme();
+
+    // Навешивание темы на body
     const themeBody = useCallback(() => {
         document.body.className = classNames('app', {}, [theme]);
     }, [theme]);
     useEffect(() => {
         themeBody();
     }, [themeBody]);
+
     return (
         <div>
             <Suspense fallback="">
