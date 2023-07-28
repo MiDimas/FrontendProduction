@@ -1,9 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'shared/ui/Modal/Modal';
 import { useCallback, useState } from 'react';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import cls from './Navbar.module.scss';
+import {LoginModal} from "features/AuthByUsername";
 
 interface NavbarProps {
     className?: string;
@@ -28,9 +28,7 @@ export const Navbar = ({ className }: NavbarProps) => {
             <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.inks} onClick={openHandler}>
                 {t('Войти')}
             </Button>
-            <Modal isOpen={isOpen} onClose={closeHandler}>
-                {lorem}
-            </Modal>
+            <LoginModal isOpen={isOpen} onClose={closeHandler} />
 
         </div>
     );
