@@ -1,7 +1,35 @@
 .InputWrapper {
+    display: flex;
+    position: relative;
+    background-color: white;
+    height: 45px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 5px 10px;
+}
 
+.placeholder {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    font: var(--font-m);
+    padding-left: 10px;
 }
 
 .input {
+    outline: none;
+    border: none;
+    background: transparent;
+    min-width: 0;
+}
 
+.placeholderFocus {
+    font: var(--font-s);
+    align-items: start;
 }
