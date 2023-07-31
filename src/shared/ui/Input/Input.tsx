@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ChangeEvent, InputHTMLAttributes, useState } from 'react';
+import {ChangeEvent, InputHTMLAttributes, useEffect, useState} from 'react';
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
@@ -8,6 +8,7 @@ interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string;
     onChange?: (value: string) => void;
+    autofocus?: boolean;
 }
 
 export const Input = (props: InputProps) => {
@@ -19,6 +20,7 @@ export const Input = (props: InputProps) => {
         onChange,
         type = 'text',
         placeholder,
+        autofocus = false,
         ...otherProps
     } = props;
 
@@ -32,6 +34,12 @@ export const Input = (props: InputProps) => {
     const blurHandler = () => {
         setFocus(false);
     };
+
+    useEffect(() => {
+        if (autofocus) {
+            setFocus(true);
+        }
+    }, [autofocus])
     return (
         <div className={classNames(cls.InputWrapper, {}, [className])}>
             <input
@@ -40,6 +48,7 @@ export const Input = (props: InputProps) => {
                 className={cls.input}
                 onFocus={focusHandler}
                 onBlur={blurHandler}
+                autoFocus={autofocus}
                 {...otherProps}
             />
             {placeholder
