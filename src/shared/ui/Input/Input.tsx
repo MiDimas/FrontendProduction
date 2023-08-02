@@ -12,19 +12,18 @@ interface InputProps extends HTMLInputProps {
 }
 
 export const Input = (props: InputProps) => {
-    const [hasValue, setHasValue] = useState(false);
     const [focus, setFocus] = useState(false);
     const ref = useRef<HTMLInputElement>();
     const {
         className,
-        value,
+        value = "",
         onChange,
         type = 'text',
         placeholder,
         autofocus = false,
         ...otherProps
     } = props;
-
+    const [hasValue, setHasValue] = useState(!!value);
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         onChange?.(event.target.value);
@@ -43,13 +42,21 @@ export const Input = (props: InputProps) => {
             ref.current.focus();
         }
     }, [autofocus])
-
+    useEffect( () => {
+        if(value){
+            setHasValue(true)
+        }
+        else{
+            setHasValue(false)
+        }
+    }, [value])
 
     return (
         <div className={classNames(cls.InputWrapper, {}, [className])}>
             <input
                 ref={ref}
                 type={type}
+                value={value ? value : undefined }
                 onChange={changeHandler}
                 className={cls.input}
                 onFocus={focusHandler}
