@@ -25,10 +25,10 @@ export const Modal = (props : ModalProps) => {
     } = props;
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => {
-        if (isOpen){
+        if (isOpen) {
             setIsMounted(true);
         }
-    }, [isOpen])
+    }, [isOpen]);
 
     const mods: Record<string, boolean> = {
         [cls.opened]: isOpen,
@@ -56,7 +56,7 @@ export const Modal = (props : ModalProps) => {
     }, [isOpen, escapeClose]);
 
     if (lazy && !isMounted) {
-        return null
+        return null;
     }
 
     if (noPortal) {

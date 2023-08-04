@@ -15,14 +15,14 @@ type Story = StoryObj<typeof Input>;
 
 export const InputLight: Story = {
     args: {
-        placeholder: "Веведите что нибудь",
-        value: '1123'
+        placeholder: 'Веведите что нибудь',
+        value: '1123',
     },
 };
 
 export const InputDark: Story = {
     args: {
-        placeholder: "Веведите что нибудь",
+        placeholder: 'Веведите что нибудь',
     },
     decorators: [ThemeDecorator(Theme.DARK)],
 };
