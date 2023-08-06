@@ -57,7 +57,7 @@ export const Input = (props: InputProps) => {
             <input
                 ref={ref}
                 type={type}
-                value={value || undefined}
+                value={value}
                 onChange={changeHandler}
                 className={cls.input}
                 onFocus={focusHandler}
