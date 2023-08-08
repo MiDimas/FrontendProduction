@@ -23,6 +23,9 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     const onChangePassword = useCallback((value: string) => {
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
+    const onLoginClick = useCallback(() => {
+    //
+    }, []);
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
