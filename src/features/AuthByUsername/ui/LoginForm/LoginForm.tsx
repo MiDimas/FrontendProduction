@@ -5,6 +5,8 @@ import { Input } from 'shared/ui/Input/Input';
 import { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
+import { Loader } from 'shared/ui/Loader/Loader';
+import { loginByUsername } from '../../model/services/LoginByUserName/LoginByUsername';
 import { getLogin } from '../../model/selectors/getLogin/getLogin';
 import cls from './LoginForm.module.scss';
 
@@ -15,7 +17,12 @@ interface LoginFormProps {
 export const LoginForm = memo(({ className }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const { username, password } = useSelector(getLogin);
+    const {
+        username,
+        password,
+        isLoading,
+        error,
+    } = useSelector(getLogin);
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
@@ -24,11 +31,13 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
     const onLoginClick = useCallback(() => {
-    //
-    }, []);
+        dispatch(loginByUsername({ username, password }));
+    }, [dispatch, username, password]);
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
+            {isLoading && <Loader />}
+            {error && <div>{error}</div>}
             <Input
                 type="text"
                 placeholder={t('Логин')}
@@ -42,7 +51,7 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
                 onChange={onChangePassword}
                 value={password}
             />
-            <Button theme={ButtonTheme.OUTLINE}>{t('Войти')}</Button>
+            <Button theme={ButtonTheme.OUTLINE} onClick={onLoginClick}>{t('Войти')}</Button>
         </div>
     );
 });
