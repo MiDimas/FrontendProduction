@@ -7,9 +7,12 @@ import { Sidebar } from 'widgets/Sidebar';
 import {
     Suspense, useCallback, useEffect,
 } from 'react';
+import { useDispatch } from 'react-redux';
+import { userActions } from 'entities/User';
 
 function App() {
     const { theme } = useTheme();
+    const dispatch = useDispatch();
 
     // Навешивание темы на body
     const themeBody = useCallback(() => {
@@ -18,6 +21,10 @@ function App() {
     useEffect(() => {
         themeBody();
     }, [themeBody]);
+
+    useEffect(() => {
+        dispatch(userActions.initAuthData());
+    }, [dispatch]);
 
     return (
         <div>

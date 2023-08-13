@@ -6,6 +6,7 @@ import { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
 import { Loader } from 'shared/ui/Loader/Loader';
+import { Text } from 'shared/ui/Text/Text';
 import { loginByUsername } from '../../model/services/LoginByUserName/LoginByUsername';
 import { getLogin } from '../../model/selectors/getLogin/getLogin';
 import cls from './LoginForm.module.scss';
@@ -36,7 +37,8 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
-            {error && <div>{error}</div>}
+            <Text title={t('Форма авторизации')} />
+            {error && <Text text={error} />}
             <Input
                 type="text"
                 placeholder={t('Логин')}

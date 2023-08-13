@@ -2,9 +2,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { FC } from 'react';
 import cls from './Text.module.scss';
 
-export enum  TextTheme {
-    PRIMARY = "primary",
-    ERROR = "error"
+export enum TextTheme {
+    PRIMARY = 'primary',
+    ERROR = 'error'
 }
 interface TextProps {
     className?: string;
@@ -18,7 +18,7 @@ export const Text:FC<TextProps> = (props) => {
         className,
         title,
         text,
-        theme = TextTheme.PRIMARY
+        theme = TextTheme.PRIMARY,
     } = props;
     return (
         <div className={classNames(cls.Text, {}, [className, cls[theme]])}>

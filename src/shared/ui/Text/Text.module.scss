@@ -11,11 +11,13 @@
     font: var(--font-m);
     color: var(--secondary-color);
 }
-.error{
-    .title{
+
+.error {
+    .title {
         color: var(--red-light);
     }
-    .text{
+
+    .text {
         color: var(--red-dark);
     }
 }

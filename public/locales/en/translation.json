@@ -11,5 +11,7 @@
   "Яз": "En",
   "Войти": "LogIn",
     "Логин": "Login",
-  "Пароль": "Password"
+  "Пароль": "Password",
+  "Форма авторизации": "Authorization form",
+  "Неправильный логин или пароль": "Uncorrected login or password"
 }
