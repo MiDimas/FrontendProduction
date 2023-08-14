@@ -10,6 +10,7 @@
     border: none;
     background: none;
     outline: none;
+    color: var(--primary-color);
 }
 
 .clearInverted {
@@ -24,7 +25,6 @@
 
 .background {
     background-color: var(--bg-color);
-    color: var(--primary-color);
 }
 
 .backgroundInverted {
