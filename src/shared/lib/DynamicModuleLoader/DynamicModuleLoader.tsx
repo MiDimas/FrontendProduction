@@ -1,5 +1,4 @@
 import { FC, useEffect } from 'react';
-import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { useDispatch, useStore } from 'react-redux';
 import {
     ReduxStoreWithManger, StateSchemaKey,
