@@ -50,7 +50,8 @@ export const Navbar = ({ className }: NavbarProps) => {
             <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.inks} onClick={openHandler}>
                 {t('Войти')}
             </Button>
-            <LoginModal isOpen={isOpen} onClose={closeHandler} />
+            {isOpen
+                && <LoginModal isOpen={isOpen} onClose={closeHandler} />}
 
         </div>
     );
