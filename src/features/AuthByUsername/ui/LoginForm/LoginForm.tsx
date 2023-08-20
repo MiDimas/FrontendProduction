@@ -7,7 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginActions, loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError/getLoginError';
-import { DynamicModuleLoader } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { loginByUsername } from '../../model/services/LoginByUserName/LoginByUsername';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
@@ -17,6 +20,10 @@ import cls from './LoginForm.module.scss';
 export interface LoginFormProps {
     className?: string;
 }
+
+const initialReducers: ReducersList = {
+    loginForm: loginReducer,
+};
 
 const LoginForm = memo(({ className }: LoginFormProps) => {
     const { t } = useTranslation();
@@ -39,9 +46,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
     return (
         <DynamicModuleLoader
             removeAfterUnmount
-            // eslint-disable-next-line i18next/no-literal-string
-            name="loginForm"
-            reducer={loginReducer}
+            reducers={initialReducers}
         >
             <div className={classNames(cls.LoginForm, {}, [className])}>
                 <Text title={t('Форма авторизации')} />

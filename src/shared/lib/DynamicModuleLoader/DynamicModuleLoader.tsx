@@ -5,28 +5,38 @@ import {
 } from 'app/providers/StoreProvider/config/StateSchema';
 import { Reducer } from '@reduxjs/toolkit';
 
+export type ReducersList = {
+    [name in StateSchemaKey]?: Reducer
+};
+
+type ReducersListEntry = [
+    StateSchemaKey, Reducer
+]
 interface DynamicModuleLoaderProps {
-    name: StateSchemaKey;
-    reducer: Reducer;
+    reducers: ReducersList;
     removeAfterUnmount?: boolean;
 }
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
     const {
         children,
-        name,
-        reducer,
+        reducers,
         removeAfterUnmount,
     } = props;
     const store = useStore() as ReduxStoreWithManger;
     const dispatch = useDispatch();
 
     useEffect(() => {
-        store.reducerManager.add(name, reducer);
-        dispatch({ type: `@INIT ${name} Reducer` });
+        Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
+            store.reducerManager.add(name, reducer);
+            dispatch({ type: `@INIT ${name} Reducer` });
+        });
+
         return () => {
             if (removeAfterUnmount) {
-                store.reducerManager.remove(name);
-                dispatch({ type: `@DEST Destroy ${name} Reducer` });
+                Object.entries(reducers).forEach(([name]: ReducersListEntry) => {
+                    store.reducerManager.remove(name);
+                    dispatch({ type: `@DEST Destroy ${name} Reducer` });
+                });
             }
         };
         // eslint-disable-next-line
