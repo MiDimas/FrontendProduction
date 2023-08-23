@@ -11,4 +11,8 @@ describe('getLoginIsLoading тест', () => {
         };
         expect(getLoginIsLoading(state as StateSchema)).toEqual(true);
     });
+    test('Тестирование на возвращение false с пустым стэйтом', () => {
+        const state: DeepPartial<StateSchema> = {};
+        expect(getLoginIsLoading(state as StateSchema)).toEqual(false);
+    });
 });

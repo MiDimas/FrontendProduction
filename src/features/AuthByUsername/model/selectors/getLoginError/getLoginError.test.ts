@@ -11,4 +11,8 @@ describe('getLoginError тест', () => {
         };
         expect(getLoginError(state as StateSchema)).toEqual('error');
     });
+    test('Тестирование работы даже с пустым стэйтом', () => {
+        const state: DeepPartial<StateSchema> = {};
+        expect(getLoginError(state as StateSchema)).toEqual(undefined);
+    });
 });

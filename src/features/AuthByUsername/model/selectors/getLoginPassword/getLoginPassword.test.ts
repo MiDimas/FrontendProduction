@@ -11,4 +11,8 @@ describe('getLoginPassword тест', () => {
         };
         expect(getLoginPassword(state as StateSchema)).toEqual('123');
     });
+    test('Тестирование возвращения пустой строки при пустом стэйте', () => {
+        const state: DeepPartial<StateSchema> = {};
+        expect(getLoginPassword(state as StateSchema)).toEqual('');
+    });
 });

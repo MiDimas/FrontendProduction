@@ -11,4 +11,8 @@ describe('getLoginUsername тест', () => {
         };
         expect(getLoginUsername(state as StateSchema)).toEqual('petux');
     });
+    test('Тестирование возвращения пустой строки при пустом стэйте', () => {
+        const state: DeepPartial<StateSchema> = {};
+        expect(getLoginUsername(state as StateSchema)).toEqual('');
+    });
 });
