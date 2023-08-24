@@ -15,15 +15,26 @@ describe('Тестирование AsyncThunk LoginByUsename', () => {
         dispatch = jest.fn();
         getState = jest.fn();
     });
-    test('', async () => {
+    test('Успешная авторизация', async () => {
         const userValue = { username: '123', id: '1' };
         mockedAxios.post.mockReturnValue(Promise.resolve({ data: userValue }));
         const action = loginByUsername({ username: '123', password: '123' });
         const result = await action(dispatch, getState, undefined);
-        console.log(result);
 
+        expect(dispatch).toHaveBeenCalledTimes(3);
         expect(dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue));
         expect(mockedAxios.post).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled');
+        expect(result.payload).toEqual(userValue);
+    });
+    test('Авторизация с ошибкой', async () => {
+        mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }));
+        const action = loginByUsername({ username: '123', password: '123' });
+        const result = await action(dispatch, getState, undefined);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(mockedAxios.post).toHaveBeenCalled();
+        expect(result.meta.requestStatus).toBe('rejected');
+        expect(result.payload).toEqual('error');
     });
 });
