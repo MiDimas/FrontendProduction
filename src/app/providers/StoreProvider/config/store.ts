@@ -25,3 +25,4 @@ export const createReduxStore = (
     store.reducerManager = reducerManager;
     return store;
 };
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
