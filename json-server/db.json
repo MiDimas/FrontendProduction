@@ -12,5 +12,14 @@
             "password": "123"
         }
     ],
-    "profile": { "name": "typicode" }
+    "profile": {
+        "firstname": "Dimas",
+        "lastname": "Miskevich",
+        "age": 28,
+        "currency": "RUB",
+        "country": "Russia",
+        "city": "Irkutsk",
+        "username": "midi",
+        "avatar": ""
+    }
 }
