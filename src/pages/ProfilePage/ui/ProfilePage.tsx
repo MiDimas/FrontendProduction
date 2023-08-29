@@ -7,7 +7,7 @@ interface ProfilePageProps {
     className?: string;
 }
 const ProfilePage: FC<ProfilePageProps> = (props) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('profile');
     const { className } = props;
     return (
         <div className={
