@@ -9,6 +9,8 @@ import { useTranslation } from 'react-i18next';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import MainIcon from 'shared/assets/icons/home_icon.svg';
 import AboutIcon from 'shared/assets/icons/about_icon.svg';
+import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem';
+import { SidebarItemList } from 'widgets/Sidebar/model/items';
 import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -39,22 +41,15 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 { collapsed ? '>' : '<' }
             </Button>
             <div className={cls.items}>
-                <AppLink
-                    theme={AppLinkTheme.INVERTED}
-                    to={RoutePath.main}
-                    className={cls.item}
-                >
-                    <MainIcon className={cls.icon} />
-                    <span className={cls.link}>{t('Главная')}</span>
-                </AppLink>
-                <AppLink
-                    theme={AppLinkTheme.INVERTED}
-                    to={RoutePath.about}
-                    className={cls.item}
-                >
-                    <AboutIcon className={cls.icon} />
-                    <span className={cls.link}>{t('О нас')}</span>
-                </AppLink>
+                {
+                    SidebarItemList.map((item) => (
+                        <SidebarItem
+                            key={item.path}
+                            item={item}
+                            collapsed={collapsed}
+                        />
+                    ))
+                }
 
             </div>
             {/* <BugButton /> */}
