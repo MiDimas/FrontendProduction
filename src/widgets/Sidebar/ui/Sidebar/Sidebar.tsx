@@ -4,13 +4,9 @@ import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 import { LangSwitcher } from 'shared/ui/LangSwitcher';
 // import { BugButton } from 'app/providers/ErrorBoundary';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import MainIcon from 'shared/assets/icons/home_icon.svg';
-import AboutIcon from 'shared/assets/icons/about_icon.svg';
-import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem';
-import { SidebarItemList } from 'widgets/Sidebar/model/items';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { SidebarItemList } from '../../model/items';
 import cls from './Sidebar.module.scss';
 
 interface SidebarProps {

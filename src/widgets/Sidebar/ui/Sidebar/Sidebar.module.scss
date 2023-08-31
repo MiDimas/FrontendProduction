@@ -13,27 +13,6 @@
     flex-direction: column;
 }
 
-.item {
-    display: flex;
-    justify-content: start;
-    align-content: center;
-    margin-top: 10px;
-    overflow: hidden;
-    width: fit-content;
-}
-
-.link {
-    margin-left: 10px;
-    transition: 0.3s all ease;
-    white-space: nowrap;
-}
-
-.icon {
-    height: var(--font-line-m);
-    width: var(--font-line-m);
-    fill: var(--inverted-primary-color);
-}
-
 .switcher {
     position: absolute;
     bottom: 20px;
@@ -64,10 +43,5 @@
 
     .lang {
         margin-right: 0;
-    }
-
-    .link {
-        opacity: 0;
-        max-width: 0;
     }
 }

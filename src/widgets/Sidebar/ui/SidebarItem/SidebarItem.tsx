@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
 import { SidebarItemType } from '../../model/items';
 import cls from './SidebarItem.module.scss';
 
@@ -18,6 +19,7 @@ export const SidebarItem: FC<SidebarItemProps> = (props) => {
         text,
         path,
     } = item;
+    const { t } = useTranslation();
     return (
         <AppLink
             theme={AppLinkTheme.INVERTED}
@@ -25,7 +27,7 @@ export const SidebarItem: FC<SidebarItemProps> = (props) => {
             className={classNames(cls.SidebarItem, { [cls.collapsed]: collapsed })}
         >
             <Icon className={cls.icon} />
-            <span className={cls.link}>{text}</span>
+            <span className={cls.link}>{t(text)}</span>
         </AppLink>
     );
 };
