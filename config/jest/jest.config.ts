@@ -16,6 +16,7 @@ export default {
     // cacheDirectory: "C:\\Users\\miskevich_dm\\AppData\\Local\\Temp\\jest",
     globals: {
         __IS_DEV__: true,
+        __API__: '',
     },
     // Automatically clear mock calls, instances and results before every test
     clearMocks: true,
