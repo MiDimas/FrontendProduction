@@ -21,7 +21,7 @@ const ProfilePage = memo((props: ProfilePageProps) => {
     const dispatch = useAppDispatch();
     useEffect(
         () => {
-            dispatch(fetchProfileData());
+            dispatch(fetchProfileData);
         },
         [dispatch],
     );

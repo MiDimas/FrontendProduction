@@ -15,5 +15,6 @@
   "Пароль": "Password",
   "Форма авторизации": "Authorization form",
   "Неправильный логин или пароль": "Uncorrected login or password",
-  "Выйти": "Logout"
+  "Выйти": "Logout",
+  "Пусто": "Empty"
 }
