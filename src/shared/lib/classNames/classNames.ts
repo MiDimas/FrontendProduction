@@ -12,7 +12,7 @@ export function classNames(
             .map(([className]) => className),
     ];
     if (additional) {
-        additional.filter(Boolean);
+        additional = additional.filter(Boolean);
         arr.push(...additional as Array<string>);
     }
     return arr.join(' ');

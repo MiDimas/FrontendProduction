@@ -5,8 +5,9 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
-import { fetchProfileData, profileReducer } from 'entities/Profile';
+import { fetchProfileData, ProfileCard, profileReducer } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useDispatch } from 'react-redux';
 import cls from './ProfilePage.module.scss';
 
 const reducers: ReducersList = {
@@ -18,10 +19,10 @@ interface ProfilePageProps {
 const ProfilePage = memo((props: ProfilePageProps) => {
     const { t } = useTranslation('profile');
     const { className } = props;
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     useEffect(
         () => {
-            dispatch(fetchProfileData);
+            dispatch(fetchProfileData());
         },
         [dispatch],
     );
@@ -31,7 +32,7 @@ const ProfilePage = memo((props: ProfilePageProps) => {
                 classNames(cls.ProfilePage, {}, [className])
             }
             >
-                {t('Страница профиля')}
+                <ProfileCard />
             </div>
         </DynamicModuleLoader>
     );

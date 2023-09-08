@@ -11,3 +11,6 @@ export {
 export {
     fetchProfileData,
 } from './model/services/FetchProfileData';
+export {
+    ProfileCard,
+} from './ui/ProfileCard/ProfileCard';
