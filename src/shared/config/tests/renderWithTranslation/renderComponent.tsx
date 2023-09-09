@@ -3,7 +3,6 @@ import { I18nextProvider } from 'react-i18next';
 import { ReactNode } from 'react';
 import i18nForTest from 'shared/config/i18n/i18nForTest';
 import { MemoryRouter } from 'react-router-dom';
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 
 export interface RenderComponentOption {
