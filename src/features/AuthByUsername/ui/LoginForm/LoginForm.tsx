@@ -20,7 +20,7 @@ import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     className?: string;
-    onSuccess: () => void;
+    onSuccess?: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -49,7 +49,7 @@ const LoginForm = memo((props: LoginFormProps) => {
     const onLoginClick = useCallback(async () => {
         const result = await dispatch(loginByUsername({ username, password }));
         if (result.meta.requestStatus === 'fulfilled') {
-            onSuccess();
+            onSuccess?.();
         }
     }, [onSuccess, dispatch, username, password]);
 

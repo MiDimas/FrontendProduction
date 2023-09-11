@@ -15,7 +15,7 @@ interface InputProps extends HTMLInputProps {
 
 export const Input = memo((props: InputProps) => {
     const [focus, setFocus] = useState(false);
-    const ref = useRef<HTMLInputElement>();
+    const ref = useRef<HTMLInputElement | null>(null);
     const {
         className,
         value = '',
