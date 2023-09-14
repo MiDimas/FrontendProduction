@@ -10,10 +10,3 @@ export interface Profile {
     username: string;
     avatar: string;
 }
-
-export interface ProfileSchema {
-    data?: Profile;
-    isLoading: boolean;
-    error?: string;
-    readonly: boolean;
-}
