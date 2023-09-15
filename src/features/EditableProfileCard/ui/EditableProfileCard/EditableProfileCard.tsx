@@ -15,6 +15,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
     const data = useSelector(getProfileData);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
+
     return (
         <div className={
             classNames(cls.EditableProfileCard, {}, [className])

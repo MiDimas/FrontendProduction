@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text/Text';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { Profile } from 'entities/Profile';
+import { Loader } from 'shared/ui/Loader/Loader';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -21,6 +22,28 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
         isLoading,
         error,
     } = props;
+
+    if (isLoading) {
+        return (
+            <div className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
+                <Loader />
+            </div>
+        );
+    }
+    if (error) {
+        return (
+            <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+                <Text
+                    theme={TextTheme.ERROR}
+                    align={TextAlign.CENTER}
+                    title={t('Произошла ошибка при загрузке профиля')}
+                    text={t('Попробуйте обновить страницу')}
+                />
+
+            </div>
+        );
+    }
+
     return (
         <div className={
             classNames(cls.ProfileCard, {}, [className])
