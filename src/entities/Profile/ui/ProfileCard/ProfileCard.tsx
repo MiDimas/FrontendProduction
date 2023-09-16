@@ -49,15 +49,6 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
             classNames(cls.ProfileCard, {}, [className])
         }
         >
-            <div className={cls.header}>
-                <Text title={t('Профиль')} />
-                <Button
-                    className={cls.editBtn}
-                    theme={ButtonTheme.OUTLINE}
-                >
-                    {t('Редактировать')}
-                </Button>
-            </div>
             <div className={cls.data}>
                 <Input
                     className={cls.input}
