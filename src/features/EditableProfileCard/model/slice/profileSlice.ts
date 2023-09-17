@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProfileSchema } from '../types/ProfileSchema';
 import { fetchProfileData } from '../services/FetchProfileData';
 
@@ -13,7 +13,9 @@ export const profileSlice = createSlice({
     name: 'profile',
     initialState,
     reducers: {
-
+        setReadOnly: (state, action: PayloadAction<boolean>) => {
+            state.readonly = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
