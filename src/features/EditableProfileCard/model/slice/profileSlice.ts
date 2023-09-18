@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Profile } from 'entities/Profile';
 import { ProfileSchema } from '../types/ProfileSchema';
 import { fetchProfileData } from '../services/FetchProfileData';
 
@@ -15,6 +16,12 @@ export const profileSlice = createSlice({
     reducers: {
         setReadOnly: (state, action: PayloadAction<boolean>) => {
             state.readonly = action.payload;
+        },
+        updateProfile: (state, action: PayloadAction<Profile>) => {
+            state.data = {
+                ...state.data,
+                ...action.payload,
+            };
         },
     },
     extraReducers: (builder) => {

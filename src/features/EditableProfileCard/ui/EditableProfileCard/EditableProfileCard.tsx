@@ -1,7 +1,9 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ProfileCard } from 'entities/Profile';
 import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { profileAction } from '../../model/slice/profileSlice';
 import {
     EditableProfileCardHeader,
 } from '../EditableProfileCardHeader/EditableProfileCardHeader';
@@ -20,6 +22,13 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
+    const dispatch = useAppDispatch();
+    const onChangeFirstname = useCallback((value?: string) => {
+        dispatch(profileAction.updateProfile({ firstname: value }));
+    }, [dispatch]);
+    const onChangeLastname = useCallback((value:string) => {
+        dispatch(profileAction.updateProfile({ lastname: value }));
+    }, [dispatch]);
 
     return (
         <div className={
@@ -27,7 +36,14 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
         }
         >
             <EditableProfileCardHeader />
-            <ProfileCard data={data} isLoading={isLoading} error={error} readonly={readonly} />
+            <ProfileCard
+                data={data}
+                isLoading={isLoading}
+                error={error}
+                readonly={readonly}
+                onChangeFirstname={onChangeFirstname}
+                onChangeLastname={onChangeLastname}
+            />
         </div>
     );
 };

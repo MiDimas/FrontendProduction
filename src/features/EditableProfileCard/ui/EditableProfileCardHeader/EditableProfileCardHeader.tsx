@@ -24,7 +24,7 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
         dispatch(profileAction.setReadOnly(false));
     }, [dispatch]);
 
-    const onCancel = useCallback(() => {
+    const onCancelEdit = useCallback(() => {
         dispatch(profileAction.setReadOnly(true));
     }, [dispatch]);
     return (
@@ -44,7 +44,7 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
                     <Button
                         className={cls.editBtn}
                         theme={ButtonTheme.OUTLINE}
-                        onClick={onCancel}
+                        onClick={onCancelEdit}
                     >
                         {t('Отменить')}
                     </Button>
