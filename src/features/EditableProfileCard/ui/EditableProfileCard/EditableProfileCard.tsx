@@ -8,7 +8,7 @@ import {
     EditableProfileCardHeader,
 } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import cls from './EditableProfileCard.module.scss';
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
+import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
@@ -18,7 +18,7 @@ interface EditableProfileCardProps {
 }
 export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
     const { className } = props;
-    const data = useSelector(getProfileData);
+    const data = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);

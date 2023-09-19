@@ -25,7 +25,7 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
     }, [dispatch]);
 
     const onCancelEdit = useCallback(() => {
-        dispatch(profileAction.setReadOnly(true));
+        dispatch(profileAction.cancelEdit());
     }, [dispatch]);
     return (
         <div className={classNames(cls.EditableProfileCardHeader, {}, [className])}>
