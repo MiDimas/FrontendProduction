@@ -27,6 +27,10 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
     const onCancelEdit = useCallback(() => {
         dispatch(profileAction.cancelEdit());
     }, [dispatch]);
+
+    const onSave = useCallback(() => {
+        dispatch(profileAction.cancelEdit());
+    }, [dispatch]);
     return (
         <div className={classNames(cls.EditableProfileCardHeader, {}, [className])}>
             <Text title={t('Профиль')} />
@@ -41,13 +45,24 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
                     </Button>
                 )
                 : (
-                    <Button
-                        className={cls.editBtn}
-                        theme={ButtonTheme.OUTLINE}
-                        onClick={onCancelEdit}
-                    >
-                        {t('Отменить')}
-                    </Button>
+                    <div>
+                        <Button
+                            className={cls.cancelBtn}
+                            theme={ButtonTheme.OUTLINE_RED}
+                            onClick={onCancelEdit}
+                        >
+                            {t('Отменить')}
+                        </Button>
+                        <Button
+                            className={cls.saveBtn}
+                            theme={ButtonTheme.OUTLINE}
+                            onClick={onSave}
+                        >
+                            {t('Сохранить')}
+                        </Button>
+
+                    </div>
+
                 )}
 
         </div>
