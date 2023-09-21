@@ -5,6 +5,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useCallback } from 'react';
+import { saveProfileData } from 'features/EditableProfileCard/model/services/SaveProfileData';
 import { profileAction } from '../../model/slice/profileSlice';
 import {
     getProfileReadonly,
@@ -29,7 +30,7 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
     }, [dispatch]);
 
     const onSave = useCallback(() => {
-        dispatch(profileAction.cancelEdit());
+        dispatch(saveProfileData());
     }, [dispatch]);
     return (
         <div className={classNames(cls.EditableProfileCardHeader, {}, [className])}>

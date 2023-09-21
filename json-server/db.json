@@ -1,25 +1,33 @@
 {
-    "posts": [
-        { "id": "1", "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-        { "id": "1", "body": "some comment", "postId": "1" }
-    ],
-    "users": [
-        {
-            "id": "1",
-            "username": "petux",
-            "password": "123"
-        }
-    ],
-    "profile": {
-        "firstname": "Dimas",
-        "lastname": "Miskevich",
-        "age": 28,
-        "currency": "RUB",
-        "country": "Russia",
-        "city": "Irkutsk",
-        "username": "midi",
-        "avatar": ""
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": "1"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "petux",
+      "password": "123"
+    }
+  ],
+  "profile": {
+    "firstname": "Dimas",
+    "lastname": "Miskevich",
+    "age": 28,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Irkutsk",
+    "username": "midi",
+    "avatar": ""
+  }
 }
