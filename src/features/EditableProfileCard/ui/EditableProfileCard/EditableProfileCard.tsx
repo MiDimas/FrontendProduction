@@ -30,7 +30,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
         dispatch(profileAction.updateProfile({ lastname: value }));
     }, [dispatch]);
     const onChangeAge = useCallback((value?: string | number) => {
-        dispatch(profileAction.updateProfile({ age: Number(value) || 0 }));
+        dispatch(profileAction.updateProfile({ age: Number(value) || undefined }));
     }, [dispatch]);
     const onChangeCity = useCallback((value:string) => {
         dispatch(profileAction.updateProfile({ city: value }));

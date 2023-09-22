@@ -24,7 +24,7 @@ export {
 
 export {
     fetchProfileData,
-} from './model/services/FetchProfileData';
+} from './model/services/FetchProfileData/FetchProfileData';
 export {
     EditableProfileCard,
 } from './ui/EditableProfileCard/EditableProfileCard';
