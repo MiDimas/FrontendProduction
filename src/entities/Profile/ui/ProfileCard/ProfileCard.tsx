@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Profile } from 'entities/Profile';
@@ -58,9 +58,13 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
         );
     }
 
+    const mods: Mods = {
+        [cls.editing]: !readonly,
+    };
+
     return (
         <div className={
-            classNames(cls.ProfileCard, {}, [className])
+            classNames(cls.ProfileCard, mods, [className])
         }
         >
             <div className={cls.data}>
