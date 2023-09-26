@@ -3,6 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ProfileCard } from 'entities/Profile';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Currency } from 'entities/Currency';
 import { profileAction } from '../../model/slice/profileSlice';
 import {
     EditableProfileCardHeader,
@@ -41,6 +42,9 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
     const onChangeAvatar = useCallback((value:string) => {
         dispatch(profileAction.updateProfile({ avatar: value }));
     }, [dispatch]);
+    const onChangeCurrency = useCallback((value: Currency) => {
+        dispatch(profileAction.updateProfile({ currency: value }));
+    }, [dispatch]);
 
     return (
         <div className={
@@ -59,6 +63,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
                 onChangeCity={onChangeCity}
                 onChangeUsername={onChangeUsername}
                 onChangeAvatar={onChangeAvatar}
+                onChangeCurrency={onChangeCurrency}
             />
         </div>
     );

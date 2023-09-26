@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import {
     ChangeEvent, memo, useCallback, useMemo,
@@ -46,8 +46,12 @@ export const Select = memo((props: SelectProps) => {
         </option>
     )), [options]);
 
+    const mods: Mods = {
+        [cls.readonly]: readonly,
+    };
+
     return (
-        <div className={classNames(cls.SelectWrapper, {}, [className])}>
+        <div className={classNames(cls.SelectWrapper, mods, [className])}>
             {label
                 && <span className={cls.label}>{label}</span>}
             <select

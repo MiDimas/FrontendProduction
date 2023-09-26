@@ -3,12 +3,12 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Select, SelectOption } from 'shared/ui/Select/Select';
 import { useCallback } from 'react';
 import { Currency } from '../../model/types/currency';
-import cls from './Currency.module.scss';
 
 interface CurrencyProps {
     className?: string;
     value?: Currency;
     onChange?: (value: Currency) => void;
+    readonly?: boolean;
 }
 
 const options: SelectOption[] = [
@@ -22,6 +22,7 @@ export const CurrencySelect = (props: CurrencyProps) => {
         className,
         value,
         onChange,
+        readonly,
     } = props;
 
     const onChangeHandler = useCallback((value: string) => {
@@ -30,11 +31,12 @@ export const CurrencySelect = (props: CurrencyProps) => {
     return (
         <Select
             className={
-                classNames(cls.Currency, {}, [className])
+                classNames('', {}, [className])
             }
             label={t('Выберите валюту')}
             options={options}
             onChange={onChangeHandler}
+            readonly={readonly}
         />
     );
 };

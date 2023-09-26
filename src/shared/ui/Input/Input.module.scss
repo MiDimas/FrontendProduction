@@ -1,7 +1,8 @@
 .InputWrapper {
     display: flex;
     position: relative;
-    background-color: white;
+    background-color: var(--inverted-bg-color);
+    color: var(--inverted-primary-color);
     height: 45px;
     align-items: center;
     padding: 5px 10px;
