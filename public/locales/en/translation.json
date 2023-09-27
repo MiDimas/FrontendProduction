@@ -16,5 +16,7 @@
   "Форма авторизации": "Authorization form",
   "Неправильный логин или пароль": "Uncorrected login or password",
   "Выйти": "Logout",
-  "Пусто": "Empty"
+  "Пусто": "Empty",
+  "Выберите страну": "Choose country",
+  "Выберите валюту": "Choose currency"
 }
