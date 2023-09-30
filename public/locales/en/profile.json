@@ -5,12 +5,17 @@
   "Ваше имя": "Your firstname",
   "Ваша фамилия": "Your lastname",
   "Попробуйте обновить страницу": "Try to reload page",
-  "Произошла ошибка при загрузке профиля": "Произошла ошибка при загрузке профиля",
+  "Произошла ошибка при загрузке профиля": "There was an error loading your profile",
   "Отменить": "Cancel",
   "Сохранить": "Save",
   "Ваш возраст": "Your age",
   "Ваш город": "Your city",
   "Ваш ник": "Your username",
   "Ваш аватар": "Your Avatar",
-  "аватар": "avatar"
+  "аватар": "avatar",
+  "Ошибка сервера при сохранении": "Server error when saving",
+  "Имя и фамилия обязательны": "First and last name are required",
+  "Некорректный возраст": "Incorrect age",
+  "Некорректный регион": "Invalid region",
+  "Данные не указаны": "Data not provided"
 }

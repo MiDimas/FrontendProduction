@@ -5,6 +5,11 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
+import {
+    getProfileValidateError,
+} from '../../model/selectors/getProfileValidateErrors/getProfileValidateError';
 import { profileAction } from '../../model/slice/profileSlice';
 import {
     EditableProfileCardHeader,
@@ -14,17 +19,29 @@ import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileF
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { ValidateErrorTranslates, ValidateProfileError } from '../../model/types/ProfileSchema';
 
 interface EditableProfileCardProps {
     className?: string;
 }
 export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
     const { className } = props;
+    const { t } = useTranslation('profile');
     const data = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
+    const validateErrors = useSelector(getProfileValidateError);
     const dispatch = useAppDispatch();
+
+    const validateErrorTranslates: ValidateErrorTranslates = {
+        [ValidateProfileError.SERVER_ERROR]: t('Ошибка сервера при сохранении'),
+        [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
+        [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
+        [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректный регион'),
+        [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
+    };
+
     const onChangeFirstname = useCallback((value?: string) => {
         dispatch(profileAction.updateProfile({ firstname: value }));
     }, [dispatch]);
@@ -56,6 +73,13 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
         }
         >
             <EditableProfileCardHeader />
+            {validateErrors?.length && validateErrors.map((validateError) => (
+                <Text
+                    theme={TextTheme.ERROR}
+                    text={validateErrorTranslates[validateError]}
+                    key={validateError}
+                />
+            ))}
             <ProfileCard
                 data={data}
                 isLoading={isLoading}

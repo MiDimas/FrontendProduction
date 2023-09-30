@@ -7,10 +7,14 @@ export enum ValidateProfileError {
     NO_DATA = 'NO_DATA',
     SERVER_ERROR = 'SERVER_ERROR',
 }
+export type ValidateErrorTranslates = {
+    [name in ValidateProfileError]: string;
+}
 export interface ProfileSchema {
     data?: Profile;
     form?: Profile;
     isLoading: boolean;
-    error?: ValidateProfileError[];
+    error?: string;
     readonly: boolean;
+    validateErrors?: ValidateProfileError[];
 }
