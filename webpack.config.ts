@@ -21,6 +21,7 @@ function createConfig(env: BuildEnv) {
         isDev,
         apiUrl,
         port: PORT,
+        project: 'frontend',
     });
 
     return config;
