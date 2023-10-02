@@ -1,23 +1,39 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
+import { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import Avatar from 'shared/assets/tests/avatar.webp';
-import ProfilePage from './ProfilePage';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
+import { EditableProfileCard } from './EditableProfileCard';
 
-const meta: Meta<typeof ProfilePage> = {
-    title: 'pages/ProfilePage',
-    component: ProfilePage,
+const meta: Meta<typeof EditableProfileCard> = {
+    title: 'features/EditableProfileCard',
+    component: EditableProfileCard,
     argTypes: {
+
     },
+    decorators: [
+        StoreDecorator({
+            profile: {},
+        }),
+    ],
+
+};
+export default meta;
+
+type Story = StoryObj<typeof EditableProfileCard>;
+
+export const EditableProfileCardEmptyLight: Story = {
+    args: {},
 };
 
-export default meta;
-type Story = StoryObj<typeof ProfilePage>;
+export const EditableProfileCardEmptyDark: Story = {
+    args: {},
+    decorators: [ThemeDecorator(Theme.DARK)],
+};
 
-export const ProfilePageLight: Story = {
+export const EditableProfileCardLight: Story = {
     args: {},
     decorators: [StoreDecorator({
         profile: {
@@ -35,8 +51,10 @@ export const ProfilePageLight: Story = {
     })],
 };
 
-export const ProfilePageDark: Story = {
+export const EditableProfileCardDark: Story = {
+    args: {},
     decorators: [
+        ThemeDecorator(Theme.DARK),
         StoreDecorator({
             profile: {
                 form: {
@@ -51,6 +69,5 @@ export const ProfilePageDark: Story = {
                 },
             },
         }),
-        ThemeDecorator(Theme.DARK),
     ],
 };
