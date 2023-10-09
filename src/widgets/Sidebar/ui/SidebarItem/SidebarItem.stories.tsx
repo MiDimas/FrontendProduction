@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { SidebarItemList } from 'widgets/Sidebar/model/items';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { SidebarItem } from './SidebarItem';
 
 const meta: Meta<typeof SidebarItem> = {
@@ -9,6 +10,9 @@ const meta: Meta<typeof SidebarItem> = {
     component: SidebarItem,
     argTypes: {
     },
+    decorators: [
+        StoreDecorator({}),
+    ],
 };
 
 export default meta;
