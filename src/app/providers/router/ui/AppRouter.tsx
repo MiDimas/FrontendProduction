@@ -1,39 +1,34 @@
 import { Route, Routes } from 'react-router-dom';
-import { memo, Suspense, useMemo } from 'react';
-import { routeConfig } from 'shared/config/routeConfig/routeConfig';
-import { useTranslation } from 'react-i18next';
+import { memo, Suspense, useCallback } from 'react';
+import { AppRoutesProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { PageLoader } from 'widgets/PageLoader/ui/PageLoader';
-import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
+import { RequireAuth } from 'app/providers/router/ui/RequireAuth';
 
 const AppRouter = () => {
-    const [t] = useTranslation();
-    const isAuth = useSelector(getUserAuthData);
-    const routes = useMemo(() => Object.values(routeConfig).filter((route) => {
-        if (route.authOnly && !isAuth) {
-            return false;
-        }
-        return true;
-    }), [isAuth]);
+    const renderWithWrapper = useCallback((route: AppRoutesProps) => {
+        const element = (
+            <div className="page_wrapper">
+                {route.element}
+            </div>
+        );
+
+        return (
+            <Route
+                key={route.path}
+                path={route.path}
+                element={route.authOnly ? <RequireAuth>{element}</RequireAuth> : element}
+            />
+        );
+    }, []);
     return (
         <Suspense fallback={(
             <PageLoader />
         )}
         >
             <Routes>
-                {
-                    routes.map(({ path, element }) => (
-                        <Route
-                            key={path}
-                            path={path}
-                            element={(
-                                <div className="page_wrapper">
-                                    {element}
-                                </div>
-                            )}
-                        />
-                    ))
-                }
+                {Object.values(routeConfig).map((route) => (
+                    renderWithWrapper(route)
+                ))}
             </Routes>
         </Suspense>
     );
