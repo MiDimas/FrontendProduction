@@ -8,7 +8,7 @@ export function buildBabelLoader({ isDev }: BuildOptions) {
             loader: 'babel-loader',
             options: {
                 presets: ['@babel/preset-env'],
-                plugin: [isDev && require.resolve('react-refresh/babel')].filter(Boolean),
+                plugins: [isDev && require.resolve('react-refresh/babel')].filter(Boolean),
             },
         },
     };

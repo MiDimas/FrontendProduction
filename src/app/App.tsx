@@ -7,8 +7,8 @@ import { Sidebar } from 'widgets/Sidebar';
 import {
     Suspense, useCallback, useEffect,
 } from 'react';
-import { useDispatch } from 'react-redux';
-import { userActions } from 'entities/User';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserInitial, userActions } from 'entities/User';
 
 function App() {
     const { theme } = useTheme();
@@ -21,7 +21,7 @@ function App() {
     useEffect(() => {
         themeBody();
     }, [themeBody]);
-
+    const initial = useSelector(getUserInitial);
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
@@ -32,7 +32,7 @@ function App() {
                 <Navbar />
                 <div className="content_page">
                     <Sidebar />
-                    <AppRouter />
+                    {initial && <AppRouter />}
                 </div>
             </Suspense>
         </div>
