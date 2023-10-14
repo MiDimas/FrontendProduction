@@ -1,12 +1,12 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './ArticlesDetailsPage.module.scss';
+import cls from './ArticleDetailsPage.module.scss';
 
 interface ArticlesDetailsPageProps {
     className?: string;
 }
-export const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
+const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     const { t } = useTranslation('article');
     const { className } = props;
     return (
@@ -18,3 +18,4 @@ export const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
         </div>
     );
 };
+export default memo(ArticleDetailsPage);
