@@ -1,6 +1,7 @@
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { ArticleBlockComponent } from 'entities/Article';
 import cls from './ArticleDetailsPage.module.scss';
 
 interface ArticlesDetailsPageProps {
@@ -14,7 +15,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
             classNames(cls.ArticlesDetailsPage, {}, [className])
         }
         >
-            {t('Статья')}
+            <ArticleBlockComponent />
         </div>
     );
 };
