@@ -14,7 +14,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.10.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -107,7 +109,7 @@
   "profile": {
     "firstname": "Dimas",
     "lastname": "Miskevich",
-    "age": 28,
+    "age": 29,
     "currency": "RUB",
     "country": "Russia",
     "city": "Irkutsk",
