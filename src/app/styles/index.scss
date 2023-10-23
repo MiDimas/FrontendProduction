@@ -17,5 +17,8 @@
 
 .page_wrapper {
     flex-grow: 1;
-    padding: 30px 15px;
+    padding: 30px;
+    height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    overflow-x: hidden;
 }
