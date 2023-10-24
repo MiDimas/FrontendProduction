@@ -2,6 +2,11 @@
     min-height: 100%;
 }
 
+.avatarWrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .avatar {
     margin: 0 auto;
 }
@@ -12,4 +17,14 @@
 
 .skeleton {
     margin-top: 15px;
+}
+
+.articleInfo {
+    display: flex;
+}
+
+.articleInfo > svg {
+    height: var(--font-line-m);
+    width: var(--font-line-m);
+    margin-right: 5px;
 }

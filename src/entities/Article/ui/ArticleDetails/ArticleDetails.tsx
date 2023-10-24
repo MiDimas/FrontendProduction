@@ -9,6 +9,9 @@ import { useSelector } from 'react-redux';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
+import CalendarIcon from 'shared/assets/icons/calendar_icon.svg';
+import EyeIcon from 'shared/assets/icons/eye_icon.svg';
 import {
     getArticleDetailsIsLoading,
 } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading';
@@ -35,9 +38,8 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const { className, id } = props;
     const dispatch = useAppDispatch();
 
-    // const isLoading = useSelector(getArticleDetailsIsLoading);
-    const isLoading = true;
-    const data = useSelector(getArticleDetailsData);
+    const isLoading = useSelector(getArticleDetailsIsLoading);
+    const article = useSelector(getArticleDetailsData);
     const error = useSelector(getArticleDetailsError);
 
     useEffect(() => {
@@ -64,7 +66,29 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             />
         );
     } else {
-        content = <div>{t('Статья')}</div>;
+        content = (
+            <div>
+                <div className={cls.avatarWrapper}>
+                    <Avatar
+                        size={200}
+                        src={article?.img}
+                        className={cls.avatar}
+                    />
+                </div>
+                <Text
+                    title={article?.title}
+                    text={article?.subtitle}
+                />
+                <div className={cls.articleInfo}>
+                    <EyeIcon />
+                    <Text text={String(article?.views)} />
+                </div>
+                <div className={cls.articleInfo}>
+                    <CalendarIcon />
+                    <Text text={article?.createdAt} />
+                </div>
+            </div>
+        );
     }
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
