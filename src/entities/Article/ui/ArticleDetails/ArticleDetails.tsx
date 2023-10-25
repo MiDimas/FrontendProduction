@@ -6,8 +6,9 @@ import {
 } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { Loader } from 'shared/ui/Loader/Loader';
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import {
+    Text, TextAlign, TextSize, TextTheme,
+} from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import CalendarIcon from 'shared/assets/icons/calendar_icon.svg';
@@ -76,8 +77,10 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                     />
                 </div>
                 <Text
+                    className={cls.title}
                     title={article?.title}
                     text={article?.subtitle}
+                    size={TextSize.L}
                 />
                 <div className={cls.articleInfo}>
                     <EyeIcon />
