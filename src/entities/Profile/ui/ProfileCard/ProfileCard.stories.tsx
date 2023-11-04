@@ -3,7 +3,6 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import Avatar from 'shared/assets/tests/avatar.webp';
 import { ProfileCard } from './ProfileCard';
 
 const meta: Meta<typeof ProfileCard> = {
@@ -26,7 +25,8 @@ export const ProfileCardWithData: Story = {
             city: 'New-York',
             country: Country.Kazakhstan,
             currency: Currency.USD,
-            avatar: Avatar,
+            // eslint-disable-next-line max-len
+            avatar: 'https://avatars.mds.yandex.net/i?id=7e9acef0d1ce3289c5876000ee15cb28854c28bf-9857494-images-thumbs&n=13',
         },
     },
 };
@@ -44,7 +44,8 @@ export const ProfileCardWithDataDark: Story = {
             city: 'New-York',
             country: Country.Kazakhstan,
             currency: Currency.USD,
-            avatar: Avatar,
+            // eslint-disable-next-line max-len
+            avatar: 'https://avatars.mds.yandex.net/i?id=7e9acef0d1ce3289c5876000ee15cb28854c28bf-9857494-images-thumbs&n=13',
         },
     },
 };
