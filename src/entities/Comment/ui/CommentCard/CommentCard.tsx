@@ -17,14 +17,13 @@ export const CommentCard = memo((props: CommentCardProps) => {
         comment,
         isLoading,
     } = props;
-    const lorem = 'lorem ipsum';
     return (
         <div className={
             classNames(cls.CommentCard, {}, [className])
         }
         >
             <div className={cls.header}>
-                <Avatar size={30} />
+                { comment.user.avatar ? <Avatar size={30} src={comment.user.avatar} /> : null }
                 <Text className={cls.username} title={comment.user.username} />
             </div>
             <Text className={cls.text} text={comment.text} />

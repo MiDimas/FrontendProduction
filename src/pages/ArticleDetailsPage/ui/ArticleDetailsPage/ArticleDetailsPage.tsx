@@ -39,12 +39,22 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
                     {
                         id: '1',
                         text: 'Это че такое?',
-                        user: { id: '1', username: 'Димооооон' },
+                        user: {
+                            id: '1',
+                            username: 'Димооооон',
+                            // eslint-disable-next-line max-len
+                            avatar: 'https://avatars.mds.yandex.net/i?id=7e9acef0d1ce3289c5876000ee15cb28854c28bf-9857494-images-thumbs&n=13',
+                        },
                     },
                     {
                         id: '2',
                         text: 'Комментарий это',
-                        user: { id: '2', username: 'Димасина' },
+                        user: {
+                            id: '2',
+                            username: 'Димасина',
+                            // eslint-disable-next-line max-len
+                            avatar: 'https://png.pngtree.com/png-vector/20200615/ourmid/pngtree-hacker-wearing-hoodie-and-using-laptop-computer-freak-hacking-and-malware-png-image_2256760.jpg',
+                        },
                     },
                 ]}
             />
