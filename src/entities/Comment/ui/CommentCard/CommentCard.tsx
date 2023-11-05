@@ -2,6 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import { Text } from 'shared/ui/Text/Text';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import cls from './CommentCard.module.scss';
 import { Comment } from '../../model/types/comment';
 
@@ -17,6 +18,20 @@ export const CommentCard = memo((props: CommentCardProps) => {
         comment,
         isLoading,
     } = props;
+    if (isLoading) {
+        return (
+            <div className={
+                classNames(cls.CommentCard, {}, [className])
+            }
+            >
+                <div className={cls.header}>
+                    <Skeleton width={30} height={30} border="50%" />
+                    <Skeleton className={cls.username} width={100} height={16} />
+                </div>
+                <Skeleton className={cls.text} height={40} width="100%" />
+            </div>
+        );
+    }
     return (
         <div className={
             classNames(cls.CommentCard, {}, [className])

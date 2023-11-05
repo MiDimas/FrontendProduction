@@ -35,6 +35,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
             <ArticleDetails id={id} />
             <Text className={cls.commentTitle} title={t('Комментарии')} />
             <CommentList
+                isLoading
                 comments={[
                     {
                         id: '1',
