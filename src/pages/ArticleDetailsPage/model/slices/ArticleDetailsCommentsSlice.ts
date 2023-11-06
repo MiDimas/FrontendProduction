@@ -1,6 +1,9 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { Comment } from 'entities/Comment';
 import { StateSchema } from 'app/providers/StoreProvider';
+import {
+    fetchCommentsByArticleId,
+} from 'pages/ArticleDetailsPage/model/services/FetchCommentByArticleId/FetchCommentsByArticleId';
 import { ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema';
 
 const commentsAdapter = createEntityAdapter<Comment>({
@@ -41,6 +44,21 @@ const articleDetailsCommentsSlice = createSlice({
         },
     }),
     reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchCommentsByArticleId.pending, (state) => {
+                state.isLoading = true;
+                state.error = undefined;
+            })
+            .addCase(fetchCommentsByArticleId.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+            .addCase(fetchCommentsByArticleId.fulfilled, (state, action) => {
+                state.isLoading = false;
+                commentsAdapter.setAll(state, action.payload);
+            });
+    },
 });
 
 export const { reducer: articleDetailsCommentsReducer } = articleDetailsCommentsSlice;

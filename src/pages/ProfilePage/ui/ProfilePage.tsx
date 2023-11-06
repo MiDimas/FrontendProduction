@@ -10,6 +10,7 @@ import {
     fetchProfileData,
     profileReducer,
 } from 'features/EditableProfileCard';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import cls from './ProfilePage.module.scss';
 
 const reducers: ReducersList = {
@@ -22,13 +23,10 @@ const ProfilePage = memo((props: ProfilePageProps) => {
     const { className } = props;
 
     const dispatch = useAppDispatch();
-    useEffect(
+    useInitialEffect(
         () => {
-            if (__PROJECT__ !== 'storybook') {
-                dispatch(fetchProfileData());
-            }
+            dispatch(fetchProfileData());
         },
-        [dispatch],
     );
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
