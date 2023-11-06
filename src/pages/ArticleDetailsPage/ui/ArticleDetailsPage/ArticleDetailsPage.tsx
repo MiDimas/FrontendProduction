@@ -1,19 +1,37 @@
-import { FC, memo } from 'react';
+import { FC, memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleDetails } from 'entities/Article';
 import { Text } from 'shared/ui/Text/Text';
 import { useParams } from 'react-router-dom';
 import { CommentList } from 'entities/Comment';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
 import cls from './ArticleDetailsPage.module.scss';
+import {
+    articleDetailsCommentsReducer,
+    getArticleComments,
+} from '../../model/slices/ArticleDetailsCommentsSlice';
+import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 
 interface ArticlesDetailsPageProps {
     className?: string;
 }
+
+const reducers: ReducersList = {
+    articleDetailsComments: articleDetailsCommentsReducer,
+};
 const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     const { t } = useTranslation('article');
     const { className } = props;
     const { id } = useParams<{id: string}>();
+    const dispatch = useAppDispatch();
+    const comments = useSelector(getArticleComments.selectAll);
+    const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
 
     if (!id) {
         return (
@@ -28,38 +46,19 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     }
 
     return (
-        <div className={
-            classNames(cls.ArticlesDetailsPage, {}, [className])
-        }
-        >
-            <ArticleDetails id={id} />
-            <Text className={cls.commentTitle} title={t('Комментарии')} />
-            <CommentList
-                isLoading
-                comments={[
-                    {
-                        id: '1',
-                        text: 'Это че такое?',
-                        user: {
-                            id: '1',
-                            username: 'Димооооон',
-                            // eslint-disable-next-line max-len
-                            avatar: 'https://avatars.mds.yandex.net/i?id=7e9acef0d1ce3289c5876000ee15cb28854c28bf-9857494-images-thumbs&n=13',
-                        },
-                    },
-                    {
-                        id: '2',
-                        text: 'Комментарий это',
-                        user: {
-                            id: '2',
-                            username: 'Димасина',
-                            // eslint-disable-next-line max-len
-                            avatar: 'https://png.pngtree.com/png-vector/20200615/ourmid/pngtree-hacker-wearing-hoodie-and-using-laptop-computer-freak-hacking-and-malware-png-image_2256760.jpg',
-                        },
-                    },
-                ]}
-            />
-        </div>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+            <div className={
+                classNames(cls.ArticlesDetailsPage, {}, [className])
+            }
+            >
+                <ArticleDetails id={id} />
+                <Text className={cls.commentTitle} title={t('Комментарии')} />
+                <CommentList
+                    isLoading={commentsIsLoading}
+                    comments={comments}
+                />
+            </div>
+        </DynamicModuleLoader>
     );
 };
 export default memo(ArticleDetailsPage);
