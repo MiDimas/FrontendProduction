@@ -11,6 +11,7 @@ import {
     profileReducer,
 } from 'features/EditableProfileCard';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import cls from './ProfilePage.module.scss';
 
 const reducers: ReducersList = {
@@ -21,11 +22,12 @@ interface ProfilePageProps {
 }
 const ProfilePage = memo((props: ProfilePageProps) => {
     const { className } = props;
+    const { id } = useParams<{id: string}>();
 
     const dispatch = useAppDispatch();
     useInitialEffect(
         () => {
-            dispatch(fetchProfileData());
+            dispatch(fetchProfileData(id));
         },
     );
     return (

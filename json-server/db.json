@@ -115,14 +115,28 @@
       "avatar": "https://png.pngtree.com/png-vector/20200615/ourmid/pngtree-hacker-wearing-hoodie-and-using-laptop-computer-freak-hacking-and-malware-png-image_2256760.jpg"
     }
   ],
-  "profile": {
-    "firstname": "Dimas",
-    "lastname": "Miskevich",
-    "age": 29,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Irkutsk",
-    "username": "midi",
-    "avatar": "https://avatars.mds.yandex.net/i?id=7e9acef0d1ce3289c5876000ee15cb28854c28bf-9857494-images-thumbs&n=13"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "firstname": "Dimas",
+      "lastname": "Miskevich",
+      "age": 29,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Irkutsk",
+      "username": "midi",
+      "avatar": "https://avatars.mds.yandex.net/i?id=7e9acef0d1ce3289c5876000ee15cb28854c28bf-9857494-images-thumbs&n=13"
+    },
+    {
+      "id": "2",
+      "firstname": "Peter",
+      "lastname": "Parker",
+      "age": 30,
+      "currency": "USD",
+      "country": "Russia",
+      "city": "Irkutsk",
+      "username": "spider",
+      "avatar": "https://png.pngtree.com/png-vector/20200615/ourmid/pngtree-hacker-wearing-hoodie-and-using-laptop-computer-freak-hacking-and-malware-png-image_2256760.jpg"
+    }
+  ]
 }
