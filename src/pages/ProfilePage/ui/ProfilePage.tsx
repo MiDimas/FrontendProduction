@@ -27,7 +27,9 @@ const ProfilePage = memo((props: ProfilePageProps) => {
     const dispatch = useAppDispatch();
     useInitialEffect(
         () => {
-            dispatch(fetchProfileData(id));
+            if (id) {
+                dispatch(fetchProfileData(id));
+            }
         },
     );
     return (
