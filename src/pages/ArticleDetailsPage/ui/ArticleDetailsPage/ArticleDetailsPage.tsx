@@ -15,6 +15,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import {
     fetchCommentsByArticleId,
 } from 'pages/ArticleDetailsPage/model/services/FetchCommentByArticleId/FetchCommentsByArticleId';
+import { AddCommentForm } from 'features/addCommentForm';
 import cls from './ArticleDetailsPage.module.scss';
 import {
     articleDetailsCommentsReducer,
@@ -61,6 +62,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
             >
                 <ArticleDetails id={id} />
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
+                <AddCommentForm />
                 <CommentList
                     isLoading={commentsIsLoading}
                     comments={comments}

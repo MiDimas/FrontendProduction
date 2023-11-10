@@ -1,0 +1,10 @@
+.AddCommentForm {
+    border: 1px solid var(--primary-color);
+    display: flex;
+}
+
+.inputComment {
+    width: 100%;
+    background: var(--bg-color);
+    color: var(--primary-color);
+}
