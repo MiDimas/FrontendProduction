@@ -18,3 +18,6 @@ export const addCommentFormSlice = createSlice({
     //         .addCase()
     // },
 });
+
+export const { reducer: addCommentFormReducer } = addCommentFormSlice;
+export const { actions: addCommentFormActions } = addCommentFormSlice;
