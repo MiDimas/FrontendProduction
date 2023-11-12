@@ -1,4 +1,6 @@
-import { FC, memo, useEffect } from 'react';
+import {
+    FC, memo, useCallback, useEffect,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleDetails } from 'entities/Article';
@@ -14,7 +16,7 @@ import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import {
     fetchCommentsByArticleId,
-} from 'pages/ArticleDetailsPage/model/services/FetchCommentByArticleId/FetchCommentsByArticleId';
+} from 'pages/ArticleDetailsPage/model/services/fetchCommentByArticleId/fetchCommentsByArticleId';
 import { AddCommentForm } from 'features/addCommentForm';
 import cls from './ArticleDetailsPage.module.scss';
 import {
@@ -22,6 +24,9 @@ import {
     getArticleComments,
 } from '../../model/slices/ArticleDetailsCommentsSlice';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import {
+    addCommentForArticle,
+} from '../../model/services/addCommentForArticle/addCommentForArticle';
 
 interface ArticlesDetailsPageProps {
     className?: string;
@@ -37,6 +42,10 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
+
+    const onSendCommentArticle = useCallback((text: string) => {
+        dispatch(addCommentForArticle(text));
+    }, [dispatch]);
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -62,7 +71,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
             >
                 <ArticleDetails id={id} />
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
-                <AddCommentForm />
+                <AddCommentForm onSendComment={onSendCommentArticle} />
                 <CommentList
                     isLoading={commentsIsLoading}
                     comments={comments}

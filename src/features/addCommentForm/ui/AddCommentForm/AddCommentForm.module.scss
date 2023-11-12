@@ -1,10 +1,13 @@
 .AddCommentForm {
     border: 1px solid var(--primary-color);
     display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
 }
 
 .inputComment {
-    width: 100%;
+    flex-grow: 1;
     background: var(--bg-color);
     color: var(--primary-color);
 }
