@@ -1,9 +1,9 @@
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
+import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { ProfileSchema, ValidateProfileError } from '../types/ProfileSchema';
 import { profileAction, profileReducer } from './profileSlice';
-import { fetchProfileData } from '../services/FetchProfileData/FetchProfileData';
-import { updateProfileData } from '../services/UpdateProfileData/UpdateProfileData';
 
 const data = {
     firstname: 'Peter',

@@ -3,9 +3,10 @@ import { Currency } from 'entities/Currency';
 import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk';
 import { ValidateProfileError } from 'features/EditableProfileCard/model/types/ProfileSchema';
 import * as http from 'http';
-import { updateProfileData } from './UpdateProfileData';
+import { updateProfileData } from './updateProfileData';
 
 const data = {
+    id: '1',
     firstname: 'Peter',
     lastname: 'Parker',
     age: 25,
@@ -14,7 +15,7 @@ const data = {
     country: Country.Kazakhstan,
     currency: Currency.USD,
 };
-describe('UpdateProfileData', () => {
+describe('updateProfileData', () => {
     test('Проверка на корректное изменение данных', async () => {
         const thunk = new TestAsyncThunk(updateProfileData, {
             profile: {

@@ -1,7 +1,7 @@
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import { ValidateProfileError } from 'features/EditableProfileCard/model/types/ProfileSchema';
-import { validateProfileData } from './ValidateProfileData';
+import { validateProfileData } from './validateProfileData';
 
 const data = {
     firstname: 'Peter',
@@ -12,7 +12,7 @@ const data = {
     country: Country.Kazakhstan,
     currency: Currency.USD,
 };
-describe('ValidateProfileData', () => {
+describe('validateProfileData', () => {
     test('Полностью корректно заполнено', () => {
         const result = validateProfileData(
             {

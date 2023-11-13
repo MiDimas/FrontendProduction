@@ -5,7 +5,9 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useCallback } from 'react';
-import { updateProfileData } from '../../model/services/UpdateProfileData/UpdateProfileData';
+import {
+    updateProfileData,
+} from '../../model/services/updateProfileData/updateProfileData';
 import { profileAction } from '../../model/slice/profileSlice';
 import {
     getProfileReadonly,

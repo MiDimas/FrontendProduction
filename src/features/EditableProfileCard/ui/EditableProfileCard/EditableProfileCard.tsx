@@ -1,6 +1,6 @@
 import { FC, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ProfileCard } from 'entities/Profile';
+import { Profile, ProfileCard } from 'entities/Profile';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Currency } from 'entities/Currency';
@@ -23,13 +23,18 @@ import { ValidateErrorTranslates, ValidateProfileError } from '../../model/types
 
 interface EditableProfileCardProps {
     className?: string;
+    data?: Profile;
+    isLoading?: boolean;
+    error?: string;
 }
 export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
-    const { className } = props;
+    const {
+        className,
+        data,
+        isLoading,
+        error,
+    } = props;
     const { t } = useTranslation('profile');
-    const data = useSelector(getProfileForm);
-    const isLoading = useSelector(getProfileIsLoading);
-    const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
     const validateErrors = useSelector(getProfileValidateError);
     const dispatch = useAppDispatch();
