@@ -85,7 +85,7 @@ const testArticle:Article[] = [
 ];
 
 /* eslint-enable max-len */
-const ArticlesPage: FC<ArticlesPageProps> = (props) => {
+const ArticlesPage = (props: ArticlesPageProps) => {
     const { t } = useTranslation('article');
     const { className } = props;
     return (
