@@ -1,3 +1,52 @@
 .ArticleListItem {
     font: var(font-m);
 }
+
+.SMALL {
+    width: 230px;
+
+    .card {
+        padding: 15px;
+        border-radius: 12px;
+        background: var(--card-bg);
+    }
+
+    .imageWrapper {
+        width: 200px;
+        height: 200px;
+        position: relative;
+    }
+
+    .img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .date {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .infoWrapper {
+        display: flex;
+        margin-top: 8px;
+        align-items: center;
+    }
+
+    .types {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100px;
+        text-overflow: ellipsis;
+    }
+
+    .views {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    .title {
+        margin-top: 8px;
+    }
+}
