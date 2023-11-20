@@ -34,10 +34,10 @@
         align-items: center;
     }
 
-    .types {
+    .types p {
         overflow: hidden;
         white-space: nowrap;
-        width: 100px;
+        width: 115px;
         text-overflow: ellipsis;
     }
 
@@ -48,5 +48,12 @@
 
     .title {
         margin-top: 8px;
+    }
+
+    .title p {
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
