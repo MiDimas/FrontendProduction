@@ -20,7 +20,13 @@ export const ArticleList = (props: ArticleListProps) => {
         view = ArticleView.SMALL,
     } = props;
 
-    const renderArticle = (article: Article) => <ArticleListItem article={article} view={view} />;
+    const renderArticle = (article: Article) => (
+        <ArticleListItem
+            article={article}
+            view={view}
+            key={article.title}
+        />
+    );
 
     return (
         <div className={

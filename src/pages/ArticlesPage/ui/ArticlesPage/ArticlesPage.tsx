@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
@@ -19,7 +19,7 @@ const testArticle:Article[] = [
         views: 1022,
         createdAt: '26.10.2022',
         type: [
-            ArticleType.IT,
+            ArticleType.IT, ArticleType.ECONOMICS, ArticleType.SCIENCE,
         ],
         blocks: [
             {
