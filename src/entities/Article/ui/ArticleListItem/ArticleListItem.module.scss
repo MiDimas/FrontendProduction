@@ -4,6 +4,24 @@
 
 .SMALL {
     width: 230px;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+
+    .date {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: none;
+    }
+
+    &:hover {
+        transform: scale(1.01);
+        opacity: 0.9;
+
+        .date {
+            display: block;
+        }
+    }
 
     .imageWrapper {
         width: 200px;
@@ -14,12 +32,6 @@
     .img {
         width: 200px;
         height: 200px;
-    }
-
-    .date {
-        position: absolute;
-        top: 0;
-        right: 0;
     }
 
     .infoWrapper {
