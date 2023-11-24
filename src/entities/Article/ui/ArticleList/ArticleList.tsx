@@ -24,7 +24,8 @@ export const ArticleList = (props: ArticleListProps) => {
         <ArticleListItem
             article={article}
             view={view}
-            key={article.title}
+            key={article.id}
+            className={cls.card}
         />
     );
 
