@@ -6,6 +6,12 @@ import { fetchArticleById } from './FetchArticleById';
 const data: Article = {
     id: '1',
     title: 'JavaScript News',
+    user: {
+        id: '1',
+        username: 'petux',
+        // eslint-disable-next-line
+        avatar: 'https://avatars.mds.yandex.net/i?id=7e9acef0d1ce3289c5876000ee15cb28854c28bf-9857494-images-thumbs&n=13',
+    },
     subtitle: 'Что нового в JS в этом году',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
