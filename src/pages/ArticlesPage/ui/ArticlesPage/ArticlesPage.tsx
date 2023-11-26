@@ -3,7 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import {
+    Article, ArticleBlockType, ArticleType, ArticleView,
+} from 'entities/Article/model/types/article';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -97,13 +99,15 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         }
         >
             <Text title={t('Страница статей')} />
-            <ArticleList articles={
-                new Array(16)
-                    .fill(0).map((item, index) => ({
-                        ...testArticle,
-                        id: String(index),
-                    }))
-            }
+            <ArticleList
+                articles={
+                    new Array(16)
+                        .fill(0).map((item, index) => ({
+                            ...testArticle,
+                            id: String(index),
+                        }))
+                }
+                view={ArticleView.BIG}
             />
         </div>
     );
