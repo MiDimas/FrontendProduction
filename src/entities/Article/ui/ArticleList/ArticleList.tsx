@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
@@ -12,7 +11,6 @@ interface ArticleListProps {
 }
 
 export const ArticleList = (props: ArticleListProps) => {
-    const { t } = useTranslation();
     const {
         className,
         articles,
@@ -31,7 +29,7 @@ export const ArticleList = (props: ArticleListProps) => {
 
     return (
         <div className={
-            classNames(cls.ArticleList, {}, [className])
+            classNames(cls.ArticleList, {}, [className, cls[view]])
         }
         >
             {articles.length > 0
