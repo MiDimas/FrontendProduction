@@ -2,6 +2,49 @@
     font: var(font-m);
 }
 
+.BIG {
+    .types p {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 300px;
+        text-overflow: ellipsis;
+    }
+
+    .title {
+        margin-top: 8px;
+    }
+
+    .img {
+        max-height: 250px;
+        width: 100%;
+        object-fit: cover;
+        margin: 16px 0;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+    }
+
+    .user {
+        margin-left: 8px;
+    }
+
+    .date {
+        margin-left: auto;
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+    }
+
+    .views {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+}
+
 .SMALL {
     width: 230px;
     cursor: pointer;
