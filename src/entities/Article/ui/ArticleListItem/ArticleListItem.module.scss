@@ -3,24 +3,6 @@
 }
 
 .BIG {
-    .types p {
-        overflow: hidden;
-        white-space: nowrap;
-        width: 300px;
-        text-overflow: ellipsis;
-    }
-
-    .title {
-        margin-top: 8px;
-    }
-
-    .img {
-        max-height: 250px;
-        width: 100%;
-        object-fit: cover;
-        margin: 16px 0;
-    }
-
     .header {
         display: flex;
         align-items: center;
@@ -34,9 +16,33 @@
         margin-left: auto;
     }
 
+    .title {
+        margin-top: 8px;
+    }
+
+    .types p {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 300px;
+        text-overflow: ellipsis;
+    }
+
+    .img {
+        max-height: 250px;
+        width: 100%;
+        object-fit: cover;
+        margin: 16px 0;
+    }
+
+    .textBlock {
+        max-height: 210px;
+        overflow-y: hidden;
+    }
+
     .footer {
         display: flex;
         align-items: center;
+        margin-top: 16px;
     }
 
     .views {

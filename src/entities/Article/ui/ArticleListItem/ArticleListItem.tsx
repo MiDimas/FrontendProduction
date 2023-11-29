@@ -7,8 +7,11 @@ import { Card } from 'shared/ui/Card/Card';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { Article, ArticleView } from '../../model/types/article';
+import {
+    Article, ArticleBlockType, ArticleTextBlock, ArticleView,
+} from '../../model/types/article';
 import cls from './ArticleListItem.module.scss';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 interface ArticleListItemProps {
     className?: string;
@@ -34,6 +37,9 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     const image = <img src={article.img} alt={article.title} className={cls.img} />;
 
     if (view === ArticleView.BIG) {
+        const textBlock = article.blocks.find(
+            (block) => block.type === ArticleBlockType.TEXT,
+        ) as ArticleTextBlock;
         return (
             <div className={
                 classNames(cls.ArticleListItem, {}, [className, cls[view]])
@@ -48,6 +54,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     {title}
                     {types}
                     {image}
+                    <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
                     <div className={cls.footer}>
                         <Button theme={ButtonTheme.OUTLINE}>
                             {`${t('Читать далее')}...`}
