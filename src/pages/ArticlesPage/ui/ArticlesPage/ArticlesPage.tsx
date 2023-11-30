@@ -107,7 +107,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                             id: String(index),
                         }))
                 }
-                view={ArticleView.BIG}
+                view={ArticleView.SMALL}
             />
         </div>
     );
