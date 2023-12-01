@@ -108,6 +108,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                         }))
                 }
                 view={ArticleView.SMALL}
+                isLoading
             />
         </div>
     );
