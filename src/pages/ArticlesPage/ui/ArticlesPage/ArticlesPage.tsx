@@ -107,7 +107,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                             id: String(index),
                         }))
                 }
-                view={ArticleView.SMALL}
+                view={ArticleView.BIG}
                 isLoading
             />
         </div>

@@ -16,41 +16,29 @@ export const ArticleListItemSkeleton = memo((props: ArticleListItemSkeletonProps
         view,
     } = props;
 
-    const types = <Skeleton className={cls.types} height={16} width={115} />;
-    const views = (
-        <>
-            <Skeleton className={cls.views} height={16} width={48} />
-            <Skeleton height={16} width={16} />
-        </>
-    );
-    const title = <Skeleton height={16} className={cls.title} />;
-    const image = <Skeleton className={cls.img} />;
-
     if (view === ArticleView.BIG) {
-        // return (
-        // <div className={
-        //     classNames(cls.ArticleListItem, {}, [className, cls[view]])
-        // }
-        // >
-        //     <Card className={cls.card}>
-        //         <div className={cls.header}>
-        //             <Avatar size={30} src={article.user.avatar} />
-        //             <Text text={article.user.username} className={cls.user} />
-        //             <Text text={article.createdAt} className={cls.date} />
-        //         </div>
-        //         {title}
-        //         {types}
-        //         {image}
-        //         <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
-        //         <div className={cls.footer}>
-        //             <Button theme={ButtonTheme.OUTLINE} onClick={onClickArticle}>
-        //                 {`${t('Читать далее')}...`}
-        //             </Button>
-        //             {views}
-        //         </div>
-        //     </Card>
-        // </div>
-        // );
+        return (
+            <div className={
+                classNames(cls.ArticleListItem, {}, [className, cls[view]])
+            }
+            >
+                <Card className={cls.card}>
+                    <div className={cls.header}>
+                        <Skeleton width={30} height={30} border="100%" />
+                        <Skeleton width={150} height={16} className={cls.user} />
+                        <Skeleton width={150} height={16} className={cls.date} />
+                    </div>
+                    <Skeleton width={250} height={24} className={cls.title} />
+                    <Skeleton height={200} className={cls.img} />
+
+                    <div className={cls.footer}>
+                        <Skeleton height={32} width={120} />
+                        <Skeleton className={cls.views} height={16} width={48} />
+                        <Skeleton height={16} width={16} />
+                    </div>
+                </Card>
+            </div>
+        );
     }
     return (
         <div className={
@@ -59,13 +47,14 @@ export const ArticleListItemSkeleton = memo((props: ArticleListItemSkeletonProps
         >
             <Card className={cls.card}>
                 <div className={cls.imageWrapper}>
-                    {image}
+                    <Skeleton className={cls.img} />
                 </div>
                 <div className={cls.infoWrapper}>
-                    {types}
-                    {views}
+                    <Skeleton className={cls.types} height={16} width={115} />
+                    <Skeleton className={cls.views} height={16} width={48} />
+                    <Skeleton height={16} width={16} />
                 </div>
-                {title}
+                <Skeleton height={16} className={cls.title} />
             </Card>
 
         </div>
