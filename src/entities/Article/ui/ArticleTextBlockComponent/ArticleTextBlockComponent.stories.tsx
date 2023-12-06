@@ -5,7 +5,7 @@ import { ArticleBlockType, ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from './ArticleTextBlockComponent';
 
 const meta: Meta<typeof ArticleTextBlockComponent> = {
-    title: 'ArticleTextBlockComponent',
+    title: 'entities/Article/ArticleTextBlockComponent',
     component: ArticleTextBlockComponent,
     argTypes: {
     },
