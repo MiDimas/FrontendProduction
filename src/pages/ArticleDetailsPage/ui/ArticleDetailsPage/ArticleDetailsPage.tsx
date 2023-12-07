@@ -55,7 +55,9 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     }, [navigate]);
 
     useInitialEffect(() => {
-        dispatch(fetchCommentsByArticleId(id));
+        if (id) {
+            dispatch(fetchCommentsByArticleId(id));
+        }
     });
 
     if (!id) {
