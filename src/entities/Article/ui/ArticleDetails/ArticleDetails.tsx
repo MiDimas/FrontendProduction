@@ -32,7 +32,7 @@ import {
 import {
     getArticleDetailsError,
 } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError';
-import { fetchArticleById } from '../../model/services/FetchArticleById/FetchArticleById';
+import { fetchArticleById } from '../../model/services/FetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import cls from './ArticleDetails.module.scss';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';

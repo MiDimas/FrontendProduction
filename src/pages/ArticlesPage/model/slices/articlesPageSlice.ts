@@ -1,7 +1,10 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { Article, ArticleView } from 'entities/Article';
-import { ArticlesPageSchema } from 'pages/ArticlesPage';
+import { ArticlesPageSchema } from '../types/articlesPageSchema';
+import {
+    fetchArticlesList,
+} from '../services/FetchArticlesList/fetchArticlesList';
 
 const articlesAdapter = createEntityAdapter<Article>({
     selectId: (article) => article.id,
@@ -24,6 +27,21 @@ const articlesPageSlice = createSlice({
         setView: (state, action: PayloadAction<ArticleView>) => {
             state.view = action.payload;
         },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchArticlesList.pending, (state) => {
+                state.isLoading = true;
+                state.error = undefined;
+            })
+            .addCase(fetchArticlesList.fulfilled, (state, action) => {
+                state.isLoading = false;
+                articlesAdapter.setAll(state, action.payload);
+            })
+            .addCase(fetchArticlesList.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            });
     },
 });
 
