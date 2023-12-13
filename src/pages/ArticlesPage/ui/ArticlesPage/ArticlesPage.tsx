@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
@@ -11,8 +11,13 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useSelector } from 'react-redux';
+import { ArticleViewSelector } from 'entities/Article';
 import { fetchArticlesList } from '../../model/services/FetchArticlesList/fetchArticlesList';
-import { articlePageReducer, getArticles } from '../../model/slices/articlesPageSlice';
+import {
+    articlePageActions,
+    articlePageReducer,
+    getArticles,
+} from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
 import {
     getArticlesPageIsLoading,
@@ -43,6 +48,10 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         dispatch(fetchArticlesList());
     });
 
+    const onChangeView = useCallback((newView: ArticleView) => {
+        dispatch(articlePageActions.setView(newView));
+    }, [dispatch]);
+
     return (
         <DynamicModuleLoader reducers={reducers}>
             <div className={
@@ -50,6 +59,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
             }
             >
                 <Text title={t('Страница статей')} />
+                <ArticleViewSelector view={view} onViewClick={onChangeView} />
                 <ArticleList
                     articles={articles}
                     view={view}

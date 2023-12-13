@@ -41,12 +41,13 @@ export const ArticleViewSelector: FC<ArticleViewSelectorProps> = (props) => {
             classNames(cls.ArticleViewSelector, {}, [className])
         }
         >
-            { viewTypes.map((viewType) => (
+            { viewTypes.map((viewType, index) => (
                 <Button
+                    key={index}
                     onClick={onClick(viewType.view)}
                     theme={ButtonTheme.CLEAR}
                 >
-                    <Icon Svg={viewType.icon} />
+                    <Icon Svg={viewType.icon} className={cls.icon} />
                 </Button>
             ))}
         </div>
