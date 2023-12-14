@@ -17,11 +17,11 @@ interface ArticleViewSelectorProps {
 const viewTypes = [
     {
         view: ArticleView.SMALL,
-        icon: ListView,
+        icon: TilesView,
     },
     {
         view: ArticleView.BIG,
-        icon: TilesView,
+        icon: ListView,
     },
 ];
 export const ArticleViewSelector: FC<ArticleViewSelectorProps> = (props) => {
@@ -46,6 +46,7 @@ export const ArticleViewSelector: FC<ArticleViewSelectorProps> = (props) => {
                     key={index}
                     onClick={onClick(viewType.view)}
                     theme={ButtonTheme.CLEAR}
+                    className={cls.button}
                 >
                     <Icon Svg={viewType.icon} className={cls.icon} />
                 </Button>
