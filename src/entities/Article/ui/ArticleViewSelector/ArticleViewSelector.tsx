@@ -48,7 +48,12 @@ export const ArticleViewSelector: FC<ArticleViewSelectorProps> = (props) => {
                     theme={ButtonTheme.CLEAR}
                     className={cls.button}
                 >
-                    <Icon Svg={viewType.icon} className={cls.icon} />
+                    <Icon
+                        Svg={viewType.icon}
+                        className={classNames(cls.icon, {
+                            [cls.notSelect]: viewType.view !== view,
+                        })}
+                    />
                 </Button>
             ))}
         </div>
