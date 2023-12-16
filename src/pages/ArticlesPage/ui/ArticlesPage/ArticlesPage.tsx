@@ -45,8 +45,10 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
     useInitialEffect(() => {
-        dispatch(fetchArticlesList());
         dispatch(articlePageActions.initState());
+        dispatch(fetchArticlesList({
+            page: 1,
+        }));
     });
 
     const onChangeView = useCallback((newView: ArticleView) => {
