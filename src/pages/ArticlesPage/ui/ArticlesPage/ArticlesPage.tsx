@@ -12,6 +12,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useSelector } from 'react-redux';
 import { ArticleViewSelector } from 'entities/Article';
+import { Page } from 'shared/ui/Page/Page';
 import { fetchArticlesList } from '../../model/services/FetchArticlesList/fetchArticlesList';
 import {
     articlePageActions,
@@ -57,7 +58,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={
+            <Page className={
                 classNames(cls.ArticlesPage, {}, [className])
             }
             >
@@ -68,7 +69,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                     view={view}
                     isLoading={isLoading}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

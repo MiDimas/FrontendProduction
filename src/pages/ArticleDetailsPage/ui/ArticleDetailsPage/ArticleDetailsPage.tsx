@@ -17,6 +17,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { AddCommentForm } from 'features/addCommentForm';
 import { Button } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 import {
     fetchCommentsByArticleId,
 } from '../../model/services/fetchCommentByArticleId/fetchCommentsByArticleId';
@@ -74,7 +75,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={
+            <Page className={
                 classNames(cls.ArticlesDetailsPage, {}, [className])
             }
             >
@@ -88,7 +89,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
                     isLoading={commentsIsLoading}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };
