@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Article } from 'entities/Article';
-import { getArticlesPageLimit } from '../../selectors/getArticlesPageView/getArticlesPageLimit';
+import { getArticlesPageLimit } from '../../selectors/getArticlesPageLimit/getArticlesPageLimit';
 
 interface FetchArticlesListProps {
     page?: number;

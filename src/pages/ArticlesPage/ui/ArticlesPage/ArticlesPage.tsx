@@ -13,10 +13,13 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { useSelector } from 'react-redux';
 import { ArticleViewSelector } from 'entities/Article';
 import { Page } from 'shared/ui/Page/Page';
+import {
+    fetchNextArticlesPage,
+} from '../../model/services/FetchNextArticlesPage/fetchNextArticlesPage';
 import { fetchArticlesList } from '../../model/services/FetchArticlesList/fetchArticlesList';
 import {
-    articlePageActions,
-    articlePageReducer,
+    articlesPageActions,
+    articlesPageReducer,
     getArticles,
 } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
@@ -33,7 +36,7 @@ interface ArticlesPageProps {
 }
 
 const reducers:ReducersList = {
-    articlesPage: articlePageReducer,
+    articlesPage: articlesPageReducer,
 };
 
 /* eslint-enable max-len */
@@ -45,22 +48,28 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const isLoading = useSelector(getArticlesPageIsLoading);
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
+
     useInitialEffect(() => {
-        dispatch(articlePageActions.initState());
+        dispatch(articlesPageActions.initState());
         dispatch(fetchArticlesList({
             page: 1,
         }));
     });
+    const onLoadNextPart = useCallback(() => {
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
 
     const onChangeView = useCallback((newView: ArticleView) => {
-        dispatch(articlePageActions.setView(newView));
+        dispatch(articlesPageActions.setView(newView));
     }, [dispatch]);
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <Page className={
-                classNames(cls.ArticlesPage, {}, [className])
-            }
+            <Page
+                onScrollEnd={onLoadNextPart}
+                className={
+                    classNames(cls.ArticlesPage, {}, [className])
+                }
             >
                 <Text title={t('Страница статей')} />
                 <ArticleViewSelector view={view} onViewClick={onChangeView} />

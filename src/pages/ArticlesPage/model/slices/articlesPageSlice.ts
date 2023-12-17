@@ -48,7 +48,8 @@ const articlesPageSlice = createSlice({
             })
             .addCase(fetchArticlesList.fulfilled, (state, action) => {
                 state.isLoading = false;
-                articlesAdapter.setAll(state, action.payload);
+                articlesAdapter.addMany(state, action.payload);
+                state.hasMore = action.payload.length > 0;
             })
             .addCase(fetchArticlesList.rejected, (state, action) => {
                 state.isLoading = false;
@@ -57,5 +58,5 @@ const articlesPageSlice = createSlice({
     },
 });
 
-export const { reducer: articlePageReducer } = articlesPageSlice;
-export const { actions: articlePageActions } = articlesPageSlice;
+export const { reducer: articlesPageReducer } = articlesPageSlice;
+export const { actions: articlesPageActions } = articlesPageSlice;
