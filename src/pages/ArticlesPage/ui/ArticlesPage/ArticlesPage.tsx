@@ -14,6 +14,9 @@ import { useSelector } from 'react-redux';
 import { ArticleViewSelector } from 'entities/Article';
 import { Page } from 'shared/ui/Page/Page';
 import {
+    getArticlesPageInited,
+} from '../../model/selectors/getArticlesPageInited/getArticlesPageInited';
+import {
     fetchNextArticlesPage,
 } from '../../model/services/FetchNextArticlesPage/fetchNextArticlesPage';
 import { fetchArticlesList } from '../../model/services/FetchArticlesList/fetchArticlesList';
@@ -48,12 +51,15 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const isLoading = useSelector(getArticlesPageIsLoading);
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
+    const inited = useSelector(getArticlesPageInited);
 
     useInitialEffect(() => {
-        dispatch(articlesPageActions.initState());
-        dispatch(fetchArticlesList({
-            page: 1,
-        }));
+        if (!inited) {
+            dispatch(articlesPageActions.initState());
+            dispatch(fetchArticlesList({
+                page: 1,
+            }));
+        }
     });
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());

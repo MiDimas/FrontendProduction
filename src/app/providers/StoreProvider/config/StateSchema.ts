@@ -6,8 +6,6 @@ import {
 } from '@reduxjs/toolkit';
 
 import { AxiosInstance } from 'axios';
-import { To } from 'history';
-import { NavigateOptions } from 'react-router';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { ArticleDetailsSchema } from 'entities/Article';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
@@ -42,7 +40,6 @@ export interface ReduxStoreWithManger extends EnhancedStore<StateSchema>{
 
 interface ThunkExtraArg {
     api: AxiosInstance,
-    navigate?: (to: To, options?: NavigateOptions) => void,
 }
 
 export interface ThunkConfig<R> {
