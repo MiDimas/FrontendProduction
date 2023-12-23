@@ -17,7 +17,7 @@ import { getUserAuthData } from 'entities/User';
 import { ProfileCard } from 'entities/Profile';
 import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 import cls from './ProfilePage.module.scss';
 
 const reducers: ReducersList = {
