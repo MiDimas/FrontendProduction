@@ -9,6 +9,7 @@ import { getScrollRestoreScrollByPath, scrollRestoreAction } from 'features/Scro
 import { useSelector } from 'react-redux';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
 import cls from './Page.module.scss';
 
 interface PageProps {
@@ -35,12 +36,12 @@ export const Page = (props: PageProps) => {
     useInitialEffect(() => {
         wrapperRef.current.scrollTop = scrollPosition;
     });
-    const onScroll = (event: UIEvent<HTMLDivElement>) => {
+    const onScroll = useThrottle((event: UIEvent<HTMLDivElement>) => {
         dispatch(scrollRestoreAction.setScrollPosition({
             path: pathname,
             position: event.currentTarget.scrollTop,
         }));
-    };
+    }, 500);
 
     return (
         <section
