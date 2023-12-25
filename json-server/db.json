@@ -9,7 +9,7 @@
   "articles": [
     {
       "id": "1",
-      "title": "JavaScript News",
+      "title": "JavaScript News 2022",
       "subtitle": "Что нового в JS в этом году",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
@@ -47,10 +47,10 @@
     {
       "id": "2",
       "title": "Python News",
-      "subtitle": "Что нового в JS в этом году",
+      "subtitle": "Python опять душит",
       "img": "https://www.hocktraining.com/home/getpicturethumbnail/830",
-      "views": 1022,
-      "createdAt": "26.10.2022",
+      "views": 1561,
+      "createdAt": "23.11.2022",
       "userId": "1",
       "type": [
         "IT"
@@ -82,10 +82,10 @@
     {
       "id": "3",
       "title": "C++ News",
-      "subtitle": "Что нового в JS в этом году",
+      "subtitle": "Что там с C++?",
       "img": "https://img-c.udemycdn.com/course/750x422/4193382_48d7.jpg",
-      "views": 1022,
-      "createdAt": "26.10.2022",
+      "views": 2016,
+      "createdAt": "12.01.2021",
       "userId": "1",
       "type": [
         "IT"
@@ -110,11 +110,11 @@
     },
     {
       "id": "4",
-      "title": "JavaScript News",
-      "subtitle": "Что нового в JS в этом году",
+      "title": "JavaScript News 2020",
+      "subtitle": "Разберем JS в этом году",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.10.2022",
+      "views": 5433,
+      "createdAt": "15.07.2020",
       "userId": "1",
       "type": [
         "IT"
@@ -147,11 +147,11 @@
     },
     {
       "id": "5",
-      "title": "Python News",
+      "title": "Python новый релиз",
       "subtitle": "Что нового в JS в этом году",
       "img": "https://www.hocktraining.com/home/getpicturethumbnail/830",
-      "views": 1022,
-      "createdAt": "26.10.2022",
+      "views": 7012,
+      "createdAt": "13.09.2021",
       "userId": "1",
       "type": [
         "IT"
@@ -182,11 +182,11 @@
     },
     {
       "id": "6",
-      "title": "C++ News",
-      "subtitle": "Что нового в JS в этом году",
+      "title": "Новые фичи для C++",
+      "subtitle": "Любитель написал интересный механизм",
       "img": "https://img-c.udemycdn.com/course/750x422/4193382_48d7.jpg",
-      "views": 1022,
-      "createdAt": "26.10.2022",
+      "views": 3001,
+      "createdAt": "26.12.2021",
       "userId": "1",
       "type": [
         "IT"
@@ -211,11 +211,11 @@
     },
     {
       "id": "7",
-      "title": "JavaScript News",
+      "title": "И снова JavaScript",
       "subtitle": "Что нового в JS в этом году",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.10.2022",
+      "views": 8156,
+      "createdAt": "15.05.2020",
       "userId": "1",
       "type": [
         "IT"
@@ -251,8 +251,8 @@
       "title": "Python News",
       "subtitle": "Что нового в JS в этом году",
       "img": "https://www.hocktraining.com/home/getpicturethumbnail/830",
-      "views": 1022,
-      "createdAt": "26.10.2022",
+      "views": 2243,
+      "createdAt": "12.03.2019",
       "userId": "1",
       "type": [
         "IT"
@@ -283,10 +283,10 @@
     },
     {
       "id": "9",
-      "title": "C++ News",
-      "subtitle": "Что нового в JS в этом году",
+      "title": "C++ Гайд для новичков",
+      "subtitle": "И опять Си",
       "img": "https://img-c.udemycdn.com/course/750x422/4193382_48d7.jpg",
-      "views": 1022,
+      "views": 3762,
       "createdAt": "26.10.2022",
       "userId": "1",
       "type": [
@@ -312,11 +312,11 @@
     },
     {
       "id": "10",
-      "title": "JavaScript News",
-      "subtitle": "Что нового в JS в этом году",
+      "title": "JavaScript для чайников",
+      "subtitle": "Как изучать js",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.10.2022",
+      "views": 1557,
+      "createdAt": "17.04.2018",
       "userId": "1",
       "type": [
         "IT"
@@ -349,11 +349,11 @@
     },
     {
       "id": "11",
-      "title": "Python News",
-      "subtitle": "Что нового в JS в этом году",
+      "title": "Python и с чем его едят",
+      "subtitle": "Что за язык python",
       "img": "https://www.hocktraining.com/home/getpicturethumbnail/830",
-      "views": 1022,
-      "createdAt": "26.10.2022",
+      "views": 1910,
+      "createdAt": "21.08.2018",
       "userId": "1",
       "type": [
         "IT"
@@ -384,11 +384,11 @@
     },
     {
       "id": "12",
-      "title": "C++ News",
-      "subtitle": "Что нового в JS в этом году",
+      "title": "Снова одни плюсы",
+      "subtitle": "Немного о C++",
       "img": "https://img-c.udemycdn.com/course/750x422/4193382_48d7.jpg",
-      "views": 1022,
-      "createdAt": "26.10.2022",
+      "views": 3053,
+      "createdAt": "26.10.2023",
       "userId": "1",
       "type": [
         "IT"
