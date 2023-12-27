@@ -13,6 +13,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { useSelector } from 'react-redux';
 import { ArticleViewSelector } from 'entities/Article';
 import { Page } from 'widgets/Page/Page';
+import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
 import {
     initArticlesPage,
 } from '../../model/services/initArticlesPage/initArticlesPage';
@@ -58,10 +59,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
-    const onChangeView = useCallback((newView: ArticleView) => {
-        dispatch(articlesPageActions.setView(newView));
-    }, [dispatch]);
-
     return (
         <DynamicModuleLoader reducers={reducers}>
             <Page
@@ -71,7 +68,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                 }
             >
                 <Text title={t('Страница статей')} />
-                <ArticleViewSelector view={view} onViewClick={onChangeView} />
+                <ArticlesPageFilters />
                 <ArticleList
                     articles={articles}
                     view={view}
