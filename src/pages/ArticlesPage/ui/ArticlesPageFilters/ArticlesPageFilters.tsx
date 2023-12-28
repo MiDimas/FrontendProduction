@@ -8,6 +8,9 @@ import { useSelector } from 'react-redux';
 import {
     getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/getArticlesPageView/getArticlesPageView';
+import { Select } from 'shared/ui/Select/Select';
+import { Card } from 'shared/ui/Card/Card';
+import { Input } from 'shared/ui/Input/Input';
 import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {
@@ -29,7 +32,13 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
             classNames(cls.ArticlesPageFilters, {}, [className])
         }
         >
-            <ArticleViewSelector view={view} onViewClick={onChangeView} />
+            <div className={cls.sortWrapper}>
+                <Select label={t('Сортировать ПО')} />
+                <ArticleViewSelector view={view} onViewClick={onChangeView} />
+            </div>
+            <Card className={cls.search}>
+                <Input placeholder={t('Поиск')} />
+            </Card>
 
         </div>
     );
