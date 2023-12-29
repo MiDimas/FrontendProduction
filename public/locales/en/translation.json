@@ -24,5 +24,11 @@
   "Введите текст комментария": "Enter comment text",
   "Отправить": "Send",
   "Сортировать ПО": "Sorting BY",
-  "Поиск": "Search"
+  "Поиск": "Search",
+  "возрастанию": "increasing",
+  "убыванию": "descending",
+  "дате создания": "date of creation",
+  "названию": "name",
+  "просмотрам": "views",
+  "ПО": "BY"
 }
