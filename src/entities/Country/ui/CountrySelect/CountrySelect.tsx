@@ -11,7 +11,7 @@ interface CountryProps {
     readonly?: boolean;
 }
 
-const options: SelectOption[] = [
+const options: SelectOption<Country>[] = [
     { value: Country.Armenia, content: Country.Armenia },
     { value: Country.Belarus, content: Country.Belarus },
     { value: Country.Kazakhstan, content: Country.Kazakhstan },
@@ -28,17 +28,14 @@ export const CountrySelect = (props: CountryProps) => {
         readonly,
     } = props;
 
-    const onChangeHandler = useCallback((value: string) => {
-        onChange?.(value as Country);
-    }, [onChange]);
     return (
-        <Select
+        <Select <Country>
             className={
                 classNames('', {}, [className])
             }
             label={t('Выберите страну')}
             options={options}
-            onChange={onChangeHandler}
+            onChange={onChange}
             readonly={readonly}
             value={value}
         />

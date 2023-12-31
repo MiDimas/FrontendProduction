@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Select, SelectOption } from 'shared/ui/Select/Select';
-import { useCallback } from 'react';
 import { Currency } from '../../model/types/currency';
 
 interface CurrencyProps {
@@ -11,7 +10,7 @@ interface CurrencyProps {
     readonly?: boolean;
 }
 
-const options: SelectOption[] = [
+const options: SelectOption<Currency>[] = [
     { value: Currency.RUB, content: Currency.RUB },
     { value: Currency.EUR, content: Currency.EUR },
     { value: Currency.USD, content: Currency.USD },
@@ -25,17 +24,14 @@ export const CurrencySelect = (props: CurrencyProps) => {
         readonly,
     } = props;
 
-    const onChangeHandler = useCallback((value: string) => {
-        onChange?.(value as Currency);
-    }, [onChange]);
     return (
-        <Select
+        <Select <Currency>
             className={
                 classNames('', {}, [className])
             }
             label={t('Выберите валюту')}
             options={options}
-            onChange={onChangeHandler}
+            onChange={onChange}
             readonly={readonly}
             value={value}
         />
