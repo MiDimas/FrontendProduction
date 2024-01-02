@@ -5,7 +5,7 @@ import { ArticleViewSelector } from './ArticleViewSelector';
 import { ArticleView } from '../../model/types/article';
 
 const meta: Meta<typeof ArticleViewSelector> = {
-    title: 'ArticleViewSelector',
+    title: 'Article/ArticleViewSelector',
     component: ArticleViewSelector,
     argTypes: {
     },
