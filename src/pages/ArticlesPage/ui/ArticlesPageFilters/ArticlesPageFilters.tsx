@@ -9,6 +9,9 @@ import { useSelector } from 'react-redux';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
 import { SortOrder } from 'shared/types';
+import {
+    getArticlesPageSearch,
+} from '../../model/selectors/getArticlesPageSearch/getArticlesPageSearch';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import {
     getArticlesPageSort,
@@ -32,6 +35,7 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
     const view = useSelector(getArticlesPageView);
     const sort = useSelector(getArticlesPageSort);
     const order = useSelector(getArticlesPageOrder);
+    const search = useSelector(getArticlesPageSearch);
 
     const onChangeView = useCallback((newView: ArticleView) => {
         dispatch(articlesPageActions.setView(newView));
@@ -43,6 +47,10 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
 
     const onChangeOrder = useCallback((newOrder: SortOrder) => {
         dispatch(articlesPageActions.setOrder(newOrder));
+    }, [dispatch]);
+
+    const onChangeSearch = useCallback((search: string) => {
+        dispatch(articlesPageActions.setSearch(search));
     }, [dispatch]);
 
     return (
@@ -60,7 +68,11 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
                 <ArticleViewSelector view={view} onViewClick={onChangeView} />
             </div>
             <Card className={cls.search}>
-                <Input placeholder={t('Поиск')} />
+                <Input
+                    placeholder={t('Поиск')}
+                    onChange={onChangeSearch}
+                    value={search}
+                />
             </Card>
 
         </div>
