@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
-import { ArticleView } from 'entities/Article/model/types/article';
 import {
     DynamicModuleLoader,
     ReducersList,
@@ -11,7 +10,6 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useSelector } from 'react-redux';
-import { ArticleViewSelector } from 'entities/Article';
 import { Page } from 'widgets/Page/Page';
 import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
 import {
@@ -21,7 +19,6 @@ import {
     fetchNextArticlesPage,
 } from '../../model/services/FetchNextArticlesPage/fetchNextArticlesPage';
 import {
-    articlesPageActions,
     articlesPageReducer,
     getArticles,
 } from '../../model/slices/articlesPageSlice';

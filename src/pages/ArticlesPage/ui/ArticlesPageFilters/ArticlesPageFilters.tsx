@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
 import { SortOrder } from 'shared/types';
+import { fetchArticlesList } from '../../model/services/FetchArticlesList/fetchArticlesList';
 import {
     getArticlesPageSearch,
 } from '../../model/selectors/getArticlesPageSearch/getArticlesPageSearch';
@@ -37,21 +38,31 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
     const order = useSelector(getArticlesPageOrder);
     const search = useSelector(getArticlesPageSearch);
 
+    const fetchData = useCallback(() => {
+        dispatch(fetchArticlesList({ replace: true }));
+    }, [dispatch]);
+
     const onChangeView = useCallback((newView: ArticleView) => {
         dispatch(articlesPageActions.setView(newView));
     }, [dispatch]);
 
     const onChangeSort = useCallback((newSort: ArticleSortField) => {
         dispatch(articlesPageActions.setSort(newSort));
-    }, [dispatch]);
+        dispatch(articlesPageActions.setPage(1));
+        fetchData();
+    }, [dispatch, fetchData]);
 
     const onChangeOrder = useCallback((newOrder: SortOrder) => {
         dispatch(articlesPageActions.setOrder(newOrder));
-    }, [dispatch]);
+        dispatch(articlesPageActions.setPage(1));
+        fetchData();
+    }, [dispatch, fetchData]);
 
     const onChangeSearch = useCallback((search: string) => {
         dispatch(articlesPageActions.setSearch(search));
-    }, [dispatch]);
+        dispatch(articlesPageActions.setPage(1));
+        fetchData();
+    }, [dispatch, fetchData]);
 
     return (
         <div className={
