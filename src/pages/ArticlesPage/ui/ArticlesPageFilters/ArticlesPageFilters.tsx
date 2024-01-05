@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
 import { SortOrder } from 'shared/types';
+import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { fetchArticlesList } from '../../model/services/FetchArticlesList/fetchArticlesList';
 import {
     getArticlesPageSearch,
@@ -42,6 +43,8 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
         dispatch(fetchArticlesList({ replace: true }));
     }, [dispatch]);
 
+    const debounceFetchData = useDebounce(fetchData, 700);
+
     const onChangeView = useCallback((newView: ArticleView) => {
         dispatch(articlesPageActions.setView(newView));
     }, [dispatch]);
@@ -61,8 +64,8 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
     const onChangeSearch = useCallback((search: string) => {
         dispatch(articlesPageActions.setSearch(search));
         dispatch(articlesPageActions.setPage(1));
-        fetchData();
-    }, [dispatch, fetchData]);
+        debounceFetchData();
+    }, [dispatch, debounceFetchData]);
 
     return (
         <div className={
