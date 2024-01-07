@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Article } from 'entities/Article';
+import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
 import { getArticlesPageSort } from '../../selectors/getArticlesPageSort/getArticlesPageSort';
 import { getArticlesPageSearch } from '../../selectors/getArticlesPageSearch/getArticlesPageSearch';
 import { getArticlesPageOrder } from '../../selectors/getArticlesPageOrder/getArticlesPageOrder';
@@ -25,6 +26,7 @@ export const fetchArticlesList = createAsyncThunk<
         const search = getArticlesPageSearch(getState());
         const order = getArticlesPageOrder(getState());
         try {
+            addQueryParams({ sort, order, search });
             const response = await api.get<Article[]>(
                 '/articles',
                 {
