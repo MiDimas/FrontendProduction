@@ -1,27 +1,25 @@
-import { memo, ReactNode, useCallback } from 'react';
+import { ReactNode, useCallback } from 'react';
 import { Card, CardTheme } from 'shared/ui/Card/Card';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Simulate } from 'react-dom/test-utils';
 import cls from './Tabs.module.scss';
-import input = Simulate.input;
 
-export interface TabItem {
-    value: string;
+export interface TabItem<T extends string> {
+    value: T;
     content: ReactNode;
 }
-export interface TabsProps {
+export interface TabsProps<T extends string> {
     className?: string;
-    tabs: TabItem[];
+    tabs: TabItem<T>[];
     value: string;
-    onTabClick: (tab: TabItem) => void;
+    onTabClick: (tab: TabItem<T>) => void;
 
 }
-export const Tabs = memo((props: TabsProps) => {
+export const Tabs = <T extends string>(props: TabsProps<T>) => {
     const {
         className, tabs, value, onTabClick,
     } = props;
 
-    const clickHandle = useCallback((tab: TabItem) => () => {
+    const clickHandle = useCallback((tab: TabItem<T>) => () => {
         onTabClick(tab);
     }, [onTabClick]);
 
@@ -41,4 +39,4 @@ export const Tabs = memo((props: TabsProps) => {
             ))}
         </div>
     );
-});
+};

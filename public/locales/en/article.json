@@ -5,5 +5,9 @@
   "Произошла ошибка загрузки статьи": "Error to load the article",
   "Комментарии": "Comments",
   "Читать далее": "Read more",
-  "Назад к списку статей": "Back to articles list"
+  "Назад к списку статей": "Back to articles list",
+  "Все статьи": "All articles",
+  "Айти": "IT",
+  "Экономика": "Economics",
+  "Наука": "Science"
 }
