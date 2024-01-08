@@ -1,4 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
@@ -23,7 +24,7 @@ export const ArticleList = (props: ArticleListProps) => {
         isLoading,
         view = ArticleView.SMALL,
     } = props;
-
+    const { t } = useTranslation('article');
     const renderArticle = (article: Article) => (
         <ArticleListItem
             article={article}
@@ -32,6 +33,9 @@ export const ArticleList = (props: ArticleListProps) => {
             className={cls.card}
         />
     );
+    if (!isLoading && !articles.length) {
+        return <div className={className}>{t('Статьи не найдены')}</div>;
+    }
 
     return (
         <div className={

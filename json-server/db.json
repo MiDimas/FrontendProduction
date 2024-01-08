@@ -88,7 +88,7 @@
       "createdAt": "12.01.2021",
       "userId": "1",
       "type": [
-        "IT"
+        "ECONOMICS"
       ],
       "blocks": [
         {
@@ -255,7 +255,8 @@
       "createdAt": "12.03.2019",
       "userId": "1",
       "type": [
-        "IT"
+        "IT",
+        "SCIENCE"
       ],
       "blocks": [
         {
@@ -391,7 +392,8 @@
       "createdAt": "26.10.2023",
       "userId": "1",
       "type": [
-        "IT"
+        "IT",
+        "ECONOMICS"
       ],
       "blocks": [
         {

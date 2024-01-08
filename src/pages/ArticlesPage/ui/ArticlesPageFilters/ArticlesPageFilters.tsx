@@ -1,16 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import {
     ArticleSortField, ArticleSortSelector, ArticleType, ArticleView, ArticleViewSelector,
+    ArticleTypeTabs,
 } from 'entities/Article';
 import { useSelector } from 'react-redux';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
 import { SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
-import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
+import { TabItem } from 'shared/ui/Tabs/Tabs';
 import { fetchArticlesList } from '../../model/services/FetchArticlesList/fetchArticlesList';
 import {
     getArticlesPageSearch,
@@ -36,7 +37,6 @@ interface ArticlesPageFiltersProps {
 
 export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
     const { t } = useTranslation();
-    const { t: tArticle } = useTranslation('article');
     const { className } = props;
     const dispatch = useAppDispatch();
     const view = useSelector(getArticlesPageView);
@@ -79,24 +79,6 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
         debounceFetchData();
     }, [dispatch, debounceFetchData]);
 
-    const typeTabs = useMemo<TabItem<ArticleType>[]>(() => [
-        {
-            value: ArticleType.ALL,
-            content: tArticle('Все статьи'),
-        },
-        {
-            value: ArticleType.IT,
-            content: tArticle('Айти'),
-        },
-        {
-            value: ArticleType.ECONOMICS,
-            content: tArticle('Экономика'),
-        },
-        {
-            value: ArticleType.SCIENCE,
-            content: tArticle('Наука'),
-        },
-    ], [tArticle]);
     return (
         <div className={
             classNames(cls.ArticlesPageFilters, {}, [className])
@@ -118,10 +100,9 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
                     value={search}
                 />
             </Card>
-            <Tabs
-                tabs={typeTabs}
+            <ArticleTypeTabs
                 value={type}
-                onTabClick={onChangeType}
+                onChangeType={onChangeType}
                 className={cls.tabs}
             />
 

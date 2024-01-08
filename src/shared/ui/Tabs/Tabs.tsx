@@ -34,7 +34,7 @@ export const Tabs = <T extends string>(props: TabsProps<T>) => {
                     key={tab.value}
                     onClick={clickHandle(tab)}
                 >
-                    {tab.value}
+                    {tab.content}
                 </Card>
             ))}
         </div>
