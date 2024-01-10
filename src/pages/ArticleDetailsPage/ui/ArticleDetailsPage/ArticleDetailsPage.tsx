@@ -1,9 +1,9 @@
 import {
-    FC, memo, useCallback, useEffect,
+    FC, memo, useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleDetails } from 'entities/Article';
+import { ArticleDetails, ArticleList } from 'entities/Article';
 import { Text } from 'shared/ui/Text/Text';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CommentList } from 'entities/Comment';
@@ -30,6 +30,13 @@ import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import {
     addCommentForArticle,
 } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import {
+    fetchArticleRecommendations,
+} from '../../model/services/fetchArticleRecommendtions/fetchArticleRecommendations';
+import {
+    articleDetailsRecommendationsReducer, getArticleRecommendations,
+} from '../../model/slices/ArticleDetailsRecommendationsSlice';
+import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
 
 interface ArticlesDetailsPageProps {
     className?: string;
@@ -37,6 +44,7 @@ interface ArticlesDetailsPageProps {
 
 const reducers: ReducersList = {
     articleDetailsComments: articleDetailsCommentsReducer,
+    articleDetailsRecommendations: articleDetailsRecommendationsReducer,
 };
 const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     const { t } = useTranslation('article');
@@ -45,6 +53,8 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
+    const recommendations = useSelector(getArticleRecommendations.selectAll);
+    const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
     const navigate = useNavigate();
 
     const onSendCommentArticle = useCallback((text: string) => {
@@ -58,6 +68,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     useInitialEffect(() => {
         if (id) {
             dispatch(fetchCommentsByArticleId(id));
+            dispatch(fetchArticleRecommendations());
         }
     });
 
@@ -83,6 +94,8 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
                     {t('Назад к списку статей')}
                 </Button>
                 <ArticleDetails id={id} />
+                <Text className={cls.commentTitle} title={t('Рекоммендации')} />
+                <ArticleList articles={recommendations} isLoading={recommendationsIsLoading} />
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
                 <AddCommentForm onSendComment={onSendCommentArticle} />
                 <CommentList
