@@ -37,14 +37,14 @@ import {
     articleDetailsRecommendationsReducer, getArticleRecommendations,
 } from '../../model/slices/ArticleDetailsRecommendationsSlice';
 import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
+import { articleDetailsPageReducer } from '../../model/slices';
 
 interface ArticlesDetailsPageProps {
     className?: string;
 }
 
 const reducers: ReducersList = {
-    articleDetailsComments: articleDetailsCommentsReducer,
-    articleDetailsRecommendations: articleDetailsRecommendationsReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     const { t } = useTranslation('article');
