@@ -14,3 +14,19 @@
 .content_page {
     display: flex;
 }
+
+*::-webkit-scrollbar {
+    width: 16px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--card-bg);
+    border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--inverted-bg-color);
+    border-radius: 20px;
+    border: 2px solid var(--bg-color);
+}

@@ -95,7 +95,11 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
                 </Button>
                 <ArticleDetails id={id} />
                 <Text className={cls.commentTitle} title={t('Рекоммендации')} />
-                <ArticleList articles={recommendations} isLoading={recommendationsIsLoading} />
+                <ArticleList
+                    articles={recommendations}
+                    isLoading={recommendationsIsLoading}
+                    className={cls.recommendations}
+                />
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
                 <AddCommentForm onSendComment={onSendCommentArticle} />
                 <CommentList
