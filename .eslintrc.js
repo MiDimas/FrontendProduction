@@ -42,7 +42,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'i18next/no-literal-string': [2, {
             markupOnly: true,
-            ignoreAttribute: ['to', 'data-testid'],
+            ignoreAttribute: ['to', 'data-testid', 'target'],
         }],
         'max-len': [2, { code: 100, ignoreComments: true }],
         'jsx-a11y/no-static-element-interactions': 'off',

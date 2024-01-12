@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { Text } from 'shared/ui/Text/Text';
 import { Icon } from 'shared/ui/Icon/Icon';
 import EyeIcon from 'shared/assets/icons/eye_icon.svg';
@@ -20,6 +20,7 @@ interface ArticleListItemProps {
     className?: string;
     article: Article;
     view: ArticleView;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
@@ -27,6 +28,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         className,
         article,
         view,
+        target,
     } = props;
     const { t } = useTranslation('article');
 
@@ -60,7 +62,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     {image}
                     <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
                     <div className={cls.footer}>
-                        <AppLink to={RoutePath.article_details + article.id}>
+                        <AppLink to={RoutePath.article_details + article.id} target={target}>
                             <Button theme={ButtonTheme.OUTLINE}>
                                 {`${t('Читать далее')}...`}
                             </Button>
@@ -76,7 +78,11 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             classNames(cls.ArticleListItem, {}, [className, cls[view]])
         }
         >
-            <AppLink to={RoutePath.article_details + article.id} className={cls.link}>
+            <AppLink
+                to={RoutePath.article_details + article.id}
+                className={cls.link}
+                target={target}
+            >
                 <Card className={cls.card}>
                     <div className={cls.imageWrapper}>
                         {image}
