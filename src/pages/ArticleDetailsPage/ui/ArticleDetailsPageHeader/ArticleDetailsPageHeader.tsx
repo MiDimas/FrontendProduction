@@ -5,6 +5,7 @@ import { Button } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useSelector } from 'react-redux';
+import { getArticleDetailsData } from 'entities/Article';
 import { getCanEditArticle } from '../../model/selectors/article';
 import cls from './ArticleDetailsPageHeader.module.scss';
 
@@ -17,9 +18,14 @@ export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderPro
     const { className } = props;
     const navigate = useNavigate();
     const canEdit = useSelector(getCanEditArticle);
+    const article = useSelector(getArticleDetailsData);
     const onBackToArticlesList = useCallback(() => {
         navigate(RoutePath.articles);
     }, [navigate]);
+    const onEditArticle = useCallback(() => {
+        navigate(`${RoutePath.article_details}${article?.id}/edit`);
+    }, [navigate, article]);
+
     return (
         <div className={
             classNames(cls.ArticleDetailsPageHeader, {}, [className])
@@ -30,7 +36,10 @@ export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderPro
             </Button>
             { canEdit
                 && (
-                    <Button className={cls.editBtn}>
+                    <Button
+                        className={cls.editBtn}
+                        onClick={onEditArticle}
+                    >
                         {t('Редактировать')}
                     </Button>
                 )}
