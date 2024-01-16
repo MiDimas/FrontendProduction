@@ -1,6 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { HTMLAttributeAnchorTarget } from 'react';
+import { Virtuoso } from 'react-virtuoso';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
@@ -37,19 +38,28 @@ export const ArticleList = (props: ArticleListProps) => {
             target={target}
         />
     );
+
     if (!isLoading && !articles.length) {
         return <div className={className}>{t('Статьи не найдены')}</div>;
     }
 
     return (
-        <div className={
-            classNames(cls.ArticleList, {}, [className, cls[view]])
-        }
-        >
-            {articles.length > 0
-                ? articles.map((article) => renderArticle(article))
-                : null}
-            {isLoading && getSkeleton(view)}
-        </div>
+        <Virtuoso
+            className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+            style={{ height: '50%' }}
+            totalCount={10}
+            data={articles}
+            itemContent={(index, data) => renderArticle(data)}
+        />
+
+    // <div className={
+    //     classNames(cls.ArticleList, {}, [className, cls[view]])
+    // }
+    // >
+    //     {articles.length > 0
+    //         ? articles.map((article) => renderArticle(article))
+    //         : null}
+    //     {isLoading && getSkeleton(view)}
+    // </div>
     );
 };
