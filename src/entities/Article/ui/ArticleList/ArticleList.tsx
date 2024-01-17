@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { HTMLAttributeAnchorTarget } from 'react';
-import { Virtuoso } from 'react-virtuoso';
+import React, { HTMLAttributeAnchorTarget, useCallback } from 'react';
+import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
@@ -14,13 +14,12 @@ interface ArticleListProps {
     view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
 }
-
 const getSkeleton = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
     .fill(0)
     .map((item, index) => (
         <ArticleListItemSkeleton className={cls.card} view={view} key={index} />
     ));
-export const ArticleList = (props: ArticleListProps) => {
+const ListItems = (props: ArticleListProps) => {
     const {
         className,
         articles,
@@ -29,6 +28,7 @@ export const ArticleList = (props: ArticleListProps) => {
         target,
     } = props;
     const { t } = useTranslation('article');
+
     const renderArticle = (article: Article) => (
         <ArticleListItem
             article={article}
@@ -44,22 +44,29 @@ export const ArticleList = (props: ArticleListProps) => {
     }
 
     return (
-        <Virtuoso
-            className={classNames(cls.ArticleList, {}, [className, cls[view]])}
-            style={{ height: '50%' }}
+        <div className={
+            classNames(cls.ArticleList, {}, [className, cls[view]])
+        }
+        >
+            {articles.length > 0
+                ? articles.map((article) => renderArticle(article))
+                : null}
+            {isLoading && getSkeleton(view)}
+        </div>
+    );
+};
+export const ArticleList = (props: ArticleListProps) => {
+    const { articles, ...other } = props;
+    return (
+        <VirtuosoGrid
+            // className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+            style={{ height: '60%' }}
             totalCount={10}
             data={articles}
-            itemContent={(index, data) => renderArticle(data)}
+            components={{
+                List: () => ListItems(props),
+            }}
+            ref={null}
         />
-
-    // <div className={
-    //     classNames(cls.ArticleList, {}, [className, cls[view]])
-    // }
-    // >
-    //     {articles.length > 0
-    //         ? articles.map((article) => renderArticle(article))
-    //         : null}
-    //     {isLoading && getSkeleton(view)}
-    // </div>
     );
 };
