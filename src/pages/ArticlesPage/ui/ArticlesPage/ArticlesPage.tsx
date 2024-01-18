@@ -61,7 +61,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <Page
-                onScrollEnd={onLoadNextPart}
                 className={
                     classNames(cls.ArticlesPage, {}, [className])
                 }
@@ -73,6 +72,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                     view={view}
                     isLoading={isLoading}
                     className={cls.list}
+                    onScrollEnd={onLoadNextPart}
                 />
             </Page>
         </DynamicModuleLoader>
