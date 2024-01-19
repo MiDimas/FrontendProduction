@@ -1,6 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import React, { HTMLAttributeAnchorTarget, useRef } from 'react';
+import React, {
+    ComponentType,
+    HTMLAttributeAnchorTarget, ReactElement, ReactNode, useRef,
+} from 'react';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
@@ -13,6 +16,7 @@ interface ArticleListProps {
     isLoading?: boolean;
     view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
+    Header?: ReactNode;
     onScrollEnd?: ()=> void;
 }
 const getSkeleton = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
@@ -28,6 +32,7 @@ export const ArticleList = (props: ArticleListProps) => {
         view = ArticleView.SMALL,
         target,
         onScrollEnd,
+        Header,
     } = props;
     const { t } = useTranslation('article');
     const virtuosoGridRef = useRef<VirtuosoGridHandle>(null);
@@ -60,7 +65,9 @@ export const ArticleList = (props: ArticleListProps) => {
                         totalCount={articles.length}
                         data={articles}
                         itemContent={renderArticle}
-
+                        components={{
+                            Header: Header as ComponentType,
+                        }}
                     />
                 )
                 : (
