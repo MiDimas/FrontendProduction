@@ -3,6 +3,7 @@ import { ScrollRestoreSchema } from 'features/ScrollRestore';
 
 const initialState: ScrollRestoreSchema = {
     scroll: {},
+    virtuosoScroll: {},
 };
 export const scrollRestoreSlice = createSlice({
     name: 'scrollRestore',
@@ -13,6 +14,13 @@ export const scrollRestoreSlice = createSlice({
             { payload }: PayloadAction<{path: string; position: number;}>,
         ) => {
             state.scroll[payload.path] = payload.position;
+        },
+
+        setVirtuosoScrollIndex: (
+            state,
+            { payload }: PayloadAction<{path:string; index: number;}>,
+        ) => {
+            state.virtuosoScroll[payload.path] = payload.index;
         },
     },
 });
