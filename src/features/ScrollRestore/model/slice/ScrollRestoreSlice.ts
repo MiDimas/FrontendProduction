@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ScrollRestoreSchema } from 'features/ScrollRestore';
+import { StateSnapshot } from 'react-virtuoso';
 
 const initialState: ScrollRestoreSchema = {
     scroll: {},
@@ -18,9 +19,9 @@ export const scrollRestoreSlice = createSlice({
 
         setVirtuosoScrollIndex: (
             state,
-            { payload }: PayloadAction<{path:string; index: number;}>,
+            { payload }: PayloadAction<{path:string; snap: StateSnapshot;}>,
         ) => {
-            state.virtuosoScroll[payload.path] = payload.index;
+            state.virtuosoScroll[payload.path] = payload.snap;
         },
     },
 });

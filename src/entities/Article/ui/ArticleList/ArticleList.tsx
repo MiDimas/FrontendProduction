@@ -1,9 +1,19 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import React, {
-    ComponentType, HTMLAttributeAnchorTarget, ReactNode, useCallback, useRef,
+    ComponentType, HTMLAttributeAnchorTarget, ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
+import {
+    StateSnapshot,
+    Virtuoso, VirtuosoGrid, VirtuosoGridHandle, VirtuosoHandle,
+} from 'react-virtuoso';
+import { useSelector } from 'react-redux';
+import { StateSchema } from 'app/providers/StoreProvider';
+import {
+    getScrollRestoreVirtuosoScrollByPath, scrollRestoreAction,
+} from 'features/ScrollRestore';
+import { useLocation } from 'react-router-dom';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
@@ -38,8 +48,16 @@ export const ArticleList = (props: ArticleListProps) => {
         onScrollEnd,
         Header,
     } = props;
+    const { pathname } = useLocation();
+    const dispatch = useAppDispatch();
+    const scroll = useSelector((state: StateSchema) => (
+        getScrollRestoreVirtuosoScrollByPath(state, pathname)
+    ));
     const { t } = useTranslation('article');
     const virtuosoGridRef = useRef<VirtuosoGridHandle>(null);
+    const virtuosoRef = useRef<VirtuosoHandle>(null);
+    const [stateScroll, setStateScroll] = useState<StateSnapshot>();
+
     const renderArticle = (index: number, article: Article) => (
         <ArticleListItem
             article={article}
@@ -51,6 +69,21 @@ export const ArticleList = (props: ArticleListProps) => {
     );
     const skeleton = useCallback(() => (<div className={cls[view]}>{getSkeleton(view)}</div>
     ), [view]);
+
+    useEffect(() => {
+        if (stateScroll) {
+            dispatch(scrollRestoreAction.setVirtuosoScrollIndex({
+                path: pathname,
+                snap: stateScroll,
+            }));
+        }
+    }, [stateScroll, dispatch, pathname]);
+    const scrolling = (isScrolling: boolean) => {
+        if (!isScrolling && virtuosoRef.current) {
+            console.log('скролл');
+            virtuosoRef.current.getState((state) => setStateScroll(state));
+        }
+    };
 
     if (!isLoading && !articles.length) {
         return <div className={className}>{t('Статьи не найдены')}</div>;
@@ -77,6 +110,9 @@ export const ArticleList = (props: ArticleListProps) => {
                             ScrollSeekPlaceholder: SkeletonBig,
                             Footer: isLoading ? skeleton : undefined,
                         }}
+                        ref={virtuosoRef}
+                        isScrolling={scrolling}
+                        restoreStateFrom={scroll}
                     />
                 )
                 : (

@@ -3,3 +3,6 @@ export { scrollRestoreAction, scrollRestoreReducer } from './model/slice/ScrollR
 export {
     getScrollRestoreScrollByPath,
 } from './model/selectors/getScrollRestoreScrollByPath/getScrollRestoreScrollByPath';
+export {
+    getScrollRestoreVirtuosoScrollByPath,
+} from './model/selectors/getScrollRestoreVirtuosoScrollByPath/getScrollRestoreVirtuosoScrollByPath';

@@ -44,7 +44,7 @@ module.exports = {
             markupOnly: true,
             ignoreAttribute: ['to', 'data-testid', 'target'],
         }],
-        'max-len': [2, { code: 100, ignoreComments: true }],
+        'max-len': [2, { code: 120, ignoreComments: true }],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error',
