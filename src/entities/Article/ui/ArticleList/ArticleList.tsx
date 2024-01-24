@@ -4,6 +4,7 @@ import React, {
     ComponentType, HTMLAttributeAnchorTarget, ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 import {
+    GridStateSnapshot,
     StateSnapshot,
     Virtuoso, VirtuosoGrid, VirtuosoGridHandle, VirtuosoHandle,
 } from 'react-virtuoso';
@@ -56,7 +57,6 @@ export const ArticleList = (props: ArticleListProps) => {
     const { t } = useTranslation('article');
     const virtuosoGridRef = useRef<VirtuosoGridHandle>(null);
     const virtuosoRef = useRef<VirtuosoHandle>(null);
-    const [stateScroll, setStateScroll] = useState<StateSnapshot>();
 
     const renderArticle = (index: number, article: Article) => (
         <ArticleListItem
@@ -69,21 +69,6 @@ export const ArticleList = (props: ArticleListProps) => {
     );
     const skeleton = useCallback(() => (<div className={cls[view]}>{getSkeleton(view)}</div>
     ), [view]);
-
-    useEffect(() => {
-        if (stateScroll) {
-            dispatch(scrollRestoreAction.setVirtuosoScrollIndex({
-                path: pathname,
-                snap: stateScroll,
-            }));
-        }
-    }, [stateScroll, dispatch, pathname]);
-    const scrolling = (isScrolling: boolean) => {
-        if (!isScrolling && virtuosoRef.current) {
-            console.log('скролл');
-            virtuosoRef.current.getState((state) => setStateScroll(state));
-        }
-    };
 
     if (!isLoading && !articles.length) {
         return <div className={className}>{t('Статьи не найдены')}</div>;
@@ -111,8 +96,7 @@ export const ArticleList = (props: ArticleListProps) => {
                             Footer: isLoading ? skeleton : undefined,
                         }}
                         ref={virtuosoRef}
-                        isScrolling={scrolling}
-                        restoreStateFrom={scroll}
+
                     />
                 )
                 : (
@@ -129,6 +113,7 @@ export const ArticleList = (props: ArticleListProps) => {
                             ScrollSeekPlaceholder: SkeletonSmall,
                             Footer: skeleton,
                         }}
+
                     />
 
                 )}
