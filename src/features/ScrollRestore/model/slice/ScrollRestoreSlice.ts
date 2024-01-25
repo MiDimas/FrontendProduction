@@ -19,9 +19,9 @@ export const scrollRestoreSlice = createSlice({
 
         setVirtuosoScrollIndex: (
             state,
-            { payload }: PayloadAction<{path:string; snap: StateSnapshot;}>,
+            { payload }: PayloadAction<{path:string; index: number;}>,
         ) => {
-            state.virtuosoScroll[payload.path] = payload.snap;
+            state.virtuosoScroll[payload.path] = payload.index;
         },
     },
 });

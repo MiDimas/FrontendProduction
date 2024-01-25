@@ -15,6 +15,7 @@ import {
 } from 'features/ScrollRestore';
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
@@ -65,10 +66,32 @@ export const ArticleList = (props: ArticleListProps) => {
             key={article.id}
             className={cls.card}
             target={target}
+            onClickItem={() => dispatch(scrollRestoreAction.setVirtuosoScrollIndex({ path: pathname, index }))}
         />
     );
     const skeleton = useCallback(() => (<div className={cls[view]}>{getSkeleton(view)}</div>
     ), [view]);
+
+    useInitialEffect(() => {
+        if (scroll) {
+            if (virtuosoGridRef.current) {
+                setTimeout(() => {
+                    virtuosoGridRef.current?.scrollToIndex({
+                        index: scroll,
+                        behavior: 'smooth',
+                    });
+                }, 100);
+            }
+            if (virtuosoRef.current) {
+                setTimeout(() => {
+                    virtuosoRef.current?.scrollToIndex({
+                        index: scroll,
+                        behavior: 'smooth',
+                    });
+                }, 100);
+            }
+        }
+    });
 
     if (!isLoading && !articles.length) {
         return <div className={className}>{t('Статьи не найдены')}</div>;
@@ -96,7 +119,6 @@ export const ArticleList = (props: ArticleListProps) => {
                             Footer: isLoading ? skeleton : undefined,
                         }}
                         ref={virtuosoRef}
-
                     />
                 )
                 : (

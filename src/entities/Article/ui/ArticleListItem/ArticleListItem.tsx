@@ -21,6 +21,7 @@ interface ArticleListItemProps {
     article: Article;
     view: ArticleView;
     target?: HTMLAttributeAnchorTarget;
+    onClickItem?: () => void;
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
@@ -29,6 +30,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         article,
         view,
         target,
+        onClickItem,
     } = props;
     const { t } = useTranslation('article');
 
@@ -63,7 +65,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
                     <div className={cls.footer}>
                         <AppLink to={RoutePath.article_details + article.id} target={target}>
-                            <Button theme={ButtonTheme.OUTLINE}>
+                            <Button theme={ButtonTheme.OUTLINE} onClick={onClickItem}>
                                 {`${t('Читать далее')}...`}
                             </Button>
                         </AppLink>
@@ -83,7 +85,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                 className={cls.link}
                 target={target}
             >
-                <Card className={cls.card}>
+                <Card className={cls.card} onClick={onClickItem}>
                     <div className={cls.imageWrapper}>
                         {image}
                         <Text text={article.createdAt} className={cls.date} />
