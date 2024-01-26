@@ -130,10 +130,15 @@ export const ArticleList = (props: ArticleListProps) => {
                         itemContent={renderArticle}
                         endReached={onScrollEnd}
                         listClassName={cls.SMALL}
+                        atBottomStateChange={(atBottom) => {
+                            if (atBottom) {
+                                onScrollEnd?.();
+                            }
+                        }}
                         components={{
                             Header: Header as ComponentType,
                             ScrollSeekPlaceholder: SkeletonSmall,
-                            Footer: skeleton,
+                            Footer: isLoading ? skeleton : undefined,
                         }}
 
                     />
