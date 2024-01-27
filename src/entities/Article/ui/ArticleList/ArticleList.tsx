@@ -1,12 +1,16 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import React, {
-    ComponentType, HTMLAttributeAnchorTarget, ReactNode, useCallback, useEffect, useRef, useState,
+    ComponentType,
+    HTMLAttributeAnchorTarget,
+    ReactNode,
+    useCallback,
+    useRef,
 } from 'react';
 import {
-    GridStateSnapshot,
-    StateSnapshot,
-    Virtuoso, VirtuosoGrid, VirtuosoGridHandle, VirtuosoHandle,
+    Virtuoso, VirtuosoGrid,
+    VirtuosoGridHandle,
+    VirtuosoHandle,
 } from 'react-virtuoso';
 import { useSelector } from 'react-redux';
 import { StateSchema } from 'app/providers/StoreProvider';
@@ -35,11 +39,6 @@ const getSkeleton = (view: ArticleView) => new Array(3)
     .map((item, index) => (
         <ArticleListItemSkeleton className={cls.card} view={view} key={index} />
     ));
-
-const SkeletonBig = () => <ArticleListItemSkeleton className={cls.card} view={ArticleView.BIG} />;
-const SkeletonSmall = () => (
-    <ArticleListItemSkeleton className={cls.card} view={ArticleView.SMALL} />
-);
 export const ArticleList = (props: ArticleListProps) => {
     const {
         className,
@@ -69,7 +68,8 @@ export const ArticleList = (props: ArticleListProps) => {
             onClickItem={() => dispatch(scrollRestoreAction.setVirtuosoScrollIndex({ path: pathname, index }))}
         />
     );
-    const skeleton = useCallback(() => (<div className={cls[view]}>{getSkeleton(view)}</div>
+    const skeleton = useCallback(() => (
+        <div className={classNames(cls.footer, {}, [cls[view]])}>{getSkeleton(view)}</div>
     ), [view]);
 
     useInitialEffect(() => {
@@ -115,7 +115,6 @@ export const ArticleList = (props: ArticleListProps) => {
                         endReached={onScrollEnd}
                         components={{
                             Header: Header as ComponentType,
-                            ScrollSeekPlaceholder: SkeletonBig,
                             Footer: isLoading ? skeleton : undefined,
                         }}
                         ref={virtuosoRef}
@@ -124,7 +123,9 @@ export const ArticleList = (props: ArticleListProps) => {
                 : (
                     <VirtuosoGrid
                         ref={virtuosoGridRef}
-                        style={{ height: '100%', width: '100%' }}
+                        style={{
+                            height: '100%', width: '100%',
+                        }}
                         totalCount={articles.length}
                         data={articles}
                         itemContent={renderArticle}
@@ -137,10 +138,8 @@ export const ArticleList = (props: ArticleListProps) => {
                         }}
                         components={{
                             Header: Header as ComponentType,
-                            ScrollSeekPlaceholder: SkeletonSmall,
                             Footer: isLoading ? skeleton : undefined,
                         }}
-
                     />
 
                 )}

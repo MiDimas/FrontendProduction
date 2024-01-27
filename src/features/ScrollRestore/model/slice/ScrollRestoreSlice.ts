@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ScrollRestoreSchema } from 'features/ScrollRestore';
-import { StateSnapshot } from 'react-virtuoso';
 
 const initialState: ScrollRestoreSchema = {
     scroll: {},
