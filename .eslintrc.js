@@ -22,6 +22,7 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
+        'midi-plugin-import',
     ],
     ignorePatterns: ['./node_modules/'],
     rules: {
@@ -52,6 +53,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
+        'midi-plugin-import/path-check': 0,
     },
     globals: {
         __IS_DEV__: true,
