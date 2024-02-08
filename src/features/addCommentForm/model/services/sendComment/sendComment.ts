@@ -4,7 +4,7 @@ import { getUserAuthData } from 'entities/User';
 import {
     getArticleDetailsData,
 } from 'entities/Article';
-import { addCommentFormActions } from 'features/addCommentForm/model/slices/addCommentFormSlice';
+import { addCommentFormActions } from '../../slices/addCommentFormSlice';
 import {
     getAddCommentFormText,
 } from '../../selectors/getAddCommentFormText/getAddCommentFormText';

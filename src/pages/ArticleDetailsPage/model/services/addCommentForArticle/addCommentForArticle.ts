@@ -6,7 +6,7 @@ import {
 } from 'entities/Article';
 import {
     fetchCommentsByArticleId,
-} from 'pages/ArticleDetailsPage/model/services/fetchCommentByArticleId/fetchCommentsByArticleId';
+} from '../fetchCommentByArticleId/fetchCommentsByArticleId';
 
 export const addCommentForArticle = createAsyncThunk<
     Comment,

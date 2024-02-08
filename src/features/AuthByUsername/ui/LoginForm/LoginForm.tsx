@@ -4,14 +4,14 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { loginActions, loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError/getLoginError';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/LoginByUserName/LoginByUsername';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
