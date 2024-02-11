@@ -1,3 +1,63 @@
 .Flex {
     display: flex;
 }
+
+.justifyStart {
+    justify-content: start;
+}
+
+.justifyCenter {
+    justify-content: center;
+}
+
+.justifyEnd {
+    justify-content: flex-end;
+}
+
+.justifyBetween {
+    justify-content: space-between;
+}
+
+.justifyAround {
+    justify-content: space-around;
+}
+
+.justifyStretch {
+    justify-content: stretch;
+}
+
+.alignStart {
+    align-items: start;
+}
+
+.alignCenter {
+    align-items: center;
+}
+
+.alignEnd {
+    align-items: flex-end;
+}
+
+.alignBaseline {
+    align-items: baseline;
+}
+
+.alignStretch {
+    align-items: stretch;
+}
+
+.directionRow {
+    flex-direction: row;
+}
+
+.directionRowReverse {
+    flex-direction: row-reverse;
+}
+
+.directionColumn {
+    flex-direction: column;
+}
+
+.directionColumnReverse {
+    flex-direction: column-reverse;
+}
