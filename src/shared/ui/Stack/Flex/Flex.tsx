@@ -4,7 +4,7 @@ import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 'stretch';
 export type FlexAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
-export type FlexDirection = 'row' | 'column' | 'rowReverse' | 'columnReverse'
+export type FlexDirection = 'row' | 'column' | 'rowReverse' | 'columnReverse';
 interface FlexProps {
     className?: string;
     children: ReactNode;
@@ -29,8 +29,8 @@ const alignClasses: Record<FlexAlign, string> = {
 };
 const directionClasses: Record<FlexDirection, string> = {
     row: cls.directionRow,
-    column: cls.directionRowReverse,
-    rowReverse: cls.directionColumn,
+    column: cls.directionColumn,
+    rowReverse: cls.directionRowReverse,
     columnReverse: cls.directionColumnReverse,
 };
 
