@@ -1,11 +1,11 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 'stretch';
 export type FlexAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 export type FlexDirection = 'row' | 'column' | 'rowReverse' | 'columnReverse';
-export type FlexGap = 4 | 8 | 16 | 32;
+export type FlexGap = '8' | '16' | '32' | '64';
 interface FlexProps {
     className?: string;
     children: ReactNode;
@@ -13,6 +13,8 @@ interface FlexProps {
     align?: FlexAlign;
     direction?: FlexDirection;
     gap?:FlexGap;
+    width?: string|number;
+    height?: string|number;
 }
 const justifyClasses: Record<FlexJustify, string> = {
     start: cls.justifyStart,
@@ -36,10 +38,10 @@ const directionClasses: Record<FlexDirection, string> = {
     columnReverse: cls.directionColumnReverse,
 };
 const gapClasses: Record<FlexGap, string> = {
-    4: cls.gap4,
     8: cls.gap8,
     16: cls.gap16,
     32: cls.gap32,
+    64: cls.gap64,
 };
 
 export const Flex = (props: FlexProps) => {
@@ -49,8 +51,14 @@ export const Flex = (props: FlexProps) => {
         justify = 'start',
         align = 'stretch',
         direction = 'row',
-        gap = 4,
+        gap = 8,
+        width,
+        height,
     } = props;
+    const styles: CSSProperties = {
+        width,
+        height,
+    };
 
     const additional = [
         className,
@@ -62,9 +70,11 @@ export const Flex = (props: FlexProps) => {
     ];
 
     return (
-        <div className={
-            classNames(cls.Flex, {}, additional)
-        }
+        <div
+            className={
+                classNames(cls.Flex, {}, additional)
+            }
+            style={styles}
         >
             {children}
         </div>

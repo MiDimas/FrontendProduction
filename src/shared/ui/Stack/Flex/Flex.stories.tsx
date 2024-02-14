@@ -76,31 +76,61 @@ export const JustifyAround: Story = {
 export const JustifyStretch: Story = {
     args: {
         justify: 'stretch',
+        width: 350,
     },
 };
 
 export const AlignStart: Story = {
     args: {
         align: 'start',
+        height: '300px',
     },
 };
 export const AlignEnd: Story = {
     args: {
         align: 'end',
+        height: '300px',
     },
 };
 export const AlignCenter: Story = {
     args: {
         align: 'center',
+        height: '300px',
     },
 };
 export const AlignBaseline: Story = {
     args: {
         align: 'baseline',
+        height: '300px',
     },
 };
 export const AlignStretch: Story = {
     args: {
         align: 'stretch',
+        height: '300px',
+    },
+};
+
+export const Gap8: Story = {
+    args: {
+        gap: '8',
+    },
+};
+
+export const Gap16: Story = {
+    args: {
+        gap: '16',
+    },
+};
+
+export const Gap32: Story = {
+    args: {
+        gap: '32',
+    },
+};
+
+export const Gap64: Story = {
+    args: {
+        gap: '64',
     },
 };
