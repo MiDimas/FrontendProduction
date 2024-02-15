@@ -6,7 +6,7 @@ export type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 's
 export type FlexAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 export type FlexDirection = 'row' | 'column' | 'rowReverse' | 'columnReverse';
 export type FlexGap = '8' | '16' | '32' | '64';
-interface FlexProps {
+export interface FlexProps {
     className?: string;
     children: ReactNode;
     justify?: FlexJustify;
