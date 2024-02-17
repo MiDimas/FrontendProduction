@@ -3,6 +3,7 @@ import {
     ReactNode, MouseEvent, useEffect, useCallback, useState,
 } from 'react';
 import { Portal } from 'shared/ui/Portal/Portal';
+import { HStack } from 'shared/ui/Stack/Hstack/HStack';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -62,23 +63,33 @@ export const Modal = (props : ModalProps) => {
     if (noPortal) {
         return (
             <div className={classNames(cls.Modal, mods, [className])}>
-                <div onClick={closeHandler} className={cls.overlay}>
+                <HStack
+                    onClick={closeHandler}
+                    className={cls.overlay}
+                    justify="center"
+                    align="center"
+                >
                     <div onClick={stopProp} className={cls.content}>{children}</div>
-                </div>
+                </HStack>
             </div>
         );
     }
     return (
         <Portal>
             <div className={classNames(cls.Modal, mods)}>
-                <div onClick={closeHandler} className={cls.overlay}>
+                <HStack
+                    onClick={closeHandler}
+                    className={cls.overlay}
+                    justify="center"
+                    align="center"
+                >
                     <div
                         onClick={stopProp}
                         className={classNames(cls.content, {}, [className])}
                     >
                         {children}
                     </div>
-                </div>
+                </HStack>
             </div>
         </Portal>
     );

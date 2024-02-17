@@ -1,12 +1,12 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { CSSProperties, ReactNode } from 'react';
+import { CSSProperties, HTMLAttributes, ReactNode } from 'react';
 import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 'stretch';
 export type FlexAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 export type FlexDirection = 'row' | 'column' | 'rowReverse' | 'columnReverse';
 export type FlexGap = '8' | '16' | '32' | '64';
-export interface FlexProps {
+export interface FlexProps extends HTMLAttributes<HTMLDivElement>{
     className?: string;
     children: ReactNode;
     justify?: FlexJustify;
@@ -54,6 +54,7 @@ export const Flex = (props: FlexProps) => {
         gap = 8,
         width,
         height,
+        ...other
     } = props;
     const styles: CSSProperties = {
         width,
@@ -75,6 +76,7 @@ export const Flex = (props: FlexProps) => {
                 classNames(cls.Flex, {}, additional)
             }
             style={styles}
+            {...other}
         >
             {children}
         </div>

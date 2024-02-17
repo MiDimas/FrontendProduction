@@ -5,6 +5,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useCallback } from 'react';
+import { HStack } from 'shared/ui/Stack/Hstack/HStack';
 import {
     updateProfileData,
 } from '../../model/services/updateProfileData/updateProfileData';
@@ -35,7 +36,10 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
         dispatch(updateProfileData());
     }, [dispatch]);
     return (
-        <div className={classNames(cls.EditableProfileCardHeader, {}, [className])}>
+        <HStack
+            className={classNames(cls.EditableProfileCardHeader, {}, [className])}
+            justify="between"
+        >
             <Text title={t('Профиль')} />
             {readonly
                 ? (
@@ -68,6 +72,6 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
 
                 )}
 
-        </div>
+        </HStack>
     );
 };
