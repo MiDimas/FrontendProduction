@@ -69,7 +69,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                     articles={articles}
                     view={view}
                     isLoading={isLoading}
-                    className={cls.list}
                     onScrollEnd={onLoadNextPart}
                     Header={ArticlesPageFilters}
                 />

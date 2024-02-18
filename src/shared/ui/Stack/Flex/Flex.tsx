@@ -5,7 +5,7 @@ import cls from './Flex.module.scss';
 export type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 'stretch';
 export type FlexAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 export type FlexDirection = 'row' | 'column' | 'rowReverse' | 'columnReverse';
-export type FlexGap = '8' | '16' | '32' | '64';
+export type FlexGap = '4' |'8' | '16' | '32' | '64';
 export interface FlexProps extends HTMLAttributes<HTMLDivElement>{
     className?: string;
     children: ReactNode;
@@ -39,6 +39,7 @@ const directionClasses: Record<FlexDirection, string> = {
     columnReverse: cls.directionColumnReverse,
 };
 const gapClasses: Record<FlexGap, string> = {
+    4: cls.gap4,
     8: cls.gap8,
     16: cls.gap16,
     32: cls.gap32,

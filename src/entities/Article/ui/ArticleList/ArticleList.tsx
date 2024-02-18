@@ -99,7 +99,7 @@ export const ArticleList = (props: ArticleListProps) => {
 
     return (
         <div className={
-            classNames(cls.ArticleList, {}, [className, cls[view]])
+            classNames(cls.ArticleList, {}, [cls[view], className])
         }
         >
             {/* {articles.length > 0 */}
