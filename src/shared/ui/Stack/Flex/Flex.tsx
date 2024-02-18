@@ -15,6 +15,7 @@ export interface FlexProps extends HTMLAttributes<HTMLDivElement>{
     gap?:FlexGap;
     width?: string|number;
     height?: string|number;
+    max?: boolean;
 }
 const justifyClasses: Record<FlexJustify, string> = {
     start: cls.justifyStart,
@@ -54,10 +55,11 @@ export const Flex = (props: FlexProps) => {
         gap = 8,
         width,
         height,
+        max,
         ...other
     } = props;
     const styles: CSSProperties = {
-        width,
+        width: max ? '100%' : width,
         height,
     };
 

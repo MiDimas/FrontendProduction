@@ -3,7 +3,7 @@ import {
     ReactNode, MouseEvent, useEffect, useCallback, useState,
 } from 'react';
 import { Portal } from 'shared/ui/Portal/Portal';
-import { HStack } from 'shared/ui/Stack/Hstack/HStack';
+import { HStack } from 'shared/ui/Stack';
 import cls from './Modal.module.scss';
 
 interface ModalProps {

@@ -14,7 +14,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import CalendarIcon from 'shared/assets/icons/calendar_icon.svg';
 import EyeIcon from 'shared/assets/icons/eye_icon.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
-import { HStack } from 'shared/ui/Stack/Hstack/HStack';
+import { HStack } from 'shared/ui/Stack';
 import {
     ArticleCodeBlockComponent,
 } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
