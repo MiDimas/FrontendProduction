@@ -6,6 +6,7 @@ import { LangSwitcher } from 'features/LangSwitcher';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { VStack } from 'shared/ui/Stack/VStack/VStack';
+import { Flex, HStack } from 'shared/ui/Stack';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
@@ -49,10 +50,16 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
 
             </VStack>
             {/* <BugButton /> */}
-            <div className={cls.switcher}>
+            <Flex
+                justify={collapsed ? 'center' : 'end'}
+                direction={collapsed ? 'column' : 'row'}
+                max
+                gap={collapsed ? '4' : '32'}
+                className={cls.switcher}
+            >
                 <LangSwitcher className={cls.lang} short={collapsed} />
                 <ThemeSwitcher />
-            </div>
+            </Flex>
         </menu>
     );
 });
