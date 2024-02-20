@@ -3,8 +3,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Select, SelectOption } from 'shared/ui/Select/Select';
 import { useMemo } from 'react';
 import { SortOrder } from 'shared/types';
+import { VStack } from 'shared/ui/Stack';
 import { ArticleSortField } from '../../model/types/article';
-import cls from './ArticleSortSelector.module.scss';
 
 interface ArticleSortSelectorProps {
     className?: string;
@@ -47,9 +47,13 @@ export const ArticleSortSelector = (props: ArticleSortSelectorProps) => {
     ], [t]);
 
     return (
-        <div className={
-            classNames(cls.ArticleSortSelector, {}, [className])
-        }
+        <VStack
+            justify="start"
+            align="baseline"
+            gap="4"
+            className={
+                classNames('', {}, [className])
+            }
         >
             <Select <ArticleSortField>
                 options={sortFieldOptions}
@@ -63,6 +67,6 @@ export const ArticleSortSelector = (props: ArticleSortSelectorProps) => {
                 value={order}
                 onChange={onChangeOrder}
             />
-        </div>
+        </VStack>
     );
 };

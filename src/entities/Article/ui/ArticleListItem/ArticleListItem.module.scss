@@ -7,19 +7,6 @@
 }
 
 .BIG {
-    .header {
-        display: flex;
-        align-items: center;
-    }
-
-    .user {
-        margin-left: 8px;
-    }
-
-    .date {
-        margin-left: auto;
-    }
-
     .title {
         margin-top: 8px;
     }
@@ -44,14 +31,7 @@
     }
 
     .footer {
-        display: flex;
-        align-items: center;
         margin-top: 16px;
-    }
-
-    .views {
-        margin-left: auto;
-        margin-right: 8px;
     }
 }
 
@@ -88,9 +68,7 @@
     }
 
     .infoWrapper {
-        display: flex;
         margin-top: 8px;
-        align-items: center;
     }
 
     .types p {

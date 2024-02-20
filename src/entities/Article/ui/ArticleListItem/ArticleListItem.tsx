@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { HStack } from 'shared/ui/Stack';
 import {
     Article, ArticleBlockType, ArticleTextBlock, ArticleView,
 } from '../../model/types/article';
@@ -36,10 +37,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
     const types = <Text text={article.type.join(', ')} className={cls.types} />;
     const views = (
-        <>
-            <Text text={String(article.views)} className={cls.views} />
+        <HStack align="center" gap="8">
+            <Text text={String(article.views)} />
             <Icon Svg={EyeIcon} />
-        </>
+        </HStack>
     );
     const title = <Text text={article.title} className={cls.title} />;
     const image = <img src={article.img} alt={article.title} className={cls.img} />;
@@ -54,23 +55,25 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             }
             >
                 <Card className={cls.card}>
-                    <div className={cls.header}>
-                        <Avatar size={30} src={article.user.avatar} />
-                        <Text text={article.user.username} className={cls.user} />
+                    <HStack align="center" justify="between">
+                        <HStack align="center" gap="8">
+                            <Avatar size={30} src={article.user.avatar} />
+                            <Text text={article.user.username} className={cls.user} />
+                        </HStack>
                         <Text text={article.createdAt} className={cls.date} />
-                    </div>
+                    </HStack>
                     {title}
                     {types}
                     {image}
                     <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
-                    <div className={cls.footer}>
+                    <HStack align="center" justify="between" max className={cls.footer}>
                         <AppLink to={RoutePath.article_details + article.id} target={target}>
                             <Button theme={ButtonTheme.OUTLINE} onClick={onClickItem}>
                                 {`${t('Читать далее')}...`}
                             </Button>
                         </AppLink>
                         {views}
-                    </div>
+                    </HStack>
                 </Card>
             </div>
         );
@@ -90,10 +93,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         {image}
                         <Text text={article.createdAt} className={cls.date} />
                     </div>
-                    <div className={cls.infoWrapper}>
+                    <HStack max justify="between" align="center" className={cls.infoWrapper}>
                         {types}
                         {views}
-                    </div>
+                    </HStack>
                     {title}
                 </Card>
             </AppLink>
