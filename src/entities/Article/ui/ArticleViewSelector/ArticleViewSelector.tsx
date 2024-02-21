@@ -5,6 +5,7 @@ import ListView from 'shared/assets/icons/list_icon.svg';
 import TilesView from 'shared/assets/icons/tiles_icon.svg';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { HStack } from 'shared/ui/Stack';
 import cls from './ArticleViewSelector.module.scss';
 import { ArticleView } from '../../model/types/article';
 
@@ -37,9 +38,11 @@ export const ArticleViewSelector: FC<ArticleViewSelectorProps> = (props) => {
     };
 
     return (
-        <div className={
-            classNames(cls.ArticleViewSelector, {}, [className])
-        }
+        <HStack
+            align="center"
+            className={
+                classNames(cls.ArticleViewSelector, {}, [className])
+            }
         >
             { viewTypes.map((viewType, index) => (
                 <Button
@@ -56,6 +59,6 @@ export const ArticleViewSelector: FC<ArticleViewSelectorProps> = (props) => {
                     />
                 </Button>
             ))}
-        </div>
+        </HStack>
     );
 };

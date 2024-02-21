@@ -20,6 +20,7 @@ import {
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { HStack } from 'shared/ui/Stack';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
@@ -32,6 +33,7 @@ interface ArticleListProps {
     view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
     Header?: ReactNode;
+    recommend?: boolean;
     onScrollEnd?: ()=> void;
 }
 const getSkeleton = (view: ArticleView) => new Array(3)
@@ -48,6 +50,7 @@ export const ArticleList = (props: ArticleListProps) => {
         target,
         onScrollEnd,
         Header,
+        recommend,
     } = props;
     const { pathname } = useLocation();
     const dispatch = useAppDispatch();
@@ -96,7 +99,13 @@ export const ArticleList = (props: ArticleListProps) => {
     if (!isLoading && !articles.length) {
         return <div className={className}>{t('Статьи не найдены')}</div>;
     }
-
+    if (recommend) {
+        return (
+            <HStack max className={cls.recommendation}>
+                {articles.map((article) => renderArticle(Number(article.id), article))}
+            </HStack>
+        );
+    }
     return (
         <div className={
             classNames(cls.ArticleList, {}, [cls[view], className])
