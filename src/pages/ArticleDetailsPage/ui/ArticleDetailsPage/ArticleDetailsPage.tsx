@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { AddCommentForm } from 'features/addCommentForm';
 import { Page } from 'widgets/Page/Page';
+import { VStack } from 'shared/ui/Stack';
 import {
     fetchCommentsByArticleId,
 } from '../../model/services/fetchCommentByArticleId/fetchCommentsByArticleId';
@@ -92,11 +93,13 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
                     target="_blank"
                 />
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
-                <AddCommentForm onSendComment={onSendCommentArticle} />
-                <CommentList
-                    isLoading={commentsIsLoading}
-                    comments={comments}
-                />
+                <VStack max>
+                    <AddCommentForm onSendComment={onSendCommentArticle} />
+                    <CommentList
+                        isLoading={commentsIsLoading}
+                        comments={comments}
+                    />
+                </VStack>
             </Page>
         </DynamicModuleLoader>
     );
