@@ -43,7 +43,9 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'i18next/no-literal-string': [2, {
             markupOnly: true,
-            ignoreAttribute: ['to', 'data-testid', 'target', 'direction', 'justify', 'align', 'gap'],
+            ignoreAttribute: ['to', 'data-testid', 'target', 'direction', 'justify', 'align', 'gap',
+                'role',
+            ],
         }],
         'max-len': [2, { code: 120, ignoreComments: true }],
         'jsx-a11y/no-static-element-interactions': 'off',
