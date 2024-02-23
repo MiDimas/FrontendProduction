@@ -12,6 +12,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { TabItem } from 'shared/ui/Tabs/Tabs';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { fetchArticlesList } from '../../model/services/FetchArticlesList/fetchArticlesList';
 import {
     getArticlesPageSearch,
@@ -80,11 +81,13 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
     }, [dispatch, debounceFetchData]);
 
     return (
-        <div className={
-            classNames(cls.ArticlesPageFilters, {}, [className])
-        }
+        <VStack
+            gap="16"
+            className={
+                classNames(cls.ArticlesPageFilters, {}, [className])
+            }
         >
-            <div className={cls.sortWrapper}>
+            <HStack align="center" justify="between" className={cls.sortWrapper}>
                 <ArticleSortSelector
                     sort={sort}
                     order={order}
@@ -92,7 +95,7 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
                     onChangeSort={onChangeSort}
                 />
                 <ArticleViewSelector view={view} onViewClick={onChangeView} />
-            </div>
+            </HStack>
             <Card className={cls.search}>
                 <Input
                     placeholder={t('Поиск')}
@@ -106,6 +109,6 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
                 className={cls.tabs}
             />
 
-        </div>
+        </VStack>
     );
 };

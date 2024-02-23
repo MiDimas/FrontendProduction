@@ -1,6 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { memo } from 'react';
+import { HStack } from 'shared/ui/Stack';
 import cls from './PageLoader.module.scss';
 
 interface PageLoaderProps {
@@ -8,7 +9,12 @@ interface PageLoaderProps {
 }
 
 export const PageLoader = memo(({ className }: PageLoaderProps) => (
-    <div className={classNames(cls.PageLoader, {}, [className])}>
+    <HStack
+        justify="center"
+        align="center"
+        max
+        className={classNames(cls.PageLoader, {}, [className])}
+    >
         <Loader />
-    </div>
+    </HStack>
 ));

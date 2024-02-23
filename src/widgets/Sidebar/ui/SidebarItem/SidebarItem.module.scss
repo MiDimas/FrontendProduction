@@ -1,15 +1,15 @@
 .SidebarItem {
-    display: flex;
-    justify-content: start;
-    align-content: center;
-    overflow: hidden;
     width: fit-content;
 }
 
+.block {
+    overflow: hidden;
+}
+
 .link {
-    margin-left: 10px;
     transition: 0.3s all ease;
     white-space: nowrap;
+    max-width: 100%;
 }
 
 .icon {

@@ -65,9 +65,11 @@ export const Modal = (props : ModalProps) => {
             <div className={classNames(cls.Modal, mods, [className])}>
                 <HStack
                     onClick={closeHandler}
-                    className={cls.overlay}
                     justify="center"
                     align="center"
+                    max
+                    height="100%"
+                    className={cls.overlay}
                 >
                     <div onClick={stopProp} className={cls.content}>{children}</div>
                 </HStack>
@@ -79,9 +81,11 @@ export const Modal = (props : ModalProps) => {
             <div className={classNames(cls.Modal, mods)}>
                 <HStack
                     onClick={closeHandler}
-                    className={cls.overlay}
                     justify="center"
                     align="center"
+                    max
+                    height="100%"
+                    className={cls.overlay}
                 >
                     <div
                         onClick={stopProp}

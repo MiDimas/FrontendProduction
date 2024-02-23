@@ -10,6 +10,7 @@ import {
     ReducersList,
 } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { VStack } from 'shared/ui/Stack';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/LoginByUserName/LoginByUsername';
@@ -58,7 +59,7 @@ const LoginForm = memo((props: LoginFormProps) => {
             removeAfterUnmount
             reducers={initialReducers}
         >
-            <div className={classNames(cls.LoginForm, {}, [className])}>
+            <VStack className={classNames(cls.LoginForm, {}, [className])}>
                 <Text title={t('Форма авторизации')} />
                 {error && (
                     <Text
@@ -88,7 +89,7 @@ const LoginForm = memo((props: LoginFormProps) => {
                         t('Войти')
                     }
                 </Button>
-            </div>
+            </VStack>
         </DynamicModuleLoader>
     );
 });
