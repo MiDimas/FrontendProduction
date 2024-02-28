@@ -3,7 +3,11 @@
 }
 
 .trigger {
-    padding: 10px 20px;
+    background: none;
+    outline: none;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 .options {
@@ -23,6 +27,7 @@
 .disabled {
     color: var(--secondary-color);
     cursor: default;
+    opacity: 0.7;
 }
 
 .active {

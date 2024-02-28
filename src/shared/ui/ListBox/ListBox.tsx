@@ -1,42 +1,51 @@
 // import { classNames } from 'shared/lib/classNames/classNames';
 import { Listbox as HListbox } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { Fragment, ReactNode, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button/Button';
 import cls from './ListBox.module.scss';
 
-interface ListBoxProps {
-    className?: string;
+type ListBoxItem = {
+    value:string;
+    content: ReactNode;
+    disabled?: boolean
 }
-const people = [
-    { id: 1, name: 'Durward Reynolds', unavailable: false },
-    { id: 2, name: 'Kenton Towne', unavailable: false },
-    { id: 3, name: 'Therese Wunsch', unavailable: false },
-    { id: 4, name: 'Benedict Kessler', unavailable: true },
-    { id: 5, name: 'Katelyn Rohan', unavailable: false },
-];
+interface ListBoxProps {
+    items?: ListBoxItem[];
+    className?: string;
+    value?: string;
+    defaultValue?: string;
+    onChange?: (value:string) => void;
+}
 export const ListBox = (props: ListBoxProps) => {
-    const [selectedItem, setSelectedItem] = useState(people[0]);
-    const { className } = props;
+    const {
+        className,
+        items,
+        value,
+        defaultValue,
+        onChange,
+    } = props;
+
     /* eslint-disable i18next/no-literal-string */
     return (
         <HListbox
-            value={selectedItem}
-            onChange={setSelectedItem}
+            value={value}
+            onChange={onChange}
             as="div"
-            className={cls.ListBox}
+            className={classNames(cls.ListBox, {}, [className])}
         >
-            <HListbox.Button as={Fragment}>
+            <HListbox.Button className={cls.trigger} as="div">
                 <Button>
-                    {selectedItem.name}
+                    {value ?? defaultValue}
                 </Button>
+
             </HListbox.Button>
             <HListbox.Options className={cls.options}>
-                {people.map((person) => (
+                {items?.map((item) => (
                     <HListbox.Option
-                        key={person.id}
-                        value={person}
-                        disabled={person.unavailable}
+                        key={item.value}
+                        value={item.value}
+                        disabled={item.disabled}
                         as={Fragment}
                     >
                         {({ active, selected, disabled }) => (
@@ -47,7 +56,7 @@ export const ListBox = (props: ListBoxProps) => {
                                 }, [])}
                             >
                                 {selected && '***'}
-                                {person.name}
+                                {item.content}
                             </li>
                         )}
                     </HListbox.Option>
