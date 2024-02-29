@@ -5,7 +5,7 @@ import { ListBox } from 'shared/ui/ListBox/ListBox';
 
 const MainPage = memo(() => {
     const { t } = useTranslation('main');
-    const [state, setState] = useState<string>();
+    const [state, setState] = useState<string|undefined>();
     /* eslint-disable i18next/no-literal-string */
     return (
         <Page>

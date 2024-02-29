@@ -10,20 +10,22 @@ type ListBoxItem = {
     content: ReactNode;
     disabled?: boolean
 }
-interface ListBoxProps {
+interface ListBoxProps<T extends string> {
     items?: ListBoxItem[];
     className?: string;
     value?: string;
     defaultValue?: string;
-    onChange?: (value:string) => void;
+    onChange?: (value:T) => void;
+    readonly?: boolean;
 }
-export const ListBox = (props: ListBoxProps) => {
+export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
     const {
         className,
         items,
         value,
         defaultValue,
         onChange,
+        readonly,
     } = props;
 
     /* eslint-disable i18next/no-literal-string */
@@ -34,8 +36,13 @@ export const ListBox = (props: ListBoxProps) => {
             as="div"
             className={classNames(cls.ListBox, {}, [className])}
         >
-            <HListbox.Button className={cls.trigger} as="div">
-                <Button>
+            <HListbox.Button
+                className={cls.trigger}
+                as="div"
+            >
+                <Button
+                    disabled={readonly}
+                >
                     {value ?? defaultValue}
                 </Button>
 
