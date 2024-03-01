@@ -10,14 +10,20 @@ type ListBoxItem = {
     content: ReactNode;
     disabled?: boolean
 }
+type ListBoxOptionsDirection = 'top' | 'bottom';
 interface ListBoxProps<T extends string> {
     items?: ListBoxItem[];
     className?: string;
-    value?: string;
+    value?: T;
     defaultValue?: string;
     onChange?: (value:T) => void;
     readonly?: boolean;
+    direction?: ListBoxOptionsDirection;
 }
+const mapDirectionClasses: Record<ListBoxOptionsDirection, string> = {
+    bottom: cls.optionBottom,
+    top: cls.optionTop,
+};
 export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
     const {
         className,
@@ -26,8 +32,9 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
         defaultValue,
         onChange,
         readonly,
+        direction = 'bottom',
     } = props;
-
+    const additionalClasses = [mapDirectionClasses[direction]];
     /* eslint-disable i18next/no-literal-string */
     return (
         <HListbox
@@ -35,6 +42,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
             onChange={onChange}
             as="div"
             className={classNames(cls.ListBox, {}, [className])}
+            disabled={readonly}
         >
             <HListbox.Button
                 className={cls.trigger}
@@ -47,7 +55,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                 </Button>
 
             </HListbox.Button>
-            <HListbox.Options className={cls.options}>
+            <HListbox.Options className={classNames(cls.options, {}, additionalClasses)}>
                 {items?.map((item) => (
                     <HListbox.Option
                         key={item.value}

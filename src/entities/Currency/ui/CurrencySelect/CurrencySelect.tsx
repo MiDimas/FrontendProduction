@@ -26,26 +26,14 @@ export const CurrencySelect = (props: CurrencyProps) => {
     } = props;
 
     return (
-        <ListBox<Currency>
+        <ListBox
             className={classNames('', {}, [className])}
             defaultValue={t('Выберите валюту')}
             value={value}
             onChange={onChange}
             readonly={readonly}
             items={options}
+            direction="top"
         />
     );
-
-    // return (
-    //     <Select <Currency>
-    //         className={
-    //             classNames('', {}, [className])
-    //         }
-    //         label={t('Выберите валюту')}
-    //         options={options}
-    //         onChange={onChange}
-    //         readonly={readonly}
-    //         value={value}
-    //     />
-    // );
 };
