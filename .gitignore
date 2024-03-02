@@ -369,3 +369,6 @@ nbactions.xml
 
 ### Storybook ###
 /storybook-static
+
+### Mac ###
+**.DS_Store
