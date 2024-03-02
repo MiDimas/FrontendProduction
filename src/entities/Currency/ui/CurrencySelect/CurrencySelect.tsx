@@ -29,6 +29,7 @@ export const CurrencySelect = (props: CurrencyProps) => {
         <ListBox
             className={classNames('', {}, [className])}
             defaultValue={t('Выберите валюту')}
+            label={t('Выберите валюту')}
             value={value}
             onChange={onChange}
             readonly={readonly}
