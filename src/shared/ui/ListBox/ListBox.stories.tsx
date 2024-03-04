@@ -9,6 +9,11 @@ const meta: Meta<typeof ListBox> = {
     component: ListBox,
     argTypes: {
     },
+    args: {
+        items: [{ value: 'Один', content: 'Один' },
+            { value: 'Два', content: 'Два' },
+            { value: 'Три', content: 'Три' }],
+    },
 };
 
 export default meta;
