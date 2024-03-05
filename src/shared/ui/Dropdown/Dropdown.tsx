@@ -28,19 +28,20 @@ export const Dropdown = (props: DropdownProps) => {
     return (
         <Menu as="div" className={classNames(cls.Dropdown, {}, [className])}>
             <Menu.Button className={cls.button}>
-                {trigger || <Button>{t('Клик')}</Button> }
+                {trigger || <Button>{t('Меню')}</Button> }
             </Menu.Button>
-            <Menu.Items>
+            <Menu.Items className={cls.menu}>
                 {items?.map((item) => (
                     /* Use the `active` state to conditionally style the active item. */
                     <Menu.Item key={item.href} as={Fragment}>
                         {({ active }) => (
-                            <a
-                                href={item.href}
+                            <button
+                                onClick={item.onClick}
+                                type="button"
                                 className={classNames(cls.item, { [cls.active]: active }, [])}
                             >
                                 {item.content}
-                            </a>
+                            </button>
                         )}
                     </Menu.Item>
                 ))}
