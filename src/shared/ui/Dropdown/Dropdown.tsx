@@ -3,6 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Menu } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
 import { Button } from 'shared/ui/Button/Button';
+import { ListBoxOptionsDirection } from 'shared/types';
 import cls from './Dropdown.module.scss';
 
 export interface DropdownItem {
@@ -15,14 +16,21 @@ interface DropdownProps {
     className?: string;
     items?: DropdownItem[];
     trigger?: ReactNode;
+    direction?: ListBoxOptionsDirection;
 }
-
+const mapDirectionClasses: Record<ListBoxOptionsDirection, string> = {
+    'bottom right': cls.optionBottomRight,
+    'top right': cls.optionTopRight,
+    'bottom left': cls.optionBottomLeft,
+    'top left': cls.optionTopLeft,
+};
 export const Dropdown = (props: DropdownProps) => {
     const { t } = useTranslation();
     const {
         className,
         items,
         trigger,
+        direction = 'bottom right',
     } = props;
     /* eslint-disable i18next/no-literal-string */
     return (
@@ -30,7 +38,7 @@ export const Dropdown = (props: DropdownProps) => {
             <Menu.Button className={cls.button}>
                 {trigger || <Button>{t('Меню')}</Button> }
             </Menu.Button>
-            <Menu.Items className={cls.menu}>
+            <Menu.Items className={classNames(cls.menu, {}, [mapDirectionClasses[direction]])}>
                 {items?.map((item) => (
                     /* Use the `active` state to conditionally style the active item. */
                     <Menu.Item key={item.href} as={Fragment}>

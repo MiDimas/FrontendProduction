@@ -36,8 +36,24 @@
     background: var(--inverted-primary-color);
 }
 
-.optionTop {
+.optionTopLeft {
     bottom: 100%;
+    right: 0;
+}
+
+.optionTopRight {
+    bottom: 100%;
+    left: 0;
+}
+
+.optionBottomLeft {
+    top: 100%;
+    right: 0;
+}
+
+.optionBottomRight {
+    top: 100%;
+    left: 0;
 }
 
 .label {

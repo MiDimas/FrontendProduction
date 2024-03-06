@@ -37,7 +37,7 @@ export const CountrySelect = (props: CountryProps) => {
             onChange={onChange}
             readonly={readonly}
             value={value}
-            direction="top"
+            direction="top right"
         />
     );
 };

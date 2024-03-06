@@ -1,10 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Listbox as HListbox } from '@headlessui/react';
-import {
-    Fragment, ReactNode, useRef, useState,
-} from 'react';
+import { Fragment, ReactNode, useRef } from 'react';
 import { Button } from 'shared/ui/Button/Button';
 import { HStack } from 'shared/ui/Stack';
+import { ListBoxOptionsDirection } from 'shared/types';
 import cls from './ListBox.module.scss';
 
 type ListBoxItem = {
@@ -12,7 +11,6 @@ type ListBoxItem = {
     content: ReactNode;
     disabled?: boolean
 }
-type ListBoxOptionsDirection = 'top' | 'bottom';
 interface ListBoxProps<T extends string> {
     items?: ListBoxItem[];
     className?: string;
@@ -24,8 +22,10 @@ interface ListBoxProps<T extends string> {
     label?: string;
 }
 const mapDirectionClasses: Record<ListBoxOptionsDirection, string> = {
-    bottom: cls.optionBottom,
-    top: cls.optionTop,
+    'bottom right': cls.optionBottomRight,
+    'top right': cls.optionTopRight,
+    'bottom left': cls.optionBottomLeft,
+    'top left': cls.optionTopLeft,
 };
 export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
     const {
@@ -35,7 +35,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
         defaultValue,
         onChange,
         readonly,
-        direction = 'bottom',
+        direction = 'bottom right',
         label,
     } = props;
     const additionalClasses = [mapDirectionClasses[direction]];
