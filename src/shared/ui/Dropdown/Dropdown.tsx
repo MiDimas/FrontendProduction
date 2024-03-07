@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Menu } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
-import { Button } from 'shared/ui/Button/Button';
 import { ListBoxOptionsDirection } from 'shared/types';
 import cls from './Dropdown.module.scss';
 
@@ -36,7 +35,7 @@ export const Dropdown = (props: DropdownProps) => {
     return (
         <Menu as="div" className={classNames(cls.Dropdown, {}, [className])}>
             <Menu.Button className={cls.button}>
-                {trigger || <Button>{t('Меню')}</Button> }
+                {trigger || <div className={cls.buttonPlate}>{t('Меню')}</div> }
             </Menu.Button>
             <Menu.Items className={classNames(cls.menu, {}, [mapDirectionClasses[direction]])}>
                 {items?.map((item) => (

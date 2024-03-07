@@ -10,20 +10,34 @@ const meta: Meta<typeof ListBox> = {
     argTypes: {
     },
     args: {
+        value: 'start',
         items: [{ value: 'Один', content: 'Один' },
             { value: 'Два', content: 'Два' },
             { value: 'Три', content: 'Три' }],
     },
+    decorators: [
+        (Story) => <div style={{ padding: 100 }}><Story /></div>,
+    ],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof ListBox>
 
-export const ListBoxLight: Story = {
+export const ListBoxLightBottomRight: Story = {
     args: {},
 };
-export const ListBoxDark: Story = {
+export const ListBoxDarkBottomRight: Story = {
     args: {},
-    decorators: [StoreDecorator({}), ThemeDecorator(Theme.DARK)],
+    decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const ListBoxLightBottomLeft: Story = {
+    args: { direction: 'bottom left' },
+};
+export const ListBoxLightTopRight: Story = {
+    args: { direction: 'top right' },
+};
+export const ListBoxLightTopLeft: Story = {
+    args: { direction: 'top left' },
 };
