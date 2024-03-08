@@ -61,8 +61,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     <Dropdown
                         items={[
                             {
+                                content: t('Профиль'),
+                                href: `/profile/${authData.id}`,
+                            },
+                            {
                                 content: t('Выйти'),
-                                href: 'exit',
                                 onClick: onLogout,
                             },
                         ]}

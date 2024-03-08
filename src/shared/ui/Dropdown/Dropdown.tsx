@@ -3,6 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Menu } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
 import { ListBoxOptionsDirection } from 'shared/types';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import cls from './Dropdown.module.scss';
 
 export interface DropdownItem {
@@ -38,20 +39,36 @@ export const Dropdown = (props: DropdownProps) => {
                 {trigger || <div className={cls.buttonPlate}>{t('Меню')}</div> }
             </Menu.Button>
             <Menu.Items className={classNames(cls.menu, {}, [mapDirectionClasses[direction]])}>
-                {items?.map((item) => (
+                {items?.map((item, id) => {
                     /* Use the `active` state to conditionally style the active item. */
-                    <Menu.Item key={item.href} as={Fragment}>
-                        {({ active }) => (
-                            <button
-                                onClick={item.onClick}
-                                type="button"
-                                className={classNames(cls.item, { [cls.active]: active }, [])}
+                    const content = ({ active }:{active: boolean}) => (
+                        <button
+                            onClick={item.onClick}
+                            type="button"
+                            disabled={item.disabled}
+                            className={classNames(cls.item, { [cls.active]: active }, [])}
+                        >
+                            {item.content}
+                        </button>
+                    );
+                    if (item.href) {
+                        return (
+                            <Menu.Item
+                                as={AppLink}
+                                to={item.href}
+                                disabled={item.disabled}
+                                key={item.href}
                             >
-                                {item.content}
-                            </button>
-                        )}
-                    </Menu.Item>
-                ))}
+                                {content}
+                            </Menu.Item>
+                        );
+                    }
+                    return (
+                        <Menu.Item key={`dropdown${id}`} as={Fragment} disabled={item.disabled}>
+                            {content}
+                        </Menu.Item>
+                    );
+                })}
             </Menu.Items>
         </Menu>
     );
