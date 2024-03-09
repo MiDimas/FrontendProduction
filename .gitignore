@@ -371,4 +371,7 @@ nbactions.xml
 /storybook-static
 
 ### Mac ###
-**.DS_Store
+.DS_Store
+
+## TestFile ##
+testNode.js
