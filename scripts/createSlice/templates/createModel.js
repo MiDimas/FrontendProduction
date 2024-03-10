@@ -1,6 +1,7 @@
 const fs = require('fs/promises');
 
 const reduxSliceTemplate = require('./reduxSliceTemplate');
+const schemaTypeTemplate = require('./schemaTypeTemplate');
 
 const resolveRoot = require('../resolveRoot');
 
@@ -21,7 +22,7 @@ module.exports = async (layer, sliceName) => {
 
     const createReduxSlice = async () => {
         try {
-            fs.writeFile(
+            await fs.writeFile(
                 resolveModulePath('slices', `${sliceName}Slice.ts`),
                 reduxSliceTemplate(sliceName),
             );
@@ -29,4 +30,19 @@ module.exports = async (layer, sliceName) => {
             console.log('Ошибка при создании редакс-слайса', e);
         }
     };
+
+    const createSchemaType = async () => {
+        try {
+            await fs.writeFile(
+                resolveModulePath('types', `${sliceName}Schema.ts`),
+                schemaTypeTemplate(sliceName),
+            );
+        } catch (e) {
+            console.log(`Произошла ошибка при создании схемы для стэйта ${sliceName}`);
+        }
+    };
+
+    await createModelStructure();
+    await createReduxSlice();
+    await createSchemaType();
 };
