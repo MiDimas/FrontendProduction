@@ -1,5 +1,6 @@
-const fs = require('fs');
+const fs = require('fs/promises');
 const resolveRoot = require('../resolveRoot');
+const createModel = require('./createModel');
 
 module.exports = async (layer, sliceName) => {
     try {
@@ -7,4 +8,6 @@ module.exports = async (layer, sliceName) => {
     } catch (e) {
         console.log(`Не удалось создать директорию для слайса ${sliceName}`);
     }
+
+    await createModel(layer, sliceName);
 };
