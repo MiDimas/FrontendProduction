@@ -2,6 +2,8 @@ const fs = require('fs');
 const resolveRoot = require('../resolveRoot');
 const firstCharUpperCase = require('../firstCharUpperCase');
 const componentTemplate = require('./componentTemplate');
+const styleTemplate = require('./styleTemplate');
+const storyTemplate = require('./storyTemplate');
 
 module.exports = async (layer, sliceName) => {
     const resolveUIPath = (...segments) => resolveRoot('src', layer, sliceName, 'ui', ...segments);
@@ -21,6 +23,14 @@ module.exports = async (layer, sliceName) => {
             await fs.writeFile(
                 resolveUIPath(componentName, `${componentName}.tsx`),
                 componentTemplate(componentName),
+            );
+            await fs.writeFile(
+                resolveUIPath(componentName, `${componentName}.module.scss`),
+                styleTemplate(componentName),
+            );
+            await fs.writeFile(
+                resolveUIPath(componentName, `${componentName}.stories.tsx`),
+                storyTemplate(componentName, layer),
             );
         } catch (e) {
             console.log('Не получилось создать компонент');

@@ -1,6 +1,7 @@
 const fs = require('fs/promises');
 const resolveRoot = require('../resolveRoot');
 const createModel = require('./createModel');
+const createUI = require('./createUI');
 
 module.exports = async (layer, sliceName) => {
     try {
@@ -10,4 +11,5 @@ module.exports = async (layer, sliceName) => {
     }
 
     await createModel(layer, sliceName);
+    await createUI(layer, sliceName);
 };
