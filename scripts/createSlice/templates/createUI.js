@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs/promises');
 const resolveRoot = require('../resolveRoot');
 const firstCharUpperCase = require('../firstCharUpperCase');
 const componentTemplate = require('./componentTemplate');
@@ -38,4 +38,5 @@ module.exports = async (layer, sliceName) => {
     };
 
     await createUIDir();
+    await createComponent();
 };
