@@ -17,6 +17,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { AddCommentForm } from 'features/addCommentForm';
 import { Page } from 'widgets/Page/Page';
 import { VStack } from 'shared/ui/Stack';
+import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
 import {
     fetchCommentsByArticleId,
 } from '../../model/services/fetchCommentByArticleId/fetchCommentsByArticleId';
@@ -84,14 +85,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
             >
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
-                <Text className={cls.commentTitle} title={t('Рекомендации')} />
-                <ArticleList
-                    articles={recommendations}
-                    isLoading={recommendationsIsLoading}
-                    className={cls.recommendations}
-                    recommend
-                    target="_blank"
-                />
+                <ArticleRecommendationsList />
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
                 <VStack max>
                     <AddCommentForm onSendComment={onSendCommentArticle} />
