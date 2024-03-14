@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleDetails, ArticleList } from 'entities/Article';
+import { ArticleDetails } from 'entities/Article';
 import { Text } from 'shared/ui/Text/Text';
 import { useParams } from 'react-router-dom';
 import { CommentList } from 'entities/Comment';
@@ -51,8 +51,6 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-    const recommendations = useSelector(getArticleRecommendations.selectAll);
-    const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
 
     const onSendCommentArticle = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));
@@ -61,7 +59,6 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     useInitialEffect(() => {
         if (id) {
             dispatch(fetchCommentsByArticleId(id));
-            dispatch(fetchArticleRecommendations());
         }
     });
 

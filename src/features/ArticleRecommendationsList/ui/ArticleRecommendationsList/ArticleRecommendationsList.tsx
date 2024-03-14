@@ -4,15 +4,32 @@ import { memo } from 'react';
 import { Text } from 'shared/ui/Text/Text';
 import { ArticleList } from 'entities/Article';
 import { VStack } from 'shared/ui/Stack';
+import { rtkApi } from 'shared/api/rtkApi';
 import cls from './ArticleRecommendationsList.module.scss';
 
 interface ArticleRecommendationsListProps {
     className?: string;
 }
 
+const recommendationsApi = rtkApi.injectEndpoints({
+    endpoints: (build) => ({
+        getArticleRecommendationsList: build.query({
+            query: (limit) => ({
+                url: '/articles',
+                params: {
+                    _limit: limit,
+                },
+            }),
+        }),
+    }),
+});
+
+const useArticleRecommendationsList = recommendationsApi.useGetArticleRecommendationsListQuery;
+
 export const ArticleRecommendationsList = memo((props: ArticleRecommendationsListProps) => {
     const { t } = useTranslation('article');
     const { className } = props;
+    const { data, isLoading } = useArticleRecommendationsList(3);
     return (
         <VStack
             gap="8"
@@ -22,8 +39,9 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
         >
             <Text className={cls.commentTitle} title={t('Рекомендации')} />
             <ArticleList
-                articles={[]}
+                articles={data || []}
                 className={cls.recommendations}
+                isLoading={isLoading}
                 recommend
                 target="_blank"
             />
