@@ -32,7 +32,7 @@ import {
     getArticlesPageType,
 } from '../../model/selectors/getArticlesPageType/getArticlesPageType';
 
-interface ArticlesPageFiltersProps {
+interface ArticlesPageFiltersProps extends Object{
     className?: string;
 }
 

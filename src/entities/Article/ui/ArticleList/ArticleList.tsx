@@ -1,8 +1,8 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import React, {
-    ComponentType,
-    HTMLAttributeAnchorTarget,
+    ComponentType, FC,
+    HTMLAttributeAnchorTarget, ReactElement,
     ReactNode,
     useCallback,
     useRef,
@@ -20,19 +20,19 @@ import {
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { HStack } from 'shared/ui/Stack';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
 
-interface ArticleListProps {
+interface ArticleListProps{
     className?: string;
     articles: Article[];
     isLoading?: boolean;
     view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
-    Header?: ReactNode;
+    Header?: FC;
     recommend?: boolean;
     onScrollEnd?: ()=> void;
 }
@@ -97,6 +97,17 @@ export const ArticleList = (props: ArticleListProps) => {
     });
 
     if (!isLoading && !articles.length) {
+        if (Header) {
+            return (
+                <VStack className={
+                    classNames(cls.ArticleList, {}, [cls[view], className])
+                }
+                >
+                    <Header />
+                    <div>{t('Статьи не найдены')}</div>
+                </VStack>
+            );
+        }
         return <div className={className}>{t('Статьи не найдены')}</div>;
     }
     if (recommend) {
@@ -123,7 +134,7 @@ export const ArticleList = (props: ArticleListProps) => {
                         itemContent={renderArticle}
                         endReached={onScrollEnd}
                         components={{
-                            Header: Header as ComponentType,
+                            Header,
                             Footer: isLoading ? skeleton : undefined,
                         }}
                         ref={virtuosoRef}
@@ -146,7 +157,7 @@ export const ArticleList = (props: ArticleListProps) => {
                             }
                         }}
                         components={{
-                            Header: Header as ComponentType,
+                            Header,
                             Footer: isLoading ? skeleton : undefined,
                         }}
                     />

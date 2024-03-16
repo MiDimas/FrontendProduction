@@ -18,6 +18,7 @@ import { AddCommentForm } from 'features/addCommentForm';
 import { Page } from 'widgets/Page/Page';
 import { VStack } from 'shared/ui/Stack';
 import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
+import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import {
     fetchCommentsByArticleId,
 } from '../../model/services/fetchCommentByArticleId/fetchCommentsByArticleId';
@@ -49,12 +50,6 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     const { className } = props;
     const { id } = useParams<{id: string}>();
     const dispatch = useAppDispatch();
-    const comments = useSelector(getArticleComments.selectAll);
-    const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-
-    const onSendCommentArticle = useCallback((text: string) => {
-        dispatch(addCommentForArticle(text));
-    }, [dispatch]);
 
     useInitialEffect(() => {
         if (id) {
@@ -83,14 +78,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
                 <ArticleRecommendationsList />
-                <Text className={cls.commentTitle} title={t('Комментарии')} />
-                <VStack max>
-                    <AddCommentForm onSendComment={onSendCommentArticle} />
-                    <CommentList
-                        isLoading={commentsIsLoading}
-                        comments={comments}
-                    />
-                </VStack>
+                <ArticleDetailsComments />
             </Page>
         </DynamicModuleLoader>
     );
