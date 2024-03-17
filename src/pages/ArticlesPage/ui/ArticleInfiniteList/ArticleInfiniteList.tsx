@@ -1,5 +1,5 @@
 import {
-    ComponentType, FC, memo, useCallback,
+    FC, memo, useCallback,
 } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -47,6 +47,7 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
             isLoading={isLoading}
             onScrollEnd={onLoadNextPart}
             Header={header}
+            error={error}
         />
     );
 });

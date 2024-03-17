@@ -21,15 +21,19 @@ import { useLocation } from 'react-router-dom';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { HStack, VStack } from 'shared/ui/Stack';
+import { Text } from 'shared/ui/Text/Text';
+import { Simulate } from 'react-dom/test-utils';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
+import error = Simulate.error;
 
 interface ArticleListProps{
     className?: string;
     articles: Article[];
     isLoading?: boolean;
+    error?: string;
     view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
     Header?: FC;
@@ -51,6 +55,7 @@ export const ArticleList = (props: ArticleListProps) => {
         onScrollEnd,
         Header,
         recommend,
+        error,
     } = props;
     const { pathname } = useLocation();
     const dispatch = useAppDispatch();
@@ -95,7 +100,6 @@ export const ArticleList = (props: ArticleListProps) => {
             }
         }
     });
-
     if (!isLoading && !articles.length) {
         if (Header) {
             return (
@@ -104,12 +108,17 @@ export const ArticleList = (props: ArticleListProps) => {
                 }
                 >
                     <Header />
-                    <div>{t('Статьи не найдены')}</div>
+                    {
+                        error
+                            ? <Text text={t('Произошла ошибка')} />
+                            : <Text text={t('Статьи не найдены')} />
+                    }
                 </VStack>
             );
         }
         return <div className={className}>{t('Статьи не найдены')}</div>;
     }
+
     if (recommend) {
         return (
             <HStack max className={cls.recommendation}>
