@@ -49,13 +49,6 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
     const { t } = useTranslation('article');
     const { className } = props;
     const { id } = useParams<{id: string}>();
-    const dispatch = useAppDispatch();
-
-    useInitialEffect(() => {
-        if (id) {
-            dispatch(fetchCommentsByArticleId(id));
-        }
-    });
 
     if (!id) {
         return (
@@ -78,7 +71,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = (props) => {
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
                 <ArticleRecommendationsList />
-                <ArticleDetailsComments />
+                <ArticleDetailsComments id={id} />
             </Page>
         </DynamicModuleLoader>
     );
