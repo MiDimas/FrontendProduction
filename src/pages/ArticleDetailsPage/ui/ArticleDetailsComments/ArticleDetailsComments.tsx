@@ -7,6 +7,7 @@ import { CommentList } from 'entities/Comment';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { getArticleComments } from '../../model/slices/ArticleDetailsCommentsSlice';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
@@ -38,7 +39,7 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps) 
     }, [dispatch]);
 
     return (
-        <VStack className={cls.commentBlock} max>
+        <VStack className={classNames(cls.commentBlock, {}, [className])} max>
             <Text title={t('Комментарии')} />
             <AddCommentForm onSendComment={onSendCommentArticle} />
             <CommentList
