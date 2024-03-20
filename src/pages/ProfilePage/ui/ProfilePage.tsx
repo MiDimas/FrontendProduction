@@ -4,10 +4,9 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
-import { profileReducer } from 'features/EditableProfileCard';
+import { EditableProfileCard, profileReducer } from 'features/EditableProfileCard';
 import { useParams } from 'react-router-dom';
 import { Page } from 'widgets/Page/Page';
-import { UserProfile } from 'widgets/UserProfile';
 import cls from './ProfilePage.module.scss';
 
 const reducers: ReducersList = {
@@ -26,7 +25,7 @@ const ProfilePage = memo((props: ProfilePageProps) => {
                 classNames(cls.ProfilePage, {}, [className])
             }
             >
-                <UserProfile id={id} />
+                <EditableProfileCard id={id} />
             </Page>
         </DynamicModuleLoader>
     );

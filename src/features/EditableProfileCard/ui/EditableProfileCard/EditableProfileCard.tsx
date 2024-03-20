@@ -1,12 +1,16 @@
 import { FC, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Profile, ProfileCard } from 'entities/Profile';
+import { ProfileCard } from 'entities/Profile';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { getUserAuthData } from 'entities/User';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
+import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import {
     getProfileValidateError,
 } from '../../model/selectors/getProfileValidateErrors/getProfileValidateError';
@@ -14,27 +18,34 @@ import { profileAction } from '../../model/slice/profileSlice';
 import {
     EditableProfileCardHeader,
 } from '../EditableProfileCardHeader/EditableProfileCardHeader';
-import cls from './EditableProfileCard.module.scss';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { ValidateErrorTranslates, ValidateProfileError } from '../../model/types/ProfileSchema';
+import {
+    getProfileIsLoading,
+} from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 
 interface EditableProfileCardProps {
     className?: string;
-    data?: Profile;
-    isLoading?: boolean;
-    error?: string;
+
+    id?: string;
 }
 export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
     const {
         className,
-        data,
-        isLoading,
-        error,
+        id,
     } = props;
     const { t } = useTranslation('profile');
     const readonly = useSelector(getProfileReadonly);
     const validateErrors = useSelector(getProfileValidateError);
+    const authData = useSelector(getUserAuthData);
+    const data = useSelector(getProfileForm);
+    const isLoading = useSelector(getProfileIsLoading);
+    const error = useSelector(getProfileError);
     const dispatch = useAppDispatch();
+    useInitialEffect(() => {
+        if (id)dispatch(fetchProfileData(id));
+    });
 
     const validateErrorTranslates: ValidateErrorTranslates = {
         [ValidateProfileError.SERVER_ERROR]: t('Ошибка сервера при сохранении'),
@@ -69,9 +80,17 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
         dispatch(profileAction.updateProfile({ country: value }));
     }, [dispatch]);
 
+    if (!id) {
+        return <Text text={t('Профиль с таким id не найден')} />;
+    }
+
+    if (authData?.id !== id) {
+        return <ProfileCard data={data} isLoading={isLoading} error={error} readonly />;
+    }
+
     return (
         <div className={
-            classNames(cls.EditableProfileCard, {}, [className])
+            classNames('', {}, [className])
         }
         >
             <EditableProfileCardHeader />
