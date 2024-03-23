@@ -375,3 +375,6 @@ nbactions.xml
 
 ## TestFile ##
 testNode.js
+
+### Report Test ###
+/reports
