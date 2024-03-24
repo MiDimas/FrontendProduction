@@ -1,9 +1,8 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import React, {
-    ComponentType, FC,
-    HTMLAttributeAnchorTarget, ReactElement,
-    ReactNode,
+    FC,
+    HTMLAttributeAnchorTarget,
     useCallback,
     useRef,
 } from 'react';
@@ -22,13 +21,12 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { HStack, VStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
-import { Simulate } from 'react-dom/test-utils';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
-import error = Simulate.error;
 
+type DirectionList = 'horizontal' | 'vertical'
 interface ArticleListProps{
     className?: string;
     articles: Article[];
@@ -37,8 +35,9 @@ interface ArticleListProps{
     view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
     Header?: FC;
-    recommend?: boolean;
+    virtualized?: boolean;
     onScrollEnd?: ()=> void;
+    direction?: DirectionList;
 }
 const getSkeleton = (view: ArticleView) => new Array(3)
     .fill(0)
@@ -54,8 +53,9 @@ export const ArticleList = (props: ArticleListProps) => {
         target,
         onScrollEnd,
         Header,
-        recommend,
+        virtualized,
         error,
+        direction = 'horizontal',
     } = props;
     const { pathname } = useLocation();
     const dispatch = useAppDispatch();
@@ -119,12 +119,21 @@ export const ArticleList = (props: ArticleListProps) => {
         return <div className={className}>{t('Статьи не найдены')}</div>;
     }
 
-    if (recommend) {
-        return (
-            <HStack max className={cls.recommendation}>
-                {articles.map((article) => renderArticle(Number(article.id), article))}
-            </HStack>
-        );
+    if (!virtualized) {
+        if (direction === 'horizontal') {
+            return (
+                <HStack max className={cls.recommendation}>
+                    {articles.map((article) => renderArticle(Number(article.id), article))}
+                </HStack>
+            );
+        }
+        if (direction === 'vertical') {
+            return (
+                <VStack max>
+                    {articles.map((article) => renderArticle(Number(article.id), article))}
+                </VStack>
+            );
+        }
     }
     return (
         <div className={

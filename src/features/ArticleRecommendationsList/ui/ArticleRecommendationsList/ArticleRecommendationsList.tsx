@@ -28,7 +28,6 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
                 className={cls.recommendations}
                 isLoading={isLoading}
                 error={String(error)}
-                recommend
                 target="_blank"
             />
         </VStack>

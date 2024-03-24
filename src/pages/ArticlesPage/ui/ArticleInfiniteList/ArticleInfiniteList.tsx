@@ -48,6 +48,7 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
             onScrollEnd={onLoadNextPart}
             Header={header}
             error={error}
+            virtualized
         />
     );
 });
