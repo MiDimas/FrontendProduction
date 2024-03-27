@@ -3,6 +3,7 @@ import { renderComponent } from 'shared/config/tests/renderWithTranslation/rende
 import { Profile } from 'entities/Profile';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
+import { userEvent } from '@testing-library/user-event';
 import { profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
 
@@ -25,12 +26,14 @@ describe('Проверка компонента EditableProfileCard', () => {
                     data: profile,
                     form: profile,
                 },
+                user: { authData: { id: '1' } },
             },
             asyncReducers: {
                 profile: profileReducer,
 
             },
         });
-        expect(screen.getByTestId('sidebar')).toBeInTheDocument();
+        userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditBtn'));
+        expect(screen.getByTestId('EditableProfileCardHeader.CancelBtn')).toBeInTheDocument();
     });
 });
