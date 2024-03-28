@@ -17,23 +17,55 @@ const profile: Profile = {
     city: 'Erevan',
     username: 'adman',
 };
-describe('Проверка компонента EditableProfileCard', () => {
-    test('Тестирование отрисовки компонента', () => {
-        renderComponent(<EditableProfileCard id="1" />, {
-            initialState: {
-                profile: {
-                    readonly: true,
-                    data: profile,
-                    form: profile,
-                },
-                user: { authData: { id: '1' } },
-            },
-            asyncReducers: {
-                profile: profileReducer,
+const option = {
+    initialState: {
+        profile: {
+            readonly: true,
+            data: profile,
+            form: profile,
+        },
+        user: { authData: { id: '1' } },
+    },
+    asyncReducers: {
+        profile: profileReducer,
 
-            },
-        });
-        userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditBtn'));
+    },
+};
+describe('Проверка компонента EditableProfileCard', () => {
+    test('Тестирование кнопки редактирования', async () => {
+        renderComponent(<EditableProfileCard id="1" />, option);
+        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditBtn'));
         expect(screen.getByTestId('EditableProfileCardHeader.CancelBtn')).toBeInTheDocument();
+    });
+    test('Тестирование обнуления информации при отмене редактирования', async () => {
+        renderComponent(<EditableProfileCard id="1" />, option);
+        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditBtn'));
+        await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
+        await userEvent.clear(screen.getByTestId('ProfileCard.lastname'));
+
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('');
+        expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('');
+
+        await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
+        await userEvent.type(screen.getByTestId('ProfileCard.lastname'), 'user');
+
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('user');
+        expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('user');
+
+        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.CancelBtn'));
+
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('admin');
+        expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('admin2');
+    });
+    test('Тестирование ошибки при не заполнении обязательного поля', async () => {
+        renderComponent(<EditableProfileCard id="1" />, option);
+        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditBtn'));
+        await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
+
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('');
+
+        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.SaveBtn'));
+
+        expect(screen.getByTestId('ProfileCard.Error.Paragraph')).toBeInTheDocument();
     });
 });
