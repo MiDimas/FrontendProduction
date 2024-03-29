@@ -4,6 +4,7 @@ import { Profile } from 'entities/Profile';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { userEvent } from '@testing-library/user-event';
+import { $api } from 'shared/api/api';
 import { profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
 
@@ -67,5 +68,22 @@ describe('Проверка компонента EditableProfileCard', () => {
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.SaveBtn'));
 
         expect(screen.getByTestId('ProfileCard.Error.Paragraph')).toBeInTheDocument();
+    });
+
+    test('Тестирование отправки запроса при успешном изменении', async () => {
+        const spy = jest.spyOn($api, 'put');
+        renderComponent(<EditableProfileCard id="1" />, option);
+        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditBtn'));
+        await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
+
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('');
+
+        await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
+
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('user');
+
+        await userEvent.click(screen.getByTestId('EditableProfileCardHeader.SaveBtn'));
+
+        expect(spy).toHaveBeenCalled();
     });
 });
