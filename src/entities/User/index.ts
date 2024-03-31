@@ -11,3 +11,5 @@ export {
     getUserAuthData,
     getUserInitial,
 };
+
+export { isUserAdmin } from './model/selectors/roles/rolesSelectors';
