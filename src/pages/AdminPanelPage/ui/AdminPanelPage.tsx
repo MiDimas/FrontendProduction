@@ -3,10 +3,10 @@ import { memo } from 'react';
 import { Page } from 'widgets/Page/Page';
 
 const AdminPanelPage = memo(() => {
-    const { t } = useTranslation('main');
+    const { t } = useTranslation();
     return (
         <Page>
-            {t('Главная Страница')}
+            {t('Админка')}
         </Page>
     );
 });
