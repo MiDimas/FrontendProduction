@@ -17,16 +17,15 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
         if (!roles) {
             return true;
         }
-        console.log({ roles, userRoles });
         return roles.some((value) => userRoles?.includes(value));
     }, [roles, userRoles]);
 
-    if (!hasRequireRoles) {
-        return <Navigate to={RoutePath.forbidden} state={{ from: location }} replace />;
-    }
-
     if (!auth) {
         return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
+    }
+
+    if (!hasRequireRoles) {
+        return <Navigate to={RoutePath.forbidden} state={{ from: location }} replace />;
     }
 
     return children;

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import ListView from 'shared/assets/icons/list_icon.svg';
@@ -25,7 +24,7 @@ const viewTypes = [
         icon: ListView,
     },
 ];
-export const ArticleViewSelector: FC<ArticleViewSelectorProps> = (props) => {
+export const ArticleViewSelector = (props: ArticleViewSelectorProps) => {
     const { t } = useTranslation();
     const {
         className,

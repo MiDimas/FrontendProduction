@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ProfileCard } from 'entities/Profile';
 import { useSelector } from 'react-redux';
@@ -27,10 +27,9 @@ import { getProfileError } from '../../model/selectors/getProfileError/getProfil
 
 interface EditableProfileCardProps {
     className?: string;
-
     id?: string;
 }
-export const EditableProfileCard: FC<EditableProfileCardProps> = (props) => {
+export const EditableProfileCard = (props: EditableProfileCardProps) => {
     const {
         className,
         id,

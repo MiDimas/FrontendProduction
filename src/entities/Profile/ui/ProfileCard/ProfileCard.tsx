@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
@@ -26,7 +25,7 @@ interface ProfileCardProps {
     onChangeCurrency?: (value: Currency) => void;
     onChangeCountry?: (value: Country) => void;
 }
-export const ProfileCard: FC<ProfileCardProps> = (props) => {
+export const ProfileCard = (props:ProfileCardProps) => {
     const { t } = useTranslation('profile');
     const {
         className,
