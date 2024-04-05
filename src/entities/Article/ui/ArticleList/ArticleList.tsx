@@ -73,7 +73,11 @@ export const ArticleList = (props: ArticleListProps) => {
             key={article.id}
             className={cls.card}
             target={target}
-            onClickItem={() => dispatch(scrollRestoreAction.setVirtuosoScrollIndex({ path: pathname, index }))}
+            onClickItem={
+                virtualized
+                    ? () => dispatch(scrollRestoreAction.setVirtuosoScrollIndex({ path: pathname, index }))
+                    : () => {}
+            }
         />
     );
     const skeleton = useCallback(() => (

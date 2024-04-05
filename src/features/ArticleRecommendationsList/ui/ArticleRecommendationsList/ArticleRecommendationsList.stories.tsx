@@ -9,6 +9,7 @@ const meta: Meta<typeof ArticleRecommendationsList> = {
     component: ArticleRecommendationsList,
     argTypes: {
     },
+    decorators: [StoreDecorator({})],
 };
 
 export default meta;
@@ -20,5 +21,5 @@ export const ArticleRecommendationsListLight: Story = {
 };
 export const ArticleRecommendationsListDark: Story = {
     args: {},
-    decorators: [StoreDecorator({}), ThemeDecorator(Theme.DARK)],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
