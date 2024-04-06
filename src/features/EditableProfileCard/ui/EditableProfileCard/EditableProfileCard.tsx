@@ -43,7 +43,7 @@ export const EditableProfileCard = (props: EditableProfileCardProps) => {
     const error = useSelector(getProfileError);
     const dispatch = useAppDispatch();
     useInitialEffect(() => {
-        if (id)dispatch(fetchProfileData(id));
+        dispatch(fetchProfileData(id));
     });
 
     const validateErrorTranslates: ValidateErrorTranslates = {
@@ -78,10 +78,6 @@ export const EditableProfileCard = (props: EditableProfileCardProps) => {
     const onChangeCountry = useCallback((value: Country) => {
         dispatch(profileAction.updateProfile({ country: value }));
     }, [dispatch]);
-
-    if (!id) {
-        return <Text text={t('Профиль с таким id не найден')} />;
-    }
 
     if (authData?.id !== id) {
         return <ProfileCard data={data} isLoading={isLoading} error={error} readonly />;

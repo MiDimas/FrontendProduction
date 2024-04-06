@@ -7,7 +7,7 @@ import { ArticleBlockType } from 'entities/Article/model/types/article';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 const meta: Meta<typeof ArticleDetailsPage> = {
-    title: 'pages/ArticleDetailsPage',
+    title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
     component: ArticleDetailsPage,
     argTypes: {
     },
