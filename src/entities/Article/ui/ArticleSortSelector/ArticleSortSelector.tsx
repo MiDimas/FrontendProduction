@@ -4,7 +4,8 @@ import { Select, SelectOption } from 'shared/ui/Select/Select';
 import { useMemo } from 'react';
 import { SortOrder } from 'shared/types';
 import { VStack } from 'shared/ui/Stack';
-import { ArticleSortField } from '../../model/types/article';
+
+import { ArticleSortField } from '../..';
 
 interface ArticleSortSelectorProps {
     className?: string;

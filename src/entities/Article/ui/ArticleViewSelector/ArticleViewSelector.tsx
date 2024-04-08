@@ -5,8 +5,8 @@ import TilesView from 'shared/assets/icons/tiles_icon.svg';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { HStack } from 'shared/ui/Stack';
+import { ArticleView } from '../../model/consts/articleConsts';
 import cls from './ArticleViewSelector.module.scss';
-import { ArticleView } from '../../model/types/article';
 
 interface ArticleViewSelectorProps {
     className?: string;

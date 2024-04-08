@@ -19,11 +19,12 @@ import {
     EditableProfileCardHeader,
 } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
-import { ValidateErrorTranslates, ValidateProfileError } from '../../model/types/ProfileSchema';
+import { ValidateErrorTranslates } from '../../model/types/ProfileSchema';
 import {
     getProfileIsLoading,
 } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
+import { ValidateProfileError } from '../../model/consts/editableProfileCardConsts';
 
 interface EditableProfileCardProps {
     className?: string;

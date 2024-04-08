@@ -2,13 +2,13 @@ import { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+
 import {
     Article,
-    ArticleView,
-    ArticleBlockType,
-    ArticleType,
+
 } from '../../model/types/article';
 import { ArticleList } from './ArticleList';
+import { ArticleView, ArticleBlockType, ArticleType } from '../../model/consts/articleConsts';
 
 const meta: Meta<typeof ArticleList> = {
     title: 'entities/Article/ArticleList',

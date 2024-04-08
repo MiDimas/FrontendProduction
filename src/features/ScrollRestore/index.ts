@@ -1,4 +1,4 @@
-export { ScrollSchema, ScrollRestoreSchema } from './model/types/ScrollRestoreSchema';
+export type { ScrollSchema, ScrollRestoreSchema } from './model/types/ScrollRestoreSchema';
 export { scrollRestoreAction, scrollRestoreReducer } from './model/slice/ScrollRestoreSlice';
 export {
     getScrollRestoreScrollByPath,

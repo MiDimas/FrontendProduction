@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/StoreProvider';
+import { ValidateProfileError } from '../../consts/editableProfileCardConsts';
 import { getProfileValidateError } from './getProfileValidateError';
-import { ValidateProfileError } from '../../types/ProfileSchema';
 
 describe('getProfileReadonly', () => {
     test('Возвращаем состояние только для чтения', () => {
