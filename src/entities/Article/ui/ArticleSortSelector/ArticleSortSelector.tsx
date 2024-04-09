@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 import { SortOrder } from 'shared/types';
 import { VStack } from 'shared/ui/Stack';
 
-import { ArticleSortField } from '../..';
+import { ArticleSortField } from '../../model/consts/articleConsts';
 
 interface ArticleSortSelectorProps {
     className?: string;
