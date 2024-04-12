@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useState } from 'react';
 import { Page } from 'widgets/Page/Page';
-import { ListBox } from 'shared/ui/ListBox/ListBox';
+import { ListBox } from 'shared/ui/Popups';
 
 const MainPage = memo(() => {
     const { t } = useTranslation('main');

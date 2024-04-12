@@ -5,6 +5,8 @@ import { Fragment, ReactNode } from 'react';
 import { ListBoxOptionsDirection } from 'shared/types';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import cls from './Dropdown.module.scss';
+import { mapDirectionClasses } from '../../styles/consts';
+import popups from '../../styles/popups.module.scss';
 
 export interface DropdownItem {
     disabled?: boolean;
@@ -18,12 +20,7 @@ interface DropdownProps {
     trigger?: ReactNode;
     direction?: ListBoxOptionsDirection;
 }
-const mapDirectionClasses: Record<ListBoxOptionsDirection, string> = {
-    'bottom right': cls.optionBottomRight,
-    'top right': cls.optionTopRight,
-    'bottom left': cls.optionBottomLeft,
-    'top left': cls.optionTopLeft,
-};
+
 export const Dropdown = (props: DropdownProps) => {
     const { t } = useTranslation();
     const {
@@ -34,8 +31,8 @@ export const Dropdown = (props: DropdownProps) => {
     } = props;
     /* eslint-disable i18next/no-literal-string */
     return (
-        <Menu as="div" className={classNames(cls.Dropdown, {}, [className])}>
-            <Menu.Button className={cls.button}>
+        <Menu as="div" className={classNames(popups.popup, {}, [className])}>
+            <Menu.Button className={popups.button}>
                 {trigger || <div className={cls.buttonPlate}>{t('Меню')}</div> }
             </Menu.Button>
             <Menu.Items className={classNames(cls.menu, {}, [mapDirectionClasses[direction]])}>
@@ -46,7 +43,7 @@ export const Dropdown = (props: DropdownProps) => {
                             onClick={item.onClick}
                             type="button"
                             disabled={item.disabled}
-                            className={classNames(cls.item, { [cls.active]: active }, [])}
+                            className={classNames(cls.item, { [popups.active]: active }, [])}
                         >
                             {item.content}
                         </button>

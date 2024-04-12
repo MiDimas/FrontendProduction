@@ -5,6 +5,8 @@ import { Button } from 'shared/ui/Button/Button';
 import { HStack } from 'shared/ui/Stack';
 import { ListBoxOptionsDirection } from 'shared/types';
 import cls from './ListBox.module.scss';
+import { mapDirectionClasses } from '../../styles/consts';
+import popups from '../../styles/popups.module.scss';
 
 type ListBoxItem = {
     value:string;
@@ -21,12 +23,7 @@ interface ListBoxProps<T extends string> {
     direction?: ListBoxOptionsDirection;
     label?: string;
 }
-const mapDirectionClasses: Record<ListBoxOptionsDirection, string> = {
-    'bottom right': cls.optionBottomRight,
-    'top right': cls.optionTopRight,
-    'bottom left': cls.optionBottomLeft,
-    'top left': cls.optionTopLeft,
-};
+
 export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
     const {
         className,
@@ -58,12 +55,12 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                 value={value}
                 onChange={onChange}
                 as="div"
-                className={classNames(cls.ListBox, {}, [className])}
+                className={classNames(popups.popup, {}, [className])}
                 disabled={readonly}
                 id={defaultValue}
             >
                 <HListbox.Button
-                    className={cls.trigger}
+                    className={popups.button}
                     as="div"
                     ref={ref}
                 >
@@ -88,8 +85,8 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                             {({ active, selected, disabled }) => (
                                 <li
                                     className={classNames(cls.item, {
-                                        [cls.active]: active,
-                                        [cls.disabled]: disabled,
+                                        [popups.active]: active,
+                                        [popups.disabled]: disabled,
                                     }, [])}
                                 >
                                     {selected && '***'}
