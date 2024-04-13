@@ -8,10 +8,12 @@ import { getUserAuthData, isUserAdmin, userActions } from 'entities/User';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Dropdown } from 'shared/ui/Popups';
+import { Dropdown, Popover } from 'shared/ui/Popups';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { HStack } from 'shared/ui/Stack';
 import { isUserManager } from 'entities/User/model/selectors/roles/rolesSelectors';
+import NotificationIcon from 'shared/assets/icons/notification_icon.svg';
+import { Icon } from 'shared/ui/Icon/Icon';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -63,25 +65,37 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     >
                         {t('Создать статью')}
                     </AppLink>
-                    <Dropdown
-                        items={[
-                            ...(isAdminPanel ? [{
-                                content: t('Админка'),
-                                href: RoutePath.admin_panel,
-                            }] : []),
-                            {
-                                content: t('Профиль'),
-                                href: RoutePath.profile + authData.id,
-                            },
-                            {
-                                content: t('Выйти'),
-                                onClick: onLogout,
-                            },
-                        ]}
-                        trigger={<Avatar size={30} src={authData.avatar} />}
-                        className={cls.dropdown}
-                        direction="bottom left"
-                    />
+                    <HStack
+                        gap="16"
+                        align="center"
+                    >
+                        <Popover
+                            direction="bottom left"
+                            trigger={<Icon Svg={NotificationIcon} invertedColor />}
+                        >
+                            {t('Пусто')}
+                        </Popover>
+                        <Dropdown
+                            items={[
+                                ...(isAdminPanel ? [{
+                                    content: t('Админка'),
+                                    href: RoutePath.admin_panel,
+                                }] : []),
+                                {
+                                    content: t('Профиль'),
+                                    href: RoutePath.profile + authData.id,
+                                },
+                                {
+                                    content: t('Выйти'),
+                                    onClick: onLogout,
+                                },
+                            ]}
+                            trigger={<Avatar size={30} src={authData.avatar} />}
+                            className={cls.dropdown}
+                            direction="bottom left"
+                        />
+                    </HStack>
+
                 </HStack>
 
             </header>

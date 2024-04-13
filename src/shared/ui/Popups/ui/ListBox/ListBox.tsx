@@ -60,7 +60,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                 id={defaultValue}
             >
                 <HListbox.Button
-                    className={popups.button}
+                    className={popups.trigger}
                     as="div"
                     ref={ref}
                 >

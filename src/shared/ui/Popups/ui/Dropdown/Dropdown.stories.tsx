@@ -4,7 +4,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { Dropdown } from './Dropdown';
 
 const meta: Meta<typeof Dropdown> = {
-    title: 'shared/Dropdown',
+    title: 'shared/Popups/Dropdown',
     component: Dropdown,
     argTypes: {
     },

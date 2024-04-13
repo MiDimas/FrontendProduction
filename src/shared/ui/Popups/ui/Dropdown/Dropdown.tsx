@@ -32,7 +32,7 @@ export const Dropdown = (props: DropdownProps) => {
     /* eslint-disable i18next/no-literal-string */
     return (
         <Menu as="div" className={classNames(popups.popup, {}, [className])}>
-            <Menu.Button className={popups.button}>
+            <Menu.Button className={popups.trigger}>
                 {trigger || <div className={cls.buttonPlate}>{t('Меню')}</div> }
             </Menu.Button>
             <Menu.Items className={classNames(cls.menu, {}, [mapDirectionClasses[direction]])}>

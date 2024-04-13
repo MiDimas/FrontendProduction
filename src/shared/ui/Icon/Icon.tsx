@@ -4,12 +4,14 @@ import cls from './Icon.module.scss';
 
 export enum IconFilling {
     FILL = 'fill',
-    STROKE = 'stroke'
+    STROKE = 'stroke',
+    BOTH = 'both'
 }
 interface IconProps {
     className?: string;
     Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
     colorFilling?: IconFilling;
+    invertedColor?: boolean;
 }
 
 export const Icon = (props: IconProps) => {
@@ -17,10 +19,11 @@ export const Icon = (props: IconProps) => {
         className,
         Svg,
         colorFilling = IconFilling.FILL,
+        invertedColor,
     } = props;
     return (
         <Svg className={
-            classNames(cls.Icon, {}, [cls[colorFilling], className])
+            classNames(cls.Icon, { [cls.inverted]: invertedColor }, [cls[colorFilling], className])
         }
         />
     );
