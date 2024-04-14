@@ -14,6 +14,7 @@ import { HStack } from 'shared/ui/Stack';
 import { isUserManager } from 'entities/User/model/selectors/roles/rolesSelectors';
 import NotificationIcon from 'shared/assets/icons/notification_icon.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { NotificationList } from 'entities/Notification';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -73,7 +74,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                             direction="bottom left"
                             trigger={<Icon Svg={NotificationIcon} invertedColor />}
                         >
-                            {t('Пусто')}
+                            <NotificationList />
                         </Popover>
                         <Dropdown
                             items={[
