@@ -74,7 +74,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                             direction="bottom left"
                             trigger={<Icon Svg={NotificationIcon} invertedColor />}
                         >
-                            <NotificationList />
+                            <NotificationList className={cls.notifications} />
                         </Popover>
                         <Dropdown
                             items={[
