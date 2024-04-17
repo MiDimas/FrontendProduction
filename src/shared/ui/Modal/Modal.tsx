@@ -4,6 +4,7 @@ import {
 } from 'react';
 import { Portal } from 'shared/ui/Portal/Portal';
 import { HStack } from 'shared/ui/Stack';
+import { Overlay } from 'shared/ui/Overlay/Overlay';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -39,9 +40,7 @@ export const Modal = (props : ModalProps) => {
             onClose();
         }
     }, [onClose]);
-    const stopProp = (e: MouseEvent) => {
-        e.stopPropagation();
-    };
+
     const escapeClose = useCallback((e: KeyboardEvent) => {
         if (e.key === 'Escape') {
             closeHandler();
@@ -62,39 +61,34 @@ export const Modal = (props : ModalProps) => {
 
     if (noPortal) {
         return (
-            <div className={classNames(cls.Modal, mods, [className])}>
-                <HStack
-                    onClick={closeHandler}
-                    justify="center"
-                    align="center"
-                    max
-                    height="100%"
-                    className={cls.overlay}
-                >
-                    <div onClick={stopProp} className={cls.content}>{children}</div>
-                </HStack>
-            </div>
+            <HStack
+                justify="center"
+                align="center"
+                max
+                height="100%"
+                className={classNames(cls.Modal, mods, [className])}
+            >
+                <Overlay onClick={closeHandler} />
+                <div className={cls.content}>{children}</div>
+            </HStack>
         );
     }
     return (
         <Portal>
-            <div className={classNames(cls.Modal, mods)}>
-                <HStack
-                    onClick={closeHandler}
-                    justify="center"
-                    align="center"
-                    max
-                    height="100%"
-                    className={cls.overlay}
+            <HStack
+                justify="center"
+                align="center"
+                max
+                height="100%"
+                className={classNames(cls.Modal, mods)}
+            >
+                <Overlay onClick={closeHandler} />
+                <div
+                    className={classNames(cls.content, {}, [className])}
                 >
-                    <div
-                        onClick={stopProp}
-                        className={classNames(cls.content, {}, [className])}
-                    >
-                        {children}
-                    </div>
-                </HStack>
-            </div>
+                    {children}
+                </div>
+            </HStack>
         </Portal>
     );
 };
