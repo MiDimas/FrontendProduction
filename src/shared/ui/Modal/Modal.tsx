@@ -1,6 +1,6 @@
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import {
-    ReactNode, MouseEvent, useEffect, useCallback, useState,
+    ReactNode, useEffect, useCallback, useState,
 } from 'react';
 import { Portal } from 'shared/ui/Portal/Portal';
 import { HStack } from 'shared/ui/Stack';
