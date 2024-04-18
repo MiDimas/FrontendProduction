@@ -9,6 +9,8 @@
     pointer-events: none;
     z-index: -1;
     transition: 0.4s all ease;
+    display: flex;
+    align-items: flex-end;
 }
 
 .content {
@@ -20,8 +22,8 @@
     width: 100%;
     height: 70%;
     min-height: 100px;
-    position: absolute;
     bottom: 0;
+    position: relative;
     overflow-x: hidden;
     overflow-y: auto;
 }
