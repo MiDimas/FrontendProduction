@@ -39,7 +39,7 @@ export const Modal = (props : ModalProps) => {
 
     const mods: Mods = {
         [cls.opened]: isOpen && !isOpening,
-        [cls.isClosing]: isClosing,
+        [cls.closing]: isClosing,
     };
 
     if (lazy && !isMounted) {

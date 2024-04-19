@@ -37,3 +37,11 @@
         transform: translateY(0%);
     }
 }
+
+.closing {
+    opacity: 0.5;
+
+    .content {
+        transform: translateY(100%);
+    }
+}
