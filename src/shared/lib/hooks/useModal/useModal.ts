@@ -52,7 +52,7 @@ export function useModal(props: UseModalProps) {
             setIsOpening(true);
             timer.current = setTimeout(() => {
                 setIsOpening(false);
-            });
+            }, 50);
         }
     }, [isOpen]);
 
