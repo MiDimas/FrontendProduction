@@ -5,6 +5,7 @@ import {
 import { Portal } from 'shared/ui/Portal/Portal';
 import { HStack } from 'shared/ui/Stack';
 import { Overlay } from 'shared/ui/Overlay/Overlay';
+import { useModal } from 'shared/lib/hooks/useModal/useModal';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -25,35 +26,21 @@ export const Modal = (props : ModalProps) => {
         noPortal,
         lazy = false,
     } = props;
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-        if (isOpen) {
-            setIsMounted(true);
-        }
-    }, [isOpen]);
+
+    const {
+        isClosing,
+        isOpening,
+        isMounted,
+        close,
+    } = useModal({
+        onClose,
+        isOpen,
+    });
 
     const mods: Mods = {
-        [cls.opened]: isOpen,
+        [cls.opened]: isOpen && !isOpening,
+        [cls.isClosing]: isClosing,
     };
-    const closeHandler = useCallback(() => {
-        if (onClose) {
-            onClose();
-        }
-    }, [onClose]);
-
-    const escapeClose = useCallback((e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-            closeHandler();
-        }
-    }, [closeHandler]);
-    useEffect(() => {
-        if (isOpen) {
-            window.addEventListener('keydown', escapeClose);
-        }
-        return () => {
-            window.removeEventListener('keydown', escapeClose);
-        };
-    }, [isOpen, escapeClose]);
 
     if (lazy && !isMounted) {
         return null;
@@ -68,7 +55,7 @@ export const Modal = (props : ModalProps) => {
                 height="100%"
                 className={classNames(cls.Modal, mods, [className])}
             >
-                <Overlay onClick={closeHandler} />
+                <Overlay onClick={close} />
                 <div className={cls.content}>{children}</div>
             </HStack>
         );
@@ -82,7 +69,7 @@ export const Modal = (props : ModalProps) => {
                 height="100%"
                 className={classNames(cls.Modal, mods)}
             >
-                <Overlay onClick={closeHandler} />
+                <Overlay onClick={close} />
                 <div
                     className={classNames(cls.content, {}, [className])}
                 >

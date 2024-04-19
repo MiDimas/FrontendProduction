@@ -28,3 +28,11 @@
         transform: scale(1);
     }
 }
+
+.isClosing {
+    opacity: 0.5;
+
+    .content {
+        transform: scale(0.2);
+    }
+}
