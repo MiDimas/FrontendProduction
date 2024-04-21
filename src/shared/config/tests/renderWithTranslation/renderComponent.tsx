@@ -5,7 +5,7 @@ import i18nForTest from 'shared/config/i18n/i18nForTest';
 import { MemoryRouter } from 'react-router-dom';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { ReducersList } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 export interface RenderComponentOption {
     route?: string;

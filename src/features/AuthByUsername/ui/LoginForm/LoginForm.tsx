@@ -8,7 +8,7 @@ import { Text, TextTheme } from 'shared/ui/Text/Text';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { VStack } from 'shared/ui/Stack';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';

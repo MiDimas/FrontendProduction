@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { EditableProfileCard, profileReducer } from 'features/EditableProfileCard';
 import { useParams } from 'react-router-dom';
 import { Page } from 'widgets/Page/Page';
