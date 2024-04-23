@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import ListView from 'shared/assets/icons/list_icon.svg';
-import TilesView from 'shared/assets/icons/tiles_icon.svg';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Icon } from 'shared/ui/Icon/Icon';
-import { HStack } from 'shared/ui/Stack';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import ListView from '@/shared/assets/icons/list_icon.svg';
+import TilesView from '@/shared/assets/icons/tiles_icon.svg';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import { HStack } from '@/shared/ui/Stack';
 import { ArticleView } from '../../model/consts/articleConsts';
 import cls from './ArticleViewSelector.module.scss';
 

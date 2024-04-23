@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Menu } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
-import { ListBoxOptionsDirection } from 'shared/types';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ListBoxOptionsDirection } from '@/shared/types';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import cls from './Dropdown.module.scss';
 import { mapDirectionClasses } from '../../styles/consts';
 import popups from '../../styles/popups.module.scss';

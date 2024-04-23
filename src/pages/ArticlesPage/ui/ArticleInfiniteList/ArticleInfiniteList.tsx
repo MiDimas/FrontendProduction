@@ -1,11 +1,11 @@
 import {
     FC, memo, useCallback,
 } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { ArticleList } from 'entities/Article';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { ArticleList } from '@/entities/Article';
 import { getArticles } from '../../model/slices/articlesPageSlice';
 import {
     getArticlesPageIsLoading,

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import MainIcon from 'shared/assets/icons/home_icon.svg';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import MainIcon from '@/shared/assets/icons/home_icon.svg';
 import { SidebarItem } from './SidebarItem';
 
 const meta: Meta<typeof SidebarItem> = {

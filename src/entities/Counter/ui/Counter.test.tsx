@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 import {
     renderComponent,
-} from 'shared/config/tests/renderWithTranslation/renderComponent';
+} from '@/shared/config/tests/renderWithTranslation/renderComponent';
 import { Counter } from './Counter';
 
 describe('Проверка компонента Sidebar', () => {

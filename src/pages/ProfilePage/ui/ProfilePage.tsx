@@ -1,12 +1,12 @@
 import { memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { useParams } from 'react-router-dom';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { EditableProfileCard, profileReducer } from 'features/EditableProfileCard';
-import { useParams } from 'react-router-dom';
-import { Page } from 'widgets/Page/Page';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
+import { Page } from '@/widgets/Page/Page';
 import cls from './ProfilePage.module.scss';
 
 const reducers: ReducersList = {

@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { Icon, IconFilling } from 'shared/ui/Icon/Icon';
-import NotificationIcon from 'shared/assets/icons/notification_icon.svg';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { Icon, IconFilling } from '@/shared/ui/Icon/Icon';
+import NotificationIcon from '@/shared/assets/icons/notification_icon.svg';
 import { Popover } from './Popover';
 
 const meta: Meta<typeof Popover> = {

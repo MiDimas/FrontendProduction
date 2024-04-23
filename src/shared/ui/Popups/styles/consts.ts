@@ -1,4 +1,4 @@
-import { ListBoxOptionsDirection } from 'shared/types';
+import { ListBoxOptionsDirection } from '@/shared/types';
 import cls from './popups.module.scss';
 
 export const mapDirectionClasses: Record<ListBoxOptionsDirection, string> = {

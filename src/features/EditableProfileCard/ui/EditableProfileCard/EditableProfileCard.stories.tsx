@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
 import { EditableProfileCard } from './EditableProfileCard';
 
 const meta: Meta<typeof EditableProfileCard> = {
