@@ -7,7 +7,7 @@ export enum IconFilling {
     STROKE = 'stroke',
     BOTH = 'both'
 }
-interface IconProps {
+interface IconProps extends React.SVGProps<SVGSVGElement>{
     className?: string;
     Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
     colorFilling?: IconFilling;
@@ -20,11 +20,14 @@ export const Icon = (props: IconProps) => {
         Svg,
         colorFilling = IconFilling.FILL,
         invertedColor,
+        ...otherProps
     } = props;
     return (
-        <Svg className={
-            classNames(cls.Icon, { [cls.inverted]: invertedColor }, [cls[colorFilling], className])
-        }
+        <Svg
+            className={
+                classNames(cls.Icon, { [cls.inverted]: invertedColor }, [cls[colorFilling], className])
+            }
+            {...otherProps}
         />
     );
 };
