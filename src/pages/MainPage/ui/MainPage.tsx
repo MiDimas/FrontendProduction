@@ -3,6 +3,7 @@ import { memo, useState } from 'react';
 import { Page } from '@/widgets/Page/Page';
 import { ListBox } from '@/shared/ui/Popups';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
+import { RatingCard } from '@/entities/Rating/ui/RatingCard/RatingCard';
 
 const MainPage = memo(() => {
     const { t } = useTranslation('main');
@@ -28,6 +29,7 @@ const MainPage = memo(() => {
             <div>{t('Главная Страница')}</div>
             <div>{t('Главная Страница')}</div>
             <div>{t('Главная Страница')}</div>
+            <RatingCard hasFeedback />
         </Page>
     );
 });
