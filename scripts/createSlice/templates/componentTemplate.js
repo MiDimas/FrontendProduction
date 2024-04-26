@@ -1,7 +1,7 @@
 const interfaceAlias = 'interface';
 module.exports = (componentName) => (
     `import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './${componentName}.module.scss';
 
