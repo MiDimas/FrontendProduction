@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import StarIcon from '@/shared/assets/icons/star_icon.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -12,7 +12,7 @@ interface StarRatingProps {
 }
 
 const stars = [1, 2, 3, 4, 5];
-export const StarRating = (props: StarRatingProps) => {
+export const StarRating = memo((props: StarRatingProps) => {
     const {
         className,
         onSelect,
@@ -67,4 +67,4 @@ export const StarRating = (props: StarRatingProps) => {
             }
         </div>
     );
-};
+});

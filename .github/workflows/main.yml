@@ -36,3 +36,4 @@ jobs:
       - name: UI testing
         run: npm run test:ui:ci
         if: always()
+Как вам статья?: Как вам статья?
