@@ -21,6 +21,7 @@ interface RatingCardProps {
     feedBackTitle?: string;
     onAccept?: (starsCount:number, feedback?:string)=>void;
     onCancel?: (starsCount: number) => void;
+    rate?: number;
 }
 
 export const RatingCard = memo((props: RatingCardProps) => {
@@ -32,10 +33,11 @@ export const RatingCard = memo((props: RatingCardProps) => {
         feedBackTitle,
         onAccept,
         onCancel,
+        rate = 0,
     } = props;
 
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [starsCount, setStarsCount] = useState(0);
+    const [starsCount, setStarsCount] = useState(rate);
     const [feedback, setFeedback] = useState('');
 
     const onClose = useCallback(() => {
