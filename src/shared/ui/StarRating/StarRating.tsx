@@ -20,7 +20,7 @@ export const StarRating = memo((props: StarRatingProps) => {
         selected = 0,
     } = props;
 
-    const [currentNum, setCurrentNum] = useState(0);
+    const [currentNum, setCurrentNum] = useState(selected);
 
     const onHovered = useCallback((value: number) => {
         if (!selected) {

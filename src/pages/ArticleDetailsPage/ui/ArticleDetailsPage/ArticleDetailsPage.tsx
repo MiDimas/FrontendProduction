@@ -10,6 +10,8 @@ import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetails
 import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { ArticleRating } from '@/features/ArticleRating';
+import { VStack } from '@/shared/ui/Stack';
 
 interface ArticlesDetailsPageProps {
     className?: string;
@@ -30,9 +32,12 @@ const ArticleDetailsPage = (props:ArticlesDetailsPageProps) => {
             }
             >
                 <ArticleDetailsPageHeader />
-                <ArticleDetails id={id} />
-                <ArticleRecommendationsList />
-                <ArticleDetailsComments id={id} />
+                <VStack max gap="32">
+                    <ArticleDetails id={id} />
+                    <ArticleRating articleId={id} />
+                    <ArticleRecommendationsList />
+                    <ArticleDetailsComments id={id} />
+                </VStack>
             </Page>
         </DynamicModuleLoader>
     );

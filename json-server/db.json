@@ -536,5 +536,21 @@
       "username": "spider",
       "avatar": "https://png.pngtree.com/png-vector/20200615/ourmid/pngtree-hacker-wearing-hoodie-and-using-laptop-computer-freak-hacking-and-malware-png-image_2256760.jpg"
     }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Норм статья, но чего то не хватает",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 2,
+      "feedback": "Не интересно",
+      "userId": "1",
+      "articleId": "2"
+    }
   ]
 }
