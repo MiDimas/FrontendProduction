@@ -75,7 +75,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
     return (
         <Card className={classNames(cls.RatingCard, {}, [className])}>
             <VStack align="center" gap="8" max>
-                <Text title={title || t('Поставьте оценку')} />
+                <Text title={starsCount ? t('Спасибо за оценку') : title || t('Поставьте оценку')} />
                 <StarRating selected={starsCount} onSelect={onSelect} />
                 { hasFeedback
                     && (
