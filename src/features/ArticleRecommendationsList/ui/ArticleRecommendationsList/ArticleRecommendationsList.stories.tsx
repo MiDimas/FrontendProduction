@@ -32,7 +32,7 @@ const meta: Meta<typeof ArticleRecommendationsList> = {
     parameters: {
         mockData: [
             {
-                url: 'http://localhost:6006/articles?_limit=3 ',
+                url: 'http://localhost:6006/articles?_limit=3',
                 method: 'GET',
                 status: 200,
                 response: [
