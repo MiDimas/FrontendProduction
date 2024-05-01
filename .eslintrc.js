@@ -55,7 +55,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
-        'midi-plugin-import/path-check': 2,
+        'midi-plugin-import/path-check': [2, { aliasAbsolutePath: '@' }],
     },
     globals: {
         __IS_DEV__: true,
