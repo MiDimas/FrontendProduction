@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useState } from 'react';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 import { ListBox } from '@/shared/ui/Popups';
 
 import { RatingCard } from '@/entities/Rating';

@@ -6,7 +6,7 @@ import {
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 import cls from './ProfilePage.module.scss';
 
 const reducers: ReducersList = {
