@@ -11,4 +11,3 @@ export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
 export {
     ArticleView, ArticleType, ArticleSortField, ArticleBlockType,
 } from './model/consts/articleConsts';
-export { articleDetailsReducer } from './model/slice/articleDetailsSlice';
