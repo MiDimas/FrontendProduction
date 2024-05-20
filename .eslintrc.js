@@ -56,7 +56,16 @@ module.exports = {
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
         'midi-plugin-import/path-check': [2, { aliasAbsolutePath: '@' }],
-        'midi-plugin-import/public-api-imports': [2, { aliasAbsolutePath: '@' }],
+        'midi-plugin-import/public-api-imports': [2, {
+            aliasAbsolutePath: '@',
+            testFilePatterns: [
+                '**/*.test.ts',
+                '**/*.test.tsx',
+                '**/*.stories.ts',
+                '**/*.stories.tsx',
+                '**/StoreDecorator.tsx',
+            ],
+        }],
         'midi-plugin-import/layer-imports': [1, { aliasAbsolutePath: '@' }],
     },
     globals: {
