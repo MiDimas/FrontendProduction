@@ -3,8 +3,8 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '@/app/providers/ThemeProvider';
 import { EditableProfileCard } from './EditableProfileCard';
+import { Theme } from '@/shared/const/theme';
 
 const meta: Meta<typeof EditableProfileCard> = {
     title: 'features/EditableProfileCard',

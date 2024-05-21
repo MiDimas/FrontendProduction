@@ -3,7 +3,7 @@ import { useDispatch, useStore } from 'react-redux';
 import { Reducer } from '@reduxjs/toolkit';
 import {
     ReduxStoreWithManger, StateSchemaKey,
-} from '@/app/providers/StoreProvider/config/StateSchema';
+} from '@/app/providers/StoreProvider';
 
 export type ReducersList = {
     [name in StateSchemaKey]?: Reducer

@@ -66,7 +66,10 @@ module.exports = {
                 '**/StoreDecorator.tsx',
             ],
         }],
-        'midi-plugin-import/layer-imports': [1, { aliasAbsolutePath: '@' }],
+        'midi-plugin-import/layer-imports': [2, {
+            aliasAbsolutePath: '@',
+            ignorePatterns: ['**/StoreProvider', '**/testing', '**/ScrollRestore'],
+        }],
     },
     globals: {
         __IS_DEV__: true,
