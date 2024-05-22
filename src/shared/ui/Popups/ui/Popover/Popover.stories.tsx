@@ -4,6 +4,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Icon, IconFilling } from '@/shared/ui/Icon/Icon';
 import NotificationIcon from '@/shared/assets/icons/notification_icon.svg';
 import { Popover } from './Popover';
+import { Theme } from '@/shared/const/theme';
 
 const meta: Meta<typeof Popover> = {
     title: 'shared/Popups/Popover',

@@ -8,6 +8,7 @@ import {
 } from '../../model/types/article';
 import { ArticleList } from './ArticleList';
 import { ArticleView, ArticleBlockType, ArticleType } from '../../model/consts/articleConsts';
+import { Theme } from '@/shared/const/theme';
 
 const meta: Meta<typeof ArticleList> = {
     title: 'entities/Article/ArticleList',

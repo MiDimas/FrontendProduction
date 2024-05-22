@@ -3,6 +3,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { ArticleBlockType } from '../../model/consts/articleConsts';
 import { ArticleCodeBlock } from '../../model/types/article';
 import { ArticleCodeBlockComponent } from './ArticleCodeBlockComponent';
+import { Theme } from '@/shared/const/theme';
 
 const meta: Meta<typeof ArticleCodeBlockComponent> = {
     title: 'entities/Article/ArticleCodeBlockComponent',

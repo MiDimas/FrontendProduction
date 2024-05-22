@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { ArticleView } from '../../model/consts/articleConsts';
 import { ArticleViewSelector } from './ArticleViewSelector';
+import { Theme } from '@/shared/const/theme';
 
 const meta: Meta<typeof ArticleViewSelector> = {
     title: 'entities/Article/ArticleViewSelector',

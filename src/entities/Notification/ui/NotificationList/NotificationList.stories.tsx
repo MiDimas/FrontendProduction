@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { NotificationList } from './NotificationList';
+import { Theme } from '@/shared/const/theme';
 
 const notification = {
     id: '1',

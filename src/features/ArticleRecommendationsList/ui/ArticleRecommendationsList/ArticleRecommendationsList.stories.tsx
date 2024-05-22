@@ -3,6 +3,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Article, ArticleType } from '@/entities/Article';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
+import { Theme } from '@/shared/const/theme';
 
 const article: Article = {
     id: '1',
