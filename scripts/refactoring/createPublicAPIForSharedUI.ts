@@ -17,6 +17,14 @@ function isAbsolute(value: string) {
 
 componentDirs?.forEach((directory) => {
     console.log(directory.getBaseName());
+    const indexPath = `${directory.getPath()}/index.ts`;
+    const indexFile = directory.getSourceFile(indexPath);
+    if (!indexFile) {
+        const sourceCode = `export * from './${directory.getBaseName()}';
+        `;
+        const file = directory.createSourceFile(indexPath, sourceCode, { overwrite: true });
+        file.save();
+    }
 });
 
 // sources.forEach((source) => {
