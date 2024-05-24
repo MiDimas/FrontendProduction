@@ -1,7 +1,7 @@
 import { Listbox as HListbox } from '@headlessui/react';
 import { Fragment, ReactNode, useRef } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { ListBoxOptionsDirection } from '@/shared/types';
 import cls from './ListBox.module.scss';

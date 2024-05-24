@@ -2,9 +2,9 @@ import {
     ReactNode, useEffect, useCallback, useState,
 } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import { Portal } from '@/shared/ui/Portal/Portal';
+import { Portal } from '@/shared/ui/Portal';
 import { HStack } from '@/shared/ui/Stack';
-import { Overlay } from '@/shared/ui/Overlay/Overlay';
+import { Overlay } from '@/shared/ui/Overlay';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import cls from './Modal.module.scss';
 

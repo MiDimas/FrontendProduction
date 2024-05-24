@@ -1,5 +1,5 @@
 import { memo, useCallback, useState } from 'react';
-import { Icon } from '@/shared/ui/Icon/Icon';
+import { Icon } from '@/shared/ui/Icon';
 import StarIcon from '@/shared/assets/icons/star_icon.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './StarRating.module.scss';

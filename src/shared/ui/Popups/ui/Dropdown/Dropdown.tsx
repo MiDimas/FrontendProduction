@@ -3,7 +3,7 @@ import { Menu } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ListBoxOptionsDirection } from '@/shared/types';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { AppLink } from '@/shared/ui/AppLink';
 import cls from './Dropdown.module.scss';
 import { mapDirectionClasses } from '../../styles/consts';
 import popups from '../../styles/popups.module.scss';

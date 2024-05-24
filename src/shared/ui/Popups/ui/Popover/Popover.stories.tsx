@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Icon, IconFilling } from '@/shared/ui/Icon/Icon';
+import { Icon, IconFilling } from '@/shared/ui/Icon';
 import NotificationIcon from '@/shared/assets/icons/notification_icon.svg';
 import { Popover } from './Popover';
 import { Theme } from '@/shared/const/theme';

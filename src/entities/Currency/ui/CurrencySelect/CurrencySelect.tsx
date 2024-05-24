@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { SelectOption } from '@/shared/ui/Select/Select';
+import { SelectOption } from '@/shared/ui/Select';
 import { ListBox } from '@/shared/ui/Popups';
 import { Currency } from '../../model/types/currency';
 
