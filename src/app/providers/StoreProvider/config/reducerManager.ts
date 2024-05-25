@@ -1,5 +1,5 @@
 import {
-    AnyAction, CombinedState, combineReducers, Reducer, ReducersMapObject,
+    AnyAction, combineReducers, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 import {
     ReducerManager, StateSchemaKey, StateSchema,

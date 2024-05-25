@@ -23,6 +23,7 @@ module.exports = {
         'i18next',
         'react-hooks',
         'midi-plugin-import',
+        'unused-imports',
     ],
     ignorePatterns: ['./node_modules/'],
     rules: {
@@ -55,6 +56,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
+        'unused-imports/no-unused-imports': 'error',
         'midi-plugin-import/path-check': [2, { aliasAbsolutePath: '@' }],
         'midi-plugin-import/public-api-imports': [2, {
             aliasAbsolutePath: '@',
