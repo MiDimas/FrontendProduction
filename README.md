@@ -43,3 +43,21 @@ file, you can put the name after space;
 - ``npm run prepare`` - starts to prepare pre-commit hooks on local machine after install the project; 
 - ``npm run generate:slice`` - starts generating FSD slice in the project. After space, put the layer name, and then 
 one more space to put the slice name.
+----
+
+## Architecture
+
+The architecture of the project is based on the FSD methodology.  
+
+You can get acquainted with the methodology [here](https://feature-sliced.design/).
+
+----
+
+## Working with translations
+
+In project uses the library - `i18next` to work with the translations.
+The translation files are stored in  `public/locales`   
+
+Documentation of the i18next are [here](https://www.i18next.com/).
+
+----
