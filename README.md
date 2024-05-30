@@ -58,6 +58,23 @@ You can get acquainted with the methodology [here](https://feature-sliced.design
 In project uses the library - `i18next` to work with the translations.
 The translation files are stored in  `public/locales`   
 
+For comfortable work, recommend installing the plugin `i18n support` in your editor. 
+
 Documentation of the i18next are [here](https://www.i18next.com/).
 
 ----
+
+## Tests
+
+In the project, 3 types of tests are used:
+1. Unit-tests on the `jest`. For running - `npm run test:unit`
+2. Tests components on the `React testing library`. For running - `npm run test:unit`
+3. Snapshot tests on the `loki`. For running `npm run test:ui`
+
+---
+
+## Linting
+
+In the project `eslint` is used to check typescript code and 
+`stylelint` is used for checking scss - files. 
+
