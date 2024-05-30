@@ -571,6 +571,30 @@
       "rate": 5,
       "feedback": "Класс",
       "id": "c1DN5As"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "rate": 5,
+      "id": "1X1XMDy"
+    },
+    {
+      "articleId": "12",
+      "userId": "1",
+      "rate": 5,
+      "id": "AN3mloW"
+    },
+    {
+      "articleId": "9",
+      "userId": "1",
+      "rate": 5,
+      "id": "M5V54qV"
+    },
+    {
+      "articleId": "11",
+      "userId": "1",
+      "rate": 5,
+      "id": "QhFozpq"
     }
   ]
 }
