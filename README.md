@@ -78,3 +78,10 @@ In the project, 3 types of tests are used:
 In the project `eslint` is used to check typescript code and 
 `stylelint` is used for checking scss - files. 
 
+A proprietary plugin `eslint-plugin-midi-plugin-import` is used to control architectural principles of the project.
+Documentation for the plugin and its rules is [here](https://github.com/MiDimas/eslint-plugin-midi-frontend-import-plugin).
+
+To run linting typescript code - `npm run lint:ts`  
+To run linting style code - `npm run lint:scss`
+
+----
