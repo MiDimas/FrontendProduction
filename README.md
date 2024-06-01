@@ -85,3 +85,37 @@ To run linting typescript code - `npm run lint:ts`
 To run linting style code - `npm run lint:scss`
 
 ----
+
+## Storybook
+
+There are storybook cases for the all ui-components in the project. 
+The requests to the server are mocking with `storybook-addon-mock`.
+
+The file with story-cases inside is next to component file.
+
+To run storybook `npm run storybook` - storybook is running on the `localhost` 
+with port `6006` in default.
+
+More details about storybook are [here](https://storybook.js.org/docs/get-started).
+
+----
+
+## Configuration of the project
+
+For development the project has two configs:
+1. Webpack - /[webpack.config.ts](webpack.config.ts)
+2. Vite - /[vite.config.ts](vite.config.ts)  
+
+Both code collectors are adapted to the project features.
+
+The webpack config is divided into several files that are located at [/config/build](config%2Fbuild)
+
+The `config` folder also contains configs for:
+1. Bable
+2. Storybook
+3. Jest
+
+The `scripts` folder contains scripts for refactoring, simplifying code writing, 
+generating reports, etc.
+
+----
