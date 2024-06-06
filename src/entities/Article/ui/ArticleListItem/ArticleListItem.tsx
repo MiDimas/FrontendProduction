@@ -16,7 +16,7 @@ import {
 import cls from './ArticleListItem.module.scss';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleBlockType, ArticleView } from '../../model/consts/articleConsts';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleDetails } from '@/shared/const/router';
 
 interface ArticleListItemProps {
     className?: string;
@@ -68,7 +68,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     {image}
                     <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
                     <HStack align="center" justify="between" max className={cls.footer}>
-                        <AppLink to={RoutePath.article_details + article.id} target={target}>
+                        <AppLink to={getRouteArticleDetails(article.id)} target={target}>
                             <Button theme={ButtonTheme.OUTLINE} onClick={onClickItem}>
                                 {`${t('Читать далее')}...`}
                             </Button>
@@ -85,7 +85,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         }
         >
             <AppLink
-                to={RoutePath.article_details + article.id}
+                to={getRouteArticleDetails(article.id)}
                 className={cls.link}
                 target={target}
             >
