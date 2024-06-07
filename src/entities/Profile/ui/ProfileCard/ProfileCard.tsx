@@ -77,66 +77,108 @@ export const ProfileCard = (props:ProfileCardProps) => {
     const mods: Mods = {
         [cls.editing]: !readonly,
     };
-
+    if (data) {
+        return (
+            <div className={
+                classNames(cls.ProfileCard, mods, [className])
+            }
+            >
+                <VStack>
+                    {data.avatar
+                        && (
+                            <HStack justify="center" max>
+                                <Avatar src={data.avatar} alt={t('аватар')} />
+                            </HStack>
+                        )}
+                    <Input
+                        value={data.firstname}
+                        placeholder={t('Ваше имя')}
+                        readonly={readonly}
+                        onChange={onChangeFirstname}
+                        data-testid="ProfileCard.firstname"
+                    />
+                    <Input
+                        value={data.lastname}
+                        placeholder={t('Ваша фамилия')}
+                        readonly={readonly}
+                        onChange={onChangeLastname}
+                        data-testid="ProfileCard.lastname"
+                    />
+                    <Input
+                        value={data.age}
+                        placeholder={t('Ваш возраст')}
+                        readonly={readonly}
+                        onChange={onChangeAge}
+                    />
+                    <Input
+                        value={data.city}
+                        placeholder={t('Ваш город')}
+                        readonly={readonly}
+                        onChange={onChangeCity}
+                    />
+                    <Input
+                        value={data.username}
+                        placeholder={t('Ваш ник')}
+                        readonly={readonly}
+                        onChange={onChangeUsername}
+                    />
+                    <Input
+                        value={data.avatar}
+                        placeholder={t('Ваш аватар')}
+                        readonly={readonly}
+                        onChange={onChangeAvatar}
+                    />
+                    <CurrencySelect
+                        readonly={readonly}
+                        value={data.currency}
+                        onChange={onChangeCurrency}
+                    />
+                    <CountrySelect
+                        readonly={readonly}
+                        value={data.country}
+                        onChange={onChangeCountry}
+                    />
+                </VStack>
+            </div>
+        );
+    }
     return (
         <div className={
             classNames(cls.ProfileCard, mods, [className])
         }
         >
             <VStack>
-                {data?.avatar
-                    && (
-                        <HStack justify="center" max>
-                            <Avatar src={data?.avatar} alt={t('аватар')} />
-                        </HStack>
-                    )}
                 <Input
-                    value={data?.firstname}
                     placeholder={t('Ваше имя')}
                     readonly={readonly}
-                    onChange={onChangeFirstname}
                     data-testid="ProfileCard.firstname"
                 />
                 <Input
-                    value={data?.lastname}
                     placeholder={t('Ваша фамилия')}
                     readonly={readonly}
-                    onChange={onChangeLastname}
                     data-testid="ProfileCard.lastname"
                 />
                 <Input
-                    value={data?.age}
                     placeholder={t('Ваш возраст')}
                     readonly={readonly}
-                    onChange={onChangeAge}
                 />
                 <Input
-                    value={data?.city}
                     placeholder={t('Ваш город')}
                     readonly={readonly}
-                    onChange={onChangeCity}
                 />
                 <Input
-                    value={data?.username}
                     placeholder={t('Ваш ник')}
                     readonly={readonly}
-                    onChange={onChangeUsername}
                 />
                 <Input
-                    value={data?.avatar}
                     placeholder={t('Ваш аватар')}
                     readonly={readonly}
-                    onChange={onChangeAvatar}
                 />
                 <CurrencySelect
                     readonly={readonly}
-                    value={data?.currency}
-                    onChange={onChangeCurrency}
                 />
                 <CountrySelect
                     readonly={readonly}
-                    value={data?.country}
-                    onChange={onChangeCountry}
                 />
             </VStack>
         </div>
