@@ -5,7 +5,7 @@ import { Select, SelectOption } from '@/shared/ui/Select';
 import { SortOrder } from '@/shared/types';
 import { VStack } from '@/shared/ui/Stack';
 
-import { ArticleSortField } from '../../model/consts/articleConsts';
+import { ArticleSortField } from '@/entities/Article';
 
 interface ArticleSortSelectorProps {
     className?: string;
