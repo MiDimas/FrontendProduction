@@ -6,7 +6,6 @@ export {
     getArticleDetailsData,
 } from './model/selectors/getArticleDetailsData/getArticleDetailsData';
 export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
-export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
 export {
     ArticleView, ArticleType, ArticleSortField, ArticleBlockType,
 } from './model/consts/articleConsts';
