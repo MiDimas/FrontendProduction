@@ -5,7 +5,7 @@ import TilesView from '@/shared/assets/icons/tiles_icon.svg';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { HStack } from '@/shared/ui/Stack';
-import { ArticleView } from '../../model/consts/articleConsts';
+import { ArticleView } from '@/entities/Article';
 import cls from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {
