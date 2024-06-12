@@ -1,18 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { memo } from 'react';
 import { Button } from '@/shared/ui/Button';
-import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
-import { counterActions } from '../model/slice/counterSlice';
+import { useCounterActions } from '../model/slice/counterSlice';
+import { useCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 
 export const Counter = memo(() => {
-    const dispatch = useDispatch();
-    const counterValue = useSelector(getCounterValue);
+    const counterValue = useCounterValue();
+    const { increment, decrement } = useCounterActions();
     const incrementHandler = () => {
-        dispatch(counterActions.increment());
+        increment();
     };
 
     const decrementHandler = () => {
-        dispatch(counterActions.decrement());
+        decrement();
     };
 
     return (
