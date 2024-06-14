@@ -84,12 +84,9 @@ export const ProfileCard = (props:ProfileCardProps) => {
             }
             >
                 <VStack>
-                    {data.avatar
-                        && (
-                            <HStack justify="center" max>
-                                <Avatar src={data.avatar} alt={t('аватар')} />
-                            </HStack>
-                        )}
+                    <HStack justify="center" max>
+                        <Avatar src={data.avatar} alt={t('аватар')} />
+                    </HStack>
                     <Input
                         value={data.firstname}
                         placeholder={t('Ваше имя')}

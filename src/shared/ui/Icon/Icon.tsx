@@ -20,6 +20,8 @@ export const Icon = (props: IconProps) => {
         Svg,
         colorFilling = IconFilling.FILL,
         invertedColor,
+        width = 24,
+        height = 24,
         ...otherProps
     } = props;
     return (
@@ -27,6 +29,8 @@ export const Icon = (props: IconProps) => {
             className={
                 classNames(cls.Icon, { [cls.inverted]: invertedColor }, [cls[colorFilling], className])
             }
+            width={width}
+            height={height}
             {...otherProps}
         />
     );
