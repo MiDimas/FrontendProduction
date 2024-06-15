@@ -4,10 +4,12 @@
 
 .fill {
     fill: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .fill.inverted {
     fill: var(--inverted-primary-color);
+    color: var(--inverted-primary-color);
 }
 
 .stroke {
@@ -21,9 +23,11 @@
 .both {
     stroke: var(--primary-color);
     fill: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .both.inverted {
     stroke: var(--inverted-primary-color);
     fill: var(--inverted-primary-color);
+    color: var(--inverted-primary-color);
 }

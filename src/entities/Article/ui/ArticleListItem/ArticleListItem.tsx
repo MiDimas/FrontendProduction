@@ -10,13 +10,13 @@ import { Button, ButtonTheme } from '@/shared/ui/Button';
 
 import { AppLink } from '@/shared/ui/AppLink';
 import { HStack } from '@/shared/ui/Stack';
-import {
-    Article, ArticleTextBlock,
-} from '../../model/types/article';
+import { Article, ArticleTextBlock } from '../../model/types/article';
 import cls from './ArticleListItem.module.scss';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleBlockType, ArticleView } from '../../model/consts/articleConsts';
 import { getRouteArticleDetails } from '@/shared/const/router';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleListItemProps {
     className?: string;
@@ -44,7 +44,19 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         </HStack>
     );
     const title = <Text text={article.title} className={cls.title} />;
-    const image = <img src={article.img} alt={article.title} className={cls.img} />;
+    const image = (
+        <AppImage
+            src={article.img}
+            alt={article.title}
+            className={cls.img}
+            fallback={(
+                <Skeleton
+                    height={view === ArticleView.BIG ? '250px' : '200px'}
+                    width={view === ArticleView.BIG ? '100%' : '200px'}
+                />
+            )}
+        />
+    );
 
     if (view === ArticleView.BIG) {
         const textBlock = article.blocks.find(

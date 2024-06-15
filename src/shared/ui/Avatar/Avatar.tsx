@@ -33,8 +33,23 @@ export const Avatar = (props: AvatarProps) => {
             src={src}
             alt={alt}
             style={style}
-            fallback={<Skeleton height={size} width={size} border="50%" />}
-            errorFallback={<Icon Svg={User} height={size} width={size} invertedColor={inverted} />}
+            fallback={(
+                <Skeleton
+                    height={size}
+                    width={size}
+                    border="50%"
+                    className={classNames(cls.Avatar, {}, [className])}
+                />
+            )}
+            errorFallback={(
+                <Icon
+                    Svg={User}
+                    height={size}
+                    width={size}
+                    invertedColor={inverted}
+                    className={classNames(cls.Avatar, {}, [className])}
+                />
+            )}
         />
     );
 };
