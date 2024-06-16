@@ -5,7 +5,7 @@ import { Page } from '@/widgets/Page';
 const AboutPage = memo(() => {
     const { t } = useTranslation('about');
     return (
-        <Page>
+        <Page data-testid="AboutPage">
             {t('О нас')}
             {/* <Counter /> */}
         </Page>
