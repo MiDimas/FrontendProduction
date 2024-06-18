@@ -21,9 +21,11 @@ const ProfilePage = memo((props: ProfilePageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <Page className={
-                classNames(cls.ProfilePage, {}, [className])
-            }
+            <Page
+                className={
+                    classNames(cls.ProfilePage, {}, [className])
+                }
+                data-testid="ProfilePage"
             >
                 <EditableProfileCard id={id} />
             </Page>

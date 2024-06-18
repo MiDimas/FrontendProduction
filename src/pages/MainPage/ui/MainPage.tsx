@@ -10,7 +10,7 @@ const MainPage = memo(() => {
     const [state, setState] = useState<string|undefined>();
     /* eslint-disable i18next/no-literal-string */
     return (
-        <Page>
+        <Page data-testid="MainPage">
             {t('Главная Страница')}
             {/* <Counter /> */}
             <div>{t('Главная Страница')}</div>
