@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
-        run: npm install --legacy-peer-deps
+        run: npm ci --force
       - name: build production project
         run: npm run build:prod
         if: always()
@@ -36,4 +36,3 @@ jobs:
       - name: UI testing
         run: npm run test:ui:ci
         if: always()
-Как вам статья?: Как вам статья?
