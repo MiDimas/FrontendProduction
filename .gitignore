@@ -377,4 +377,4 @@ nbactions.xml
 testNode.js
 
 ### Report Test ###
-/reports
+/reports/unit
