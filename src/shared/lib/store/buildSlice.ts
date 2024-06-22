@@ -8,7 +8,7 @@ import { useAppDispatch } from '../hooks/useAppDispatch/useAppDispatch';
 type Action<
     State,
     CaseReducers extends SliceCaseReducers<State>
-> = {useActions: () => CaseReducerActions<CaseReducers>};
+> = {useActions: () => CaseReducerActions<CaseReducers, string> };
 
 type Result<State,
     CaseReducers extends SliceCaseReducers<State>,
