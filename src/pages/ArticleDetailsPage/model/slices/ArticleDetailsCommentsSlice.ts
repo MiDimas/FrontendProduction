@@ -38,7 +38,7 @@ const articleDetailsCommentsSlice = createSlice({
                     id: '2',
                     username: 'Димасина',
                     // eslint-disable-next-line max-len
-                    avatar: 'https://png.pngtree.com/png-vector/20200615/ourmid/pngtree-hacker-wearing-hoodie-and-using-laptop-computer-freak-hacking-and-malware-png-image_2256760.jpg',
+                    avatar: 'https://avatars.mds.yandex.net/i?id=7e9acef0d1ce3289c5876000ee15cb28854c28bf-9857494-images-thumbs&n=13',
                 },
             },
         },

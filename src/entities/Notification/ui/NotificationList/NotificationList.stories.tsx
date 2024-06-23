@@ -20,7 +20,7 @@ const meta: Meta<typeof NotificationList> = {
     parameters: {
         mockData: [
             {
-                url: 'http://localhost:6006/notifications',
+                url: `${__API__}/notifications`,
                 method: 'GET',
                 status: 200,
                 response: [
