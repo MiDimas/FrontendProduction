@@ -4,8 +4,7 @@
 
 ## Starting project
 
-``npm install --force`` - installing dependencies. It's temporarily recommended to install with the `--force` flag. This is
-necessary because some dependencies are not compatible with each other.  
+``npm install`` - installing dependencies.
   
 ``npm run dev`` or ``npm run dev:vite`` - first command is running the project in dev mode with **webpack** and **json-server**,
 second command is running the project in dev mode with **vite** and **json-server**. If you want to change the code while application is running,
