@@ -23,7 +23,10 @@ const reducers: ReducersList = {
 const ArticleDetailsPage = (props:ArticlesDetailsPageProps) => {
     const { t } = useTranslation('article');
     const { className } = props;
-    const { id } = useParams<{id: string}>();
+    let { id } = useParams<{id: string}>();
+    if (__PROJECT__ === 'storybook') {
+        id = '1';
+    }
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>

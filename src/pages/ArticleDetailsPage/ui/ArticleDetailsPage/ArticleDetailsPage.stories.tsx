@@ -1,9 +1,27 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { ArticleType, ArticleBlockType } from '@/entities/Article';
+import { ArticleType, ArticleBlockType, Article } from '@/entities/Article';
 import ArticleDetailsPage from './ArticleDetailsPage';
 import { Theme } from '@/shared/const/theme';
+
+const article: Article = {
+    id: '1',
+    title: 'JavaScript News',
+    user: {
+        id: '1',
+        username: 'petux',
+        avatar: '',
+    },
+    subtitle: 'Что нового в JS в этом году',
+    img: '',
+    views: 1022,
+    createdAt: '26.10.2022',
+    type: [
+        ArticleType.IT,
+    ],
+    blocks: [],
+};
 
 const meta: Meta<typeof ArticleDetailsPage> = {
     title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
@@ -62,7 +80,35 @@ const meta: Meta<typeof ArticleDetailsPage> = {
                 ],
             },
         },
+        user: {
+            _initial: true,
+            authData: {
+                id: '1',
+                username: 'Dimas',
+            },
+        },
     })],
+    parameters: {
+        mockData: [
+            {
+                url: `${__API__}/article-ratings?articleId=1&userId=1`,
+                method: 'GET',
+                status: 200,
+                response: [
+                    { rate: 3 },
+                ],
+            }, {
+                url: `${__API__}/articles?_limit=3`,
+                method: 'GET',
+                status: 200,
+                response: [
+                    { ...article, id: '1' },
+                    { ...article, id: '2' },
+                    { ...article, id: '3' },
+                ],
+            },
+        ],
+    },
 };
 
 export default meta;
