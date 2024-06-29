@@ -29,6 +29,7 @@ if there is a fixer in the established rules;
 - ``npm run lint:scss:fix`` - start linting SCSS code in project with ``--fix`` flag, and corrects errors
 if there is a fixer in the established rules;
 - ``npm run jest:init`` - starts generating the jest-configuration file;
+- ``npm run test:cypress`` - run cypress tests;
 - ``npm run test:unit`` - starts unit testing all test files (*.test.ts, *.test.tsx), if you need to run testing one
 file, you can put the name after space;
 - ``npm run test:ui`` - starts testing UI on local machine with docker;
@@ -65,10 +66,11 @@ Documentation of the i18next are [here](https://www.i18next.com/).
 
 ## Tests
 
-In the project, 3 types of tests are used:
+In the project, 4 types of tests are used:
 1. Unit-tests on the `jest`. For running - `npm run test:unit`
 2. Tests components on the `React testing library`. For running - `npm run test:unit`
 3. Snapshot tests on the `loki`. For running `npm run test:ui`
+4. End to End tests on the cypress. For running cypress - `npm run test:e2e` 
 
 ---
 
