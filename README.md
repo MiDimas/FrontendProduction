@@ -34,7 +34,7 @@ if there is a fixer in the established rules;
 file, you can put the name after space;
 - ``npm run test:ui`` - starts testing UI on local machine with docker;
 - ``npm run test:ui:ok`` - approve the changes in UI which were found after the command above;
-- ``npm run test:ui:ci`` - starts testing UI on virtual machine(github actions);
+- ``npm run test:ui:ci`` - starts testing UI on virtual machine(GitHub actions);
 - ``npm run test:ui:report`` - creates a report UI tests in HTML page and json file;
 - ``npm run test:ui:json`` - creates a report UI tests in json file;
 - ``npm run test:ui:html`` - creates a report UI tests in HTML page;
@@ -70,7 +70,7 @@ In the project, 4 types of tests are used:
 1. Unit-tests on the `jest`. For running - `npm run test:unit`
 2. Tests components on the `React testing library`. For running - `npm run test:unit`
 3. Snapshot tests on the `loki`. For running `npm run test:ui`
-4. End to End tests on the cypress. For running cypress - `npm run test:e2e` 
+4. End-to-End tests on the cypress. For running cypress - `npm run test:e2e` 
 
 ---
 
@@ -112,7 +112,7 @@ Both code collectors are adapted to the project features.
 The webpack config is divided into several files that are located at [/config/build](config%2Fbuild)
 
 The `config` folder also contains configs for:
-1. Bable
+1. Babel
 2. Storybook
 3. Jest
 
