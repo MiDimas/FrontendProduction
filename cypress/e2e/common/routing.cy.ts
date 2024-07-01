@@ -15,4 +15,17 @@ describe('Роутинг', () => {
             cy.get(selectByTestId('NotFoundPage')).should('exist');
         });
     });
+    describe('Пользователь авторизован', () => {
+        beforeEach(() => {
+            cy.login();
+        });
+        it('Переход на страницу профиля', () => {
+            cy.visit('/profile/4');
+            cy.get(selectByTestId('ProfilePage')).should('exist');
+        });
+        it('Переход на страницу статей', () => {
+            cy.visit('/articles');
+            cy.get(selectByTestId('ArticlesPage')).should('exist');
+        });
+    });
 });

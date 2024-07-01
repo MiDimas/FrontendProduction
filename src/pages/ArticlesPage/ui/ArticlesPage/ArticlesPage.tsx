@@ -25,6 +25,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                 className={
                     classNames(cls.ArticlesPage, {}, [className])
                 }
+                data-testid="ArticlesPage"
             >
                 <ArticleInfiniteList header={ArticlesPageFilters} />
             </Page>
