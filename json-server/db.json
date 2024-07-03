@@ -553,6 +553,17 @@
       "avatar": "https://png.pngtree.com/png-vector/20200615/ourmid/pngtree-hacker-wearing-hoodie-and-using-laptop-computer-freak-hacking-and-malware-png-image_2256760.jpg"
     },
     {
+      "id": "3",
+      "firstname": "Peter",
+      "lastname": "Parker",
+      "age": 30,
+      "currency": "USD",
+      "country": "Russia",
+      "city": "Irkutsk",
+      "username": "manager",
+      "avatar": "https://png.pngtree.com/png-vector/20200615/ourmid/pngtree-hacker-wearing-hoodie-and-using-laptop-computer-freak-hacking-and-malware-png-image_2256760.jpg"
+    },
+    {
       "id": "4",
       "firstname": "test",
       "lastname": "test",
