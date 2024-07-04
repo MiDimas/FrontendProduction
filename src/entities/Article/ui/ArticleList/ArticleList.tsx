@@ -73,6 +73,7 @@ export const ArticleList = (props: ArticleListProps) => {
             view={view}
             key={article.id}
             className={cls.card}
+            data-testid="ArticleListItemS"
             target={target}
             onClickItem={
                 virtualized
@@ -156,6 +157,7 @@ export const ArticleList = (props: ArticleListProps) => {
                         data={articles}
                         itemContent={renderArticle}
                         endReached={onScrollEnd}
+                        data-testid="ArticleList"
                         components={{
                             Header,
                             Footer: isLoading ? skeleton : undefined,

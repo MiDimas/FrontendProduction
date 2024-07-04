@@ -33,6 +33,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         view,
         target,
         onClickItem,
+        ...otherProps
     } = props;
     const { t } = useTranslation('article');
 
@@ -67,7 +68,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                 classNames(cls.ArticleListItem, {}, [className, cls[view]])
             }
             >
-                <Card className={cls.card}>
+                <Card className={cls.card} {...otherProps}>
                     <HStack align="center" justify="between">
                         <HStack align="center" gap="8">
                             <Avatar size={30} src={article.user.avatar} />
@@ -101,7 +102,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                 className={cls.link}
                 target={target}
             >
-                <Card className={cls.card} onClick={onClickItem}>
+                <Card className={cls.card} onClick={onClickItem} {...otherProps}>
                     <div className={cls.imageWrapper}>
                         {image}
                         <Text text={article.createdAt} className={cls.date} />
