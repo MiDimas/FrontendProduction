@@ -73,7 +73,7 @@ export const ArticleList = (props: ArticleListProps) => {
             view={view}
             key={article.id}
             className={cls.card}
-            data-testid="ArticleListItemS"
+            data-testid="ArticleListItem"
             target={target}
             onClickItem={
                 virtualized
@@ -175,6 +175,7 @@ export const ArticleList = (props: ArticleListProps) => {
                         data={articles}
                         itemContent={renderArticle}
                         endReached={onScrollEnd}
+                        data-testid="ArticleList"
                         listClassName={cls.SMALL}
                         atBottomStateChange={(atBottom) => {
                             if (atBottom) {
