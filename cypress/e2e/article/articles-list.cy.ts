@@ -5,6 +5,7 @@ describe('Страница списка статей', () => {
         });
     });
     it('проверка наличия статей', () => {
-        cy.getByTestId('Articles');
+        cy.getByTestId('ArticleList').should('exist');
+        cy.getByTestId('ArticleListItem').should('have.length.greaterThan', 3);
     });
 });
