@@ -20,4 +20,7 @@ describe('Тестирование карточки профиля', () => {
         cy.getByTestId('ProfileCard.firstname').should('have.value', newName);
         cy.getByTestId('ProfileCard.lastname').should('have.value', newLastName);
     });
+    it('Изменение страны', () => {
+        cy.getByTestId('ProfileCard.country').should('have.value', 'Ukraine');
+    });
 });
