@@ -1,4 +1,4 @@
-import { Article, ArticleType } from '@/entities/Article';
+import type { Article } from '@/entities/Article';
 
 const defaultArticle = {
     title: 'JavaScript News 2022',
@@ -8,7 +8,6 @@ const defaultArticle = {
     createdAt: '26.10.2022',
     userId: '1',
     type: [
-        ArticleType.IT,
     ],
     blocks: [],
 };
@@ -18,7 +17,7 @@ export const createArticle = (article?: Article) => cy.request({
     url: 'http://localhost:8000/articles',
     headers: { Authorization: 'asdfsd' },
     body: article ?? defaultArticle,
-});
+}).then((resp) => resp.body);
 
 export const removeArticle = (articleId: string) => cy.request({
     method: 'DELETE',

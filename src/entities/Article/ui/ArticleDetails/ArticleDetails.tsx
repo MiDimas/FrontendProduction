@@ -142,9 +142,11 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     }
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <VStack className={
-                classNames(cls.ArticleDetails, {}, [className])
-            }
+            <VStack
+                className={
+                    classNames(cls.ArticleDetails, {}, [className])
+                }
+                data-testid="ArticleDetails.Info"
             >
                 {content}
             </VStack>
