@@ -13,4 +13,8 @@ describe('Страница деталей статьи', () => {
     it('Проверка подгрузки  деталей статьи', () => {
         cy.getByTestId('ArticleDetails.Info').should('exist');
     });
+    it('Проверка наличия рекомендаций', () => {
+        cy.getByTestId('ArticleRecommendationsList').should('exist');
+        cy.getByTestId('ArticleListItem').should('have.length.greaterThan', 2);
+    });
 });
