@@ -37,9 +37,11 @@ export const CommentCard = memo((props: CommentCardProps) => {
     }
     if (comment) {
         return (
-            <div className={
-                classNames(cls.CommentCard, {}, [className])
-            }
+            <div
+                className={
+                    classNames(cls.CommentCard, {}, [className])
+                }
+                data-testid="CommentCard.Content"
             >
                 <AppLink to={getRouteProfile(comment.user.id)}>
                     <HStack>
