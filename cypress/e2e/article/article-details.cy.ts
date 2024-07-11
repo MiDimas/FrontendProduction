@@ -24,6 +24,7 @@ describe('Страница деталей статьи', () => {
         cy.getByTestId('CommentCard.Content').should('have.length', 1);
     });
     it('Проверка оценивания статьи', () => {
+        cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
         cy.getByTestId('ArticleDetails.Info').should('exist');
         cy.getByTestId('RatingCard').scrollIntoView();
         cy.setRate(5, 'not bad');
