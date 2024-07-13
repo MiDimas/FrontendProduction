@@ -27,12 +27,12 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps) 
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-
     useInitialEffect(() => {
         if (id) {
+            console.log(id);
             dispatch(fetchCommentsByArticleId(id));
         }
-    });
+    }, true);
 
     const onSendCommentArticle = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));

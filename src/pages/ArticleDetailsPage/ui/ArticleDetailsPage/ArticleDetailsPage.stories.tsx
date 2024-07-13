@@ -4,6 +4,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { ArticleType, ArticleBlockType, Article } from '@/entities/Article';
 import ArticleDetailsPage from './ArticleDetailsPage';
 import { Theme } from '@/shared/const/theme';
+import type { Comment } from '@/entities/Comment';
 
 const article: Article = {
     id: '1',
@@ -21,6 +22,15 @@ const article: Article = {
         ArticleType.IT,
     ],
     blocks: [],
+};
+
+const comment:Comment = {
+    id: '1',
+    text: 'Это че такое?',
+    user: {
+        id: '1',
+        username: 'Димооооон',
+    },
 };
 
 const meta: Meta<typeof ArticleDetailsPage> = {
@@ -97,7 +107,8 @@ const meta: Meta<typeof ArticleDetailsPage> = {
                 response: [
                     { rate: 3 },
                 ],
-            }, {
+            },
+            {
                 url: `${__API__}/articles?_limit=3`,
                 method: 'GET',
                 status: 200,
@@ -105,6 +116,15 @@ const meta: Meta<typeof ArticleDetailsPage> = {
                     { ...article, id: '1' },
                     { ...article, id: '2' },
                     { ...article, id: '3' },
+                ],
+            },
+            {
+                url: `${__API__}/comments?articleId=1&_expand=user`,
+                method: 'GET',
+                status: 200,
+                response: [
+                    { ...comment, id: '1' },
+                    { ...comment, id: '2' },
                 ],
             },
         ],

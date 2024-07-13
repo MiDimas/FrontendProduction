@@ -3,16 +3,14 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { ArticleDetailsComments } from './ArticleDetailsComments';
 import { Theme } from '@/shared/const/theme';
-import { Comment } from '@/entities/Comment';
+import type { Comment } from '@/entities/Comment';
 
-const comment: Comment = {
+const comment:Comment = {
     id: '1',
     text: 'Это че такое?',
     user: {
         id: '1',
         username: 'Димооооон',
-        // eslint-disable-next-line max-len
-        avatar: 'https://avatars.mds.yandex.net/i?id=7e9acef0d1ce3289c5876000ee15cb28854c28bf-9857494-images-thumbs&n=13',
     },
 };
 
@@ -32,7 +30,7 @@ const meta: Meta<typeof ArticleDetailsComments> = {
                 method: 'GET',
                 status: 200,
                 response: [
-                    comment,
+                    { ...comment, id: '1' },
                     { ...comment, id: '2' },
                 ],
             },
