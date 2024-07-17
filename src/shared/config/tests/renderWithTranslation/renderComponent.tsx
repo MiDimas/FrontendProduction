@@ -6,11 +6,15 @@ import { ReducersMapObject } from '@reduxjs/toolkit';
 import i18nForTest from '@/shared/config/i18n/i18nForTest';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Theme } from '@/shared/const/theme';
+// eslint-disable-next-line midi-plugin-import/layer-imports
+import '@/app/styles/index.scss';
 
 export interface RenderComponentOption {
     route?: string;
     initialState?: DeepPartial<StateSchema>;
     asyncReducers?: ReducersList;
+    theme?: Theme;
 }
 interface TestProviderProps {
     children: ReactNode;
@@ -22,6 +26,7 @@ export function TestProvider(props: TestProviderProps) {
         route = '/',
         initialState,
         asyncReducers,
+        theme = Theme.LIGHT,
     } = options;
     return (
         <MemoryRouter initialEntries={[route]}>
@@ -30,7 +35,9 @@ export function TestProvider(props: TestProviderProps) {
                 initialState={initialState as StateSchema}
             >
                 <I18nextProvider i18n={i18nForTest}>
-                    {children}
+                    <div className={`app ${theme}`}>
+                        {children}
+                    </div>
                 </I18nextProvider>
             </StoreProvider>
         </MemoryRouter>
