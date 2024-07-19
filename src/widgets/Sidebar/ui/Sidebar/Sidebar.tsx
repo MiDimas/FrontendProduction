@@ -1,8 +1,8 @@
 import { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { classNames } from '@/shared/lib/classNames/classNames';
 // import { BugButton } from 'app/providers/ErrorBoundary';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { Flex, VStack } from '@/shared/ui/Stack';
@@ -23,7 +23,13 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     return (
         <aside
             data-testid="sidebar"
-            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
+            className={classNames(
+                cls.Sidebar,
+                {
+                    [cls.collapsed]: collapsed,
+                },
+                [className],
+            )}
         >
             <Button
                 data-testid="toggle-sidebar"
@@ -34,19 +40,12 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 size={ButtonSize.L}
                 square
             >
-                { collapsed ? '>' : '<' }
+                {collapsed ? '>' : '<'}
             </Button>
             <VStack role="navigation" gap="16" className={cls.items}>
-                {
-                    sidebarItemList.map((item) => (
-                        <SidebarItem
-                            key={item.path}
-                            item={item}
-                            collapsed={collapsed}
-                        />
-                    ))
-                }
-
+                {sidebarItemList.map((item) => (
+                    <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+                ))}
             </VStack>
             {/* <BugButton /> */}
             <Flex

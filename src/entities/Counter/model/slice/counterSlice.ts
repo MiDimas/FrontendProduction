@@ -1,5 +1,5 @@
-import { CounterSchema } from '../types/CounterSchema';
 import { buildSlice } from '@/shared/lib/store';
+import { CounterSchema } from '../types/CounterSchema';
 
 const initialState: CounterSchema = {
     value: 0,
@@ -22,5 +22,4 @@ export const {
     actions: counterActions,
     reducer: counterReducer,
     useActions: useCounterActions,
-
 } = counterSlice;

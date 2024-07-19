@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Navbar } from './Navbar';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
+import { Navbar } from './Navbar';
 
 const meta: Meta<typeof Navbar> = {
     title: 'widgets/Navbar',
@@ -34,7 +34,9 @@ export const NavbarLightLogged: Story = {
     args: {},
     decorators: [
         StoreDecorator({
-            user: { authData: { username: 'pet' } },
+            user: {
+                authData: { username: 'pet' },
+            },
         }),
     ],
 };
@@ -42,7 +44,9 @@ export const NavbarDarkLogged: Story = {
     decorators: [
         ThemeDecorator(Theme.DARK),
         StoreDecorator({
-            user: { authData: { username: 'pet' } },
+            user: {
+                authData: { username: 'pet' },
+            },
         }),
     ],
 };

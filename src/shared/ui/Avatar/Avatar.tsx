@@ -1,10 +1,10 @@
 import { CSSProperties, useMemo } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './Avatar.module.scss';
-import { AppImage } from '@/shared/ui/AppImage';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { Icon } from '@/shared/ui/Icon';
 import User from '@/shared/assets/icons/user_icon.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Icon } from '@/shared/ui/Icon';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import cls from './Avatar.module.scss';
 
 interface AvatarProps {
     className?: string;
@@ -15,33 +15,30 @@ interface AvatarProps {
 }
 
 export const Avatar = (props: AvatarProps) => {
-    const {
-        className,
-        src,
-        size = 100,
-        alt = 'avatar',
-        inverted,
-    } = props;
+    const { className, src, size = 100, alt = 'avatar', inverted } = props;
 
-    const style = useMemo<CSSProperties>(() => ({
-        width: size,
-        height: size,
-    }), [size]);
+    const style = useMemo<CSSProperties>(
+        () => ({
+            width: size,
+            height: size,
+        }),
+        [size],
+    );
     return (
         <AppImage
             className={classNames(cls.Avatar, {}, [className])}
             src={src}
             alt={alt}
             style={style}
-            fallback={(
+            fallback={
                 <Skeleton
                     height={size}
                     width={size}
                     border="50%"
                     className={classNames(cls.Avatar, {}, [className])}
                 />
-            )}
-            errorFallback={(
+            }
+            errorFallback={
                 <Icon
                     Svg={User}
                     height={size}
@@ -49,7 +46,7 @@ export const Avatar = (props: AvatarProps) => {
                     invertedColor={inverted}
                     className={classNames(cls.Avatar, {}, [className])}
                 />
-            )}
+            }
         />
     );
 };

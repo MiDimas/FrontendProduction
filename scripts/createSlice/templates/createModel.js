@@ -6,7 +6,8 @@ const schemaTypeTemplate = require('./schemaTypeTemplate');
 const resolveRoot = require('../resolveRoot');
 
 module.exports = async (layer, sliceName) => {
-    const resolveModulePath = (...segments) => resolveRoot('src', layer, sliceName, 'model', ...segments);
+    const resolveModulePath = (...segments) =>
+        resolveRoot('src', layer, sliceName, 'model', ...segments);
 
     const createModelStructure = () => {
         try {

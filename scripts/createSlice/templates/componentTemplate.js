@@ -1,5 +1,5 @@
 const interfaceAlias = 'interface';
-module.exports = (componentName) => (
+module.exports = (componentName) =>
     `import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
@@ -21,5 +21,4 @@ export const ${componentName} = memo((props: ${componentName}Props) => {
         </div>
     );
 });
-`
-);
+`;

@@ -4,21 +4,10 @@ import cls from './Overlay.module.scss';
 
 interface OverlayProps {
     className?: string;
-    onClick?: ()=>void;
+    onClick?: () => void;
 }
 
 export const Overlay = memo((props: OverlayProps) => {
-    const {
-        className,
-        onClick,
-
-    } = props;
-    return (
-        <div
-            className={
-                classNames(cls.overlay, {}, [className])
-            }
-            onClick={onClick}
-        />
-    );
+    const { className, onClick } = props;
+    return <div className={classNames(cls.overlay, {}, [className])} onClick={onClick} />;
 });

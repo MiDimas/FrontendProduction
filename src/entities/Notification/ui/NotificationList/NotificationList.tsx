@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '@/shared/ui/Stack';
 import { Skeleton } from '@/shared/ui/Skeleton';
-import { NotificationItem } from '../NotificationItem/NotificationItem';
+import { VStack } from '@/shared/ui/Stack';
 import { useNotifications } from '../../api/notificationApi';
+import { NotificationItem } from '../NotificationItem/NotificationItem';
 import cls from './NotificationList.module.scss';
 
 interface NotificationListProps {
@@ -18,9 +18,7 @@ export const NotificationList = memo((props: NotificationListProps) => {
 
     if (isLoading) {
         return (
-            <VStack
-                className={classNames(cls.NotificationList, {}, [className])}
-            >
+            <VStack className={classNames(cls.NotificationList, {}, [className])}>
                 <Skeleton height="70px" width="100%" border="12px" />
                 <Skeleton height="70px" width="100%" border="12px" />
                 <Skeleton height="70px" width="100%" border="12px" />
@@ -28,14 +26,8 @@ export const NotificationList = memo((props: NotificationListProps) => {
         );
     }
     return (
-        <VStack
-            className={classNames(cls.NotificationList, {}, [className])}
-        >
-            {data && (
-                data.map((item) => (
-                    <NotificationItem item={item} key={item.id} />
-                ))
-            )}
+        <VStack className={classNames(cls.NotificationList, {}, [className])}>
+            {data && data.map((item) => <NotificationItem item={item} key={item.id} />)}
         </VStack>
     );
 });

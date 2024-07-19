@@ -1,27 +1,32 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { ListBox } from './ListBox';
 import { Theme } from '@/shared/const/theme';
+import { ListBox } from './ListBox';
 
 const meta: Meta<typeof ListBox> = {
     title: 'shared/Popups/ListBox',
     component: ListBox,
-    argTypes: {
-    },
+    argTypes: {},
     args: {
         value: 'start',
-        items: [{ value: 'Один', content: 'Один' },
+        items: [
+            { value: 'Один', content: 'Один' },
             { value: 'Два', content: 'Два' },
-            { value: 'Три', content: 'Три' }],
+            { value: 'Три', content: 'Три' },
+        ],
     },
     decorators: [
-        (Story) => <div style={{ padding: 100 }}><Story /></div>,
+        (Story) => (
+            <div style={{ padding: 100 }}>
+                <Story />
+            </div>
+        ),
     ],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ListBox>
+type Story = StoryObj<typeof ListBox>;
 
 export const ListBoxLightBottomRight: Story = {
     args: {},

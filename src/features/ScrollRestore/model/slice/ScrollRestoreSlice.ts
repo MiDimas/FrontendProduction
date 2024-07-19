@@ -11,14 +11,24 @@ export const scrollRestoreSlice = createSlice({
     reducers: {
         setScrollPosition: (
             state,
-            { payload }: PayloadAction<{path: string; position: number;}>,
+            {
+                payload,
+            }: PayloadAction<{
+                path: string;
+                position: number;
+            }>,
         ) => {
             state.scroll[payload.path] = payload.position;
         },
 
         setVirtuosoScrollIndex: (
             state,
-            { payload }: PayloadAction<{path:string; index: number;}>,
+            {
+                payload,
+            }: PayloadAction<{
+                path: string;
+                index: number;
+            }>,
         ) => {
             state.virtuosoScroll[payload.path] = payload.index;
         },

@@ -1,40 +1,30 @@
-import { useTranslation } from 'react-i18next';
-import {
-    memo, useCallback, useMemo, useState,
-} from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { Card } from '@/shared/ui/Card';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text';
-import { StarRating } from '@/shared/ui/StarRating';
-import { Modal } from '@/shared/ui/Modal';
-import { Input } from '@/shared/ui/Input';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './RatingCard.module.scss';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
+import { Input } from '@/shared/ui/Input';
+import { Modal } from '@/shared/ui/Modal';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { StarRating } from '@/shared/ui/StarRating';
+import { Text } from '@/shared/ui/Text';
+import cls from './RatingCard.module.scss';
 
 interface RatingCardProps {
     className?: string;
     hasFeedback?: boolean;
     title?: string;
     feedBackTitle?: string;
-    onAccept?: (starsCount:number, feedback?:string)=>void;
+    onAccept?: (starsCount: number, feedback?: string) => void;
     onCancel?: (starsCount: number) => void;
     rate?: number;
 }
 
 export const RatingCard = memo((props: RatingCardProps) => {
     const { t } = useTranslation();
-    const {
-        className,
-        hasFeedback,
-        title,
-        feedBackTitle,
-        onAccept,
-        onCancel,
-        rate = 0,
-    } = props;
+    const { className, hasFeedback, title, feedBackTitle, onAccept, onCancel, rate = 0 } = props;
 
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [starsCount, setStarsCount] = useState(rate);
@@ -47,16 +37,19 @@ export const RatingCard = memo((props: RatingCardProps) => {
         setIsOpenModal(false);
     }, [onCancel, starsCount]);
 
-    const onSelect = useCallback((value: number) => {
-        if (!starsCount) {
-            setStarsCount(value);
-            if (!hasFeedback) {
-                onAccept?.(value);
-            } else {
-                setIsOpenModal(true);
+    const onSelect = useCallback(
+        (value: number) => {
+            if (!starsCount) {
+                setStarsCount(value);
+                if (!hasFeedback) {
+                    onAccept?.(value);
+                } else {
+                    setIsOpenModal(true);
+                }
             }
-        }
-    }, [hasFeedback, onAccept, starsCount]);
+        },
+        [hasFeedback, onAccept, starsCount],
+    );
 
     const onAcceptHandler = useCallback(() => {
         setIsOpenModal(false);
@@ -78,59 +71,53 @@ export const RatingCard = memo((props: RatingCardProps) => {
         [feedback, feedBackTitle, t],
     );
     return (
-        <Card
-            className={classNames(cls.RatingCard, {}, [className])}
-            data-testid="RatingCard"
-        >
+        <Card className={classNames(cls.RatingCard, {}, [className])} data-testid="RatingCard">
             <VStack align="center" gap="8" max>
-                <Text title={starsCount ? t('Спасибо за оценку') : title || t('Поставьте оценку')} />
+                <Text
+                    title={starsCount ? t('Спасибо за оценку') : title || t('Поставьте оценку')}
+                />
                 <StarRating selected={starsCount} onSelect={onSelect} />
-                { hasFeedback
-                    && (
-                        <>
-                            <BrowserView>
-                                <Modal
-                                    onClose={onClose}
-                                    isOpen={isOpenModal}
-                                    lazy
-                                    className={cls.modal}
-                                >
-                                    <VStack max>
-                                        {content}
-                                        <HStack max gap="8" justify="end">
-                                            <Button
-                                                onClick={onClose}
-                                                theme={ButtonTheme.OUTLINE_RED}
-                                            >
-                                                {t('Закрыть')}
-                                            </Button>
-                                            <Button
-                                                onClick={onAcceptHandler}
-                                                data-testid="RatingCard.Button.Send"
-                                            >
-                                                {t('Отправить')}
-                                            </Button>
-                                        </HStack>
-                                    </VStack>
-                                </Modal>
-                            </BrowserView>
-                            <MobileView>
-                                <Drawer onClose={onClose} lazy isOpen={isOpenModal}>
-                                    <VStack>
-                                        {content}
+                {hasFeedback && (
+                    <>
+                        <BrowserView>
+                            <Modal
+                                onClose={onClose}
+                                isOpen={isOpenModal}
+                                lazy
+                                className={cls.modal}
+                            >
+                                <VStack max>
+                                    {content}
+                                    <HStack max gap="8" justify="end">
+                                        <Button onClick={onClose} theme={ButtonTheme.OUTLINE_RED}>
+                                            {t('Закрыть')}
+                                        </Button>
                                         <Button
                                             onClick={onAcceptHandler}
-                                            fullWidth
                                             data-testid="RatingCard.Button.Send"
                                         >
                                             {t('Отправить')}
                                         </Button>
-                                    </VStack>
-                                </Drawer>
-                            </MobileView>
-                        </>
-
-                    )}
+                                    </HStack>
+                                </VStack>
+                            </Modal>
+                        </BrowserView>
+                        <MobileView>
+                            <Drawer onClose={onClose} lazy isOpen={isOpenModal}>
+                                <VStack>
+                                    {content}
+                                    <Button
+                                        onClick={onAcceptHandler}
+                                        fullWidth
+                                        data-testid="RatingCard.Button.Send"
+                                    >
+                                        {t('Отправить')}
+                                    </Button>
+                                </VStack>
+                            </Drawer>
+                        </MobileView>
+                    </>
+                )}
             </VStack>
         </Card>
     );

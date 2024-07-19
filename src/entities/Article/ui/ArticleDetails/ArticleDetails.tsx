@@ -1,43 +1,32 @@
 import { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import {
-    DynamicModuleLoader, ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-    Text, TextAlign, TextSize, TextTheme,
-} from '@/shared/ui/Text';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { Avatar } from '@/shared/ui/Avatar';
 import CalendarIcon from '@/shared/assets/icons/calendar_icon.svg';
 import EyeIcon from '@/shared/assets/icons/eye_icon.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Avatar } from '@/shared/ui/Avatar';
 import { Icon } from '@/shared/ui/Icon';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import { HStack, VStack } from '@/shared/ui/Stack';
+import { Text, TextAlign, TextSize, TextTheme } from '@/shared/ui/Text';
 import { ArticleBlockType } from '../../model/consts/articleConsts';
+import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData';
+import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError';
 import {
-    ArticleCodeBlockComponent,
-} from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
-import {
-    ArticleImageBlockComponent,
-} from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
-import {
-    ArticleTextBlockComponent,
-} from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import {
-    getArticleDetailsIsLoading,
+    getArticleDetailsIsLoading
 } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading';
-import {
-    getArticleDetailsData,
-} from '../../model/selectors/getArticleDetailsData/getArticleDetailsData';
-import {
-    getArticleDetailsError,
-} from '../../model/selectors/getArticleDetailsError/getArticleDetailsError';
 import { fetchArticleById } from '../../model/services/FetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
-import cls from './ArticleDetails.module.scss';
 import { ArticleBlock } from '../../model/types/article';
+import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import cls from './ArticleDetails.module.scss';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -58,32 +47,24 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
-        case ArticleBlockType.CODE:
-            return (
-                <ArticleCodeBlockComponent
-                    key={block.id}
-                    className={cls.block}
-                    block={block}
-                />
-            );
-        case ArticleBlockType.IMAGE:
-            return (
-                <ArticleImageBlockComponent
-                    key={block.id}
-                    className={cls.block}
-                    block={block}
-                />
-            );
-        case ArticleBlockType.TEXT:
-            return (
-                <ArticleTextBlockComponent
-                    key={block.id}
-                    className={cls.block}
-                    block={block}
-                />
-            );
-        default:
-            return null;
+            case ArticleBlockType.CODE:
+                return (
+                    <ArticleCodeBlockComponent key={block.id} className={cls.block} block={block} />
+                );
+            case ArticleBlockType.IMAGE:
+                return (
+                    <ArticleImageBlockComponent
+                        key={block.id}
+                        className={cls.block}
+                        block={block}
+                    />
+                );
+            case ArticleBlockType.TEXT:
+                return (
+                    <ArticleTextBlockComponent key={block.id} className={cls.block} block={block} />
+                );
+            default:
+                return null;
         }
     }, []);
 
@@ -116,11 +97,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         content = (
             <div data-testid="ArticleDetails.Info">
                 <HStack justify="center">
-                    <Avatar
-                        size={200}
-                        src={article?.img}
-                        className={cls.avatar}
-                    />
+                    <Avatar size={200} src={article?.img} className={cls.avatar} />
                 </HStack>
                 <Text
                     className={cls.title}
@@ -142,13 +119,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     }
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <VStack
-                className={
-                    classNames(cls.ArticleDetails, {}, [className])
-                }
-            >
-                {content}
-            </VStack>
+            <VStack className={classNames(cls.ArticleDetails, {}, [className])}>{content}</VStack>
         </DynamicModuleLoader>
     );
 });

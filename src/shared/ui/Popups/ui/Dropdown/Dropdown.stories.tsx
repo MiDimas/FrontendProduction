@@ -1,29 +1,41 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Dropdown } from './Dropdown';
 import { Theme } from '@/shared/const/theme';
+import { Dropdown } from './Dropdown';
 
 const meta: Meta<typeof Dropdown> = {
     title: 'shared/Popups/Dropdown',
     component: Dropdown,
-    argTypes: {
-    },
+    argTypes: {},
     args: {
         items: [
             /* eslint-disable i18next/no-literal-string */
-            { href: '/1', content: <div>hello</div> },
-            { href: '/2', content: <div>string</div> },
-            { href: '/3', content: <div>world</div> },
+            {
+                href: '/1',
+                content: <div>hello</div>,
+            },
+            {
+                href: '/2',
+                content: <div>string</div>,
+            },
+            {
+                href: '/3',
+                content: <div>world</div>,
+            },
         ],
     },
     decorators: [
-        (Story) => <div style={{ padding: 100 }}><Story /></div>,
+        (Story) => (
+            <div style={{ padding: 100 }}>
+                <Story />
+            </div>
+        ),
     ],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Dropdown>
+type Story = StoryObj<typeof Dropdown>;
 
 export const DropdownLightBottomRight: Story = {
     args: {},

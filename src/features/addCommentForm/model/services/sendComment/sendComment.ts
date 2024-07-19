@@ -1,24 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { getArticleDetailsData } from '@/entities/Article';
 import { getUserAuthData } from '@/entities/User';
-import {
-    getArticleDetailsData,
-} from '@/entities/Article';
+import { getAddCommentFormText } from '../../selectors/getAddCommentFormText/getAddCommentFormText';
 import { addCommentFormActions } from '../../slices/addCommentFormSlice';
-import {
-    getAddCommentFormText,
-} from '../../selectors/getAddCommentFormText/getAddCommentFormText';
 
-export const sendComment = createAsyncThunk<
-    Comment,
-    void,
-    ThunkConfig<string>
->(
+export const sendComment = createAsyncThunk<Comment, void, ThunkConfig<string>>(
     'addCommentForm/sendComment',
     async (authData, thunkApi) => {
-        const {
-            extra, dispatch, rejectWithValue, getState,
-        } = thunkApi;
+        const { extra, dispatch, rejectWithValue, getState } = thunkApi;
 
         const userData = getUserAuthData(getState());
         const text = getAddCommentFormText(getState());

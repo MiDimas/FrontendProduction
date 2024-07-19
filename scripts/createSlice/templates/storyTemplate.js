@@ -1,4 +1,4 @@
-module.exports = (componentName, layerName = '') => (
+module.exports = (componentName, layerName = '') =>
     `import { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -23,5 +23,4 @@ export const ${componentName}Dark: Story = {
     args: {},
     decorators: [StoreDecorator({}), ThemeDecorator(Theme.DARK)],
 };
-`
-);
+`;

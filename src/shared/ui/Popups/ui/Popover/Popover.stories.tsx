@@ -1,16 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react';
+import NotificationIcon from '@/shared/assets/icons/notification_icon.svg';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Icon, IconFilling } from '@/shared/ui/Icon';
-import NotificationIcon from '@/shared/assets/icons/notification_icon.svg';
-import { Popover } from './Popover';
 import { Theme } from '@/shared/const/theme';
+import { Icon, IconFilling } from '@/shared/ui/Icon';
+import { Popover } from './Popover';
 
 const meta: Meta<typeof Popover> = {
     title: 'shared/Popups/Popover',
     component: Popover,
-    argTypes: {
-    },
+    argTypes: {},
     args: {
         // eslint-disable-next-line i18next/no-literal-string
         children: <span>hello</span>,
@@ -20,7 +19,7 @@ const meta: Meta<typeof Popover> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Popover>
+type Story = StoryObj<typeof Popover>;
 
 export const PopoverNormal: Story = {
     args: {},

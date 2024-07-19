@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Profile } from '@/entities/Profile';
-import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { ProfileSchema } from '../types/ProfileSchema';
 
-const initialState:ProfileSchema = {
+const initialState: ProfileSchema = {
     isLoading: false,
     readonly: true,
     error: undefined,

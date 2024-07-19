@@ -1,10 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import {
-    EditableProfileCardHeader,
-} from './EditableProfileCardHeader';
 import { Theme } from '@/shared/const/theme';
+import { EditableProfileCardHeader } from './EditableProfileCardHeader';
 
 const meta: Meta<typeof EditableProfileCardHeader> = {
     title: 'features/EditableProfileCardHeader',
@@ -27,9 +25,7 @@ export const EditableProfileCardHeaderLight: Story = {
 
 export const EditableProfileCardHeaderDark: Story = {
     args: {},
-    decorators: [
-        ThemeDecorator(Theme.DARK),
-    ],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const EditableProfileCardHeaderReadonlyLight: Story = {

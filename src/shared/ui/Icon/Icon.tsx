@@ -5,9 +5,9 @@ import cls from './Icon.module.scss';
 export enum IconFilling {
     FILL = 'fill',
     STROKE = 'stroke',
-    BOTH = 'both'
+    BOTH = 'both',
 }
-interface IconProps extends React.SVGProps<SVGSVGElement>{
+interface IconProps extends React.SVGProps<SVGSVGElement> {
     className?: string;
     Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
     colorFilling?: IconFilling;
@@ -26,9 +26,10 @@ export const Icon = (props: IconProps) => {
     } = props;
     return (
         <Svg
-            className={
-                classNames(cls.Icon, { [cls.inverted]: invertedColor }, [cls[colorFilling], className])
-            }
+            className={classNames(cls.Icon, { [cls.inverted]: invertedColor }, [
+                cls[colorFilling],
+                className,
+            ])}
             width={width}
             height={height}
             {...otherProps}

@@ -1,9 +1,9 @@
 import { memo, Suspense } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Modal } from '@/shared/ui/Modal';
 import { Loader } from '@/shared/ui/Loader';
-import cls from './LoginModal.module.scss';
+import { Modal } from '@/shared/ui/Modal';
 import { LoginForm } from '../LoginForm/LoginForm.async';
+import cls from './LoginModal.module.scss';
 
 interface LoginModalProps {
     className?: string;
@@ -12,11 +12,7 @@ interface LoginModalProps {
 }
 
 export const LoginModal = memo((props: LoginModalProps) => {
-    const {
-        className,
-        isOpen,
-        onClose,
-    } = props;
+    const { className, isOpen, onClose } = props;
     return (
         <Modal
             isOpen={isOpen}

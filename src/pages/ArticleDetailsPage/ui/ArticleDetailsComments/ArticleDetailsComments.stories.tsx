@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
+import type { Comment } from '@/entities/Comment';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { ArticleDetailsComments } from './ArticleDetailsComments';
 import { Theme } from '@/shared/const/theme';
-import type { Comment } from '@/entities/Comment';
+import { ArticleDetailsComments } from './ArticleDetailsComments';
 
-const comment:Comment = {
+const comment: Comment = {
     id: '1',
     text: 'Это че такое?',
     user: {
@@ -17,8 +17,7 @@ const comment:Comment = {
 const meta: Meta<typeof ArticleDetailsComments> = {
     title: 'pages/ArticleDetailsPage/ArticleDetailsComments',
     component: ArticleDetailsComments,
-    argTypes: {
-    },
+    argTypes: {},
     args: {
         id: '1',
     },
@@ -40,10 +39,9 @@ const meta: Meta<typeof ArticleDetailsComments> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ArticleDetailsComments>
+type Story = StoryObj<typeof ArticleDetailsComments>;
 
-export const ArticleDetailsCommentsNormal: Story = {
-};
+export const ArticleDetailsCommentsNormal: Story = {};
 export const ArticleDetailsCommentsDark: Story = {
     decorators: [ThemeDecorator(Theme.DARK)],
 };

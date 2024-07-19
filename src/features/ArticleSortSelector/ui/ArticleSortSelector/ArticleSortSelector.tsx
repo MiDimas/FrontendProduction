@@ -1,11 +1,10 @@
-import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Select, SelectOption } from '@/shared/ui/Select';
-import { SortOrder } from '@/shared/types';
-import { VStack } from '@/shared/ui/Stack';
-
+import { useTranslation } from 'react-i18next';
 import { ArticleSortField } from '@/entities/Article';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { SortOrder } from '@/shared/types';
+import { Select, SelectOption } from '@/shared/ui/Select';
+import { VStack } from '@/shared/ui/Stack';
 
 interface ArticleSortSelectorProps {
     className?: string;
@@ -17,52 +16,54 @@ interface ArticleSortSelectorProps {
 
 export const ArticleSortSelector = (props: ArticleSortSelectorProps) => {
     const { t } = useTranslation();
-    const {
-        className, sort, order, onChangeOrder, onChangeSort,
-    } = props;
+    const { className, sort, order, onChangeOrder, onChangeSort } = props;
 
-    const orderOption = useMemo<SelectOption<SortOrder>[]>(() => [
-        {
-            value: 'asc',
-            content: t('возрастанию'),
-        },
-        {
-            value: 'desc',
-            content: t('убыванию'),
-        },
-    ], [t]);
+    const orderOption = useMemo<SelectOption<SortOrder>[]>(
+        () => [
+            {
+                value: 'asc',
+                content: t('возрастанию'),
+            },
+            {
+                value: 'desc',
+                content: t('убыванию'),
+            },
+        ],
+        [t],
+    );
 
-    const sortFieldOptions = useMemo<SelectOption<ArticleSortField>[]>(() => [
-        {
-            value: ArticleSortField.CREATED,
-            content: t('дате создания'),
-        },
-        {
-            value: ArticleSortField.TITLE,
-            content: t('названию'),
-        },
-        {
-            value: ArticleSortField.VIEWS,
-            content: t('просмотрам'),
-        },
-    ], [t]);
+    const sortFieldOptions = useMemo<SelectOption<ArticleSortField>[]>(
+        () => [
+            {
+                value: ArticleSortField.CREATED,
+                content: t('дате создания'),
+            },
+            {
+                value: ArticleSortField.TITLE,
+                content: t('названию'),
+            },
+            {
+                value: ArticleSortField.VIEWS,
+                content: t('просмотрам'),
+            },
+        ],
+        [t],
+    );
 
     return (
         <VStack
             justify="start"
             align="baseline"
             gap="4"
-            className={
-                classNames('', {}, [className])
-            }
+            className={classNames('', {}, [className])}
         >
-            <Select <ArticleSortField>
+            <Select<ArticleSortField>
                 options={sortFieldOptions}
                 label={t('Сортировать ПО')}
                 value={sort}
                 onChange={onChangeSort}
             />
-            <Select <SortOrder>
+            <Select<SortOrder>
                 options={orderOption}
                 label={t('ПО')}
                 value={order}

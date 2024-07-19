@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { NotificationList } from './NotificationList';
 import { Theme } from '@/shared/const/theme';
+import { NotificationList } from './NotificationList';
 
 const notification = {
     id: '1',
@@ -14,8 +14,7 @@ const notification = {
 const meta: Meta<typeof NotificationList> = {
     title: 'entities/NotificationList',
     component: NotificationList,
-    argTypes: {
-    },
+    argTypes: {},
     decorators: [StoreDecorator({})],
     parameters: {
         mockData: [
@@ -23,10 +22,7 @@ const meta: Meta<typeof NotificationList> = {
                 url: `${__API__}/notifications`,
                 method: 'GET',
                 status: 200,
-                response: [
-                    notification,
-                    { ...notification, id: '2' },
-                ],
+                response: [notification, { ...notification, id: '2' }],
             },
         ],
     },
@@ -34,7 +30,7 @@ const meta: Meta<typeof NotificationList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof NotificationList>
+type Story = StoryObj<typeof NotificationList>;
 
 export const NotificationListNormal: Story = {
     args: {},

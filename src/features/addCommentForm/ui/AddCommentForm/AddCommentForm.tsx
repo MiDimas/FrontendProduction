@@ -1,26 +1,22 @@
-import { useTranslation } from 'react-i18next';
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Input } from '@/shared/ui/Input';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Input } from '@/shared/ui/Input';
 import { HStack } from '@/shared/ui/Stack';
-import cls from './AddCommentForm.module.scss';
+import { getAddCommentFormError } from '../../model/selectors/getAddCommentFormError/getAddCommentFormError';
+import { getAddCommentFormText } from '../../model/selectors/getAddCommentFormText/getAddCommentFormText';
 import {
     addCommentFormActions,
     addCommentFormReducer,
 } from '../../model/slices/addCommentFormSlice';
-import {
-    getAddCommentFormError,
-} from '../../model/selectors/getAddCommentFormError/getAddCommentFormError';
-import {
-    getAddCommentFormText,
-} from '../../model/selectors/getAddCommentFormText/getAddCommentFormText';
+import cls from './AddCommentForm.module.scss';
 
 interface AddCommentFormProps {
     className?: string;
@@ -38,9 +34,12 @@ const AddCommentForm = (props: AddCommentFormProps) => {
     const textForm = useSelector(getAddCommentFormText);
     const errorForm = useSelector(getAddCommentFormError);
 
-    const onTextCommentChange = useCallback((text: string) => {
-        dispatch(addCommentFormActions.setText(text));
-    }, [dispatch]);
+    const onTextCommentChange = useCallback(
+        (text: string) => {
+            dispatch(addCommentFormActions.setText(text));
+        },
+        [dispatch],
+    );
     const onSendHandler = useCallback(() => {
         onSendComment(textForm || '');
         dispatch(addCommentFormActions.setText(''));
@@ -51,9 +50,7 @@ const AddCommentForm = (props: AddCommentFormProps) => {
                 justify="between"
                 align="center"
                 max
-                className={
-                    classNames(cls.AddCommentForm, {}, [className])
-                }
+                className={classNames(cls.AddCommentForm, {}, [className])}
                 data-testid="AddCommentForm"
             >
                 <Input
@@ -72,7 +69,6 @@ const AddCommentForm = (props: AddCommentFormProps) => {
                 </Button>
             </HStack>
         </DynamicModuleLoader>
-
     );
 };
 

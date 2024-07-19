@@ -12,7 +12,9 @@ server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 
 server.use(async (req, res, next) => {
-    await new Promise((res) => { setTimeout(res, 800); });
+    await new Promise((res) => {
+        setTimeout(res, 800);
+    });
     next();
 });
 
@@ -21,8 +23,9 @@ server.post('/login', (req, res) => {
         const { username, password } = req.body;
         const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
         const { users } = db;
-        const userFromDb = users.find((user) => (
-            user.username === username && user.password === password));
+        const userFromDb = users.find(
+            (user) => user.username === username && user.password === password,
+        );
 
         if (userFromDb) {
             return res.json(userFromDb);
@@ -37,7 +40,9 @@ server.post('/login', (req, res) => {
 
 server.use((req, res, next) => {
     if (!req.headers.authorization) {
-        res.status(403).json({ message: 'AUTH EROR' });
+        res.status(403).json({
+            message: 'AUTH EROR',
+        });
     }
     next();
 });

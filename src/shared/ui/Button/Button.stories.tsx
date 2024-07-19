@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Button, ButtonSize, ButtonTheme } from './Button';
 import { Theme } from '@/shared/const/theme';
+import { Button, ButtonSize, ButtonTheme } from './Button';
 
 const meta: Meta<typeof Button> = {
     title: 'shared/Button',
     component: Button,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 export default meta;
@@ -58,9 +57,7 @@ export const OutlineDark: Story = {
         theme: ButtonTheme.OUTLINE,
         children: 'OUTLINE',
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK),
-    ],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const Background: Story = {
@@ -74,9 +71,7 @@ export const BackgroundDark: Story = {
         theme: ButtonTheme.BACKGROUND,
         children: 'BACKGROUND',
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK),
-    ],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const BackgroundInverted: Story = {
@@ -90,9 +85,7 @@ export const BackgroundInvertedDark: Story = {
         theme: ButtonTheme.BACKGROUND_INVERTED,
         children: 'BACKGROUND_INVERTED',
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK),
-    ],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 export const Square: Story = {
     args: {
@@ -133,7 +126,5 @@ export const DisabledDark: Story = {
         children: 'DISABLED',
         disabled: true,
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK),
-    ],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };

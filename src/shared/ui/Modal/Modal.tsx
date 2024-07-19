@@ -1,11 +1,9 @@
-import {
-    ReactNode,
-} from 'react';
+import { ReactNode } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import { useModal } from '@/shared/lib/hooks/useModal/useModal';
+import { Overlay } from '@/shared/ui/Overlay';
 import { Portal } from '@/shared/ui/Portal';
 import { HStack } from '@/shared/ui/Stack';
-import { Overlay } from '@/shared/ui/Overlay';
-import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -17,22 +15,10 @@ interface ModalProps {
     lazy?: boolean;
 }
 
-export const Modal = (props : ModalProps) => {
-    const {
-        className,
-        children,
-        isOpen,
-        onClose,
-        noPortal,
-        lazy = false,
-    } = props;
+export const Modal = (props: ModalProps) => {
+    const { className, children, isOpen, onClose, noPortal, lazy = false } = props;
 
-    const {
-        isClosing,
-        isOpening,
-        isMounted,
-        close,
-    } = useModal({
+    const { isClosing, isOpening, isMounted, close } = useModal({
         onClose,
         isOpen,
     });
@@ -70,11 +56,7 @@ export const Modal = (props : ModalProps) => {
                 className={classNames(cls.Modal, mods)}
             >
                 <Overlay onClick={close} />
-                <div
-                    className={classNames(cls.content, {}, [className])}
-                >
-                    {children}
-                </div>
+                <div className={classNames(cls.content, {}, [className])}>{children}</div>
             </HStack>
         </Portal>
     );

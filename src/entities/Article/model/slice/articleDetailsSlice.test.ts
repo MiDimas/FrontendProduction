@@ -1,8 +1,8 @@
 import { ArticleBlockType, ArticleType } from '../consts/articleConsts';
-import { ArticleDetailsSchema } from '../types/articleDetailsSchema';
-import { articleDetailsReducer } from './articleDetailsSlice';
 import { fetchArticleById } from '../services/FetchArticleById/fetchArticleById';
 import { Article } from '../types/article';
+import { ArticleDetailsSchema } from '../types/articleDetailsSchema';
+import { articleDetailsReducer } from './articleDetailsSlice';
 
 const data: Article = {
     id: '1',
@@ -17,9 +17,7 @@ const data: Article = {
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.10.2022',
-    type: [
-        ArticleType.IT,
-    ],
+    type: [ArticleType.IT],
     blocks: [
         {
             id: '1',
@@ -43,19 +41,27 @@ describe('Тестирование articleDetailsSlice', () => {
             error: 'Ошибка',
             isLoading: false,
         };
-        expect(articleDetailsReducer(state as ArticleDetailsSchema, fetchArticleById.pending))
-            .toEqual({ error: undefined, isLoading: true });
+        expect(
+            articleDetailsReducer(state as ArticleDetailsSchema, fetchArticleById.pending),
+        ).toEqual({
+            error: undefined,
+            isLoading: true,
+        });
     });
     test('Тестирование rejected состояния', () => {
         const state: DeepPartial<ArticleDetailsSchema> = {
             error: undefined,
             isLoading: true,
         };
-        expect(articleDetailsReducer(
-            state as ArticleDetailsSchema,
-            fetchArticleById.rejected(new Error(), '', '', 'error'),
-        ))
-            .toEqual({ error: 'error', isLoading: false });
+        expect(
+            articleDetailsReducer(
+                state as ArticleDetailsSchema,
+                fetchArticleById.rejected(new Error(), '', '', 'error'),
+            ),
+        ).toEqual({
+            error: 'error',
+            isLoading: false,
+        });
     });
     test('Тестирование fulfilled состояния', () => {
         const state: DeepPartial<ArticleDetailsSchema> = {
@@ -63,10 +69,15 @@ describe('Тестирование articleDetailsSlice', () => {
             isLoading: true,
             data: undefined,
         };
-        expect(articleDetailsReducer(
-            state as ArticleDetailsSchema,
-            fetchArticleById.fulfilled(data, '', ''),
-        ))
-            .toEqual({ error: undefined, isLoading: false, data });
+        expect(
+            articleDetailsReducer(
+                state as ArticleDetailsSchema,
+                fetchArticleById.fulfilled(data, '', ''),
+            ),
+        ).toEqual({
+            error: undefined,
+            isLoading: false,
+            data,
+        });
     });
 });

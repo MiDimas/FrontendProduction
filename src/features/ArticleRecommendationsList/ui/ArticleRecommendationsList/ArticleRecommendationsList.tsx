@@ -1,9 +1,9 @@
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/Text';
+import { useTranslation } from 'react-i18next';
 import { ArticleList } from '@/entities/Article';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text';
 import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
 import cls from './ArticleRecommendationsList.module.scss';
 
@@ -18,9 +18,7 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
     return (
         <VStack
             gap="8"
-            className={
-                classNames(cls.ArticleRecommendationsList, {}, [className])
-            }
+            className={classNames(cls.ArticleRecommendationsList, {}, [className])}
             data-testid="ArticleRecommendationsList"
         >
             <Text title={t('Рекомендации')} />

@@ -7,5 +7,4 @@ export const ThemeDecorator = (theme: Theme) => (Story: StoryFn) => (
         <Story />
     </div>
     // </ThemeProvider>
-
 );

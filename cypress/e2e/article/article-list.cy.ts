@@ -13,7 +13,9 @@ describe('Страница списка статей', () => {
         cy.get('ashdjdaf').should('exist');
     });
     it('Проверка подгрузки на стабах(фикстурах)', () => {
-        cy.intercept('GET', '**/articles?*', { fixture: 'articles.json' });
+        cy.intercept('GET', '**/articles?*', {
+            fixture: 'articles.json',
+        });
         cy.getByTestId('ArticleList').should('exist');
         cy.getByTestId('ArticleListItem').should('have.length.greaterThan', 2);
     });

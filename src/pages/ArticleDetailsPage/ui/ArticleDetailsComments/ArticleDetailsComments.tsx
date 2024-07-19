@@ -1,20 +1,18 @@
-import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Text } from '@/shared/ui/Text';
-import { VStack } from '@/shared/ui/Stack';
-import { AddCommentForm } from '@/features/addCommentForm';
 import { CommentList } from '@/entities/Comment';
+import { AddCommentForm } from '@/features/addCommentForm';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { getArticleComments } from '../../model/slices/ArticleDetailsCommentsSlice';
+import { VStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentByArticleId/fetchCommentsByArticleId';
+import { getArticleComments } from '../../model/slices/ArticleDetailsCommentsSlice';
 import cls from './ArticleDetailsComments.module.scss';
-import {
-    fetchCommentsByArticleId,
-} from '../../model/services/fetchCommentByArticleId/fetchCommentsByArticleId';
 
 interface ArticleDetailsCommentsProps {
     className?: string;
@@ -34,18 +32,18 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps) 
         }
     }, true);
 
-    const onSendCommentArticle = useCallback((text: string) => {
-        dispatch(addCommentForArticle(text));
-    }, [dispatch]);
+    const onSendCommentArticle = useCallback(
+        (text: string) => {
+            dispatch(addCommentForArticle(text));
+        },
+        [dispatch],
+    );
 
     return (
         <VStack className={classNames(cls.commentBlock, {}, [className])} max>
             <Text title={t('Комментарии')} />
             <AddCommentForm onSendComment={onSendCommentArticle} />
-            <CommentList
-                isLoading={commentsIsLoading}
-                comments={comments}
-            />
+            <CommentList isLoading={commentsIsLoading} comments={comments} />
         </VStack>
     );
 });

@@ -1,20 +1,12 @@
+import React, { FC, HTMLAttributeAnchorTarget, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import React, {
-    FC,
-    HTMLAttributeAnchorTarget,
-    useCallback,
-    useRef,
-} from 'react';
-import {
-    Virtuoso, VirtuosoGrid,
-    VirtuosoGridHandle,
-    VirtuosoHandle,
-} from 'react-virtuoso';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle, VirtuosoHandle } from 'react-virtuoso';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import {
-    getScrollRestoreVirtuosoScrollByPath, scrollRestoreAction,
+    getScrollRestoreVirtuosoScrollByPath,
+    scrollRestoreAction,
 } from '@/features/ScrollRestore';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -22,13 +14,13 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
 import { ArticleView } from '../../model/consts/articleConsts';
-import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
-import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
-import cls from './ArticleList.module.scss';
 import { Article } from '../../model/types/article';
+import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
+import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
+import cls from './ArticleList.module.scss';
 
-type DirectionList = 'horizontal' | 'vertical'
-interface ArticleListProps{
+type DirectionList = 'horizontal' | 'vertical';
+interface ArticleListProps {
     className?: string;
     articles: Article[];
     isLoading?: boolean;
@@ -37,14 +29,15 @@ interface ArticleListProps{
     target?: HTMLAttributeAnchorTarget;
     Header?: FC;
     virtualized?: boolean;
-    onScrollEnd?: ()=> void;
+    onScrollEnd?: () => void;
     direction?: DirectionList;
 }
-const getSkeleton = (view: ArticleView) => new Array(3)
-    .fill(0)
-    .map((item, index) => (
-        <ArticleListItemSkeleton className={cls.card} view={view} key={index} />
-    ));
+const getSkeleton = (view: ArticleView) =>
+    new Array(3)
+        .fill(0)
+        .map((item, index) => (
+            <ArticleListItemSkeleton className={cls.card} view={view} key={index} />
+        ));
 export const ArticleList = (props: ArticleListProps) => {
     const {
         className,
@@ -60,9 +53,9 @@ export const ArticleList = (props: ArticleListProps) => {
     } = props;
     const { pathname } = useLocation();
     const dispatch = useAppDispatch();
-    const scroll = useSelector((state: StateSchema) => (
-        getScrollRestoreVirtuosoScrollByPath(state, pathname)
-    ));
+    const scroll = useSelector((state: StateSchema) =>
+        getScrollRestoreVirtuosoScrollByPath(state, pathname),
+    );
     const { t } = useTranslation('article');
     const virtuosoGridRef = useRef<VirtuosoGridHandle>(null);
     const virtuosoRef = useRef<VirtuosoHandle>(null);
@@ -77,14 +70,21 @@ export const ArticleList = (props: ArticleListProps) => {
             target={target}
             onClickItem={
                 virtualized
-                    ? () => dispatch(scrollRestoreAction.setVirtuosoScrollIndex({ path: pathname, index }))
+                    ? () =>
+                          dispatch(
+                              scrollRestoreAction.setVirtuosoScrollIndex({
+                                  path: pathname,
+                                  index,
+                              }),
+                          )
                     : () => {}
             }
         />
     );
-    const skeleton = useCallback(() => (
-        <div className={classNames(cls.footer, {}, [cls[view]])}>{getSkeleton(view)}</div>
-    ), [view]);
+    const skeleton = useCallback(
+        () => <div className={classNames(cls.footer, {}, [cls[view]])}>{getSkeleton(view)}</div>,
+        [view],
+    );
 
     useInitialEffect(() => {
         if (scroll) {
@@ -109,16 +109,13 @@ export const ArticleList = (props: ArticleListProps) => {
     if (!isLoading && !articles.length) {
         if (Header) {
             return (
-                <VStack className={
-                    classNames(cls.ArticleList, {}, [cls[view], className])
-                }
-                >
+                <VStack className={classNames(cls.ArticleList, {}, [cls[view], className])}>
                     <Header />
-                    {
-                        error
-                            ? <Text text={t('Произошла ошибка')} />
-                            : <Text text={t('Статьи не найдены')} />
-                    }
+                    {error ? (
+                        <Text text={t('Произошла ошибка')} />
+                    ) : (
+                        <Text text={t('Статьи не найдены')} />
+                    )}
                 </VStack>
             );
         }
@@ -142,54 +139,48 @@ export const ArticleList = (props: ArticleListProps) => {
         }
     }
     return (
-        <div className={
-            classNames(cls.ArticleList, {}, [cls[view], className])
-        }
-        >
+        <div className={classNames(cls.ArticleList, {}, [cls[view], className])}>
             {/* {articles.length > 0 */}
             {/*    ? articles.map((article) => renderArticle(article)) */}
             {/*    : null} */}
-            {view === ArticleView.BIG
-                ? (
-                    <Virtuoso
-                        style={{ height: '100%' }}
-                        totalCount={articles.length}
-                        data={articles}
-                        itemContent={renderArticle}
-                        endReached={onScrollEnd}
-                        data-testid="ArticleList"
-                        components={{
-                            Header,
-                            Footer: isLoading ? skeleton : undefined,
-                        }}
-                        ref={virtuosoRef}
-                    />
-                )
-                : (
-                    <VirtuosoGrid
-                        ref={virtuosoGridRef}
-                        style={{
-                            height: '100%', width: '100%',
-                        }}
-                        totalCount={articles.length}
-                        data={articles}
-                        itemContent={renderArticle}
-                        endReached={onScrollEnd}
-                        data-testid="ArticleList"
-                        listClassName={cls.SMALL}
-                        atBottomStateChange={(atBottom) => {
-                            if (atBottom) {
-                                onScrollEnd?.();
-                            }
-                        }}
-                        components={{
-                            Header,
-                            Footer: isLoading ? skeleton : undefined,
-                        }}
-                    />
-
-                )}
-
+            {view === ArticleView.BIG ? (
+                <Virtuoso
+                    style={{ height: '100%' }}
+                    totalCount={articles.length}
+                    data={articles}
+                    itemContent={renderArticle}
+                    endReached={onScrollEnd}
+                    data-testid="ArticleList"
+                    components={{
+                        Header,
+                        Footer: isLoading ? skeleton : undefined,
+                    }}
+                    ref={virtuosoRef}
+                />
+            ) : (
+                <VirtuosoGrid
+                    ref={virtuosoGridRef}
+                    style={{
+                        height: '100%',
+                        width: '100%',
+                    }}
+                    totalCount={articles.length}
+                    data={articles}
+                    itemContent={renderArticle}
+                    endReached={onScrollEnd}
+                    data-testid="ArticleList"
+                    listClassName={cls.SMALL}
+                    atBottomStateChange={(atBottom) => {
+                        if (atBottom) {
+                            onScrollEnd?.();
+                        }
+                    }}
+                    components={{
+                        Header,
+                        Footer: isLoading ? skeleton : undefined,
+                    }}
+                />
+            )}
         </div>
     );
 };

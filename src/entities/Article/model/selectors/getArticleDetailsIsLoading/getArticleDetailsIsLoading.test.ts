@@ -1,7 +1,5 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
-import {
-    getArticleDetailsIsLoading,
-} from './getArticleDetailsIsLoading';
+import { getArticleDetailsIsLoading } from './getArticleDetailsIsLoading';
 
 describe('Тестирование селектора ArticleDetailsIsLoading', () => {
     test('Состояние загрузки true', () => {
@@ -14,8 +12,7 @@ describe('Тестирование селектора ArticleDetailsIsLoading', 
     });
     test('Пустой стэйт', () => {
         const initialState: DeepPartial<StateSchema> = {
-            articleDetails: {
-            },
+            articleDetails: {},
         };
         expect(getArticleDetailsIsLoading(initialState as StateSchema)).toBe(undefined);
     });

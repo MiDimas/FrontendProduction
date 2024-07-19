@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { SelectOption } from '@/shared/ui/Select';
 import { ListBox } from '@/shared/ui/Popups';
+import { SelectOption } from '@/shared/ui/Select';
 import { Country } from '../../model/types/country';
 
 interface CountryProps {
@@ -12,21 +12,30 @@ interface CountryProps {
 }
 
 const options: SelectOption<Country>[] = [
-    { value: Country.Armenia, content: Country.Armenia },
-    { value: Country.Belarus, content: Country.Belarus },
-    { value: Country.Kazakhstan, content: Country.Kazakhstan },
-    { value: Country.Russia, content: Country.Russia },
-    { value: Country.Ukraine, content: Country.Ukraine },
-
+    {
+        value: Country.Armenia,
+        content: Country.Armenia,
+    },
+    {
+        value: Country.Belarus,
+        content: Country.Belarus,
+    },
+    {
+        value: Country.Kazakhstan,
+        content: Country.Kazakhstan,
+    },
+    {
+        value: Country.Russia,
+        content: Country.Russia,
+    },
+    {
+        value: Country.Ukraine,
+        content: Country.Ukraine,
+    },
 ];
 export const CountrySelect = (props: CountryProps) => {
     const { t } = useTranslation();
-    const {
-        className,
-        value,
-        onChange,
-        readonly,
-    } = props;
+    const { className, value, onChange, readonly } = props;
 
     return (
         <ListBox

@@ -1,12 +1,10 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/StoreProvider';
-import {
-    Article, ArticleSortField, ArticleType, ArticleView,
-} from '@/entities/Article';
+import { Article, ArticleSortField, ArticleType, ArticleView } from '@/entities/Article';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 import { SortOrder } from '@/shared/types';
-import { ArticlesPageSchema } from '../types/articlesPageSchema';
 import { fetchArticlesList } from '../services/FetchArticlesList/fetchArticlesList';
+import { ArticlesPageSchema } from '../types/articlesPageSchema';
 
 const articlesAdapter = createEntityAdapter<Article>({
     selectId: (article) => article.id,
@@ -38,19 +36,19 @@ const articlesPageSlice = createSlice({
             state.view = action.payload;
             localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, action.payload);
         },
-        setPage: (state, action:PayloadAction<number>) => {
+        setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload;
         },
-        setOrder: (state, action:PayloadAction<SortOrder>) => {
+        setOrder: (state, action: PayloadAction<SortOrder>) => {
             state.order = action.payload;
         },
-        setSort: (state, action:PayloadAction<ArticleSortField>) => {
+        setSort: (state, action: PayloadAction<ArticleSortField>) => {
             state.sort = action.payload;
         },
-        setType: (state, action:PayloadAction<ArticleType>) => {
+        setType: (state, action: PayloadAction<ArticleType>) => {
             state.type = action.payload;
         },
-        setSearch: (state, action:PayloadAction<string>) => {
+        setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload;
         },
         initState: (state) => {

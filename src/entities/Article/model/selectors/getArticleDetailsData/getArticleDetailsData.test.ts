@@ -1,6 +1,6 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { getArticleDetailsData } from './getArticleDetailsData';
 import { Article } from '../../types/article';
+import { getArticleDetailsData } from './getArticleDetailsData';
 
 const article: DeepPartial<Article> = {
     title: 'Статья',
@@ -16,8 +16,7 @@ describe('Тестирование селектора ArticleDetailsData', () =>
     });
     test('Пустой стэйт', () => {
         const initialState: DeepPartial<StateSchema> = {
-            articleDetails: {
-            },
+            articleDetails: {},
         };
         expect(getArticleDetailsData(initialState as StateSchema)).toBe(undefined);
     });

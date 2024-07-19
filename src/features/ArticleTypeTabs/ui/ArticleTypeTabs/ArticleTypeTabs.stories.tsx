@@ -1,15 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { ArticleTypeTabs } from './ArticleTypeTabs';
 import { Theme } from '@/shared/const/theme';
-import { ArticleType } from '@/entities/Article';
+import { ArticleTypeTabs } from './ArticleTypeTabs';
 
 const meta: Meta<typeof ArticleTypeTabs> = {
     title: 'features/ArticleTypeTabs',
     component: ArticleTypeTabs,
-    argTypes: {
-    },
+    argTypes: {},
     args: {
         value: ArticleType.IT,
         onChangeType: () => {},
@@ -18,7 +17,7 @@ const meta: Meta<typeof ArticleTypeTabs> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ArticleTypeTabs>
+type Story = StoryObj<typeof ArticleTypeTabs>;
 
 export const ArticleTypeTabsLight: Story = {
     args: {},

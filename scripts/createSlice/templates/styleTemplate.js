@@ -1,6 +1,5 @@
-module.exports = (componentName) => (
+module.exports = (componentName) =>
     `.${componentName} {
 
 }
-`
-);
+`;

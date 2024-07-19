@@ -1,19 +1,18 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
 import { ArticleView } from '../../model/consts/articleConsts';
 import { ArticleListItemSkeleton } from './ArticleListItemSkeleton';
-import { Theme } from '@/shared/const/theme';
 
 const meta: Meta<typeof ArticleListItemSkeleton> = {
     title: 'entities/Article/ArticleListItemSkeleton',
     component: ArticleListItemSkeleton,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ArticleListItemSkeleton>
+type Story = StoryObj<typeof ArticleListItemSkeleton>;
 
 export const ArticleListItemSkeletonLightSmall: Story = {
     args: {

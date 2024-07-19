@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ArticleDetailsSchema } from '../types/articleDetailsSchema';
 import { fetchArticleById } from '../services/FetchArticleById/fetchArticleById';
+import { ArticleDetailsSchema } from '../types/articleDetailsSchema';
 
 const initialState: ArticleDetailsSchema = {
     isLoading: false,
@@ -27,7 +27,6 @@ export const articleDetailsSlice = createSlice({
                 state.error = action.payload;
             });
     },
-
 });
 
 export const { actions: articleDetailsAction } = articleDetailsSlice;

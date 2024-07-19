@@ -10,11 +10,11 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof Card>
+type Story = StoryObj<typeof Card>;
 
 export const CardLight: Story = {
     args: {
         // eslint-disable-next-line
-        children: <Text title='Элемент в карточке' text="Просто текст блока текст в карточке" />,
+        children: <Text title="Элемент в карточке" text="Просто текст блока текст в карточке" />,
     },
 };

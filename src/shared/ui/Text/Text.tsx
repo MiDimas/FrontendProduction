@@ -5,12 +5,12 @@ import cls from './Text.module.scss';
 export enum TextTheme {
     PRIMARY = 'primary',
     INVERTED = 'inverted',
-    ERROR = 'error'
+    ERROR = 'error',
 }
 export enum TextAlign {
     RIGHT = 'right',
     LEFT = 'left',
-    CENTER = 'center'
+    CENTER = 'center',
 }
 
 export enum TextSize {
@@ -48,28 +48,17 @@ export const Text = memo((props: TextProps) => {
         size = TextSize.M,
         'data-testid': dataTestId = '',
     } = props;
-    const additional: Additional = [
-        className,
-        cls[theme],
-        cls[align],
-        cls[size],
-    ];
+    const additional: Additional = [className, cls[theme], cls[align], cls[size]];
     const HeaderTag = mapSizeToHeaderTag[size];
     return (
         <div className={classNames(cls.Text, {}, additional)}>
             {title && (
-                <HeaderTag
-                    data-testid={`${dataTestId}.Header`}
-                    className={cls.title}
-                >
+                <HeaderTag data-testid={`${dataTestId}.Header`} className={cls.title}>
                     {title}
                 </HeaderTag>
             )}
             {text && (
-                <p
-                    data-testid={`${dataTestId}.Paragraph`}
-                    className={cls.text}
-                >
+                <p data-testid={`${dataTestId}.Paragraph`} className={cls.text}>
                     {text}
                 </p>
             )}

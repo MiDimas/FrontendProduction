@@ -1,19 +1,18 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { ArticleSortField } from '@/entities/Article';
-import { ArticleSortSelector } from './ArticleSortSelector';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
+import { ArticleSortSelector } from './ArticleSortSelector';
 
 const meta: Meta<typeof ArticleSortSelector> = {
     title: 'entities/Article/ArticleSortSelector',
     component: ArticleSortSelector,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ArticleSortSelector>
+type Story = StoryObj<typeof ArticleSortSelector>;
 
 export const ArticleSortSelectorNormal: Story = {
     args: {

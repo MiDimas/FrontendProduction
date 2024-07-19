@@ -3,7 +3,7 @@ import { ValidateProfileError } from '../consts/editableProfileCardConsts';
 
 export type ValidateErrorTranslates = {
     [name in ValidateProfileError]: string;
-}
+};
 export interface ProfileSchema {
     data?: Profile;
     form?: Profile;

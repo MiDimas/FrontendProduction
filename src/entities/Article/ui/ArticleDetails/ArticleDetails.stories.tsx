@@ -7,13 +7,12 @@ import { ArticleDetails } from './ArticleDetails';
 const meta: Meta<typeof ArticleDetails> = {
     title: 'entities/Article/ArticleDetails',
     component: ArticleDetails,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ArticleDetails>
+type Story = StoryObj<typeof ArticleDetails>;
 
 const article: Article = {
     id: '1',
@@ -28,9 +27,7 @@ const article: Article = {
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.10.2022',
-    type: [
-        ArticleType.IT,
-    ],
+    type: [ArticleType.IT],
     blocks: [
         {
             id: '1',
@@ -108,19 +105,34 @@ export const ArticleDetailsNormal: Story = {
     args: {
         id: '1',
     },
-    decorators: [StoreDecorator({ articleDetails: { data: article } })],
+    decorators: [
+        StoreDecorator({
+            articleDetails: { data: article },
+        }),
+    ],
 };
 
 export const ArticleDetailsLoading: Story = {
     args: {
         id: '1',
     },
-    decorators: [StoreDecorator({ articleDetails: { isLoading: true } })],
+    decorators: [
+        StoreDecorator({
+            articleDetails: { isLoading: true },
+        }),
+    ],
 };
 
 export const ArticleDetailsError: Story = {
     args: {
         id: '1',
     },
-    decorators: [StoreDecorator({ articleDetails: { isLoading: false, error: 'Ошибка' } })],
+    decorators: [
+        StoreDecorator({
+            articleDetails: {
+                isLoading: false,
+                error: 'Ошибка',
+            },
+        }),
+    ],
 };

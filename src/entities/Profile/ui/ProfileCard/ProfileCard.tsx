@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { Country, CountrySelect } from '@/entities/Country';
+import { Currency, CurrencySelect } from '@/entities/Currency';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
+import { Avatar } from '@/shared/ui/Avatar';
 import { Input } from '@/shared/ui/Input';
 import { Loader } from '@/shared/ui/Loader';
-import { Avatar } from '@/shared/ui/Avatar';
-import { Currency, CurrencySelect } from '@/entities/Currency';
-import { Country, CountrySelect } from '@/entities/Country';
 import { HStack, VStack } from '@/shared/ui/Stack';
+import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
 import { Profile } from '../../model/types/Profile';
 import cls from './ProfileCard.module.scss';
 
@@ -16,16 +16,16 @@ interface ProfileCardProps {
     isLoading?: boolean;
     error?: string;
     readonly?: boolean;
-    onChangeFirstname?: (value:string)=>void;
-    onChangeLastname?: (value:string)=>void;
-    onChangeAge?: (value: string|number)=>void;
+    onChangeFirstname?: (value: string) => void;
+    onChangeLastname?: (value: string) => void;
+    onChangeAge?: (value: string | number) => void;
     onChangeCity?: (value: string) => void;
     onChangeUsername?: (value: string) => void;
     onChangeAvatar?: (value: string) => void;
     onChangeCurrency?: (value: Currency) => void;
     onChangeCountry?: (value: Country) => void;
 }
-export const ProfileCard = (props:ProfileCardProps) => {
+export const ProfileCard = (props: ProfileCardProps) => {
     const { t } = useTranslation('profile');
     const {
         className,
@@ -69,7 +69,6 @@ export const ProfileCard = (props:ProfileCardProps) => {
                     title={t('Произошла ошибка при загрузке профиля')}
                     text={t('Попробуйте обновить страницу')}
                 />
-
             </HStack>
         );
     }
@@ -79,10 +78,7 @@ export const ProfileCard = (props:ProfileCardProps) => {
     };
     if (data) {
         return (
-            <div className={
-                classNames(cls.ProfileCard, mods, [className])
-            }
-            >
+            <div className={classNames(cls.ProfileCard, mods, [className])}>
                 <VStack>
                     <HStack justify="center" max>
                         <Avatar src={data.avatar} alt={t('аватар')} />
@@ -140,10 +136,7 @@ export const ProfileCard = (props:ProfileCardProps) => {
         );
     }
     return (
-        <div className={
-            classNames(cls.ProfileCard, mods, [className])
-        }
-        >
+        <div className={classNames(cls.ProfileCard, mods, [className])}>
             <VStack>
                 <Input
                     placeholder={t('Ваше имя')}
@@ -155,28 +148,12 @@ export const ProfileCard = (props:ProfileCardProps) => {
                     readonly={readonly}
                     data-testid="ProfileCard.lastname"
                 />
-                <Input
-                    placeholder={t('Ваш возраст')}
-                    readonly={readonly}
-                />
-                <Input
-                    placeholder={t('Ваш город')}
-                    readonly={readonly}
-                />
-                <Input
-                    placeholder={t('Ваш ник')}
-                    readonly={readonly}
-                />
-                <Input
-                    placeholder={t('Ваш аватар')}
-                    readonly={readonly}
-                />
-                <CurrencySelect
-                    readonly={readonly}
-                />
-                <CountrySelect
-                    readonly={readonly}
-                />
+                <Input placeholder={t('Ваш возраст')} readonly={readonly} />
+                <Input placeholder={t('Ваш город')} readonly={readonly} />
+                <Input placeholder={t('Ваш ник')} readonly={readonly} />
+                <Input placeholder={t('Ваш аватар')} readonly={readonly} />
+                <CurrencySelect readonly={readonly} />
+                <CountrySelect readonly={readonly} />
             </VStack>
         </div>
     );

@@ -1,10 +1,10 @@
 import { screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import { renderComponent } from '@/shared/config/tests/renderWithTranslation/renderComponent';
-import { Profile } from '@/entities/Profile';
-import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { Profile } from '@/entities/Profile';
 import { $api } from '@/shared/api/api';
+import { renderComponent } from '@/shared/config/tests/renderWithTranslation/renderComponent';
 import { profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
 
@@ -29,7 +29,6 @@ const option = {
     },
     asyncReducers: {
         profile: profileReducer,
-
     },
 };
 describe('Проверка компонента EditableProfileCard', () => {

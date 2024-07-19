@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Button } from '@/shared/ui/Button';
-import { useCounterActions } from '../model/slice/counterSlice';
 import { useCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
+import { useCounterActions } from '../model/slice/counterSlice';
 
 export const Counter = memo(() => {
     const counterValue = useCounterValue();
@@ -17,16 +17,10 @@ export const Counter = memo(() => {
     return (
         <div>
             <h3 data-testid="value-title">{counterValue}</h3>
-            <Button
-                onClick={incrementHandler}
-                data-testid="increment-btn"
-            >
+            <Button onClick={incrementHandler} data-testid="increment-btn">
                 +
             </Button>
-            <Button
-                onClick={decrementHandler}
-                data-testid="decrement-btn"
-            >
+            <Button onClick={decrementHandler} data-testid="decrement-btn">
                 -
             </Button>
         </div>

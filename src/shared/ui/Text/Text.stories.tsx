@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Text, TextSize, TextTheme } from './Text';
 import { Theme } from '@/shared/const/theme';
+import { Text, TextSize, TextTheme } from './Text';
 
 const meta: Meta<typeof Text> = {
     title: 'shared/Text',
     component: Text,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 export default meta;
@@ -32,7 +31,6 @@ export const TextError: Story = {
 export const TextDark: Story = {
     args: {
         title: 'Lorem ipsum dolor sit amet.',
-
     },
     decorators: [ThemeDecorator(Theme.DARK)],
 };

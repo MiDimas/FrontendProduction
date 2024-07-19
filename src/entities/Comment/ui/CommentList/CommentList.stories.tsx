@@ -4,20 +4,32 @@ import { CommentList } from './CommentList';
 const meta: Meta<typeof CommentList> = {
     title: 'entities/Comment/CommentList',
     component: CommentList,
-    argTypes: {
-
-    },
+    argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof CommentList>
+type Story = StoryObj<typeof CommentList>;
 
 export const CommentListNormal: Story = {
     args: {
         comments: [
-            { id: '1', user: { id: '1', username: 'petushok' }, text: 'first comment' },
-            { id: '2', user: { id: '2', username: 'triceratops' }, text: 'second comment' },
+            {
+                id: '1',
+                user: {
+                    id: '1',
+                    username: 'petushok',
+                },
+                text: 'first comment',
+            },
+            {
+                id: '2',
+                user: {
+                    id: '2',
+                    username: 'triceratops',
+                },
+                text: 'second comment',
+            },
         ],
     },
 };

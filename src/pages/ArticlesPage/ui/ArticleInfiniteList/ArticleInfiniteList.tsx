@@ -1,19 +1,15 @@
-import {
-    FC, memo, useCallback,
-} from 'react';
+import { FC, memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import { ArticleList } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { ArticleList } from '@/entities/Article';
-import { getArticles } from '../../model/slices/articlesPageSlice';
-import {
-    getArticlesPageIsLoading,
-} from '../../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
 import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError';
+import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading';
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView';
-import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { fetchNextArticlesPage } from '../../model/services/FetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { getArticles } from '../../model/slices/articlesPageSlice';
 
 interface ArticleInfiniteListProps {
     className?: string;
@@ -21,10 +17,7 @@ interface ArticleInfiniteListProps {
 }
 
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
-    const {
-        className,
-        header,
-    } = props;
+    const { className, header } = props;
     const dispatch = useAppDispatch();
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);

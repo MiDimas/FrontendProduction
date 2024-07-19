@@ -1,24 +1,24 @@
 import { Listbox as HListbox } from '@headlessui/react';
 import { Fragment, ReactNode, useRef } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ListBoxOptionsDirection } from '@/shared/types';
 import { Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
-import { ListBoxOptionsDirection } from '@/shared/types';
-import cls from './ListBox.module.scss';
 import { mapDirectionClasses } from '../../styles/consts';
 import popups from '../../styles/popups.module.scss';
+import cls from './ListBox.module.scss';
 
 type ListBoxItem = {
-    value:string;
+    value: string;
     content: ReactNode;
-    disabled?: boolean
-}
+    disabled?: boolean;
+};
 interface ListBoxProps<T extends string> {
     items?: ListBoxItem[];
     className?: string;
     value?: T;
     defaultValue?: string;
-    onChange?: (value:T) => void;
+    onChange?: (value: T) => void;
     readonly?: boolean;
     direction?: ListBoxOptionsDirection;
     label?: string;
@@ -42,15 +42,16 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
     return (
         <HStack gap="8" align="center">
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            {label
-                && (
-                    <span
-                        className={cls.label}
-                        onClick={() => { ref.current?.click(); }}
-                    >
-                        {`${label} >`}
-                    </span>
-                )}
+            {label && (
+                <span
+                    className={cls.label}
+                    onClick={() => {
+                        ref.current?.click();
+                    }}
+                >
+                    {`${label} >`}
+                </span>
+            )}
             <HListbox
                 value={value}
                 onChange={onChange}
@@ -59,23 +60,14 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                 disabled={readonly}
                 id={defaultValue}
             >
-                <HListbox.Button
-                    className={popups.trigger}
-                    as="div"
-                    ref={ref}
-                >
-                    <Button
-                        disabled={readonly}
-                    >
-                        {value ?? defaultValue}
-                    </Button>
-
+                <HListbox.Button className={popups.trigger} as="div" ref={ref}>
+                    <Button disabled={readonly}>{value ?? defaultValue}</Button>
                 </HListbox.Button>
                 <HListbox.Options
                     className={classNames(cls.options, {}, additionalClasses)}
                     ref={optionRef}
                 >
-                    { items?.map((item) => (
+                    {items?.map((item) => (
                         <HListbox.Option
                             key={item.value}
                             value={item.value}
@@ -84,10 +76,14 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                         >
                             {({ active, selected, disabled }) => (
                                 <li
-                                    className={classNames(cls.item, {
-                                        [popups.active]: active,
-                                        [popups.disabled]: disabled,
-                                    }, [])}
+                                    className={classNames(
+                                        cls.item,
+                                        {
+                                            [popups.active]: active,
+                                            [popups.disabled]: disabled,
+                                        },
+                                        [],
+                                    )}
                                 >
                                     {selected && '***'}
                                     {item.content}
@@ -95,10 +91,8 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                             )}
                         </HListbox.Option>
                     ))}
-
                 </HListbox.Options>
             </HListbox>
         </HStack>
-
     );
 };

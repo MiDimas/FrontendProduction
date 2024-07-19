@@ -1,8 +1,8 @@
 export type { ScrollSchema, ScrollRestoreSchema } from './model/types/ScrollRestoreSchema';
 export { scrollRestoreAction, scrollRestoreReducer } from './model/slice/ScrollRestoreSlice';
 export {
-    getScrollRestoreScrollByPath,
+    getScrollRestoreScrollByPath
 } from './model/selectors/getScrollRestoreScrollByPath/getScrollRestoreScrollByPath';
 export {
-    getScrollRestoreVirtuosoScrollByPath,
+    getScrollRestoreVirtuosoScrollByPath
 } from './model/selectors/getScrollRestoreVirtuosoScrollByPath/getScrollRestoreVirtuosoScrollByPath';

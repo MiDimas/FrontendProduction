@@ -1,22 +1,22 @@
-import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input';
-import { Text, TextTheme } from '@/shared/ui/Text';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Input } from '@/shared/ui/Input';
 import { VStack } from '@/shared/ui/Stack';
+import { Text, TextTheme } from '@/shared/ui/Text';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
-import { loginActions, loginReducer } from '../../model/slice/loginSlice';
-import { loginByUsername } from '../../model/services/LoginByUserName/LoginByUsername';
-import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
-import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { loginByUsername } from '../../model/services/LoginByUserName/LoginByUsername';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
@@ -36,36 +36,38 @@ const LoginForm = memo((props: LoginFormProps) => {
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
 
-    const {
-        className,
-        onSuccess,
-    } = props;
+    const { className, onSuccess } = props;
 
-    const onChangeUsername = useCallback((value: string) => {
-        dispatch(loginActions.setUsername(value));
-    }, [dispatch]);
-    const onChangePassword = useCallback((value: string) => {
-        dispatch(loginActions.setPassword(value));
-    }, [dispatch]);
+    const onChangeUsername = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setUsername(value));
+        },
+        [dispatch],
+    );
+    const onChangePassword = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setPassword(value));
+        },
+        [dispatch],
+    );
     const onLoginClick = useCallback(async () => {
-        const result = await dispatch(loginByUsername({ username, password }));
+        const result = await dispatch(
+            loginByUsername({
+                username,
+                password,
+            }),
+        );
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess?.();
         }
     }, [onSuccess, dispatch, username, password]);
 
     return (
-        <DynamicModuleLoader
-            removeAfterUnmount
-            reducers={initialReducers}
-        >
+        <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
             <VStack className={classNames(cls.LoginForm, {}, [className])}>
                 <Text title={t('Форма авторизации')} />
                 {error && (
-                    <Text
-                        text={t('Неправильный логин или пароль')}
-                        theme={TextTheme.ERROR}
-                    />
+                    <Text text={t('Неправильный логин или пароль')} theme={TextTheme.ERROR} />
                 )}
                 <Input
                     type="text"
@@ -80,14 +82,8 @@ const LoginForm = memo((props: LoginFormProps) => {
                     onChange={onChangePassword}
                     value={password}
                 />
-                <Button
-                    theme={ButtonTheme.OUTLINE}
-                    onClick={onLoginClick}
-                    disabled={isLoading}
-                >
-                    {
-                        t('Войти')
-                    }
+                <Button theme={ButtonTheme.OUTLINE} onClick={onLoginClick} disabled={isLoading}>
+                    {t('Войти')}
                 </Button>
             </VStack>
         </DynamicModuleLoader>

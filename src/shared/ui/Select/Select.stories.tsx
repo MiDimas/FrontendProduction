@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Select } from './Select';
 import { Theme } from '@/shared/const/theme';
+import { Select } from './Select';
 
 const meta: Meta<typeof Select> = {
     title: 'shared/Select',
     component: Select,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 export default meta;
@@ -17,8 +16,14 @@ export const SelectLight: Story = {
     args: {
         label: 'выберите опцию',
         options: [
-            { value: 'option1', content: 'Первая опция' },
-            { value: 'option2', content: 'Вторая опция' },
+            {
+                value: 'option1',
+                content: 'Первая опция',
+            },
+            {
+                value: 'option2',
+                content: 'Вторая опция',
+            },
         ],
     },
 };
@@ -26,8 +31,14 @@ export const SelectDark: Story = {
     args: {
         label: 'выберите опцию',
         options: [
-            { value: 'option1', content: 'Первая опция' },
-            { value: 'option2', content: 'Вторая опция' },
+            {
+                value: 'option1',
+                content: 'Первая опция',
+            },
+            {
+                value: 'option2',
+                content: 'Вторая опция',
+            },
         ],
     },
     decorators: [ThemeDecorator(Theme.DARK)],
@@ -36,8 +47,14 @@ export const SelectDisabled: Story = {
     args: {
         label: 'выберите опцию',
         options: [
-            { value: 'option1', content: 'Первая опция' },
-            { value: 'option2', content: 'Вторая опция' },
+            {
+                value: 'option1',
+                content: 'Первая опция',
+            },
+            {
+                value: 'option2',
+                content: 'Вторая опция',
+            },
         ],
         readonly: true,
     },

@@ -1,23 +1,19 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { ArticleBlockType, ArticleType, ArticleView } from '../../model/consts/articleConsts';
-import {
-    Article,
-
-} from '../../model/types/article';
-import { ArticleListItem } from './ArticleListItem';
 import { Theme } from '@/shared/const/theme';
+import { ArticleBlockType, ArticleType, ArticleView } from '../../model/consts/articleConsts';
+import { Article } from '../../model/types/article';
+import { ArticleListItem } from './ArticleListItem';
 
 const meta: Meta<typeof ArticleListItem> = {
     title: 'entities/Article/ArticleListItem',
     component: ArticleListItem,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ArticleListItem>
+type Story = StoryObj<typeof ArticleListItem>;
 /* eslint-disable max-len */
 const testArticle: Article = {
     id: '1',
@@ -31,9 +27,7 @@ const testArticle: Article = {
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.10.2022',
-    type: [
-        ArticleType.IT, ArticleType.ECONOMICS, ArticleType.SCIENCE,
-    ],
+    type: [ArticleType.IT, ArticleType.ECONOMICS, ArticleType.SCIENCE],
     blocks: [
         {
             id: '1',

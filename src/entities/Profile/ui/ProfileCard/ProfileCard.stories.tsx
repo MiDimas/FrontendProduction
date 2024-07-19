@@ -1,15 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
-import { ProfileCard } from './ProfileCard';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
+import { ProfileCard } from './ProfileCard';
 
 const meta: Meta<typeof ProfileCard> = {
     title: 'entities/ProfileCard',
     component: ProfileCard,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 export default meta;
@@ -32,9 +31,7 @@ export const ProfileCardWithData: Story = {
 };
 
 export const ProfileCardWithDataDark: Story = {
-    decorators: [
-        ThemeDecorator(Theme.DARK),
-    ],
+    decorators: [ThemeDecorator(Theme.DARK)],
     args: {
         data: {
             firstname: 'Peter',
@@ -60,9 +57,7 @@ export const ProfileCardErrorDark: Story = {
     args: {
         error: 'error',
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK),
-    ],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const ProfileCardLoading: Story = {
@@ -75,7 +70,5 @@ export const ProfileCardLoadingDark: Story = {
     args: {
         isLoading: true,
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK),
-    ],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };

@@ -1,15 +1,14 @@
-import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { Meta, StoryObj } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Tabs } from './Tabs';
 import { Theme } from '@/shared/const/theme';
+import { Tabs } from './Tabs';
 
 const meta: Meta<typeof Tabs> = {
     title: 'shared/Tabs',
     component: Tabs,
-    argTypes: {
-    },
+    argTypes: {},
     args: {
         tabs: [
             {
@@ -32,11 +31,10 @@ const meta: Meta<typeof Tabs> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Tabs>
+type Story = StoryObj<typeof Tabs>;
 
 export const TabsNormal: Story = {
-    args: {
-    },
+    args: {},
 };
 export const TabsDark: Story = {
     args: {},

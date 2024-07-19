@@ -1,14 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import AddCommentForm from './AddCommentForm';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
+import AddCommentForm from './AddCommentForm';
 
 const meta: Meta<typeof AddCommentForm> = {
     title: 'features/AddCommentForm',
     component: AddCommentForm,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 export default meta;
@@ -16,17 +15,19 @@ type Story = StoryObj<typeof AddCommentForm>;
 
 export const AddCommentFormLight: Story = {
     args: {
-        onSendComment: (text:string) => {},
+        onSendComment: (text: string) => {},
     },
     decorators: [StoreDecorator({})],
-}; export const AddCommentFormDark: Story = {
+};
+export const AddCommentFormDark: Story = {
     args: {
-        onSendComment: (text:string) => {},
+        onSendComment: (text: string) => {},
     },
     decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({})],
-}; export const AddCommentFormOrange: Story = {
+};
+export const AddCommentFormOrange: Story = {
     args: {
-        onSendComment: (text:string) => {},
+        onSendComment: (text: string) => {},
     },
     decorators: [ThemeDecorator(Theme.ORANGE), StoreDecorator({})],
 };

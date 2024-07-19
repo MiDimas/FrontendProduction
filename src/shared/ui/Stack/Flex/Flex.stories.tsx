@@ -4,8 +4,7 @@ import { Flex } from './Flex';
 const meta: Meta<typeof Flex> = {
     title: 'shared/Flex',
     component: Flex,
-    argTypes: {
-    },
+    argTypes: {},
     args: {
         children: (
             <>
@@ -20,7 +19,7 @@ const meta: Meta<typeof Flex> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Flex>
+type Story = StoryObj<typeof Flex>;
 
 export const Row: Story = {
     args: {

@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/shared/ui/Button';
 
 export const BugButton = () => {
@@ -15,7 +15,5 @@ export const BugButton = () => {
             throw new Error();
         }
     });
-    return (
-        <Button onClick={generateError}>{t('Сгенерировать ошибку')}</Button>
-    );
+    return <Button onClick={generateError}>{t('Сгенерировать ошибку')}</Button>;
 };

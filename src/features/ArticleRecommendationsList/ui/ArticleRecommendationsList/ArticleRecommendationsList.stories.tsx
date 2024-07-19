@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Article, ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Article, ArticleType } from '@/entities/Article';
-import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 import { Theme } from '@/shared/const/theme';
+import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 
 const article: Article = {
     id: '1',
@@ -17,17 +17,14 @@ const article: Article = {
     img: '',
     views: 1022,
     createdAt: '26.10.2022',
-    type: [
-        ArticleType.IT,
-    ],
+    type: [ArticleType.IT],
     blocks: [],
 };
 
 const meta: Meta<typeof ArticleRecommendationsList> = {
     title: 'features/ArticleRecommendationsList',
     component: ArticleRecommendationsList,
-    argTypes: {
-    },
+    argTypes: {},
     decorators: [StoreDecorator({})],
     parameters: {
         mockData: [
@@ -47,7 +44,7 @@ const meta: Meta<typeof ArticleRecommendationsList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ArticleRecommendationsList>
+type Story = StoryObj<typeof ArticleRecommendationsList>;
 
 export const ArticleRecommendationsListLight: Story = {
     args: {},

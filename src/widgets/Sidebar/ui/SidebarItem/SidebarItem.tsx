@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { getUserAuthData } from '@/entities/User';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { HStack } from '@/shared/ui/Stack';
 import { SidebarItemType } from '../../model/types/sidebar';
 import cls from './SidebarItem.module.scss';
@@ -15,31 +15,21 @@ interface SidebarItemProps {
 export const SidebarItem = memo((props: SidebarItemProps) => {
     const isAuth = useSelector(getUserAuthData);
     const { t } = useTranslation();
-    const {
-        item,
-        collapsed = false,
-    } = props;
+    const { item, collapsed = false } = props;
     if (item.authOnly && !isAuth) {
         return null;
     }
-    const {
-        Icon,
-        text,
-        path,
-    } = item;
+    const { Icon, text, path } = item;
     return (
         <AppLink
             theme={AppLinkTheme.INVERTED}
             to={path}
-            className={classNames(cls.SidebarItem, { [cls.collapsed]: collapsed })}
+            className={classNames(cls.SidebarItem, {
+                [cls.collapsed]: collapsed,
+            })}
         >
-            <HStack
-                gap="8"
-                align="center"
-                justify="start"
-                className={cls.block}
-                max
-            >
+            <HStack gap="8" align="center" justify="start" className={cls.block}
+max>
                 <Icon className={cls.icon} />
                 <span className={cls.link}>{t(text)}</span>
             </HStack>

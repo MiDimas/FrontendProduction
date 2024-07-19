@@ -1,26 +1,21 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-
-import {
-    Article,
-
-} from '../../model/types/article';
-import { ArticleList } from './ArticleList';
-import { ArticleView, ArticleBlockType, ArticleType } from '../../model/consts/articleConsts';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
+import { ArticleView, ArticleBlockType, ArticleType } from '../../model/consts/articleConsts';
+import { Article } from '../../model/types/article';
+import { ArticleList } from './ArticleList';
 
 const meta: Meta<typeof ArticleList> = {
     title: 'entities/Article/ArticleList',
     component: ArticleList,
-    argTypes: {
-    },
+    argTypes: {},
     decorators: [StoreDecorator({})],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ArticleList>
+type Story = StoryObj<typeof ArticleList>;
 
 /* eslint-disable max-len */
 const testArticle: Article = {
@@ -35,9 +30,7 @@ const testArticle: Article = {
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.10.2022',
-    type: [
-        ArticleType.IT, ArticleType.ECONOMICS, ArticleType.SCIENCE,
-    ],
+    type: [ArticleType.IT, ArticleType.ECONOMICS, ArticleType.SCIENCE],
     blocks: [
         {
             id: '1',
@@ -51,11 +44,10 @@ const testArticle: Article = {
         },
     ],
 };
-const listArticles: Article[] = new Array(6)
-    .fill(0).map((item, index) => ({
-        ...testArticle,
-        id: String(index),
-    }));
+const listArticles: Article[] = new Array(6).fill(0).map((item, index) => ({
+    ...testArticle,
+    id: String(index),
+}));
 
 export const ArticleListLightSmall: Story = {
     args: {

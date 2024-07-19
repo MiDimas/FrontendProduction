@@ -1,7 +1,5 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
-import {
-    getArticleDetailsError,
-} from './getArticleDetailsError';
+import { getArticleDetailsError } from './getArticleDetailsError';
 
 describe('Тестирование селектора ArticleDetailsError', () => {
     test('Состояние ошибки', () => {
@@ -14,8 +12,7 @@ describe('Тестирование селектора ArticleDetailsError', () =
     });
     test('Пустой стэйт', () => {
         const initialState: DeepPartial<StateSchema> = {
-            articleDetails: {
-            },
+            articleDetails: {},
         };
         expect(getArticleDetailsError(initialState as StateSchema)).toBe(undefined);
     });

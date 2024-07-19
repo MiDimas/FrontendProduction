@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AddCommentFormSchema } from '../types/addCommentForm';
 
-const initialState: AddCommentFormSchema = {
-
-};
+const initialState: AddCommentFormSchema = {};
 
 export const addCommentFormSlice = createSlice({
     name: 'addCommentForm',

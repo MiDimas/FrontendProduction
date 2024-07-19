@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { ArticleView } from '@/entities/Article';
 import ListView from '@/shared/assets/icons/list_icon.svg';
 import TilesView from '@/shared/assets/icons/tiles_icon.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { HStack } from '@/shared/ui/Stack';
-import { ArticleView } from '@/entities/Article';
 import cls from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {
@@ -26,24 +26,15 @@ const viewTypes = [
 ];
 export const ArticleViewSelector = (props: ArticleViewSelectorProps) => {
     const { t } = useTranslation();
-    const {
-        className,
-        view,
-        onViewClick,
-    } = props;
+    const { className, view, onViewClick } = props;
 
     const onClick = (newView: ArticleView) => () => {
         onViewClick?.(newView);
     };
 
     return (
-        <HStack
-            align="center"
-            className={
-                classNames(cls.ArticleViewSelector, {}, [className])
-            }
-        >
-            { viewTypes.map((viewType, index) => (
+        <HStack align="center" className={classNames(cls.ArticleViewSelector, {}, [className])}>
+            {viewTypes.map((viewType, index) => (
                 <Button
                     key={index}
                     onClick={onClick(viewType.view)}

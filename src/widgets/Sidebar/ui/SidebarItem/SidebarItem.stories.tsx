@@ -1,18 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import MainIcon from '@/shared/assets/icons/home_icon.svg';
-import { SidebarItem } from './SidebarItem';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
+import { SidebarItem } from './SidebarItem';
 
 const meta: Meta<typeof SidebarItem> = {
     title: 'widgets/SidebarItem',
     component: SidebarItem,
-    argTypes: {
-    },
-    decorators: [
-        StoreDecorator({}),
-    ],
+    argTypes: {},
+    decorators: [StoreDecorator({})],
 };
 
 export default meta;
@@ -36,9 +33,7 @@ export const SidebarItemDark: Story = {
             text: 'Главная',
         },
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK),
-    ],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const SidebarItemLightCollapsed: Story = {
@@ -61,7 +56,5 @@ export const SidebarItemDarkCollapsed: Story = {
         },
         collapsed: true,
     },
-    decorators: [
-        ThemeDecorator(Theme.DARK),
-    ],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };

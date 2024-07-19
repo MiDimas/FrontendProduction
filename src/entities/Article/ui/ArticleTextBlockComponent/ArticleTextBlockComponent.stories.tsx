@@ -1,22 +1,21 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
 import { ArticleBlockType } from '../../model/consts/articleConsts';
 import { ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from './ArticleTextBlockComponent';
-import { Theme } from '@/shared/const/theme';
 
 const meta: Meta<typeof ArticleTextBlockComponent> = {
     title: 'entities/Article/ArticleTextBlockComponent',
     component: ArticleTextBlockComponent,
-    argTypes: {
-    },
+    argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ArticleTextBlockComponent>
+type Story = StoryObj<typeof ArticleTextBlockComponent>;
 /* eslint-disable max-len */
-const block:ArticleTextBlock = {
+const block: ArticleTextBlock = {
     id: '1',
     type: ArticleBlockType.TEXT,
     title: 'Заголовок этого блока',

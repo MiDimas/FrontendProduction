@@ -44,7 +44,10 @@ describe('updateProfileData', () => {
     test('Проверка на ошибку валидации', async () => {
         const thunk = new TestAsyncThunk(updateProfileData, {
             profile: {
-                form: { ...data, lastname: '' },
+                form: {
+                    ...data,
+                    lastname: '',
+                },
             },
         });
         const result = await thunk.callThunk();

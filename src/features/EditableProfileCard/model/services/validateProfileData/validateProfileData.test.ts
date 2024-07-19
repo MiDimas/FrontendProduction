@@ -14,50 +14,40 @@ const data = {
 };
 describe('validateProfileData', () => {
     test('Полностью корректно заполнено', () => {
-        const result = validateProfileData(
-            {
-                ...data,
-            },
-        );
+        const result = validateProfileData({
+            ...data,
+        });
         expect(result).toEqual([]);
     });
     test('Проверка валидации на незаполненое поле имени и фамилии', () => {
-        const result = validateProfileData(
-            {
-                ...data,
-                firstname: '',
-            },
-        );
+        const result = validateProfileData({
+            ...data,
+            firstname: '',
+        });
         expect(result).toEqual([ValidateProfileError.INCORRECT_USER_DATA]);
     });
     test('Проверка валидации на незаполненое поле возраста', () => {
-        const result = validateProfileData(
-            {
-                ...data,
-                age: 0,
-            },
-        );
+        const result = validateProfileData({
+            ...data,
+            age: 0,
+        });
         expect(result).toEqual([ValidateProfileError.INCORRECT_AGE]);
     });
     test('Проверка валидации на незаполненое поле страны', () => {
-        const result = validateProfileData(
-            {
-                ...data,
-                country: undefined,
-            },
-        );
+        const result = validateProfileData({
+            ...data,
+            country: undefined,
+        });
         expect(result).toEqual([ValidateProfileError.INCORRECT_COUNTRY]);
     });
     test('Проверка валидации на незаполненые обязательные поля', () => {
-        const result = validateProfileData(
-            {
-                ...data,
-                firstname: '',
-                lastname: '',
-                age: 0,
-                country: undefined,
-            },
-        );
+        const result = validateProfileData({
+            ...data,
+            firstname: '',
+            lastname: '',
+            age: 0,
+            country: undefined,
+        });
         expect(result).toEqual([
             ValidateProfileError.INCORRECT_USER_DATA,
             ValidateProfileError.INCORRECT_AGE,
