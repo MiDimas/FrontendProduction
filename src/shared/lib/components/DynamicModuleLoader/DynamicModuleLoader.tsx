@@ -1,5 +1,5 @@
 import { Reducer } from '@reduxjs/toolkit';
-import { ReactNode, useEffect } from 'react';
+import {ReactNode, useEffect, useState} from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { ReduxStoreWithManger, StateSchema, StateSchemaKey } from '@/app/providers/StoreProvider';
 
@@ -15,6 +15,7 @@ interface DynamicModuleLoaderProps {
 }
 export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
     const { children, reducers, removeAfterUnmount } = props;
+    const [isMount, setIsMount] = useState(false);
     const store = useStore() as ReduxStoreWithManger;
     const dispatch = useDispatch();
 
@@ -35,7 +36,7 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
                 });
             }
         });
-
+        setIsMount(true);
         return () => {
             if (removeAfterUnmount) {
                 Object.entries(reducers).forEach((value: ReducersListEntry) => {
@@ -48,13 +49,16 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
                         type: `@DEST Destroy ${name} Reducer`,
                     });
                 });
+                setIsMount(false);
             }
         };
         // eslint-disable-next-line
     }, []);
-
-    return (
-        // eslint-disable-next-line react/jsx-no-useless-fragment
-        <>{children}</>
-    );
+    if(isMount){
+        return (
+            // eslint-disable-next-line react/jsx-no-useless-fragment
+            <>{children}</>
+        );
+    }
+    return null;
 };
