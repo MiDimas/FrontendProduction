@@ -29,7 +29,8 @@ then use **vite** to rebuild the application faster.
 -   `npm run lint:scss:fix` - start linting SCSS code in project with `--fix` flag, and corrects errors
     if there is a fixer in the established rules;
 -   `npm run jest:init` - starts generating the jest-configuration file;
--   `npm run test:cypress` - run cypress tests;
+-   `npm run pretier` - starts prettier checking (unstable work with eslint);
+-   `npm run test:e2e` - runs the cypress tests;
 -   `npm run test:unit` - starts unit testing all test files (_.test.ts, _.test.tsx), if you need to run testing one
     file, you can put the name after space;
 -   `npm run test:ui` - starts testing UI on local machine with docker;

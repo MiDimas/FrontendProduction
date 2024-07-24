@@ -5,7 +5,6 @@ import { Page } from '@/widgets/Page';
 const MainPage = memo(() => {
     const { t } = useTranslation('main');
     const [state, setState] = useState<string | undefined>();
-    /* eslint-disable i18next/no-literal-string */
     return (
         <Page data-testid="MainPage">
             {t('Главная Страница')}
