@@ -90,6 +90,12 @@ To run linting style code - `npm run lint:scss`
 
 ---
 
+## Prettier
+
+In the project `prettier` is used for styling code
+
+---
+
 ## Storybook
 
 There are storybook cases for the all ui-components in the project.
