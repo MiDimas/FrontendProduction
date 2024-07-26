@@ -92,7 +92,12 @@ To run linting style code - `npm run lint:scss`
 
 ## Prettier
 
-In the project `prettier` is used for styling code
+In the project `prettier` is used to bring the code to a single style.
+
+To run prettier use - `npm run prettier`
+
+P.S. prettier in project has conflicts with linter and shifts some imports to the one line,
+ever the import has length more than 120 symbols.
 
 ---
 
