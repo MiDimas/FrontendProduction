@@ -5,10 +5,11 @@ import  ArticleEditPage  from './ArticleEditPage';
 import {Theme} from "@/shared/const/theme";
 
 const meta: Meta<typeof ArticleEditPage> = {
-    title: 'ArticleEditPage',
+    title: 'pages/ArticleEditPage',
     component: ArticleEditPage,
     argTypes: {
     },
+    decorators: [StoreDecorator({})],
 };
 
 export default meta;
@@ -20,5 +21,5 @@ export const ArticleEditPageNormal: Story = {
 };
 export const ArticleEditPageDark: Story = {
     args: {},
-    decorators: [StoreDecorator({}), ThemeDecorator(Theme.DARK)],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };

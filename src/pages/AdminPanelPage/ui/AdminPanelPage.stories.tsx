@@ -1,14 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react';
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import {ThemeDecorator} from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import {Theme} from "@/shared/const/theme";
 import  AdminPanelPage  from './AdminPanelPage';
+import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 
 const meta: Meta<typeof AdminPanelPage> = {
-    title: 'AdminPanelPage',
+    title: 'pages/AdminPanelPage',
     component: AdminPanelPage,
     argTypes: {
     },
+    decorators: [StoreDecorator({})],
 };
 
 export default meta;
@@ -20,5 +21,5 @@ export const AdminPanelPageNormal: Story = {
 };
 export const AdminPanelPageDark: Story = {
     args: {},
-    decorators: [StoreDecorator({}), ThemeDecorator(Theme.DARK)],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
