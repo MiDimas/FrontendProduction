@@ -5,7 +5,7 @@ import {Theme} from "@/shared/const/theme";
 
 
 const meta: Meta<typeof Code> = {
-    title: 'Code',
+    title: 'shared/Code',
     component: Code,
     argTypes: {
     },

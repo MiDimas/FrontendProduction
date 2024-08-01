@@ -4,7 +4,7 @@ import {ThemeDecorator} from "@/shared/config/storybook/ThemeDecorator/ThemeDeco
 import {Theme} from "@/shared/const/theme";
 
 const meta: Meta<typeof ForbiddenPage> = {
-    title: 'ForbiddenPage',
+    title: 'pages/ForbiddenPage',
     component: ForbiddenPage,
     argTypes: {
     },
