@@ -15,6 +15,7 @@ const meta: Meta<typeof VStack> = {
                 <div>third</div>
             </>
         ),
+        height: 400
     }
 };
 
