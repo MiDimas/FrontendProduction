@@ -15,7 +15,7 @@ import { articleDetailsPageReducer } from '../../model/slices';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import cls from './ArticleDetailsPage.module.scss';
-import { getFeatureFlags } from '@/shared/lib/features';
+import { getFeatureFlags, toggleFeatures } from '@/shared/lib/features';
 import { Counter } from '@/entities/Counter';
 
 interface ArticlesDetailsPageProps {
@@ -35,13 +35,21 @@ const ArticleDetailsPage = (props: ArticlesDetailsPageProps) => {
         id = '1';
     }
 
+    const counter = toggleFeatures({
+        name: "isCounterEnabled",
+        // eslint-disable-next-line react/no-unstable-nested-components
+        on: () => <Counter />,
+        // eslint-disable-next-line react/no-unstable-nested-components
+        off: () => <ArticleRating articleId={id} />
+    })
+
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
                 <ArticleDetailsPageHeader />
                 <VStack max gap="32">
                     <ArticleDetails id={id} />
-                    {isCounter && <Counter />}
+                    {counter}
                     {isArticleRating &&
                         <ArticleRating articleId={id} /> }
                     <ArticleRecommendationsList />
