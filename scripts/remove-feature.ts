@@ -1,5 +1,19 @@
 import { Project, SyntaxKind, Node } from 'ts-morph';
 
+const removeFeatureFlag = process.argv[2];
+const featureState = process.argv[3];
+
+if(!removeFeatureFlag){
+    throw Error('Укажите название фича флага');
+}
+if(!featureState){
+    throw Error('Не указано состояние. Укажите состояние фича флага которое должно сохраниться');
+}
+
+if(featureState !== 'on' && featureState !== 'off') {
+    throw Error('Некорректное состояние. Укажите состояние либо (on либо off)')
+}
+
 const project = new Project();
 
 project.addSourceFilesAtPaths('src/**/ArticleDetailsPage.tsx')
@@ -35,8 +49,21 @@ sources.forEach((source) => {
 
             const nameProperty = objectOptions.getProperty('name');
 
-            console.log(nameProperty?.getText())
-            console.log(offFunctionProperty?.getText())
+            const onFunction = onFunctionProperty?.getFirstDescendantByKind(SyntaxKind.ArrowFunction);
+            const offFunction = offFunctionProperty?.getFirstDescendantByKind(SyntaxKind.ArrowFunction);
+
+            const featureName = nameProperty?.getFirstDescendantByKind(SyntaxKind.StringLiteral)
+                ?.getText()
+                .slice(1, -1);
+
+            if(featureName !== removeFeatureFlag) return;
+
+            if(featureState === 'on'){
+                node.replaceWithText(onFunction?.getBody().getText() ?? '');
+            }
+            if(featureState === 'off'){
+                node.replaceWithText(offFunction?.getBody().getText() ?? '');
+            }
 
         }
     })
