@@ -39,6 +39,7 @@ then use **vite** to rebuild the application faster.
 -   `npm run test:ui:report` - creates a report UI tests in HTML page and json file;
 -   `npm run test:ui:json` - creates a report UI tests in json file;
 -   `npm run test:ui:html` - creates a report UI tests in HTML page;
+-    npm run remove:feature - remove toggle feature flag, need to set two args name of feature flag and state of saved feature;
 -   `npm run storybook` - starts the storybook of this project(from files \*.stories.tsx) on port 6006;
 -   `npm run storybook:build` - building the storybook of this project;
 -   `npm run prepare` - starts to prepare pre-commit hooks on local machine after install the project;
