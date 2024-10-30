@@ -5,3 +5,5 @@ export { getUserInitial } from './model/selectors/getUserInitial/getUserInitial'
 
 export { isUserAdmin, isUserManager, getUserRoles } from './model/selectors/roles/rolesSelectors';
 export { UserRole } from './model/consts/userConsts';
+
+export { useJsonSettingsByKey } from './model/selectors/jsonSettings/jsonSettings';
