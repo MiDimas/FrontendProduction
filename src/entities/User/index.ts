@@ -7,3 +7,5 @@ export { isUserAdmin, isUserManager, getUserRoles } from './model/selectors/role
 export { UserRole } from './model/consts/userConsts';
 
 export { useJsonSettingsByKey } from './model/selectors/jsonSettings/jsonSettings';
+
+export {saveJsonSettings} from './model/services/saveJsonSettings'

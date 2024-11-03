@@ -5,7 +5,8 @@ import { Theme } from '@/shared/const/theme';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import {LOCAL_STORAGE_THEME_KEY} from "@/shared/const/localstorage";
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import {saveJsonSettings} from "@/entities/User";
 
 interface ThemeSwitcherProps {
     className?: string;
@@ -14,11 +15,16 @@ interface ThemeSwitcherProps {
 
 export const ThemeSwitcher = memo(({ className, startTheme }: ThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme();
+    const dispatch = useAppDispatch();
     const toggleThemeHandler = useCallback(() => {
-        toggleTheme?.((theme) =>
-            localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme || '')
+        toggleTheme?.((theme) => {
+                // localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme || '')
+                if (theme) {
+                    dispatch(saveJsonSettings({theme}))
+                }
+            }
         )
-    }, [toggleTheme]);
+    }, [toggleTheme, dispatch]);
     return (
         <Button
             className={classNames('', {}, [className])}

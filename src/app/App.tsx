@@ -1,5 +1,5 @@
 import { Suspense, useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getUserInitial, userActions } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
@@ -7,10 +7,11 @@ import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { AppRouter } from './providers/router';
 import './styles/index.scss';
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 function App() {
     const { theme } = useTheme();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // Навешивание темы на body
     const themeBody = useCallback(() => {
@@ -23,6 +24,7 @@ function App() {
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
+
 
     return (
         <div>
