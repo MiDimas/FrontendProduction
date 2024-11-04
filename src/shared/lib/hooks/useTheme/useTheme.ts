@@ -5,6 +5,7 @@ import { ThemeContext } from '../../context/ThemeContext';
 interface UseThemeResult {
     toggleTheme: (saveAction?: (theme?: Theme) => void) => void;
     theme: Theme;
+    setTheme?: (theme:Theme) => void;
 }
 
 export function useTheme(): UseThemeResult {
@@ -33,5 +34,6 @@ export function useTheme(): UseThemeResult {
     return {
         theme: theme || Theme.LIGHT,
         toggleTheme,
+        setTheme
     };
 }

@@ -15,4 +15,5 @@ export interface UserSchema {
     authData?: User;
 
     _initial: boolean;
+    _updated: boolean;
 }

@@ -3,9 +3,11 @@ import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 import { User, UserSchema } from '../types/User';
 import { setFeatureFlags } from '@/shared/lib/features';
 import {saveJsonSettings} from '../services/saveJsonSettings';
+import {updateUserData} from '../services/updateUserData';
 
 const initialState: UserSchema = {
     _initial: false,
+    _updated: false,
 };
 
 export const userSlice = createSlice({
@@ -35,11 +37,20 @@ export const userSlice = createSlice({
             saveJsonSettings.fulfilled,
             (state, {payload}) => {
                 if(state.authData) {
-                    console.log(payload)
                     state.authData.jsonSettings = payload
                 }
             }
         )
+            .addCase(
+                updateUserData.fulfilled,
+                (state, {payload}) => {
+                    if(state.authData){
+                        state.authData = {...state.authData, ...payload}
+                        setFeatureFlags(payload.features);
+                        state._updated = true;
+                    }
+                }
+            )
     }
 });
 
