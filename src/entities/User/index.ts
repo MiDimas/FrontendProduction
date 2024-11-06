@@ -7,7 +7,6 @@ export { isUserAdmin, isUserManager, getUserRoles } from './model/selectors/role
 export { UserRole } from './model/consts/userConsts';
 
 export { useJsonSettings } from './model/selectors/jsonSettings/jsonSettings';
-export {useUserUpdated} from './model/selectors/getUserUpdated/getUserUpdated';
 
 export {saveJsonSettings} from './model/services/saveJsonSettings'
-export {updateUserData} from './model/services/updateUserData'
+export {loadUserData} from './model/services/loadUserData'

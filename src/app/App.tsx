@@ -2,9 +2,7 @@ import {Suspense, useCallback, useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import {
     getUserInitial,
-    userActions,
-    updateUserData,
-    useUserUpdated,
+    loadUserData,
     useJsonSettings
 } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -15,6 +13,7 @@ import { AppRouter } from './providers/router';
 import './styles/index.scss';
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {LOCAL_STORAGE_THEME_KEY} from "@/shared/const/localstorage";
+import {PageLoader} from "@/widgets/PageLoader";
 
 
 function App() {
@@ -32,15 +31,13 @@ function App() {
         themeBody();
     }, [themeBody]);
     const initial = useSelector(getUserInitial);
-    const updated = useUserUpdated();
     useEffect(() => {
-        dispatch(userActions.initAuthData());
-        dispatch(updateUserData());
+        dispatch(loadUserData());
     }, [dispatch]);
 
     useEffect(() => {
         if(!isInitTheme){
-            if(updated && newTheme){
+            if(newTheme){
                 if(newTheme !== theme){
                     setTheme?.(newTheme);
                     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
@@ -48,8 +45,13 @@ function App() {
                 setIsInitTheme(true);
             }
         }
-    }, [updated, newTheme, setTheme, theme, isInitTheme])
+    }, [newTheme, setTheme, theme, isInitTheme])
 
+    if(!initial){
+        return (
+            <PageLoader/>
+        )
+    }
 
     return (
         <div>

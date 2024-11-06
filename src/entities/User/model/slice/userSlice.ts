@@ -3,11 +3,10 @@ import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 import { User, UserSchema } from '../types/User';
 import { setFeatureFlags } from '@/shared/lib/features';
 import {saveJsonSettings} from '../services/saveJsonSettings';
-import {updateUserData} from '../services/updateUserData';
+import {loadUserData} from '../services/loadUserData';
 
 const initialState: UserSchema = {
     _initial: false,
-    _updated: false,
 };
 
 export const userSlice = createSlice({
@@ -17,15 +16,6 @@ export const userSlice = createSlice({
         setAuthData: (state, action: PayloadAction<User>) => {
             state.authData = action.payload;
             setFeatureFlags(action.payload.features)
-        },
-        initAuthData: (state) => {
-            const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-            if (user) {
-                const json =  JSON.parse(user) as User;
-                state.authData = json;
-                setFeatureFlags(json.features);
-            }
-            state._initial = true;
         },
         logout: (state) => {
             state.authData = undefined;
@@ -42,13 +32,19 @@ export const userSlice = createSlice({
             }
         )
             .addCase(
-                updateUserData.fulfilled,
+                loadUserData.fulfilled,
                 (state, {payload}) => {
-                    if(state.authData){
+                    if(payload){
                         state.authData = {...state.authData, ...payload}
                         setFeatureFlags(payload.features);
-                        state._updated = true;
                     }
+                    state._initial = true;
+                }
+            )
+            .addCase(
+                loadUserData.rejected,
+                (state) => {
+                    state._initial = true;
                 }
             )
     }

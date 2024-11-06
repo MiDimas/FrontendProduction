@@ -1,22 +1,20 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ThunkConfig} from "@/app/providers/StoreProvider";
 import {User} from "../types/User";
-import {getUserAuthData} from "../selectors/getUserAuthData/getUserAuthData"
 import {uploadUserDataQuery} from '../../api/userApi'
+import {USER_LOCALSTORAGE_KEY} from "@/shared/const/localstorage";
 
-export const updateUserData= createAsyncThunk<User,  undefined, ThunkConfig<string>>(
+export const loadUserData= createAsyncThunk<User,  undefined, ThunkConfig<string>>(
     'articleDetails/fetchArticleById',
     async (_, thunkAPI) => {
         const {rejectWithValue, getState, dispatch} = thunkAPI;
-        const  user = getUserAuthData(getState());
+        const  userId = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+        console.log(userId);
         try {
-            if (!user) {
-                throw new Error('Не залогинен');
-            }
-            if (!user.id){
+            if (!userId) {
                 throw new Error('Вы не авторизованы');
             }
-            const response = await dispatch(uploadUserDataQuery(user.id)).unwrap();
+            const response = await dispatch(uploadUserDataQuery(userId)).unwrap();
             if (!response) {
                 throw new Error('Такого пользователя нет');
             }
