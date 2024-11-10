@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import {memo} from "react";
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { ArticleDetails } from '@/entities/Article';
@@ -15,7 +15,7 @@ import { articleDetailsPageReducer } from '../../model/slices';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import cls from './ArticleDetailsPage.module.scss';
-import { getFeatureFlags } from '@/shared/lib/features';
+import {getFeatureFlags, ToggleFeatures} from '@/shared/lib/features';
 import { Counter } from '@/entities/Counter';
 
 interface ArticlesDetailsPageProps {
@@ -30,12 +30,9 @@ const ArticleDetailsPage = (props: ArticlesDetailsPageProps) => {
     const { className } = props;
     let { id } = useParams<{ id: string }>();
     const isArticleRating = getFeatureFlags('isArticleRatingEnabled');
-    const isCounter= getFeatureFlags('isCounterEnabled');
     if (__PROJECT__ === 'storybook') {
         id = '1';
     }
-
-    const counter = <Counter />
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -43,7 +40,9 @@ const ArticleDetailsPage = (props: ArticlesDetailsPageProps) => {
                 <ArticleDetailsPageHeader />
                 <VStack max gap="32">
                     <ArticleDetails id={id} />
-                    {counter}
+                    <ToggleFeatures feature="isCounterEnabled"
+                        on={<Counter/>}
+                    />
                     {isArticleRating &&
                         <ArticleRating articleId={id} /> }
                     <ArticleRecommendationsList />
