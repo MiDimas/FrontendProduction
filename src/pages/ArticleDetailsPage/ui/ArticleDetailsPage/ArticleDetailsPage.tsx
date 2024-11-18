@@ -15,8 +15,7 @@ import { articleDetailsPageReducer } from '../../model/slices';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import cls from './ArticleDetailsPage.module.scss';
-import {getFeatureFlags, ToggleFeatures} from '@/shared/lib/features';
-import { Counter } from '@/entities/Counter';
+import {getFeatureFlags} from '@/shared/lib/features';
 
 interface ArticlesDetailsPageProps {
     className?: string;
@@ -40,9 +39,6 @@ const ArticleDetailsPage = (props: ArticlesDetailsPageProps) => {
                 <ArticleDetailsPageHeader />
                 <VStack max gap="32">
                     <ArticleDetails id={id} />
-                    <ToggleFeatures feature="isCounterEnabled"
-                        on={<Counter/>}
-                    />
                     {isArticleRating &&
                         <ArticleRating articleId={id} /> }
                     <ArticleRecommendationsList />

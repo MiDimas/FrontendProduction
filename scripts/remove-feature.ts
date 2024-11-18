@@ -1,4 +1,4 @@
-import {Project, SyntaxKind, Node, ts} from 'ts-morph';
+import {Project, SyntaxKind, Node, ts, JsxAttribute} from 'ts-morph';
 
 const removeFeatureFlag = process.argv[2];
 const featureState = process.argv[3];
@@ -85,40 +85,52 @@ function replaceToggleFunction(node:Node<ts.Node>) {
             node.replaceWithText(offFunction?.getBody().getText() ?? '');
         }
 }
-function replaceToggleComponent(node:Node<ts.Node>) {
-    const attribute = node.getDescendantsOfKind(SyntaxKind.JsxAttribute);
 
-    console.log(attribute);
-        //
-        // if(!objectOptions) return;
-        //
-        // const offFunctionProperty = objectOptions.getProperty('off');
-        // const onFunctionProperty = objectOptions.getProperty('on');
-        //
-        // const nameProperty = objectOptions.getProperty('name');
-        //
-        // const onFunction = onFunctionProperty?.getFirstDescendantByKind(SyntaxKind.ArrowFunction);
-        // const offFunction = offFunctionProperty?.getFirstDescendantByKind(SyntaxKind.ArrowFunction);
-        //
-        // const featureName = nameProperty?.getFirstDescendantByKind(SyntaxKind.StringLiteral)
-        //     ?.getText()
-        //     .slice(1, -1);
-        //
-        // if(featureName !== removeFeatureFlag) return;
-        //
-        // if(featureState === 'on'){
-        //     node.replaceWithText(onFunction?.getBody().getText() ?? '');
-        // }
-        // if(featureState === 'off'){
-        //     node.replaceWithText(offFunction?.getBody().getText() ?? '');
-        // }
+function getAttributeByName (
+    jsxAttribute: JsxAttribute[],
+    name: string
+) {
+    return jsxAttribute.find((node) => node.getNameNode().getText() === name)
+}
+function replaceToggleComponent(node:Node<ts.Node>) {
+    const attributes = node.getDescendantsOfKind(SyntaxKind.JsxAttribute);
+
+    // console.log(attributes);
+    const featureNameAttribute = getAttributeByName(attributes, 'feature')
+    if(!featureNameAttribute) return;
+    const featureName = featureNameAttribute.getInitializer()?.getText()?.slice(1, -1);
+    if(featureName !== removeFeatureFlag) return;
+    const stateAttribute = getAttributeByName(attributes, featureState);
+    let content = '';
+    if(stateAttribute){
+        const init = stateAttribute.getInitializer();
+        if(init){
+            let initContent = init.getText();
+            let fixed = true;
+            while(fixed){
+                fixed = false;
+                if (initContent.startsWith('{')) {
+                    initContent = initContent.slice(1, -1);
+                    fixed = true;
+                }
+                if (initContent.startsWith('(')) {
+                    initContent = initContent.slice(1, -1);
+                    fixed = true;
+                }
+            }
+
+            // console.log(initContent);
+            if(initContent) content = initContent;
+        }
+    }
+    node.replaceWithText(content);
 }
 
 sources.forEach((source) => {
     source.forEachDescendant( node => {
-        // if(node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)){
-        //     replaceToggleFunction(node);
-        // }
+        if(node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)){
+            replaceToggleFunction(node);
+        }
         if(node.isKind(SyntaxKind.JsxSelfClosingElement) && isToggleComponent(node)){
             replaceToggleComponent(node);
         }
