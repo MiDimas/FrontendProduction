@@ -29,4 +29,22 @@
     --overlay-color: rgba(0 0 0 / 50%);
     --red-light: #ea0000;
     --red-dark: #a10000;
+
+    // Redesigned
+    --font-family-text-redesigned: "Nunito Sans", sans-serif;
+    --font-family-title-redesigned: "Roboto", sans-serif;
+
+    // Text
+    --font-text-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-text-redesigned);
+    --font-text-s: var(--font-size-s) / var(--font-line-s) var(--font-family-text-redesigned);
+    --font-text-m: var(--font-size-m) / var(--font-line-m) var(--font-family-text-redesigned);
+    --font-text-l: var(--font-size-l) / var(--font-line-l) var(--font-family-text-redesigned);
+    --font-text-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-text-redesigned);
+
+    // Title
+    --font-title-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-title-redesigned);
+    --font-title-s: var(--font-size-s) / var(--font-line-s) var(--font-family-title-redesigned);
+    --font-title-m: var(--font-size-m) / var(--font-line-m) var(--font-family-title-redesigned);
+    --font-title-l: var(--font-size-l) / var(--font-line-l) var(--font-family-title-redesigned);
+    --font-title-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-title-redesigned);
 }
