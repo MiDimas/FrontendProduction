@@ -14,6 +14,7 @@ import './styles/index.scss';
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {LOCAL_STORAGE_THEME_KEY} from "@/shared/const/localstorage";
 import {PageLoader} from "@/widgets/PageLoader";
+import {toggleFeatures} from "@/shared/lib/features";
 
 
 function App() {
@@ -24,13 +25,17 @@ function App() {
 
 
     // Навешивание темы на body
-    const themeBody = useCallback(() => {
-        document.body.className = classNames('app', {}, [theme]);
+    const themeBody = useCallback((className:string = 'app') => {
+        document.body.className = classNames(className, {}, [theme]);
     }, [theme]);
-    useEffect(() => {
-        themeBody();
-    }, [themeBody]);
     const initial = useSelector(getUserInitial);
+    useEffect(() => {
+        toggleFeatures({
+            name: "isRedesigned",
+            off: () => themeBody(),
+            on: () => themeBody('app_redesigned'),
+        })
+    }, [themeBody, initial]);
     useEffect(() => {
         dispatch(loadUserData());
     }, [dispatch]);

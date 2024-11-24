@@ -12,7 +12,19 @@
 }
 
 .app_redesigned {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-family-title-redesigned);
+    }
+
     font: var(--font-text-m);
+    color: var(--text-redesigned);
+    background: var(--bg-redesigned);
+    min-height: 100vh;
 }
 
 .content_page {
