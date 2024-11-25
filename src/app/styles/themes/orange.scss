@@ -6,17 +6,6 @@
     --inverted-primary-color: #fbf9f4;
     --inverted-secondary-color: #ffc959;
 
-    // Redesigned
-    --dark-bg-redesigned: #fff3d6;
-    --bg-redesigned: #f0c048;
-    --light-bg-redesigned: #f2d791;
-    --text-redesigned: #1b1311;
-    --hint-redesigned: #b8b2a2;
-    --cancel-redesigned: #ff5e5e;
-    --save-redesigned: #52fa81;
-    --icon-redesigned: #4875f0;
-    --accent-redesigned: #1d59ff;
-
     // Skeleton
     --skeleton-shadow: rgb(0 0 0 / 20%);
     --skeleton-color: #eaeaea;
@@ -30,4 +19,17 @@
 
     // ListBox
     --listbox-bg: #f0f4f8;
+}
+
+// Redesigned
+.app_redesigned.orange {
+    --dark-bg-redesigned: #fff3d6;
+    --bg-redesigned: #f0c048;
+    --light-bg-redesigned: #f2d791;
+    --text-redesigned: #1b1311;
+    --hint-redesigned: #b8b2a2;
+    --cancel-redesigned: #ff5e5e;
+    --save-redesigned: #52fa81;
+    --icon-redesigned: #4875f0;
+    --accent-redesigned: #1d59ff;
 }

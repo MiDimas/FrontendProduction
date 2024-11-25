@@ -1,4 +1,4 @@
-import {Suspense, useCallback, useEffect, useState} from 'react';
+import React, {Suspense, useCallback, useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import {
     getUserInitial,
@@ -14,9 +14,10 @@ import './styles/index.scss';
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {LOCAL_STORAGE_THEME_KEY} from "@/shared/const/localstorage";
 import {PageLoader} from "@/widgets/PageLoader";
-import {toggleFeatures} from "@/shared/lib/features";
+import {ToggleFeatures, toggleFeatures} from "@/shared/lib/features";
+import {MainLayout} from "@/shared/layouts/MainLayout";
 
-
+const hello = "hello";
 function App() {
     const { theme, setTheme } = useTheme();
     const dispatch = useAppDispatch();
@@ -59,15 +60,29 @@ function App() {
     }
 
     return (
-        <div>
-            <Suspense fallback="">
-                <Navbar />
-                <div className="content_page">
-                    <Sidebar />
-                    {initial && <AppRouter />}
-                </div>
-            </Suspense>
-        </div>
+        <ToggleFeatures
+            feature="isRedesigned"
+            off={
+                (<div>
+                    <Suspense fallback="">
+                        <Navbar />
+                        <div className="content_page">
+                            <Sidebar />
+                            {initial && <AppRouter />}
+                        </div>
+                    </Suspense>
+                </div>)}
+            on={(
+                <Suspense fallback="">
+                    <MainLayout
+                    header={<Navbar />}
+                    content={<AppRouter />}
+                    sidebar={<Sidebar />}
+                    toolbar={<div>{hello}</div>}
+                    />
+                </Suspense>
+            )}
+        />
     );
 }
 

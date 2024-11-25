@@ -28,9 +28,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const openHandler = useCallback(() => {
         setIsOpen(true);
     }, []);
-
-    const lorem = `Lorem ipsum dolor sit amet,
-     consectetur adipisicing elit. Nisi, voluptatum.`;
+    
 
     if (authData) {
         return (

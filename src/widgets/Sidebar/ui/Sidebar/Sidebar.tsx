@@ -9,6 +9,7 @@ import { Flex, VStack } from '@/shared/ui/Stack';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
+import {ToggleFeatures} from "@/shared/lib/features";
 
 interface SidebarProps {
     className?: string;
@@ -21,7 +22,9 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     };
     const sidebarItemList = useSelector(getSidebarItems);
     return (
-        <aside
+        <ToggleFeatures
+            feature="isRedesigned"
+        off={(<aside
             data-testid="sidebar"
             className={classNames(
                 cls.Sidebar,
@@ -58,6 +61,25 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 <LangSwitcher className={cls.lang} short={collapsed} />
                 <ThemeSwitcher />
             </Flex>
-        </aside>
+        </aside>)}
+            on={(
+                <aside
+                    data-testid="sidebar"
+                    className={classNames(
+                        cls.SidebarRedesigned,
+                        {
+                            [cls.collapsed]: collapsed,
+                        },
+                        [className],
+                    )}
+                >
+                    <VStack role="navigation" gap="16" className={cls.items}>
+                        {sidebarItemList.map((item) => (
+                            <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+                        ))}
+                    </VStack>
+                </aside>
+            )}
+            />
     );
 });

@@ -1,3 +1,26 @@
 .MainLayout {
     display: grid;
+    min-height: 100%;
+    grid-template-areas: "sidebar content rightbar";
+    grid-template-columns: 284px 1fr 176px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.content {
+    grid-area: content;
+}
+
+.rightbar {
+    grid-area: rightbar;
+}
+
+.header {
+    grid-area: header;
+}
+
+.toolbar {
+    grid-area: toolbar;
 }

@@ -10,7 +10,7 @@ interface MainLayoutProps {
     toolbar?: ReactElement;
 
 }
-const MainLayout = (props: MainLayoutProps) => {
+export const MainLayout = (props: MainLayoutProps) => {
     const { className,
         header,
         content,
