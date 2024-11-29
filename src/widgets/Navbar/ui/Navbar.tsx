@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
@@ -12,6 +12,7 @@ import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text, TextTheme } from '@/shared/ui/Text';
 import cls from './Navbar.module.scss';
+import {ToggleFeatures} from "@/shared/lib/features";
 
 interface NavbarProps {
     className?: string;
@@ -32,31 +33,60 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     if (authData) {
         return (
-            <header className={classNames(cls.Navbar, {}, [className])}>
-                <Text title={t('MiDi App')} theme={TextTheme.INVERTED} className={cls.appName} />
-                <HStack align="center" justify="between" max>
-                    <AppLink
-                        to={getRouteArticleCreate()}
-                        theme={AppLinkTheme.INVERTED}
-                        className={cls.createLink}
-                    >
-                        {t('Создать статью')}
-                    </AppLink>
-                    <HStack gap="16" align="center">
-                        <NotificationButton />
-                        <AvatarDropdown />
+            <ToggleFeatures
+                feature="isRedesigned"
+                on={
+                <header className={classNames(cls.Navbar, {}, [className])}>
+                    <HStack align="center" justify="between" max>
+                        <HStack gap="16" align="center">
+                            <NotificationButton/>
+                            <AvatarDropdown/>
+                        </HStack>
                     </HStack>
-                </HStack>
-            </header>
+                </header>
+            }
+                off={
+                <header className={classNames(cls.Navbar, {}, [className])}>
+                    <Text title={t('MiDi App')} theme={TextTheme.INVERTED} className={cls.appName}/>
+                    <HStack align="center" justify="between" max>
+                        <AppLink
+                            to={getRouteArticleCreate()}
+                            theme={AppLinkTheme.INVERTED}
+                            className={cls.createLink}
+                        >
+                            {t('Создать статью')}
+                        </AppLink>
+                        <HStack gap="16" align="center">
+                            <NotificationButton/>
+                            <AvatarDropdown/>
+                        </HStack>
+                    </HStack>
+                </header>
+            } />
+
         );
     }
     return (
-        <header className={classNames(cls.Navbar, {}, [className])}>
-            <Text title={t('MiDi App')} theme={TextTheme.INVERTED} className={cls.appName} />
-            <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={openHandler}>
-                {t('Войти')}
-            </Button>
-            {isOpen && <LoginModal isOpen={isOpen} onClose={closeHandler} />}
-        </header>
+        <ToggleFeatures
+            feature="isRedesigned"
+            on={
+                <header className={classNames(cls.Navbar, {}, [className])}>
+                    <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={openHandler}>
+                        {t('Войти')}
+                    </Button>
+                    {isOpen && <LoginModal isOpen={isOpen} onClose={closeHandler}/>}
+                </header>
+            }
+            off={
+                <header className={classNames(cls.Navbar, {}, [className])}>
+                    <Text title={t('MiDi App')} theme={TextTheme.INVERTED} className={cls.appName}/>
+                    <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={openHandler}>
+                    {t('Войти')}
+                </Button>
+                {isOpen && <LoginModal isOpen={isOpen} onClose={closeHandler}/>}
+            </header>
+        }
+        />
+
     );
 });
