@@ -10,6 +10,7 @@ import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 import {ToggleFeatures} from "@/shared/lib/features";
+import AppLogo from "@/shared/ui/AppLogo/AppLogo";
 
 interface SidebarProps {
     className?: string;
@@ -73,7 +74,8 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         [className],
                     )}
                 >
-                    <VStack role="navigation" gap="16" className={cls.items}>
+                    <AppLogo className={cls.appLogo}/>
+                    <VStack role="navigation" gap="16">
                         {sidebarItemList.map((item) => (
                             <SidebarItem key={item.path} item={item} collapsed={collapsed} />
                         ))}

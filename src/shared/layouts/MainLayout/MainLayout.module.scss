@@ -14,8 +14,9 @@
 .content {
     grid-area: content;
     max-width: 1200px;
-    justify-self: center;
+    width: 100%;
     padding: 32px;
+    justify-self: center;
 }
 
 .rightbar {
