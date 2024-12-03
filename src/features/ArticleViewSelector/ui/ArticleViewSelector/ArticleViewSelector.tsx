@@ -46,6 +46,8 @@ export const ArticleViewSelector = (props: ArticleViewSelectorProps) => {
                         className={classNames(cls.icon, {
                             [cls.notSelect]: viewType.view !== view,
                         })}
+                        width={24}
+                        height={24}
                     />
                 </Button>
             ))}
