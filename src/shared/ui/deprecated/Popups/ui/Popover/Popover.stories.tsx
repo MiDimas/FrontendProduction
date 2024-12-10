@@ -3,7 +3,7 @@ import NotificationIcon from '@/shared/assets/icons/notification_icon.svg';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
-import { Icon, IconFilling } from '@/shared/ui/Icon';
+import { Icon, IconFilling } from '@/shared/ui/deprecated/Icon';
 import { Popover } from './Popover';
 
 const meta: Meta<typeof Popover> = {

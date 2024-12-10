@@ -3,9 +3,9 @@ import { ArticleView } from '@/entities/Article';
 import ListView from '@/shared/assets/icons/list_icon.svg';
 import TilesView from '@/shared/assets/icons/tiles_icon.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
-import { HStack } from '@/shared/ui/Stack';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Icon } from '@/shared/ui/deprecated/Icon';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 import cls from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {

@@ -3,7 +3,7 @@ import { AppImage } from './AppImage';
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import {ThemeDecorator} from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import {Theme} from "@/shared/const/theme";
-import {Skeleton} from "@/shared/ui/Skeleton";
+import {Skeleton} from "@/shared/ui/deprecated/Skeleton";
 
 
 

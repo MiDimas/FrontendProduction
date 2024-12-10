@@ -11,6 +11,9 @@ function isAbsolute(value: string) {
     const paths = ['app', 'pages', 'widgets', 'features', 'entities', 'shared'];
     return paths.some((path) => value.startsWith(path));
 }
+function isSrc(value:string){
+    return value.startsWith('@/shared/ui/') && !value.startsWith('@/shared/ui/deprecated/');
+}
 sources.forEach((source) => {
     const imports = source.getImportDeclarations();
     imports.forEach((importDec) => {
@@ -18,6 +21,10 @@ sources.forEach((source) => {
         if (isAbsolute(value)) {
             importDec.setModuleSpecifier(`@/${value}`);
         }
+        // else if(isSrc(value)){
+        //     const clearValue = value.replace('@/shared/ui/', '@/shared/ui/deprecated/');
+        //     importDec.setModuleSpecifier(`${clearValue}`);
+        // }
     });
 });
 

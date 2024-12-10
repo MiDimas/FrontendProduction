@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { ArticleSortField } from '@/entities/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SortOrder } from '@/shared/types';
-import { Select, SelectOption } from '@/shared/ui/Select';
-import { VStack } from '@/shared/ui/Stack';
+import { Select, SelectOption } from '@/shared/ui/deprecated/Select';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 
 interface ArticleSortSelectorProps {
     className?: string;
