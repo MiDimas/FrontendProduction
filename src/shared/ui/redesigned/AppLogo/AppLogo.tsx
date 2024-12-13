@@ -7,13 +7,9 @@ import {Icon} from "@/shared/ui/deprecated/Icon";
 
 interface AppLogoProps{
     className?: string;
+    size?: number;
 }
-/**
- * Устарел, используем новые компоненты из папки @redesigned
- * @deprecated
- *
- */
-const AppLogo = ({className}: AppLogoProps) => (
+const AppLogo = ({className, size=50}: AppLogoProps) => (
         <HStack
             max
             justify='center'
@@ -21,7 +17,9 @@ const AppLogo = ({className}: AppLogoProps) => (
         >
             <div className={cls.gradientBig}/>
             <div className={cls.gradientSmall}/>
-            <Icon Svg={AppAvatar} className={cls.appLogo} width={48} height={48}/>
+            <Icon Svg={AppAvatar} className={cls.appLogo} width={size} height={size}
+                color='black'
+            />
         </HStack>
     );
 
