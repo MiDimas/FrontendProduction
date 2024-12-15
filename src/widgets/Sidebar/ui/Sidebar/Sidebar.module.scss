@@ -25,13 +25,13 @@
         top: 0;
         right: -32px;
     }
+}
 
-    .collapsed {
-        width: var(--sidebar-width-collapsed);
+.collapsed {
+    width: var(--sidebar-width-collapsed);
 
-        .switcher {
-            padding: 0;
-        }
+    .switcher {
+        padding: 0;
     }
 }
 
@@ -44,5 +44,9 @@
 
     .appLogo {
         padding-top: 20px;
+    }
+
+    .items {
+        margin-top: 40px;
     }
 }
