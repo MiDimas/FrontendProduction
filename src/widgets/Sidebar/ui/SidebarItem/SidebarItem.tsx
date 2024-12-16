@@ -35,7 +35,7 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
             >
                 <HStack gap="16" align="center" justify="start" className={cls.block}
                         max>
-                    <Icon Svg={item.Icon} />
+                    <Icon Svg={item.Icon}/>
                     <span className={cls.link}>{t(text)}</span>
                 </HStack>
             </AppLink>

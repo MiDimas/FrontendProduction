@@ -12,7 +12,7 @@ interface ClickableIcon extends IconBaseProps{
     onClick: () => void;
 }
 interface NonClickableIcon extends IconBaseProps {
-    clickable: false;
+    clickable?: false;
 }
 type IconProps = ClickableIcon | NonClickableIcon;
 export const Icon = (props: IconProps) => {
@@ -47,14 +47,5 @@ export const Icon = (props: IconProps) => {
             {icon}
         </button>)
     }
-    return (
-        <Svg
-            className={classNames(cls.Icon, {}, [
-                className,
-            ])}
-            width={width}
-            height={height}
-            {...otherProps}
-        />
-    );
+    return icon;
 };

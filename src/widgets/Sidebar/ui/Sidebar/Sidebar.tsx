@@ -11,6 +11,8 @@ import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 import {ToggleFeatures} from "@/shared/lib/features";
 import AppLogo from "@/shared/ui/redesigned/AppLogo/AppLogo";
+import {Icon} from "@/shared/ui/redesigned/Icon";
+import ArrowIcon from "@/shared/assets/icons/Arrow.svg"
 
 interface SidebarProps {
     className?: string;
@@ -69,7 +71,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     className={classNames(
                         cls.SidebarRedesigned,
                         {
-                            [cls.collapsed]: collapsed,
+                            [cls.collapsedRedesigned]: collapsed,
                         },
                         [className],
                     )}
@@ -80,6 +82,14 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                             <SidebarItem key={item.path} item={item} collapsed={collapsed} />
                         ))}
                     </VStack>
+                    <Icon
+                        data-testid="toggle-sidebar"
+                        type="button"
+                        onClick={onToggle}
+                        className={cls.collapseBtn}
+                        clickable
+                        Svg={ArrowIcon}
+                    />
                 </aside>
             )}
             />
