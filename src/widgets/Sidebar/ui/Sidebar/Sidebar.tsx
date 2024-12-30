@@ -21,6 +21,7 @@ interface SidebarProps {
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const onToggle = () => {
+        console.log('click:', collapsed)
         setCollapsed((prevState) => !prevState);
     };
     const sidebarItemList = useSelector(getSidebarItems);

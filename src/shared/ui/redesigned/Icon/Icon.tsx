@@ -28,7 +28,7 @@ export const Icon = (props: IconProps) => {
     const icon = (
         <Svg
             className={classNames(cls.Icon, {}, [
-                className,
+                clickable ? undefined : className,
             ])}
             width={width}
             height={height}
@@ -40,7 +40,7 @@ export const Icon = (props: IconProps) => {
         const {onClick} = props
         return (
             <button
-            className={cls.button}
+            className={classNames(cls.button, {}, [className])}
             type='button'
             onClick={onClick}
         >

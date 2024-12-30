@@ -30,7 +30,7 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
             <AppLink
                 to={path}
                 className={classNames(cls.SidebarItemRedesigned, {
-                    [cls.collapsed]: collapsed,
+                    [cls.collapsedRedesigned]: collapsed,
                 })}
             >
                 <HStack gap="16" align="center" justify="start" className={cls.block}

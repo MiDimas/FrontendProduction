@@ -31,6 +31,7 @@
     .block {
         overflow: hidden;
         padding-left: 16px;
+        transition: 0.3s all ease;
     }
 
     .icon {
@@ -43,6 +44,10 @@
         .link {
             opacity: 0;
             max-width: 0;
+        }
+
+        .block {
+            padding-left: 9px;
         }
     }
 }

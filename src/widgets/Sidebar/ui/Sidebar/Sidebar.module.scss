@@ -41,12 +41,34 @@
     height: 100%;
     border-radius: 32px;
     overflow: hidden;
+    position: relative;
+    transition: 0.5s width ease;
 
     .appLogo {
         padding-top: 20px;
+        transition: 0.5s all ease;
     }
 
     .items {
         margin-top: 40px;
+    }
+
+    .collapseBtn {
+        position: absolute;
+        display: flex;
+        right: 0;
+        top: 50%;
+        transform: rotate(90deg);
+    }
+}
+
+.collapsedRedesigned {
+    width: 50px;
+
+    .collapseBtn {
+        transform: rotate(-90deg);
+        right: 9px;
+        padding-top: 9px;
+        padding-bottom: 9px;
     }
 }
