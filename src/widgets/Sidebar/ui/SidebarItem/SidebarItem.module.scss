@@ -1,5 +1,7 @@
 .link {
-    transition: 0.3s all ease;
+    transition:
+        max-width  0.3s ease,
+        opacity  0.3s ease;
     white-space: nowrap;
     max-width: 100%;
 }
@@ -26,7 +28,9 @@
 }
 
 .SidebarItemRedesigned {
-    width: fit-content;
+    width: 100%;
+    text-decoration: none;
+    position: relative;
 
     .block {
         overflow: hidden;
@@ -34,10 +38,12 @@
         transition: 0.3s all ease;
     }
 
-    .icon {
-        height: var(--font-line-m);
-        width: var(--font-line-m);
-        fill: var(--inverted-primary-color);
+    &:hover {
+        color: var(--accent-redesigned);
+    }
+
+    &:hover .icon {
+        color: var(--accent-redesigned);
     }
 
     &.collapsedRedesigned {
@@ -48,6 +54,20 @@
 
         .block {
             padding-left: 9px;
+            column-gap: 0;
         }
+    }
+}
+
+.active {
+    background: linear-gradient(89.97deg, rgb(94 211 243 / 30%) 1.15%, rgb(94 211 243 / 0%) 99.97%);
+
+    &::before {
+        content: "";
+        width: 2px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        background-color: var(--icon-redesigned);
     }
 }

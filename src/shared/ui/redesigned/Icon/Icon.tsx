@@ -10,6 +10,7 @@ interface IconBaseProps extends SvgProps {
 interface ClickableIcon extends IconBaseProps{
     clickable: true;
     onClick: () => void;
+    offBtnSize?: boolean;
 }
 interface NonClickableIcon extends IconBaseProps {
     clickable?: false;
@@ -37,12 +38,13 @@ export const Icon = (props: IconProps) => {
     );
 
     if(clickable){
-        const {onClick} = props
+        const {onClick, offBtnSize=false} = props
         return (
             <button
             className={classNames(cls.button, {}, [className])}
             type='button'
             onClick={onClick}
+            style={offBtnSize ? {} : {width, height}}
         >
             {icon}
         </button>)

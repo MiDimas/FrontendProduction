@@ -78,7 +78,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     )}
                 >
                     <AppLogo className={cls.appLogo} size={collapsed ? 30 : 50 }/>
-                    <VStack role="navigation" gap="16" className={cls.items}>
+                    <VStack role="navigation" gap="8" className={cls.items}>
                         {sidebarItemList.map((item) => (
                             <SidebarItem key={item.path} item={item} collapsed={collapsed} />
                         ))}
@@ -90,7 +90,19 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         className={cls.collapseBtn}
                         clickable
                         Svg={ArrowIcon}
+                        offBtnSize
                     />
+                    <Flex
+                        justify="center"
+                        align="center"
+                        direction={collapsed ? 'column' : 'row'}
+                        max
+                        gap={collapsed ? '4' : '16'}
+                        className={cls.switcher}
+                    >
+                        <ThemeSwitcher />
+                        <LangSwitcher className={cls.lang} short={collapsed} />
+                    </Flex>
                 </aside>
             )}
             />

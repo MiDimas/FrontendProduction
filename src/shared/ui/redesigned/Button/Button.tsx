@@ -2,41 +2,25 @@ import { ButtonHTMLAttributes, memo } from 'react';
 import { Additional, classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
-export enum ButtonTheme {
-    CLEAR = 'clear',
-    CLEAR_INVERTED = 'clearInverted',
-    OUTLINE = 'outline',
-    OUTLINE_RED = 'outline_red',
-    BACKGROUND = 'background',
-    BACKGROUND_INVERTED = 'backgroundInverted',
-}
-export enum ButtonSize {
-    M = 'size_m',
-    L = 'size_l',
-    XL = 'size_xl',
-}
+export type ButtonVariant = 'clear' | 'outline';
+export type ButtonSize = 'm' | 'l' | 'xl';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
-    theme?: ButtonTheme;
+    variant?: ButtonVariant;
     square?: boolean;
     size?: ButtonSize;
     disabled?: boolean;
     fullWidth?: boolean;
 }
 
-/**
- * Устарел, используем новые компоненты из папки @redesigned
- * @deprecated
- *
- */
 export const Button = memo((props: ButtonProps) => {
     const {
         className,
-        theme = ButtonTheme.OUTLINE,
+        variant = 'outline',
         children,
         square,
-        size = ButtonSize.M,
+        size = 'm',
         disabled = false,
         fullWidth,
         ...otherProps
@@ -46,7 +30,7 @@ export const Button = memo((props: ButtonProps) => {
         [cls.disabled]: disabled,
         [cls.fullwidth]: fullWidth,
     };
-    const additional: Additional = [className, cls[theme], cls[size]];
+    const additional: Additional = [className, cls[variant], cls[size]];
     return (
         <button
             data-testid="ui-btn"

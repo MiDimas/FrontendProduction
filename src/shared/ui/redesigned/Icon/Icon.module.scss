@@ -1,6 +1,5 @@
 .Icon {
     color: var(--icon-redesigned);
-    pointer-events: none;
 }
 
 .button {
@@ -10,8 +9,16 @@
     outline: none;
     background: none;
     cursor: pointer;
+
+    .Icon {
+        pointer-events: none;
+    }
 }
 
 .button:hover .Icon {
+    color: var(--accent-redesigned);
+}
+
+.hover .Icon:hover {
     color: var(--accent-redesigned);
 }

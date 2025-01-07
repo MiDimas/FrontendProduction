@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Button } from './Button';
 
 describe('Проверка компонента Button', () => {
     test('Тестирование отрисовки кнопки', () => {
@@ -7,7 +7,7 @@ describe('Проверка компонента Button', () => {
         expect(screen.getByText('TEST'));
     });
     test('Тестирование темы кнопки', () => {
-        render(<Button theme={ButtonTheme.CLEAR} />);
+        render(<Button variant='clear' />);
         expect(screen.getByTestId('ui-btn')).toHaveClass('clear');
     });
 });

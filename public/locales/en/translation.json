@@ -5,6 +5,7 @@
     "Главная": "Main",
     "О нас": "About",
     "Профиль": "Profile",
+    "Статьи": "Articles",
     "Страница не найдена": "Page not found",
     "Что-то пошло не так...": "Something went wrong...",
     "Обновить страницу": "Reload page",
@@ -42,5 +43,6 @@
     "Напишите отзыв": "Write feedback",
     "Оцените статью": "Rate the article",
     "Оставьте отзыв о статье": "Leave a review about the article",
-    "Спасибо за оценку": "Thanks for assessment"
+    "Спасибо за оценку": "Thanks for assessment",
+    "ЯЗ": "EN"
 }

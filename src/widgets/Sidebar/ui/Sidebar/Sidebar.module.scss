@@ -60,6 +60,18 @@
         top: 50%;
         transform: rotate(90deg);
     }
+
+    .switcher {
+        position: absolute;
+        bottom: 40px;
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    .lang {
+        color: var(--icon-redesigned);
+        font: var(--font-title-m);
+    }
 }
 
 .collapsedRedesigned {
