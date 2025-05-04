@@ -1,8 +1,8 @@
 import { memo, ReactNode, useCallback, useEffect } from 'react';
+import { Overlay } from '@/shared/ui/redesigned/Overlay';
+import { Portal } from '@/shared/ui/redesigned/Portal';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
-import { Overlay } from '@/shared/ui/deprecated/Overlay';
-import { Portal } from '@/shared/ui/deprecated/Portal';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {

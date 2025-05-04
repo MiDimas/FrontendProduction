@@ -1,9 +1,9 @@
 import React from 'react';
-import {HStack} from "@/shared/ui/deprecated/Stack";
+import {HStack} from "@/shared/ui/redesigned/Stack";
 import AppAvatar from "@/shared/assets/icons/site_avatar_icon.svg";
 import cls from "./AppLogo.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
-import {Icon} from "@/shared/ui/deprecated/Icon";
+import {Icon} from "@/shared/ui/redesigned/Icon";
 
 interface AppLogoProps{
     className?: string;

@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { ArticleSortField } from '@/entities/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SortOrder } from '@/shared/types';
 import { Select, SelectOption } from '@/shared/ui/deprecated/Select';
-import { VStack } from '@/shared/ui/deprecated/Stack';
 
 interface ArticleSortSelectorProps {
     className?: string;

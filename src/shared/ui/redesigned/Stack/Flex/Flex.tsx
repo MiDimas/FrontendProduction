@@ -48,11 +48,6 @@ const gapClasses: Record<FlexGap, string> = {
     64: cls.gap64,
 };
 
-/**
- * Устарел, используем новые компоненты из папки @redesigned
- * @deprecated
- *
- */
 export const Flex = (props: FlexProps) => {
     const {
         className,

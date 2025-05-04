@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import CalendarIcon from '@/shared/assets/icons/calendar_icon.svg';
 import EyeIcon from '@/shared/assets/icons/eye_icon.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -12,7 +13,6 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { Icon } from '@/shared/ui/deprecated/Icon';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
 import { Text, TextAlign, TextSize, TextTheme } from '@/shared/ui/deprecated/Text';
 import { ArticleBlockType } from '../../model/consts/articleConsts';
 import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData';

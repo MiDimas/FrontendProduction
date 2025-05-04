@@ -1,6 +1,6 @@
 import { memo } from 'react';
+import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppImage } from '@/shared/ui/deprecated/AppImage';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 import { Text, TextAlign } from '@/shared/ui/deprecated/Text';
 import { ArticleImageBlock } from '../../model/types/article';

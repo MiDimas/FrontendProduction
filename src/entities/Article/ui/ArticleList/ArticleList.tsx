@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle, VirtuosoHandle } from 'react-virtuoso';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import {
     getScrollRestoreVirtuosoScrollByPath,
@@ -11,7 +12,6 @@ import {
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { ArticleView } from '../../model/consts/articleConsts';
 import { Article } from '../../model/types/article';

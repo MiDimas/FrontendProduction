@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
+import { Overlay } from '@/shared/ui/redesigned/Overlay';
+import { Portal } from '@/shared/ui/redesigned/Portal';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
-import { Overlay } from '@/shared/ui/deprecated/Overlay';
-import { Portal } from '@/shared/ui/deprecated/Portal';
-import { HStack } from '@/shared/ui/deprecated/Stack';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
