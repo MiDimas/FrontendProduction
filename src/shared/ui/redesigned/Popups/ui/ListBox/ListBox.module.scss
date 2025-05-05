@@ -1,0 +1,23 @@
+.ListBox {
+    position: relative;
+    display: inline-block;
+}
+
+.options {
+    position: absolute;
+    z-index: 1;
+    background-color: var(--listbox-bg);
+    border-radius: 12px;
+    list-style: none;
+    overflow: hidden;
+    min-width: 100%;
+}
+
+.item {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.label {
+    cursor: pointer;
+}

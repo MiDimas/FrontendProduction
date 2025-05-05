@@ -1,0 +1,35 @@
+.buttonPlate {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: none;
+    outline: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+
+    &:hover {
+        opacity: 0.8;
+        fill-opacity: 0.8;
+        stroke-opacity: 0.8;
+    }
+}
+
+.menu {
+    background: var(--card-bg);
+    position: absolute;
+    z-index: 1;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.item {
+    padding: 10px 25px;
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--primary-color);
+    cursor: pointer;
+}
