@@ -29,11 +29,16 @@ export const Page = (props: PageProps) => {
     );
 
     useInfiniteScroll({
-        wrapperRef,
+        wrapperRef: toggleFeatures({
+            on: () => undefined,
+            off: () => wrapperRef,
+            name: "isRedesigned"
+        }),
         triggerRef,
         callback: onScrollEnd,
     });
     useInitialEffect(() => {
+        if (!wrapperRef.current) return;
         wrapperRef.current.scrollTop = scrollPosition;
     });
     const onScroll = useThrottle((event: UIEvent<HTMLDivElement>) => {
