@@ -26,12 +26,13 @@ export const Dropdown = (props: DropdownProps) => {
     const { t } = useTranslation();
     const { className, items, trigger, direction = 'bottom right' } = props;
     /* eslint-disable i18next/no-literal-string */
+    const menuClasses = [popups.menu, mapDirectionClasses[direction]];
     return (
         <Menu as="div" className={classNames(popups.popup, {}, [className])}>
             <Menu.Button className={popups.trigger}>
                 {trigger || <div className={cls.buttonPlate}>{t('Меню')}</div>}
             </Menu.Button>
-            <Menu.Items className={classNames(cls.menu, {}, [mapDirectionClasses[direction]])}>
+            <Menu.Items className={classNames(cls.menu, {}, menuClasses)}>
                 {items?.map((item, id) => {
                     /* Use the `active` state to conditionally style the active item. */
                     const content = ({ active }: { active: boolean }) => (

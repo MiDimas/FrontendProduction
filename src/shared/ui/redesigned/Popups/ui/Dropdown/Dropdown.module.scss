@@ -3,8 +3,8 @@
     padding: 10px 20px;
     background: none;
     outline: none;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 1px solid var(--accent-redesigned);
+    color: var(--text-redesigned);
 
     &:hover {
         opacity: 0.8;
@@ -14,14 +14,10 @@
 }
 
 .menu {
-    background: var(--card-bg);
     position: absolute;
     z-index: 1;
-    border-radius: 8px;
-    border: 1px solid var(--primary-color);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 .item {
@@ -30,6 +26,6 @@
     border: none;
     background: none;
     outline: none;
-    color: var(--primary-color);
+    color: var(--text-redesigned);
     cursor: pointer;
 }

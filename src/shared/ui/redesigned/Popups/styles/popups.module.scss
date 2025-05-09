@@ -1,6 +1,13 @@
 .popup {
     position: relative;
-    display: inline-block;
+    display: block;
+}
+
+.menu {
+    border-radius: 18px;
+    background: var(--dark-bg-redesigned);
+    border: 1px solid var(--accent-redesigned);
+    overflow: hidden;
 }
 
 .trigger {
@@ -10,6 +17,7 @@
     margin: 0;
     padding: 0;
     cursor: pointer;
+    display: block;
 }
 
 .disabled {
@@ -19,7 +27,7 @@
 }
 
 .active {
-    background: var(--inverted-primary-color);
+    background: var(--light-bg-redesigned);
 }
 
 .optionTopLeft {

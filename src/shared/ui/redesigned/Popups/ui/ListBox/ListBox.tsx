@@ -35,7 +35,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
         direction = 'bottom right',
         label,
     } = props;
-    const additionalClasses = [mapDirectionClasses[direction]];
+    const additionalClasses = [mapDirectionClasses[direction], popups.menu];
     const ref = useRef<HTMLButtonElement>(null);
     const optionRef = useRef<HTMLElement>(null);
     /* eslint-disable i18next/no-literal-string */

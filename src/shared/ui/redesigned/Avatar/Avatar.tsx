@@ -14,7 +14,7 @@ interface AvatarProps {
 }
 
 export const Avatar = (props: AvatarProps) => {
-    const { className, src, size = 100, alt = 'avatar' } = props;
+    const { className, src, size = 40, alt = 'avatar' } = props;
 
     const style = useMemo<CSSProperties>(
         () => ({
