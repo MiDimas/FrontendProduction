@@ -1,9 +1,9 @@
 import { Listbox as HListbox } from '@headlessui/react';
-import { Fragment, ReactNode, useRef } from 'react';
+import {Fragment, ReactNode, useMemo, useRef} from 'react';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ListBoxOptionsDirection } from '@/shared/types';
-import { Button } from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { mapDirectionClasses } from '../../styles/consts';
 import popups from '../../styles/popups.module.scss';
 import cls from './ListBox.module.scss';
@@ -36,6 +36,8 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
         label,
     } = props;
     const additionalClasses = [mapDirectionClasses[direction], popups.menu];
+    const selectedItem = useMemo(() => items?.find(item => item.value === value),
+        [items, value])
     const ref = useRef<HTMLButtonElement>(null);
     const optionRef = useRef<HTMLElement>(null);
     /* eslint-disable i18next/no-literal-string */
@@ -61,7 +63,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                 id={defaultValue}
             >
                 <HListbox.Button className={popups.trigger} as="div" ref={ref}>
-                    <Button disabled={readonly}>{value ?? defaultValue}</Button>
+                    <Button disabled={readonly} variant="filled">{selectedItem?.content ?? defaultValue}</Button>
                 </HListbox.Button>
                 <HListbox.Options
                     className={classNames(cls.options, {}, additionalClasses)}
@@ -81,11 +83,11 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                                         {
                                             [popups.active]: active,
                                             [popups.disabled]: disabled,
+                                            [popups.selected]: selected
                                         },
                                         [],
                                     )}
                                 >
-                                    {selected && '***'}
                                     {item.content}
                                 </li>
                             )}

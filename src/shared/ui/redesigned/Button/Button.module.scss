@@ -11,13 +11,22 @@
     border: none;
     background: none;
     outline: none;
-    color: var(--primary-color);
+    color: var(--text-redesigned);
 }
 
 .outline {
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 1px solid var(--light-bg-redesigned);
+    color: var(--text-redesigned);
     background: none;
+}
+
+.filled {
+    border: none;
+    outline: none;
+    border-radius: 34px;
+    padding: 8px 16px;
+    background: var(--light-bg-redesigned);
+    color: var(--text-redesigned);
 }
 
 .square {

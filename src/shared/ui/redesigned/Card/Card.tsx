@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
-export type CardVariant = 'normal' | 'outline';
+export type CardVariant = 'normal' | 'outline' | 'light';
 export type PaddingVariant = '0' | '8' | '16' | '24';
 export type BorderFormVariant = 'normal' | 'round';
 interface CardProps extends HTMLAttributes<HTMLDivElement> {

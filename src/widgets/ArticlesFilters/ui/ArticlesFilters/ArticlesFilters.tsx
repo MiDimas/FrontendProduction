@@ -39,9 +39,11 @@ export const ArticlesFilters = memo((props: ArticleFiltersProps) => {
         <Card className={
             classNames(cls.ArticleFilters, {}, [className])
         }
+              padding='24'
         >
             <VStack gap="32" >
                 <Input placeholder={t('Поиск')} onChange={onChangeSearch} value={search} />
+                <ArticleTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs} />
                 <HStack align="center" justify="between" className={cls.sortWrapper}>
                     <ArticleSortSelector
                         sort={sort}
@@ -50,7 +52,6 @@ export const ArticlesFilters = memo((props: ArticleFiltersProps) => {
                         onChangeSort={onChangeSort}
                     />
                 </HStack>
-                <ArticleTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs} />
         </VStack>
         </Card>
     );
