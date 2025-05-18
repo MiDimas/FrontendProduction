@@ -1,18 +1,28 @@
 .ArticleViewSelector {
     margin: 10px 0;
+
+    .button {
+        padding: 0;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .icon {
+        fill: var(--primary-color);
+    }
+
+    .notSelect {
+        fill: var(--secondary-color);
+    }
 }
 
-.button {
-    padding: 0;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-}
+.ArticleViewSelectorRedesigned {
+    .notSelect {
+        color: var(--light-bg-redesigned);
+    }
 
-.icon {
-    fill: var(--primary-color);
-}
-
-.notSelect {
-    fill: var(--secondary-color);
+    .notSelect svg {
+        color: inherit;
+    }
 }

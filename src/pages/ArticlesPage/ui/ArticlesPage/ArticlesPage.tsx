@@ -13,6 +13,7 @@ import {ArticlePageGreeting} from '@/features/ArticlePageGreeting';
 import {ToggleFeatures} from "@/shared/lib/features";
 import {StickyLayout} from "@/shared/layouts/StickyLayout";
 import {ViewSelectorContainer} from '../ViewSelectorContainer';
+import {FiltersContainer} from '../FiltersContainer/FiltersContainer';
 
 interface ArticlesPageProps {
     className?: string;
@@ -37,6 +38,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                         className={cls.articlesList}
                         content={<ArticleInfiniteList />}
                         left={<ViewSelectorContainer />}
+                        right={<FiltersContainer />}
                     />
                     <ArticlePageGreeting />
                 </Page>
