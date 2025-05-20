@@ -5,11 +5,13 @@ import cls from './ArticlesFilters.module.scss';
 import {Card} from "@/shared/ui/redesigned/Card";
 import {HStack, VStack} from "@/shared/ui/redesigned/Stack";
 import {ArticleSortSelector} from "@/features/ArticleSortSelector";
-import {Input} from "@/shared/ui/deprecated/Input";
+import {Input} from "@/shared/ui/redesigned/Input";
 import {ArticleTypeTabs} from "@/features/ArticleTypeTabs";
 import {ArticleSortField, ArticleType} from "@/entities/Article";
 import {SortOrder} from "@/shared/types";
 import {TabItem} from "@/shared/ui/deprecated/Tabs";
+import SearchIcon from "@/shared/assets/icons/Search.svg";
+import {Icon} from "@/shared/ui/redesigned/Icon";
 
 interface ArticleFiltersProps {
     className?: string;
@@ -42,7 +44,10 @@ export const ArticlesFilters = memo((props: ArticleFiltersProps) => {
               padding='24'
         >
             <VStack gap="32" >
-                <Input placeholder={t('Поиск')} onChange={onChangeSearch} value={search} />
+                <Input placeholder={t('Поиск')}
+                       onChange={onChangeSearch} value={search}
+                       addonLeft={<Icon Svg={SearchIcon} /> }
+                />
                 <ArticleTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs} />
                 <HStack align="center" justify="between" className={cls.sortWrapper}>
                     <ArticleSortSelector
