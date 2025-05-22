@@ -1,9 +1,33 @@
+.addonRight,
+.addonLeft {
+    display: flex;
+
+    svg {
+        color: var(--hint-redesigned);
+    }
+}
+
 .Button {
     cursor: pointer;
     padding: 10px 20px;
+    display: flex;
+    align-items: center;
+
+    &.withAddon {
+        padding: 0 16px;
+    }
 
     &:hover {
         color: var(--accent-redesigned);
+
+        .addonRight,
+        .addonLeft {
+            color: var(--accent-redesigned);
+
+            svg {
+                color: var(--accent-redesigned);
+            }
+        }
     }
 }
 

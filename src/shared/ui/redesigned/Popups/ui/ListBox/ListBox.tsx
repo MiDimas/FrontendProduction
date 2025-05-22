@@ -7,6 +7,8 @@ import { Button } from '@/shared/ui/redesigned/Button';
 import { mapDirectionClasses } from '../../styles/consts';
 import popups from '../../styles/popups.module.scss';
 import cls from './ListBox.module.scss';
+import ArrowIcon from '@/shared/assets/icons/Arrow.svg';
+import {Icon} from "@/shared/ui/redesigned/Icon";
 
 type ListBoxItem = {
     value: string;
@@ -63,7 +65,8 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                 id={defaultValue}
             >
                 <HListbox.Button className={popups.trigger} as="div" ref={ref}>
-                    <Button disabled={readonly} variant="filled">{selectedItem?.content ?? defaultValue}</Button>
+                    <Button disabled={readonly} variant="filled"
+                    addonRight={<Icon Svg={ArrowIcon} />}>{selectedItem?.content ?? defaultValue}</Button>
                 </HListbox.Button>
                 <HListbox.Options
                     className={classNames(cls.options, {}, additionalClasses)}
