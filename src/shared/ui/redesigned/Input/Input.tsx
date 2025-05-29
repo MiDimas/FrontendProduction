@@ -1,6 +1,8 @@
 import {ChangeEvent, InputHTMLAttributes, memo, ReactElement, useEffect, useRef, useState} from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
+import {HStack} from "@/shared/ui/redesigned/Stack";
+import {Text} from "@/shared/ui/redesigned/Text";
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -15,6 +17,7 @@ interface InputProps extends HTMLInputProps {
     readonly?: boolean;
     addonLeft?: ReactElement;
     addonRight?: ReactElement;
+    label?: string;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -30,6 +33,7 @@ export const Input = memo((props: InputProps) => {
         readonly,
         addonLeft,
         addonRight,
+        label,
         ...otherProps
     } = props;
 
@@ -56,7 +60,8 @@ export const Input = memo((props: InputProps) => {
         [cls.withAddonLeft]: Boolean(addonLeft),
         [cls.withAddonRight]: Boolean(addonRight),
     };
-    return (
+
+    const input = (
         <div className={classNames(cls.InputWrapper, mods, [className])}>
             <div className={cls.addonLeft}>{addonLeft}</div>
             <input
@@ -73,5 +78,14 @@ export const Input = memo((props: InputProps) => {
             />
             <div className={cls.addonRight}>{addonRight}</div>
         </div>
-    );
+    )
+    if (label) {
+        return (
+            <HStack max gap="8">
+                <Text text={label}/>
+                {input}
+            </HStack>
+        )
+    }
+    return input;
 });

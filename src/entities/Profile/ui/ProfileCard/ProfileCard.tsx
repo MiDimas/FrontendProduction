@@ -139,7 +139,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         />
                     </VStack>
                 </div>}
-                on={<Card className={classNames(cls.ProfileCardRedesigned, mods, [className])}>
+                on={<Card className={classNames(cls.ProfileCardRedesigned, {}, [className])}
+                padding="24">
                     <VStack>
                         <HStack justify="center" max>
                             <Avatar src={data.avatar} alt={t('аватар')}/>
@@ -148,27 +149,27 @@ export const ProfileCard = (props: ProfileCardProps) => {
                             <VStack gap='16' max>
                                 <Input
                                 value={data.firstname}
-                                placeholder={t('Ваше имя')}
+                                placeholder={t('Имя')}
                                 readonly={readonly}
                                 onChange={onChangeFirstname}
                                 data-testid="ProfileCard.firstname"
                             />
                                 <Input
                                     value={data.lastname}
-                                    placeholder={t('Ваша фамилия')}
+                                    placeholder={t('Фамилия')}
                                     readonly={readonly}
                                     onChange={onChangeLastname}
                                     data-testid="ProfileCard.lastname"
                                 />
                                 <Input
                                     value={data.age}
-                                    placeholder={t('Ваш возраст')}
+                                    placeholder={t('Возраст')}
                                     readonly={readonly}
                                     onChange={onChangeAge}
                                 />
                                 <Input
                                     value={data.city}
-                                    placeholder={t('Ваш город')}
+                                    placeholder={t('Город')}
                                     readonly={readonly}
                                     onChange={onChangeCity}
                                 />
@@ -176,13 +177,13 @@ export const ProfileCard = (props: ProfileCardProps) => {
                             <VStack gap="16" max>
                                 <Input
                                 value={data.username}
-                                placeholder={t('Ваш ник')}
+                                placeholder={t('Ник')}
                                 readonly={readonly}
                                 onChange={onChangeUsername}
                             />
                                 <Input
                                     value={data.avatar}
-                                    placeholder={t('Ваш аватар')}
+                                    placeholder={t('Аватар')}
                                     readonly={readonly}
                                     onChange={onChangeAvatar}
                                 />
@@ -205,20 +206,20 @@ export const ProfileCard = (props: ProfileCardProps) => {
     return (
         <div className={classNames(cls.ProfileCard, mods, [className])}>
             <VStack>
-                <Input
+                <InputDeprecated
                     placeholder={t('Ваше имя')}
                     readonly={readonly}
                     data-testid="ProfileCard.firstname"
                 />
-                <Input
+                <InputDeprecated
                     placeholder={t('Ваша фамилия')}
                     readonly={readonly}
                     data-testid="ProfileCard.lastname"
                 />
-                <Input placeholder={t('Ваш возраст')} readonly={readonly}/>
-                <Input placeholder={t('Ваш город')} readonly={readonly}/>
-                <Input placeholder={t('Ваш ник')} readonly={readonly}/>
-                <Input placeholder={t('Ваш аватар')} readonly={readonly}/>
+                <InputDeprecated placeholder={t('Ваш возраст')} readonly={readonly}/>
+                <InputDeprecated placeholder={t('Ваш город')} readonly={readonly}/>
+                <InputDeprecated placeholder={t('Ваш ник')} readonly={readonly}/>
+                <InputDeprecated placeholder={t('Ваш аватар')} readonly={readonly}/>
                 <CurrencySelect readonly={readonly}/>
                 <CountrySelect readonly={readonly}/>
             </VStack>
