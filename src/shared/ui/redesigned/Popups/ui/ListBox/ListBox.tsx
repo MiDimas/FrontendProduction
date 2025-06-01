@@ -53,7 +53,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                         ref.current?.click();
                     }}
                 >
-                    {`${label} >`}
+                    {label}
                 </span>
             )}
             <HListbox

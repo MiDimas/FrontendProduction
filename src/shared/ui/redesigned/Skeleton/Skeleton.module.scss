@@ -3,8 +3,8 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 10px var(--skeleton-shadow);
-    background-color: var(--skeleton-color);
+    box-shadow: 0 2px 10px var(--bg-redesigned);
+    background-color: var(--light-bg-redesigned);
 
     &::before {
         content: "";
@@ -14,7 +14,7 @@
         width: 80%;
         height: 100%;
         display: block;
-        background: linear-gradient(to right, transparent 0%, var(--skeleton-flash) 50%, transparent 100%);
+        background: linear-gradient(to right, transparent 0%, var(--dark-bg-redesigned) 50%, transparent 100%);
         animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 }

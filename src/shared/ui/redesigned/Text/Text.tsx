@@ -23,7 +23,7 @@ interface TextProps {
     className?: string;
     title?: string;
     text?: string;
-    theme?: TextVariant;
+    variant?: TextVariant;
     align?: TextAlign;
     size?: TextSize;
 
@@ -35,7 +35,7 @@ export const Text = memo((props: TextProps) => {
         className,
         title,
         text,
-        theme = 'primary',
+        variant = 'primary',
         align = 'left',
         size = 'm',
         'data-testid': dataTestId = '',
@@ -44,7 +44,7 @@ export const Text = memo((props: TextProps) => {
     const HeaderTag = mapSizeToHeaderTag[size];
     const sizeToClass = mapSizeToClass[size];
 
-    const additional: Additional = [className, cls[theme], cls[align], sizeToClass];
+    const additional: Additional = [className, cls[variant], cls[align], sizeToClass];
 
     return (
         <div className={classNames(cls.Text, {}, additional)}>

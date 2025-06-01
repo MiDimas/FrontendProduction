@@ -24,7 +24,7 @@ export const TextError: Story = {
         title: 'Lorem ipsum dolor sit amet.',
         text: `Lorem ipsum dolor sit amet, consectetur 
         adipisicing elit. Asperiores dolorum id odio quasi quisquam ut?`,
-        theme: 'error',
+        variant: 'error',
     },
 };
 

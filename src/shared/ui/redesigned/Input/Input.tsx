@@ -6,9 +6,10 @@ import {Text} from "@/shared/ui/redesigned/Text";
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'value' | 'onChange' | 'readOnly'
+    'value' | 'onChange' | 'readOnly' | 'size'
 >;
 
+type SizeVariant = 's' | 'm' | 'l'
 interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string | number;
@@ -18,6 +19,7 @@ interface InputProps extends HTMLInputProps {
     addonLeft?: ReactElement;
     addonRight?: ReactElement;
     label?: string;
+    size?: SizeVariant;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -34,6 +36,7 @@ export const Input = memo((props: InputProps) => {
         addonLeft,
         addonRight,
         label,
+        size='m',
         ...otherProps
     } = props;
 
@@ -62,7 +65,7 @@ export const Input = memo((props: InputProps) => {
     };
 
     const input = (
-        <div className={classNames(cls.InputWrapper, mods, [className])}>
+        <div className={classNames(cls.InputWrapper, mods, [className, cls[size]])}>
             <div className={cls.addonLeft}>{addonLeft}</div>
             <input
                 ref={ref}

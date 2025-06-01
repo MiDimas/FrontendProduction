@@ -47,6 +47,7 @@ export const ArticlesFilters = memo((props: ArticleFiltersProps) => {
                 <Input placeholder={t('Поиск')}
                        onChange={onChangeSearch} value={search}
                        addonLeft={<Icon Svg={SearchIcon} /> }
+                       size="s"
                 />
                 <ArticleTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs} />
                 <HStack align="center" justify="between" className={cls.sortWrapper}>

@@ -1,12 +1,23 @@
 .InputWrapper {
     display: flex;
     color: var(--inverted-primary-color);
-    height: 38px;
     align-items: center;
     padding: 8px 16px;
     border: 2px solid var(--icon-redesigned);
     border-radius: 48px;
     width: 100%;
+}
+
+.s {
+    height: 32px;
+}
+
+.m {
+    height: 38px;
+}
+
+.l {
+    height: 44px;
 }
 
 .addonLeft,
