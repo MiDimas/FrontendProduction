@@ -13,12 +13,11 @@ const AppLogo = ({className, size=50}: AppLogoProps) => (
         <HStack
             max
             justify='center'
-            className={classNames(cls.AppLogoWraper, {}, [className])}
+            className={classNames(cls.AppLogoWrapper, {}, [className])}
         >
             <div className={cls.gradientBig}/>
             <div className={cls.gradientSmall}/>
             <Icon Svg={AppAvatar} className={cls.appLogo} width={size} height={size}
-                color='black'
             />
         </HStack>
     );

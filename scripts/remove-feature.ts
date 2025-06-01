@@ -127,12 +127,13 @@ function replaceToggleComponent(node:Node<ts.Node>) {
 }
 
 sources.forEach((source) => {
+    // eslint-disable-next-line consistent-return
     source.forEachDescendant( node => {
         if(node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)){
-            replaceToggleFunction(node);
+            return replaceToggleFunction(node);
         }
         if(node.isKind(SyntaxKind.JsxSelfClosingElement) && isToggleComponent(node)){
-            replaceToggleComponent(node);
+            return replaceToggleComponent(node);
         }
         // console.log(node , node.isKind(SyntaxKind.JsxClosingElement));
     })
