@@ -71,3 +71,10 @@
         font: var(--font-text-l);
     }
 }
+
+.bold {
+    .text,
+    .title {
+        font-weight: 700;
+    }
+}

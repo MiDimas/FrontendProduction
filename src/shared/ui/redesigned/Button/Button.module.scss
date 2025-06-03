@@ -39,9 +39,15 @@
 }
 
 .outline {
-    border: 1px solid var(--light-bg-redesigned);
+    border: 1px solid var(--icon-redesigned);
     color: var(--text-redesigned);
     background: none;
+    border-radius: 16px;
+    padding: 8px 16px;
+
+    &:hover {
+        border: 1px solid var(--accent-redesigned);
+    }
 }
 
 .filled {
