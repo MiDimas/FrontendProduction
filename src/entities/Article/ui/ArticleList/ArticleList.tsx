@@ -18,6 +18,7 @@ import { Article } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import cls from './ArticleList.module.scss';
+import {toggleFeatures} from "@/shared/lib/features";
 
 type DirectionList = 'horizontal' | 'vertical';
 interface ArticleListProps {
@@ -59,6 +60,12 @@ export const ArticleList = (props: ArticleListProps) => {
     const { t } = useTranslation('article');
     const virtuosoGridRef = useRef<VirtuosoGridHandle>(null);
     const virtuosoRef = useRef<VirtuosoHandle>(null);
+
+    const mainClass = toggleFeatures({
+        name: "isRedesigned",
+        off: () => cls.ArticleList,
+        on: () => cls.ArticleListRedesigned
+    })
 
     const renderArticle = (index: number, article: Article) => (
         <ArticleListItem
@@ -109,7 +116,7 @@ export const ArticleList = (props: ArticleListProps) => {
     if (!isLoading && !articles.length) {
         if (Header) {
             return (
-                <VStack className={classNames(cls.ArticleList, {}, [cls[view], className])}>
+                <VStack className={classNames(mainClass, {}, [cls[view], className])}>
                     <Header />
                     {error ? (
                         <Text text={t('Произошла ошибка')} />
@@ -139,7 +146,7 @@ export const ArticleList = (props: ArticleListProps) => {
         }
     }
     return (
-        <div className={classNames(cls.ArticleList, {}, [cls[view], className])}>
+        <div className={classNames(mainClass, {}, [cls[view], className])}>
             {/* {articles.length > 0 */}
             {/*    ? articles.map((article) => renderArticle(article)) */}
             {/*    : null} */}
