@@ -9,9 +9,9 @@ module.exports = async (layer, sliceName) => {
     const resolveModulePath = (...segments) =>
         resolveRoot('src', layer, sliceName, 'model', ...segments);
 
-    const createModelStructure = () => {
+    const createModelStructure = async () => {
         try {
-            fs.mkdir(resolveModulePath());
+            await fs.mkdir(resolveModulePath());
             fs.mkdir(resolveModulePath('types'));
             fs.mkdir(resolveModulePath('slices'));
             fs.mkdir(resolveModulePath('selectors'));

@@ -6,7 +6,7 @@ module.exports = (layer, sliceName) => {
     const componentName = firstCharUpperCase(sliceName);
     fs.writeFile(
         resolveRoot('src', layer, sliceName, 'index.ts'),
-        `export { ${componentName}Schema } from './model/types/${sliceName}Schema';
+        `export type { ${componentName}Schema } from './model/types/${sliceName}Schema';
 export { ${componentName} } from './ui/${componentName}/${componentName}';
 `,
     );

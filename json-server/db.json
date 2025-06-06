@@ -501,10 +501,10 @@
       "features": {
         "isArticleRatingEnabled": true,
         "isCounterEnabled": true,
-        "isRedesigned": true
+        "isRedesigned": false
       },
       "jsonSettings": {
-        "theme": "orange",
+        "theme": "dark",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false,
         "isArticlePageWasOpened": true

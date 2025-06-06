@@ -1,6 +1,6 @@
 import { FeatureFlags } from '@/shared/types/featureFlags/featureFlags';
 // eslint-disable-next-line midi-plugin-import/path-check
-import { getFeatureFlags } from '@/shared/lib/features/setGetFeatures';
+import { getFeatureFlags } from '@/shared/lib/features/lib/setGetFeatures';
 
 interface ToggleFeatures<T> {
     name: keyof FeatureFlags;
