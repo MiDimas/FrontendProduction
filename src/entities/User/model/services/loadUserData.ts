@@ -5,7 +5,7 @@ import {uploadUserDataQuery} from '../../api/userApi'
 import {USER_LOCALSTORAGE_KEY} from "@/shared/const/localstorage";
 
 export const loadUserData= createAsyncThunk<User,  undefined, ThunkConfig<string>>(
-    'articleDetails/fetchArticleById',
+    'userData/fetchUserById',
     async (_, thunkAPI) => {
         const {rejectWithValue, getState, dispatch} = thunkAPI;
         const  userId = localStorage.getItem(USER_LOCALSTORAGE_KEY);

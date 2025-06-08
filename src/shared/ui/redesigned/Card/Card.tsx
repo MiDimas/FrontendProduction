@@ -10,6 +10,8 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     variant?: CardVariant;
     padding?: PaddingVariant;
     borderForm?: BorderFormVariant;
+    fullWidth?: boolean;
+    fullHeight?: boolean;
 }
 
 const mapPaddingToClasses: Record<PaddingVariant, string> = {
@@ -29,8 +31,13 @@ export const Card = (props: CardProps) => {
         variant = 'normal',
         padding = '8',
         borderForm = 'normal',
+        fullWidth,
+        fullHeight,
         ...otherProps } = props;
-    const mods = {}
+    const mods = {
+        [cls.fullHeight]: fullHeight,
+        [cls.fullWidth]: fullWidth
+    }
     const additional = [
         className,
         cls[variant],

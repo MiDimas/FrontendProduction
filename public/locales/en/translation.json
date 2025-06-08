@@ -44,5 +44,7 @@
     "Оцените статью": "Rate the article",
     "Оставьте отзыв о статье": "Leave a review about the article",
     "Спасибо за оценку": "Thanks for assessment",
-    "ЯЗ": "EN"
+    "ЯЗ": "EN",
+    "{{count}} просмотров_one": "{{count}} view",
+    "{{count}} просмотров_other":  "{{count}} views"
 }

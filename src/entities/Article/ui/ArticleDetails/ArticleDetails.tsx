@@ -12,7 +12,6 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { Icon } from '@/shared/ui/deprecated/Icon';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 import { Text, TextAlign, TextSize, TextTheme } from '@/shared/ui/deprecated/Text';
 import { ArticleBlockType } from '../../model/consts/articleConsts';
 import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData';
@@ -27,6 +26,9 @@ import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleC
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleDetails.module.scss';
+import {toggleFeatures} from "@/shared/lib/features";
+import {Skeleton as SkeletonDeprecated} from "@/shared/ui/deprecated/Skeleton";
+import {Skeleton as SkeletonRedesigned} from "@/shared/ui/redesigned/Skeleton";
 
 interface ArticleDetailsProps {
     className?: string;
@@ -67,6 +69,11 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                 return null;
         }
     }, []);
+
+    const Skeleton = toggleFeatures({name: "isRedesigned",
+        off: () => SkeletonDeprecated,
+        on: () => SkeletonRedesigned
+    })
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
