@@ -4,6 +4,7 @@ import { Portal } from '@/shared/ui/redesigned/Portal';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
 import cls from './Drawer.module.scss';
+import {toggleFeatures} from "@/shared/lib/features";
 
 interface DrawerProps {
     className?: string;
@@ -15,11 +16,7 @@ interface DrawerProps {
 
 const height = window.innerHeight - 100;
 
-/**
- * Устарел, используем новые компоненты из папки @redesigned
- * @deprecated
- *
- */
+
 const DrawerContent = memo((props: DrawerProps) => {
     const { Spring, Gesture } = useAnimationLibs();
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
@@ -93,7 +90,14 @@ const DrawerContent = memo((props: DrawerProps) => {
     const display = y.to((py) => (py < height ? 'block' : 'none'));
     return (
         <Portal>
-            <div className={classNames(cls.Drawer, {}, [className])}>
+            <div className={classNames(cls.Drawer, {}, [
+                className,
+                toggleFeatures({
+                    name: "isRedesigned",
+                    on: () => cls.drawerNew,
+                    off: () => cls.drawerOld
+                })
+            ])}>
                 <Overlay onClick={close} />
                 <Spring.a.div
                     className={cls.sheet}

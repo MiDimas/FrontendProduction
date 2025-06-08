@@ -5,6 +5,7 @@ import { HStack } from '@/shared/ui/redesigned/Stack';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import cls from './Modal.module.scss';
+import {toggleFeatures} from "@/shared/lib/features";
 
 interface ModalProps {
     className?: string;
@@ -15,11 +16,6 @@ interface ModalProps {
     lazy?: boolean;
 }
 
-/**
- * Устарел, используем новые компоненты из папки @redesigned
- * @deprecated
- *
- */
 export const Modal = (props: ModalProps) => {
     const { className, children, isOpen, onClose, noPortal, lazy = false } = props;
 
@@ -58,7 +54,12 @@ export const Modal = (props: ModalProps) => {
                 align="center"
                 max
                 height="100%"
-                className={classNames(cls.Modal, mods)}
+                className={classNames(cls.Modal, mods, [
+                    toggleFeatures({name: "isRedesigned",
+                        on:()=> cls.modalNew,
+                        off:()=> cls.modalOld,
+                    })
+                ])}
             >
                 <Overlay onClick={close} />
                 <div className={classNames(cls.content, {}, [className])}>{children}</div>
