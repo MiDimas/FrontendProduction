@@ -22,7 +22,7 @@ export const ArticleListItemRedesigned = (props: ArticleListItemProps) => {
 
     const userInfo = (
         <>
-            <Avatar size={32} src={article.user.avatar} />
+            <Avatar size={32} src={article.user.avatar} className={cls.avatar} />
             <Text text={article.user.username}  bold/>
         </>
     )
@@ -41,8 +41,8 @@ export const ArticleListItemRedesigned = (props: ArticleListItemProps) => {
             className={cls.img}
             fallback={
                 <Skeleton
-                    height={view === ArticleView.BIG ? '250px' : '200px'}
-                    width={view === ArticleView.BIG ? '100%' : '200px'}
+                    height={view === ArticleView.BIG ? '250px' : '140px'}
+                    width={view === ArticleView.BIG ? '100%' : '100%'}
                 />
             }
         />

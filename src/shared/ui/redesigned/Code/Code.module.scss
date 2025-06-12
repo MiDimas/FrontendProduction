@@ -5,6 +5,15 @@
     background: var(--code-bg);
 }
 
+.CodeRedesigned {
+    padding: 20px;
+    position: relative;
+    overflow: auto;
+    background: var(--light-bg-redesigned);
+    border: 1px solid var(--accent-redesigned);
+    border-radius: 16px;
+}
+
 .copyBtn {
     position: absolute;
     right: 20px;
