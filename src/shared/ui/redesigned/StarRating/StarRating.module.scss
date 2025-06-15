@@ -1,0 +1,31 @@
+.starRating {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 5px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.selectable {
+    cursor: pointer;
+}
+
+.normal {
+    fill: none;
+}
+
+.starRatingRedesigned {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 5px;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .star {
+        fill: var(--icon-redesigned);
+    }
+
+    .normal {
+        color: var(--light-bg-redesigned);
+    }
+}
