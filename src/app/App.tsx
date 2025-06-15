@@ -38,8 +38,10 @@ function App() {
         })
     }, [themeBody, initial]);
     useEffect(() => {
-        dispatch(loadUserData());
-    }, [dispatch]);
+        if (!initial) {
+            dispatch(loadUserData());
+        }
+    }, [dispatch, initial]);
 
     useEffect(() => {
         if(!isInitTheme){

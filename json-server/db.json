@@ -523,7 +523,7 @@
         "isCounterEnabled": false
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "dark",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false
       },

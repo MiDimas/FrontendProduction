@@ -22,6 +22,7 @@ import { loginByUsername } from '../../model/services/LoginByUserName/LoginByUse
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
 import {ToggleFeatures} from "@/shared/lib/features";
+import {useForceUpdate} from "@/shared/lib/render/forceUpdate";
 
 export interface LoginFormProps {
     className?: string;
@@ -39,6 +40,7 @@ const LoginForm = memo((props: LoginFormProps) => {
     const password = useSelector(getLoginPassword);
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
+    const forceUpdate = useForceUpdate();
 
     const { className, onSuccess } = props;
 
@@ -63,8 +65,9 @@ const LoginForm = memo((props: LoginFormProps) => {
         );
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess?.();
+            forceUpdate();
         }
-    }, [onSuccess, dispatch, username, password]);
+    }, [onSuccess, dispatch, username, password, forceUpdate]);
 
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
