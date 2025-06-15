@@ -71,7 +71,9 @@ export const ProfileCardRedesigned = (props: ProfileCardProps) => {
     const {t} = useTranslation('profile');
     return (
         <Card className={className}
-              padding="24">
+              padding="24"
+              borderForm="half-round"
+        >
             <VStack>
                 <HStack justify="center" max>
                     <Avatar src={data?.avatar} alt={t('аватар')} size={128}/>

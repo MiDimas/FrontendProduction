@@ -76,7 +76,7 @@ const AddCommentForm = (props: AddCommentFormProps) => {
                     </HStack>
                 }
                 on={
-                    <Card>
+                    <Card borderForm="half-round" padding="24">
                         <HStack
                             justify="between"
                             align="center"

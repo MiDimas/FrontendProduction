@@ -39,11 +39,22 @@
 }
 
 .outline {
-    border: 2px solid var(--icon-redesigned);
     color: var(--text-redesigned);
     background: none;
     border-radius: 16px;
     padding: 6px 16px;
+
+    &.normal {
+        border: 2px solid var(--icon-redesigned);
+    }
+
+    &.success {
+        border: 2px solid var(--save-redesigned);
+    }
+
+    &.error {
+        border: 2px solid var(--cancel-redesigned);
+    }
 
     &:hover {
         border: 2px solid var(--accent-redesigned);
@@ -57,6 +68,14 @@
     padding: 8px 16px;
     background: var(--light-bg-redesigned);
     color: var(--text-redesigned);
+
+    &.success {
+        background: var(--save-redesigned);
+    }
+
+    &.error {
+        background: var(--cancel-redesigned);
+    }
 }
 
 .square {

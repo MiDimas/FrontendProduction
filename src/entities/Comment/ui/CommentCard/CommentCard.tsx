@@ -65,7 +65,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
                         className={className}
                         data-testid="CommentCard.Content"
                         padding="24"
-                        borderForm="round"
+                        borderForm="half-round"
                         fullWidth
                     >
                         <VStack gap="8">

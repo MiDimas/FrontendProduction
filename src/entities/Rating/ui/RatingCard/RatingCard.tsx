@@ -194,7 +194,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
             <Card className={classNames(cls.RatingCard, {}, [className])}
                   data-testid="RatingCard"
                   fullWidth
-                  borderForm='round'
+                  borderForm='half-round'
                   padding="24"
             >
                 {base}

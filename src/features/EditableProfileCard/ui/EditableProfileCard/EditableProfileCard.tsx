@@ -8,7 +8,8 @@ import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { ValidateProfileError } from '../../model/consts/editableProfileCardConsts';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
@@ -19,6 +20,9 @@ import { fetchProfileData } from '../../model/services/fetchProfileData/fetchPro
 import { profileAction } from '../../model/slice/profileSlice';
 import { ValidateErrorTranslates } from '../../model/types/ProfileSchema';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
+import {ToggleFeatures} from "@/shared/lib/features";
+import {VStack} from "@/shared/ui/redesigned/Stack";
+import {Card} from "@/shared/ui/redesigned/Card";
 
 interface EditableProfileCardProps {
     className?: string;
@@ -131,32 +135,60 @@ export const EditableProfileCard = (props: EditableProfileCardProps) => {
         return <ProfileCard data={data} isLoading={isLoading} error={error} readonly />;
     }
 
+    const profileProps = {
+        data,
+        isLoading,
+        error,
+        readonly,
+        onChangeFirstname,
+        onChangeLastname,
+        onChangeAge,
+        onChangeCity,
+        onChangeUsername,
+        onChangeAvatar,
+        onChangeCurrency,
+        onChangeCountry,
+    }
+
     return (
-        <div className={classNames('', {}, [className])}>
-            <EditableProfileCardHeader />
-            {validateErrors?.length &&
-                validateErrors.map((validateError) => (
-                    <Text
-                        theme={TextTheme.ERROR}
-                        text={validateErrorTranslates[validateError]}
-                        key={validateError}
-                        data-testid="ProfileCard.Error"
+        <ToggleFeatures feature="isRedesigned"
+            off={
+                <div className={classNames('', {}, [className])}>
+                    <EditableProfileCardHeader/>
+                    {validateErrors?.length &&
+                        validateErrors.map((validateError) => (
+                            <TextDeprecated
+                                theme={TextTheme.ERROR}
+                                text={validateErrorTranslates[validateError]}
+                                key={validateError}
+                                data-testid="ProfileCard.Error"
+                            />
+                        ))}
+                    <ProfileCard
+                        {...profileProps}
                     />
-                ))}
-            <ProfileCard
-                data={data}
-                isLoading={isLoading}
-                error={error}
-                readonly={readonly}
-                onChangeFirstname={onChangeFirstname}
-                onChangeLastname={onChangeLastname}
-                onChangeAge={onChangeAge}
-                onChangeCity={onChangeCity}
-                onChangeUsername={onChangeUsername}
-                onChangeAvatar={onChangeAvatar}
-                onChangeCurrency={onChangeCurrency}
-                onChangeCountry={onChangeCountry}
-            />
-        </div>
+                </div>
+            }
+            on={
+                <VStack className={classNames('', {}, [className])} gap="16">
+                    <EditableProfileCardHeader/>
+                    {validateErrors?.length &&
+                        validateErrors.map((validateError) => (
+                            <Card padding="24" borderForm="half-round">
+                                <Text
+                                    variant="error"
+                                    text={validateErrorTranslates[validateError]}
+                                    key={validateError}
+                                    data-testid="ProfileCard.Error"
+                                />
+                            </Card>
+                        ))}
+                    <ProfileCard
+                        {...profileProps}
+                    />
+                </VStack>
+            }
+
+        />
     );
 };
