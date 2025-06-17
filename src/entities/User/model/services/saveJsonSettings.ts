@@ -4,6 +4,7 @@ import {ThunkConfig} from "@/app/providers/StoreProvider";
 import {getUserAuthData} from "../selectors/getUserAuthData/getUserAuthData";
 import {getJsonSettings} from '../selectors/jsonSettings/jsonSettings';
 import {setJsonSettingsMutation} from '../../api/userApi';
+import {LOCAL_STORAGE_LAST_DESIGN_KEY} from "@/shared/const/localstorage";
 
 
 export const saveJsonSettings = createAsyncThunk<
@@ -27,7 +28,7 @@ export const saveJsonSettings = createAsyncThunk<
         if(!response.jsonSettings){
             return rejectWithValue('');
         }
-
+        localStorage.setItem(LOCAL_STORAGE_LAST_DESIGN_KEY, response.features?.isRedesigned ? 'new' : 'old' )
         return response.jsonSettings;
     }
     catch(e){

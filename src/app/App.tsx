@@ -16,6 +16,7 @@ import {LOCAL_STORAGE_THEME_KEY} from "@/shared/const/localstorage";
 import {PageLoader} from "@/widgets/PageLoader";
 import {ToggleFeatures, toggleFeatures} from "@/shared/lib/features";
 import {MainLayout} from "@/shared/layouts/MainLayout";
+import {AppLoaderLayout} from "@/shared/layouts/AppLoaderLayout";
 
 const hello = "hello";
 function App() {
@@ -57,7 +58,10 @@ function App() {
 
     if(!initial){
         return (
-            <PageLoader/>
+            <ToggleFeatures feature="isRedesigned"
+                off={<PageLoader/>}
+                on={<AppLoaderLayout />}
+            />
         )
     }
 
