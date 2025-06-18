@@ -6,7 +6,6 @@ export const NewDesignDecorator = (StoryComponent: StoryFn) => {
     setFeatureFlags({...getAllFeatureFlags(), isRedesigned: true});
     document.body.classList.remove('app');
     document.body.classList.add('app_redesigned');
-    document.body.classList.remove('app');
     return  <StoryComponent />
 
 }

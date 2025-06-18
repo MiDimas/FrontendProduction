@@ -19,10 +19,10 @@ if(featureState !== 'on' && featureState !== 'off') {
 
 const project = new Project();
 
-project.addSourceFilesAtPaths('src/**/ArticleDetailsPage.tsx')
+// project.addSourceFilesAtPaths('src/**/ArticleDetailsPage.tsx')
 // TODO
-// project.addSourceFilesAtPaths('src/**/*.ts');
-// project.addSourceFilesAtPaths('src/**/*.tsx');
+project.addSourceFilesAtPaths('src/**/*.ts');
+project.addSourceFilesAtPaths('src/**/*.tsx');
 
 const sources = project.getSourceFiles();
 
