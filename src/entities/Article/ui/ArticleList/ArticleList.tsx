@@ -132,14 +132,14 @@ export const ArticleList = (props: ArticleListProps) => {
     if (!virtualized) {
         if (direction === 'horizontal') {
             return (
-                <HStack max className={cls.recommendation}>
+                <HStack max className={classNames(cls.recommendation, {}, [className])}>
                     {articles.map((article) => renderArticle(Number(article.id), article))}
                 </HStack>
             );
         }
         if (direction === 'vertical') {
             return (
-                <VStack max>
+                <VStack className={classNames('', {}, [className])} max>
                     {articles.map((article) => renderArticle(Number(article.id), article))}
                 </VStack>
             );
@@ -158,6 +158,7 @@ export const ArticleList = (props: ArticleListProps) => {
                     itemContent={renderArticle}
                     endReached={onScrollEnd}
                     data-testid="ArticleList"
+                    id="mainVirtuoso"
                     components={{
                         Header,
                         Footer: isLoading ? skeleton : undefined,
@@ -182,6 +183,7 @@ export const ArticleList = (props: ArticleListProps) => {
                             onScrollEnd?.();
                         }
                     }}
+                    id="mainVirtuoso"
                     components={{
                         Header,
                         Footer: isLoading ? skeleton : undefined,

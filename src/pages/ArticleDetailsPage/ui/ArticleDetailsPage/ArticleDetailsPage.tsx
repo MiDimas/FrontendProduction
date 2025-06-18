@@ -40,11 +40,11 @@ const ArticleDetailsPage = (props: ArticlesDetailsPageProps) => {
             on={
                 <StickyLayout
                     content={
-                        <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
+                        <Page className={classNames(cls.ArticlesDetailsPageRedesigned, {}, [className])}>
                             <VStack max gap="32">
                                 <DetailsContainer />
                                 <ArticleRating articleId={id} />
-                                <ArticleRecommendationsList />
+                                 <ArticleRecommendationsList />
                                 <ArticleDetailsComments id={id} />
                             </VStack>
                         </Page>

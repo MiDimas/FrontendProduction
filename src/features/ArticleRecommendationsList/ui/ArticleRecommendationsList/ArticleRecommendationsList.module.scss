@@ -11,3 +11,14 @@
         margin-bottom: 5px;
     }
 }
+
+.ArticleRecommendationsListRedesigned {
+    margin-top: 0;
+    overflow: hidden;
+
+    .recommendations {
+        flex-wrap: nowrap;
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+}

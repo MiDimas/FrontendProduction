@@ -7,7 +7,7 @@ import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
 import cls from './ArticleRecommendationsList.module.scss';
-import {ToggleFeatures} from "@/shared/lib/features";
+import {toggleFeatures, ToggleFeatures} from "@/shared/lib/features";
 
 interface ArticleRecommendationsListProps {
     className?: string;
@@ -20,7 +20,11 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
     return (
         <VStack
             gap="8"
-            className={classNames(cls.ArticleRecommendationsList, {}, [className])}
+            className={classNames(toggleFeatures({
+                name: "isRedesigned",
+                on: () => cls.ArticleRecommendationsListRedesigned,
+                off: () => cls.ArticleRecommendationsList
+            }), {}, [className])}
             data-testid="ArticleRecommendationsList"
         >
             <ToggleFeatures

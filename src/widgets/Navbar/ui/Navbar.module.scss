@@ -18,3 +18,12 @@
 .createLink {
     text-decoration: none;
 }
+
+.NavbarRedesigned {
+    display: flex;
+    width: 100%;
+    background-color: var(--inverted-bg-color);
+    align-items: center;
+    padding: 10px 5px;
+    justify-content: end;
+}

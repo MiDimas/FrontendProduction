@@ -3,6 +3,7 @@
     grid-template-areas: "left content right";
     grid-template-columns: min-content 1fr min-content;
     gap: 16px;
+    max-width: 100%;
 }
 
 .left {
@@ -14,6 +15,7 @@
     max-width: 1200px;
     justify-self: center;
     width: 100%;
+    overflow: hidden;
 }
 
 .right {

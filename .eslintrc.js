@@ -61,6 +61,7 @@ module.exports = {
                     'variant',
                     'borderForm',
                     'size',
+                    'idElementToScroll'
                 ],
             },
         ],

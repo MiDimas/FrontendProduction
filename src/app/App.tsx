@@ -17,6 +17,7 @@ import {PageLoader} from "@/widgets/PageLoader";
 import {ToggleFeatures, toggleFeatures} from "@/shared/lib/features";
 import {MainLayout} from "@/shared/layouts/MainLayout";
 import {AppLoaderLayout} from "@/shared/layouts/AppLoaderLayout";
+import {useAppToolbar} from "./libs/UseAppToolbar";
 
 const hello = "hello";
 function App() {
@@ -24,6 +25,7 @@ function App() {
     const dispatch = useAppDispatch();
     const {theme: newTheme} = useJsonSettings();
     const [isInitTheme, setIsInitTheme] = useState(false);
+    const toolbar = useAppToolbar();
 
 
     // Навешивание темы на body
@@ -84,7 +86,7 @@ function App() {
                     header={<Navbar />}
                     content={<AppRouter />}
                     sidebar={<Sidebar />}
-                    toolbar={<div>{hello}</div>}
+                    toolbar={toolbar}
                     />
                 </Suspense>
             )}

@@ -36,8 +36,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <ToggleFeatures
                 feature="isRedesigned"
                 on={
-                <header className={classNames(cls.Navbar, {}, [className])}>
-                    <HStack align="center" justify="between" max>
+                <header className={classNames(cls.NavbarRedesigned, {}, [className])}>
+                    <HStack align="center" justify="end" max>
                         <HStack gap="16" align="center">
                             <NotificationButton/>
                             <AvatarDropdown/>

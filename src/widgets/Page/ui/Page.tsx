@@ -62,6 +62,7 @@ export const Page = (props: PageProps) => {
             className={classNames(pageClassName, {}, [className])}
             data-testid={dataTestId}
             onScroll={onScroll}
+            id="mainPage"
         >
             {children}
             {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}
