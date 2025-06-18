@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme';
 import { Select } from './Select';
 
 const meta: Meta<typeof Select> = {
-    title: 'shared/Select',
+    title: 'shared/Deprecated/Select',
     component: Select,
     argTypes: {},
 };

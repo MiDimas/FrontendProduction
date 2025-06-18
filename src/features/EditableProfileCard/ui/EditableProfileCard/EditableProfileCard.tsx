@@ -174,11 +174,10 @@ export const EditableProfileCard = (props: EditableProfileCardProps) => {
                     <EditableProfileCardHeader/>
                     {validateErrors?.length &&
                         validateErrors.map((validateError) => (
-                            <Card padding="24" borderForm="half-round">
+                            <Card padding="24" borderForm="half-round" key={validateError}>
                                 <Text
                                     variant="error"
                                     text={validateErrorTranslates[validateError]}
-                                    key={validateError}
                                     data-testid="ProfileCard.Error"
                                 />
                             </Card>

@@ -4,7 +4,7 @@ import { Overlay } from './Overlay';
 import {Theme} from "@/shared/const/theme";
 
 const meta: Meta<typeof Overlay> = {
-    title: 'shared/Overlay',
+    title: 'shared/Redesigned/Overlay',
     component: Overlay,
     argTypes: {
     },

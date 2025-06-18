@@ -3,7 +3,7 @@ import { Text } from '@/shared/ui/deprecated/Text';
 import { Card } from './Card';
 
 const meta: Meta = {
-    title: 'shared/Card',
+    title: 'shared/Redesigned/Card',
     component: Card,
     argTypes: {},
 };

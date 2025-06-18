@@ -3,6 +3,8 @@ import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorat
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
 import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import { Theme } from '../../src/shared/const/theme';
+import {FeatureFlagsDecorator} from "../../src/shared/config/storybook/FeatureFlagsDecorator/FeatureFlagsDecorator";
+import {AppDecorator} from "../../src/shared/config/storybook/AppDecorator/AppDecorator";
 
 const preview: Preview = {
     parameters: {
@@ -19,27 +21,29 @@ const preview: Preview = {
             list: [
                 {
                     name: 'light',
-                    class: ['app', Theme.LIGHT],
+                    class: [Theme.LIGHT],
                     color: '#ffffff',
                 },
                 {
                     name: 'dark',
-                    class: ['app', Theme.DARK],
+                    class: [ Theme.DARK],
                     color: '#6113b0',
                 },
                 {
                     name: 'orange',
-                    class: ['app', Theme.ORANGE],
+                    class: [Theme.ORANGE],
                     color: '#fc811c',
                 },
             ],
         },
     },
     decorators: [
+        AppDecorator,
         StyleDecorator,
         // ThemeDecorator(Theme.LIGHT),
         RouterDecorator,
         SuspenseDecorator,
+        FeatureFlagsDecorator({})
     ],
 };
 

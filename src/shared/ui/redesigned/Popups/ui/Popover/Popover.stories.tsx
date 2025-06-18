@@ -7,7 +7,7 @@ import { Icon } from '@/shared/ui/redesigned/Icon';
 import { Popover } from './Popover';
 
 const meta: Meta<typeof Popover> = {
-    title: 'shared/Popups/Popover',
+    title: 'shared/Redesigned/Popups/Popover',
     component: Popover,
     argTypes: {},
     args: {

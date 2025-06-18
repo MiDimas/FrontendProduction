@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme';
 import { LangSwitcher } from './LangSwitcher';
 
 const meta: Meta<typeof LangSwitcher> = {
-    title: 'shared/LangSwitcher',
+    title: 'features/LangSwitcher',
     component: LangSwitcher,
     argTypes: {},
 };

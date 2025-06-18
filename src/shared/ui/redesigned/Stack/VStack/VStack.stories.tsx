@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { VStack } from './VStack';
 
 const meta: Meta<typeof VStack> = {
-    title: 'shared/VStack',
+    title: 'shared/Redesigned/VStack',
     component: VStack,
     argTypes: {
     },

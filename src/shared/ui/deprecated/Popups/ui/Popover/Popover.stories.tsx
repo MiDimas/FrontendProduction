@@ -7,7 +7,7 @@ import { Icon, IconFilling } from '@/shared/ui/deprecated/Icon';
 import { Popover } from './Popover';
 
 const meta: Meta<typeof Popover> = {
-    title: 'shared/Popups/Popover',
+    title: 'shared/Deprecated/Popups/Popover',
     component: Popover,
     argTypes: {},
     args: {

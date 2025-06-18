@@ -8,7 +8,7 @@ import {Skeleton} from "@/shared/ui/deprecated/Skeleton";
 
 
 const meta: Meta<typeof AppImage> = {
-    title: 'shared/AppImage',
+    title: 'shared/Redesigned/AppImage',
     component: AppImage,
     argTypes: {
     },

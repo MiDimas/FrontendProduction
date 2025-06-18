@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme';
 import { Input } from './Input';
 
 const meta: Meta<typeof Input> = {
-    title: 'shared/Input',
+    title: 'shared/Deprecated/Input',
     component: Input,
     argTypes: {},
 };

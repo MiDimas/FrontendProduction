@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme';
 import { ListBox } from './ListBox';
 
 const meta: Meta<typeof ListBox> = {
-    title: 'shared/Popups/ListBox',
+    title: 'shared/Redesigned/Popups/ListBox',
     component: ListBox,
     argTypes: {},
     args: {

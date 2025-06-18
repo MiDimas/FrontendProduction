@@ -5,6 +5,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
 import ProfilePage from './ProfilePage';
+import {NewDesignDecorator} from "@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator";
 
 const meta: Meta<typeof ProfilePage> = {
     title: 'pages/ProfilePage',
@@ -38,4 +39,8 @@ export const ProfilePageLight: Story = {
 
 export const ProfilePageDark: Story = {
     decorators: [ThemeDecorator(Theme.DARK)],
+};
+export const ProfilePageNew: Story = {
+    args: {},
+    decorators: [NewDesignDecorator]
 };

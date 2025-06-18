@@ -3,7 +3,7 @@ import { HStack } from './HStack';
 
 
 const meta: Meta<typeof HStack> = {
-    title: 'shared/HStack',
+    title: 'shared/Redesigned/HStack',
     component: HStack,
     argTypes: {},
     args: {
