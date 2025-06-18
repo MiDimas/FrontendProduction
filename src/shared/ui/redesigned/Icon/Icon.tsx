@@ -10,12 +10,13 @@ interface IconBaseProps extends SvgProps {
 interface ClickableIcon extends IconBaseProps{
     clickable: true;
     onClick: () => void;
-    offBtnSize?: boolean;
+    offSize?: boolean;
 }
 interface NonClickableIcon extends IconBaseProps {
     clickable?: false;
 }
 type IconProps = ClickableIcon | NonClickableIcon;
+
 export const Icon = (props: IconProps) => {
     const {
         className,
@@ -26,28 +27,36 @@ export const Icon = (props: IconProps) => {
         ...otherProps
     } = props;
 
-    const icon = (
-        <Svg
-            className={classNames(cls.Icon, {}, [
-                clickable ? undefined : className,
-            ])}
-            width={width}
-            height={height}
-            {...otherProps}
-        />
-    );
-
     if(clickable){
-        const {onClick, offBtnSize=false} = props
+        const {onClick, offSize=false,
+            className,
+            Svg,
+            width = 32,
+            height = 32,
+            clickable, ...other } = props
         return (
             <button
             className={classNames(cls.button, {}, [className])}
             type='button'
             onClick={onClick}
-            style={offBtnSize ? {} : {width, height}}
+            style={offSize ? {} : {width, height}}
         >
-            {icon}
+            <Svg
+                className={classNames(cls.Icon, {}, [
+                    clickable ? undefined : className,
+                ])}
+                width={width}
+                height={height}
+                {...other}
+            />
         </button>)
     }
-    return icon;
+    return <Svg
+        className={classNames(cls.Icon, {}, [
+            clickable ? undefined : className,
+        ])}
+        width={width}
+        height={height}
+        {...otherProps}
+    />;
 };

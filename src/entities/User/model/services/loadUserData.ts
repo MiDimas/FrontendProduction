@@ -9,7 +9,6 @@ export const loadUserData= createAsyncThunk<User,  undefined, ThunkConfig<string
     async (_, thunkAPI) => {
         const {rejectWithValue, getState, dispatch} = thunkAPI;
         const  userId = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-        console.log(userId);
         try {
             if (!userId) {
                 throw new Error('Вы не авторизованы');

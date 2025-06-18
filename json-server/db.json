@@ -520,7 +520,8 @@
       ],
       "features": {
         "isArticleRatingEnabled": false,
-        "isCounterEnabled": false
+        "isCounterEnabled": false,
+        "isRedesigned": false
       },
       "jsonSettings": {
         "theme": "dark",

@@ -90,7 +90,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         className={cls.collapseBtn}
                         clickable
                         Svg={ArrowIcon}
-                        offBtnSize
+                        offSize
                     />
                     <Flex
                         justify="center"
